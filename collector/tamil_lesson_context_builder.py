@@ -162,7 +162,7 @@ def build_context(
         insufficiency_reason = "Not enough high-quality dialogues for the selected day."
 
     return {
-        "task_name": "tamil_colloquial_lesson_context",
+        "task_name": "tamil_lesson_context",
         "generated_at": now_iso(),
         "cycle": cycle_info,
         "difficulty_window_words": {

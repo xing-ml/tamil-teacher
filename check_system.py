@@ -32,7 +32,7 @@ def main() -> int:
     
     # Core scripts
     print("📄 Core Collectors & Processors:")
-    all_ok &= check_file(base_dir / "collector" / "tamil_colloquial_collector.py", "Collector")
+    all_ok &= check_file(base_dir / "collector" / "tamil_collector.py", "Collector")
     all_ok &= check_file(base_dir / "collector" / "tamil_cleaner.py", "Cleaner")
     all_ok &= check_file(base_dir / "collector" / "tamil_corpus_manager.py", "Corpus Manager (新)")
     all_ok &= check_file(base_dir / "collector" / "url_deduplicator.py", "URL Deduplicator (新)")

@@ -14,7 +14,7 @@ COLLECTION → CLEANING → CORPUS → LESSONS → HERMES → OUTPUT
 **目标**: 采集Tamil口语语料
 
 ```bash
-python collector/tamil_colloquial_collector.py \
+python collector/tamil_collector.py \
   --output-dir temp \
   --reddit-max-posts 15 \
   --ddgs-queries "tamil slang" "அன்றாட தமிழ்" \
@@ -117,7 +117,7 @@ python collector/tamil_corpus_manager.py \
 
 ### 5️⃣ 完整流程 (Daily Pipeline)
 ```bash
-cd scripts/tamil-colloquial-teacher
+cd tamil-teacher
 python bin/tamil_daily_lesson.py
 ```
 
@@ -167,7 +167,7 @@ python bin/tamil_daily_lesson.py
 
 | 文件 | 作用 |
 |------|------|
-| `collector/tamil_colloquial_collector.py` | 采集sources |
+| `collector/tamil_collector.py` | 采集sources |
 | `collector/url_deduplicator.py` | URL缓存+去重 |
 | `collector/tamil_cleaner.py` | 清洗+评分 |
 | `collector/tamil_corpus_manager.py` | **新:语料库+Lesson** |

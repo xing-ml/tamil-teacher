@@ -12,7 +12,7 @@ pip install -r requirements.txt
 python bin/tamil_daily_lesson.py
 
 # 或分步运行
-python collector/tamil_colloquial_collector.py --output-dir ./temp
+python collector/tamil_collector.py --output-dir ./temp
 python collector/tamil_cleaner.py --agent-input ./temp/tamil_agent_input.json --keywords-file ./data/tamil_keywords.json --output-dir ./temp
 python collector/tamil_lesson_context_builder.py --cleaned-dialogues ./temp/tamil_cleaned_dialogues.json --scenarios-file ./data/scenario_definitions.json --difficulty-file ./data/difficulty_levels.json --cache-file ./data/cache/dialogue_cache.json --output-dir ./temp
 python collector/tamil_corpus_manager.py --corpus-dir ./data/corpus --add-cleaned ./temp/tamil_cleaned_dialogues.json --generate-lessons
@@ -32,7 +32,7 @@ YouTube/网页采集 → 清洗过滤 → 课程上下文构建 → 语料库管
 | 文件 | 职责 |
 |------|------|
 | `bin/tamil_daily_lesson.py` | **流水线入口** — 依次运行 collector → cleaner → context_builder → corpus_manager |
-| `collector/tamil_colloquial_collector.py` | **数据采集** — 通过 YouTube API + DDGS 搜索采集 Tamil 对话语料 |
+| `collector/tamil_collector.py` | **数据采集** — 通过 YouTube API + DDGS 搜索采集 Tamil 对话语料 |
 | `collector/tamil_cleaner.py` | **清洗过滤** — 过滤低质量内容，提取句子，计算口语评分 |
 | `collector/tamil_lesson_context_builder.py` | **课程上下文** — 从清洗后的对话中选取对话，构建课程上下文 JSON |
 | `collector/tamil_corpus_manager.py` | **语料库管理** — 管理语料库，生成分级课程（Level 1-6） |

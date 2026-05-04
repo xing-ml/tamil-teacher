@@ -35,7 +35,7 @@ def main() -> int:
     collector_output = run_step(
         [
             python_bin,
-            str(collector_dir / "tamil_colloquial_collector.py"),
+            str(collector_dir / "tamil_collector.py"),
             "--output-dir",
             str(temp_dir),
             "--ddgs-queries",
