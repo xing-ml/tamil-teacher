@@ -1,0 +1,121 @@
+{
+  "lesson_id": "lesson_L1_003",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 4,
+  "generated_at": "2026-05-04T22:41:46.021791",
+  "metadata": {
+    "entry_count": 4,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது",
+      "tanglish_text": "ennaalallaam idhukku maelallaam thookkittu vara mudiyaadhu",
+      "english_translation": "I can't take any more than that",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 6
+    },
+    {
+      "text": "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+      "tanglish_text": "aamaamaa indha ponnaidhaan kalyaanam pannikka poraen",
+      "english_translation": "I am going to marry this girl",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 6
+    },
+    {
+      "text": "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா",
+      "tanglish_text": "neenga veettukku mooththa pillai ungalukku theriyaadhaa",
+      "english_translation": "Don't you know that you are the eldest child in the family?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 6
+    },
+    {
+      "text": "இது இந்த ஊரோட பால போன சாபம்",
+      "tanglish_text": "idhu indha ooroda paala pona saabam",
+      "english_translation": "This is the curse of this town",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 6
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது",
+        "tanglish_text": "ennaalallaam idhukku maelallaam thookkittu vara mudiyaadhu"
+      },
+      "previous": [],
+      "next": [
+        "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+        "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+        "tanglish_text": "aamaamaa indha ponnaidhaan kalyaanam pannikka poraen"
+      },
+      "previous": [
+        "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது"
+      ],
+      "next": [
+        "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா",
+        "இது இந்த ஊரோட பால போன சாபம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா",
+        "tanglish_text": "neenga veettukku mooththa pillai ungalukku theriyaadhaa"
+      },
+      "previous": [
+        "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது",
+        "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்"
+      ],
+      "next": [
+        "இது இந்த ஊரோட பால போன சாபம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "இது இந்த ஊரோட பால போன சாபம்",
+        "tanglish_text": "idhu indha ooroda paala pona saabam"
+      },
+      "previous": [
+        "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+        "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா"
+      ],
+      "next": []
+    }
+  ]
+}

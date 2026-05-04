@@ -1,0 +1,121 @@
+{
+  "lesson_id": "lesson_L2_002",
+  "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+  "difficulty_level": "2",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 4,
+  "generated_at": "2026-05-04T22:41:51.493592",
+  "metadata": {
+    "entry_count": 4,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "基础",
+      "sentence_words": [
+        2,
+        8
+      ],
+      "features": [
+        "short_sentences",
+        "basic_verbs",
+        "simple_responses"
+      ],
+      "description": "短句子、基础动词、简单回应"
+    }
+  },
+  "entries": [
+    {
+      "text": "இன்னும் எவ்வளவு தூரம் தான்டா போகணும் உங்க ஊருக்கு",
+      "tanglish_text": "innum evvalavu thooram thaandaa poganum unga oorukku",
+      "english_translation": "How far do you have to go to your town?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 7
+    },
+    {
+      "text": "வீட்டுக்கு முத பிள்ளையா பிறந்து இன்னும் கஷ்டப்பட்டுிட்டுதான் இருக்காப்பள",
+      "tanglish_text": "veettukku mudha pillaiyaa pirandhu innum kashtappattuிttudhaan irukkaappala",
+      "english_translation": "The first child of the family was born and she was still struggling",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 7
+    },
+    {
+      "text": "இந்த ஊர்காரங்க பண்ண தப்புனால இன்னும் அனுபவிச்சிட்டு இருக்காங்க",
+      "tanglish_text": "indha oorgaaranga panna thappunaala innum anubavichchittu irukkaanga",
+      "english_translation": "They are still experiencing the mistake of making this home",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 7
+    },
+    {
+      "text": "மூத்த பிள்ளைக்கு கல்யாணம் ஆனா என்ன ஆகும்னு உங்களுக்கு தெரியும்ல்ல",
+      "tanglish_text": "mooththa pillaikku kalyaanam aanaa enna aagumnu ungalukku theriyumlla",
+      "english_translation": "You never know what will happen if the eldest child gets married",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 8
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "இன்னும் எவ்வளவு தூரம் தான்டா போகணும் உங்க ஊருக்கு",
+        "tanglish_text": "innum evvalavu thooram thaandaa poganum unga oorukku"
+      },
+      "previous": [],
+      "next": [
+        "வீட்டுக்கு முத பிள்ளையா பிறந்து இன்னும் கஷ்டப்பட்டுிட்டுதான் இருக்காப்பள",
+        "இந்த ஊர்காரங்க பண்ண தப்புனால இன்னும் அனுபவிச்சிட்டு இருக்காங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": "வீட்டுக்கு முத பிள்ளையா பிறந்து இன்னும் கஷ்டப்பட்டுிட்டுதான் இருக்காப்பள",
+        "tanglish_text": "veettukku mudha pillaiyaa pirandhu innum kashtappattuிttudhaan irukkaappala"
+      },
+      "previous": [
+        "இன்னும் எவ்வளவு தூரம் தான்டா போகணும் உங்க ஊருக்கு"
+      ],
+      "next": [
+        "இந்த ஊர்காரங்க பண்ண தப்புனால இன்னும் அனுபவிச்சிட்டு இருக்காங்க",
+        "மூத்த பிள்ளைக்கு கல்யாணம் ஆனா என்ன ஆகும்னு உங்களுக்கு தெரியும்ல்ல"
+      ]
+    },
+    {
+      "current": {
+        "text": "இந்த ஊர்காரங்க பண்ண தப்புனால இன்னும் அனுபவிச்சிட்டு இருக்காங்க",
+        "tanglish_text": "indha oorgaaranga panna thappunaala innum anubavichchittu irukkaanga"
+      },
+      "previous": [
+        "இன்னும் எவ்வளவு தூரம் தான்டா போகணும் உங்க ஊருக்கு",
+        "வீட்டுக்கு முத பிள்ளையா பிறந்து இன்னும் கஷ்டப்பட்டுிட்டுதான் இருக்காப்பள"
+      ],
+      "next": [
+        "மூத்த பிள்ளைக்கு கல்யாணம் ஆனா என்ன ஆகும்னு உங்களுக்கு தெரியும்ல்ல"
+      ]
+    },
+    {
+      "current": {
+        "text": "மூத்த பிள்ளைக்கு கல்யாணம் ஆனா என்ன ஆகும்னு உங்களுக்கு தெரியும்ல்ல",
+        "tanglish_text": "mooththa pillaikku kalyaanam aanaa enna aagumnu ungalukku theriyumlla"
+      },
+      "previous": [
+        "வீட்டுக்கு முத பிள்ளையா பிறந்து இன்னும் கஷ்டப்பட்டுிட்டுதான் இருக்காப்பள",
+        "இந்த ஊர்காரங்க பண்ண தப்புனால இன்னும் அனுபவிச்சிட்டு இருக்காங்க"
+      ],
+      "next": []
+    }
+  ]
+}

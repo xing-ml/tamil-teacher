@@ -1,0 +1,265 @@
+{
+  "lesson_id": "lesson_L1_001",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 10,
+  "generated_at": "2026-05-04T22:41:40.592677",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "இறந்துருவாங்கம்மா",
+      "tanglish_text": "irandhuruvaangammaa",
+      "english_translation": "Will you die?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 1
+    },
+    {
+      "text": "நீங்களாச்சு சொல்லுங்கமா",
+      "tanglish_text": "neengalaachchu sollungamaa",
+      "english_translation": "Tell me about you",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 2
+    },
+    {
+      "text": "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+      "tanglish_text": "konja thooramdhaan pakkaththuladhaan",
+      "english_translation": "It's just a short distance away",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 3
+    },
+    {
+      "text": "ஒரு ரொமான்ஸ் லுக்கு",
+      "tanglish_text": "oru romaans lukku",
+      "english_translation": "For a romance",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 3
+    },
+    {
+      "text": "என்னப்பா இப்படி பண்றீங்க",
+      "tanglish_text": "ennappaa ippadi panreenga",
+      "english_translation": "Why do you do this?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 3
+    },
+    {
+      "text": "அதெல்லாம் ஒன்னும் இல்ல",
+      "tanglish_text": "adhellaam onnum illa",
+      "english_translation": "All that is nothing",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 3
+    },
+    {
+      "text": "சும்மா கட்டுக்கதை இதெல்லாம்",
+      "tanglish_text": "summaa kattukkadhai idhellaam",
+      "english_translation": "This is just a myth",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 3
+    },
+    {
+      "text": "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+      "tanglish_text": "yeppaa ingittu enga poraanga",
+      "english_translation": "Hey, where are you going?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 4
+    },
+    {
+      "text": "அப்படி நம்பி வந்த பொண்",
+      "tanglish_text": "appadi nambi vandha pon",
+      "english_translation": "A girl who believed like that",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 4
+    },
+    {
+      "text": "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்",
+      "tanglish_text": "kilambunadhula irundhu idhaedhaan sollittu irukkaen",
+      "english_translation": "I have been saying the same since I left",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "இறந்துருவாங்கம்மா",
+        "tanglish_text": "irandhuruvaangammaa"
+      },
+      "previous": [],
+      "next": [
+        "நீங்களாச்சு சொல்லுங்கமா",
+        "கொஞ்ச தூரம்தான் பக்கத்துலதான்"
+      ]
+    },
+    {
+      "current": {
+        "text": "நீங்களாச்சு சொல்லுங்கமா",
+        "tanglish_text": "neengalaachchu sollungamaa"
+      },
+      "previous": [
+        "இறந்துருவாங்கம்மா"
+      ],
+      "next": [
+        "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+        "ஒரு ரொமான்ஸ் லுக்கு"
+      ]
+    },
+    {
+      "current": {
+        "text": "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+        "tanglish_text": "konja thooramdhaan pakkaththuladhaan"
+      },
+      "previous": [
+        "இறந்துருவாங்கம்மா",
+        "நீங்களாச்சு சொல்லுங்கமா"
+      ],
+      "next": [
+        "ஒரு ரொமான்ஸ் லுக்கு",
+        "என்னப்பா இப்படி பண்றீங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஒரு ரொமான்ஸ் லுக்கு",
+        "tanglish_text": "oru romaans lukku"
+      },
+      "previous": [
+        "நீங்களாச்சு சொல்லுங்கமா",
+        "கொஞ்ச தூரம்தான் பக்கத்துலதான்"
+      ],
+      "next": [
+        "என்னப்பா இப்படி பண்றீங்க",
+        "அதெல்லாம் ஒன்னும் இல்ல"
+      ]
+    },
+    {
+      "current": {
+        "text": "என்னப்பா இப்படி பண்றீங்க",
+        "tanglish_text": "ennappaa ippadi panreenga"
+      },
+      "previous": [
+        "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+        "ஒரு ரொமான்ஸ் லுக்கு"
+      ],
+      "next": [
+        "அதெல்லாம் ஒன்னும் இல்ல",
+        "சும்மா கட்டுக்கதை இதெல்லாம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "அதெல்லாம் ஒன்னும் இல்ல",
+        "tanglish_text": "adhellaam onnum illa"
+      },
+      "previous": [
+        "ஒரு ரொமான்ஸ் லுக்கு",
+        "என்னப்பா இப்படி பண்றீங்க"
+      ],
+      "next": [
+        "சும்மா கட்டுக்கதை இதெல்லாம்",
+        "ஏப்பா இங்கிட்டு எங்க போறாங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": "சும்மா கட்டுக்கதை இதெல்லாம்",
+        "tanglish_text": "summaa kattukkadhai idhellaam"
+      },
+      "previous": [
+        "என்னப்பா இப்படி பண்றீங்க",
+        "அதெல்லாம் ஒன்னும் இல்ல"
+      ],
+      "next": [
+        "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+        "அப்படி நம்பி வந்த பொண்"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+        "tanglish_text": "yeppaa ingittu enga poraanga"
+      },
+      "previous": [
+        "அதெல்லாம் ஒன்னும் இல்ல",
+        "சும்மா கட்டுக்கதை இதெல்லாம்"
+      ],
+      "next": [
+        "அப்படி நம்பி வந்த பொண்",
+        "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்"
+      ]
+    },
+    {
+      "current": {
+        "text": "அப்படி நம்பி வந்த பொண்",
+        "tanglish_text": "appadi nambi vandha pon"
+      },
+      "previous": [
+        "சும்மா கட்டுக்கதை இதெல்லாம்",
+        "ஏப்பா இங்கிட்டு எங்க போறாங்க"
+      ],
+      "next": [
+        "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்"
+      ]
+    },
+    {
+      "current": {
+        "text": "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்",
+        "tanglish_text": "kilambunadhula irundhu idhaedhaan sollittu irukkaen"
+      },
+      "previous": [
+        "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+        "அப்படி நம்பி வந்த பொண்"
+      ],
+      "next": []
+    }
+  ]
+}

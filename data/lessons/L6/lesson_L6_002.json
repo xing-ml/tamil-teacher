@@ -1,0 +1,97 @@
+{
+  "lesson_id": "lesson_L6_002",
+  "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+  "difficulty_level": "6",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 3,
+  "generated_at": "2026-05-04T22:41:59.817822",
+  "metadata": {
+    "entry_count": 3,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "高级",
+      "sentence_words": [
+        8,
+        30
+      ],
+      "features": [
+        "context_heavy",
+        "sarcasm",
+        "regional_variation"
+      ],
+      "description": "上下文依赖、讽刺、地方变体"
+    }
+  },
+  "entries": [
+    {
+      "text": "கன்சம்ஷன் ஆப் ஆல்கஹால் இஸ் இன்சரிஸ் டுஹெல்த் மது அருந்துதல் உடல் நலத்திற்கு கேடு பீ சேப் டோன்ட் டிரிங்க் அண்ட் டிரைவ் பாதுகாப்பாக இருப்பீர் மத இருந்துவிட்டு வாகனம் ஓட்டாதீர்",
+      "tanglish_text": "kansamshan aap aalgahaal is inseris tuhelth madhu arundhudhal udal nalaththirku kaedu pee saep tont tiringk ant tiraiv paadhugaappaaga iruppeer madha irundhuvittu vaaganam ottaadheer",
+      "english_translation": "Consumption of Alcohol is Injurious to Health Drinking Alcohol is Harmful to Health Be Safe Don't Drink and Drive Be Safe Be Religious Don't Drive",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 23
+    },
+    {
+      "text": "அப்படி என்னமா ஆயிரும் நாங்க கல்யாணம் பண்ணா ஏய் அதெல்லாம் ஒன்னு சரவணா ரொம்ப தப்பு பண்ற இந்த பிள்ளைகிட்ட ஒண்ணுமே சொல்லலையா நீயே நீ என்ன என்கிட்ட இருந்து மறைச்ச",
+      "tanglish_text": "appadi ennamaa aayirum naanga kalyaanam pannaa yei adhellaam onnu saravanaa romba thappu panra indha pillaigitta onnumae sollalaiyaa neeyae nee enna engitta irundhu maraichcha",
+      "english_translation": "So what is it, we are not getting married, hey, it's all one thing, Saravana, it's a big mistake, don't you say anything to this child, what are you hiding from me?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 23
+    },
+    {
+      "text": "முறைக்கிறாளப்பா என்னடா இப்படி இருக்காங்க உங்க ஊருக்காரங்க பின்னாடியே வரானுங்க நான்தான் உங்ககிட்ட முன்னாடியே சொல்லி இருக்கேன்ல எங்க ஊருக்காரங்க எப்படின்னு என்ன அழகா இருக்க போயிட்டு முதல்ல குளிச்சிட்டு வா நம்ம கோவில ஓகே",
+      "tanglish_text": "muraikkiraalappaa ennadaa ippadi irukkaanga unga oorukkaaranga pinnaadiyae varaanunga naandhaan ungagitta munnaadiyae solli irukkaenla enga oorukkaaranga eppadinnu enna azhagaa irukka poyittu mudhalla kulichchittu vaa namma kovila oge",
+      "english_translation": "Why are you like this? Your villagers are coming behind.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 26
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "கன்சம்ஷன் ஆப் ஆல்கஹால் இஸ் இன்சரிஸ் டுஹெல்த் மது அருந்துதல் உடல் நலத்திற்கு கேடு பீ சேப் டோன்ட் டிரிங்க் அண்ட் டிரைவ் பாதுகாப்பாக இருப்பீர் மத இருந்துவிட்டு வாகனம் ஓட்டாதீர்",
+        "tanglish_text": "kansamshan aap aalgahaal is inseris tuhelth madhu arundhudhal udal nalaththirku kaedu pee saep tont tiringk ant tiraiv paadhugaappaaga iruppeer madha irundhuvittu vaaganam ottaadheer"
+      },
+      "previous": [],
+      "next": [
+        "அப்படி என்னமா ஆயிரும் நாங்க கல்யாணம் பண்ணா ஏய் அதெல்லாம் ஒன்னு சரவணா ரொம்ப தப்பு பண்ற இந்த பிள்ளைகிட்ட ஒண்ணுமே சொல்லலையா நீயே நீ என்ன என்கிட்ட இருந்து மறைச்ச",
+        "முறைக்கிறாளப்பா என்னடா இப்படி இருக்காங்க உங்க ஊருக்காரங்க பின்னாடியே வரானுங்க நான்தான் உங்ககிட்ட முன்னாடியே சொல்லி இருக்கேன்ல எங்க ஊருக்காரங்க எப்படின்னு என்ன அழகா இருக்க போயிட்டு முதல்ல குளிச்சிட்டு வா நம்ம கோவில ஓகே"
+      ]
+    },
+    {
+      "current": {
+        "text": "அப்படி என்னமா ஆயிரும் நாங்க கல்யாணம் பண்ணா ஏய் அதெல்லாம் ஒன்னு சரவணா ரொம்ப தப்பு பண்ற இந்த பிள்ளைகிட்ட ஒண்ணுமே சொல்லலையா நீயே நீ என்ன என்கிட்ட இருந்து மறைச்ச",
+        "tanglish_text": "appadi ennamaa aayirum naanga kalyaanam pannaa yei adhellaam onnu saravanaa romba thappu panra indha pillaigitta onnumae sollalaiyaa neeyae nee enna engitta irundhu maraichcha"
+      },
+      "previous": [
+        "கன்சம்ஷன் ஆப் ஆல்கஹால் இஸ் இன்சரிஸ் டுஹெல்த் மது அருந்துதல் உடல் நலத்திற்கு கேடு பீ சேப் டோன்ட் டிரிங்க் அண்ட் டிரைவ் பாதுகாப்பாக இருப்பீர் மத இருந்துவிட்டு வாகனம் ஓட்டாதீர்"
+      ],
+      "next": [
+        "முறைக்கிறாளப்பா என்னடா இப்படி இருக்காங்க உங்க ஊருக்காரங்க பின்னாடியே வரானுங்க நான்தான் உங்ககிட்ட முன்னாடியே சொல்லி இருக்கேன்ல எங்க ஊருக்காரங்க எப்படின்னு என்ன அழகா இருக்க போயிட்டு முதல்ல குளிச்சிட்டு வா நம்ம கோவில ஓகே"
+      ]
+    },
+    {
+      "current": {
+        "text": "முறைக்கிறாளப்பா என்னடா இப்படி இருக்காங்க உங்க ஊருக்காரங்க பின்னாடியே வரானுங்க நான்தான் உங்ககிட்ட முன்னாடியே சொல்லி இருக்கேன்ல எங்க ஊருக்காரங்க எப்படின்னு என்ன அழகா இருக்க போயிட்டு முதல்ல குளிச்சிட்டு வா நம்ம கோவில ஓகே",
+        "tanglish_text": "muraikkiraalappaa ennadaa ippadi irukkaanga unga oorukkaaranga pinnaadiyae varaanunga naandhaan ungagitta munnaadiyae solli irukkaenla enga oorukkaaranga eppadinnu enna azhagaa irukka poyittu mudhalla kulichchittu vaa namma kovila oge"
+      },
+      "previous": [
+        "கன்சம்ஷன் ஆப் ஆல்கஹால் இஸ் இன்சரிஸ் டுஹெல்த் மது அருந்துதல் உடல் நலத்திற்கு கேடு பீ சேப் டோன்ட் டிரிங்க் அண்ட் டிரைவ் பாதுகாப்பாக இருப்பீர் மத இருந்துவிட்டு வாகனம் ஓட்டாதீர்",
+        "அப்படி என்னமா ஆயிரும் நாங்க கல்யாணம் பண்ணா ஏய் அதெல்லாம் ஒன்னு சரவணா ரொம்ப தப்பு பண்ற இந்த பிள்ளைகிட்ட ஒண்ணுமே சொல்லலையா நீயே நீ என்ன என்கிட்ட இருந்து மறைச்ச"
+      ],
+      "next": []
+    }
+  ]
+}

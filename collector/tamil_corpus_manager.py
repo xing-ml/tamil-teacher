@@ -99,12 +99,16 @@ class TamilCorpusManager:
         if self.lessons_file.exists():
             try:
                 data = json.loads(self.lessons_file.read_text(encoding="utf-8"))
-                # Don't try to recreate Lesson objects - keep raw dict for simpler serialization
+                # Store lesson counts per level
+                self.lesson_counts = data.get("lesson_counts", {})
+                # Keep lesson IDs for reference
                 self.lessons_data = data.get("lessons", [])
             except Exception as e:
                 print(f"WARNING Failed to load lessons: {e}")
+                self.lesson_counts = {}
                 self.lessons_data = []
         else:
+            self.lesson_counts = {}
             self.lessons_data = []
 
     def _save_corpus(self) -> None:
@@ -123,6 +127,7 @@ class TamilCorpusManager:
         """Save lessons registry to disk."""
         try:
             data = {
+                "lesson_counts": self.lesson_counts,
                 "lessons": self.lessons_data,
                 "updated_at": datetime.now().isoformat(),
             }
@@ -419,24 +424,61 @@ class TamilCorpusManager:
             # Create lessons in chunks
             for i in range(0, len(entries), max_entries_per_lesson):
                 chunk = entries[i:i + max_entries_per_lesson]
-                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-                lesson_id = f"{group_key}_{timestamp}_{i//max_entries_per_lesson}"
-
-                # Get difficulty name from definitions
                 level_num = chunk[0].difficulty_level
+                level_letter = "L" + level_num
+                
+                # Get difficulty name from definitions
                 level_def = self.difficulty_levels.get(level_num, {})
                 level_name = level_def.get("name", f"Level {level_num}")
+                
+                # Generate lesson ID: lesson_L1_001, lesson_L2_002, etc.
+                # Use lesson_counts from registry to get the next index
+                lesson_index = self.lesson_counts.get(level_num, 0) + 1
+                lesson_id = f"lesson_{level_letter}_{lesson_index:03d}"
+                
+                # Update lesson count for this level
+                self.lesson_counts[level_num] = lesson_index
+
+                # Calculate rating based on avg colloquial score
+                avg_score = sum(e.colloquial_score for e in chunk) / len(chunk)
+                if avg_score >= 0.8:
+                    rating = "A"
+                elif avg_score >= 0.6:
+                    rating = "B"
+                elif avg_score >= 0.4:
+                    rating = "C"
+                else:
+                    rating = "D"
+
+                # Build dialogue context: prev 2 sentences + current + next 2 sentences
+                dialogue_entries = []
+                for idx, entry in enumerate(chunk):
+                    # Get previous 2 sentences
+                    prev_entries = chunk[max(0, idx-2):idx]
+                    # Get next 2 sentences
+                    next_entries = chunk[idx+1:min(len(chunk), idx+3)]
+                    
+                    dialogue = {
+                        "current": {
+                            "text": entry.text,
+                            "tanglish_text": entry.tanglish_text,
+                        },
+                        "previous": [e.text for e in prev_entries],
+                        "next": [e.text for e in next_entries],
+                    }
+                    dialogue_entries.append(dialogue)
 
                 lesson_dict = {
                     "lesson_id": lesson_id,
                     "title": f"Tamil Colloquial Level {level_num} - {level_name} ({chunk[0].dialogue_type})",
                     "difficulty_level": level_num,
                     "dialogue_type": chunk[0].dialogue_type,
+                    "rating": rating,
                     "entry_count": len(chunk),
                     "generated_at": datetime.now().isoformat(),
                     "metadata": {
                         "entry_count": len(chunk),
-                        "avg_score": round(sum(e.colloquial_score for e in chunk) / len(chunk), 2),
+                        "avg_score": round(avg_score, 2),
                         "source_types": list(set(e.source_type for e in chunk)),
                         "level_definition": level_def,
                     },
@@ -447,17 +489,22 @@ class TamilCorpusManager:
                             "english_translation": self._translate_to_english(e.text),
                             "colloquial_score": e.colloquial_score,
                             "source_type": e.source_type,
+                            "source_title": e.source_title,
+                            "source_url": e.source_url,
                             "word_count": e.word_count,
                         }
                         for e in chunk
-                    ]
+                    ],
+                    "dialogue": dialogue_entries,
                 }
 
                 self.lessons_data.append(lesson_dict)
                 new_lessons.append(lesson_dict)
                 
-                # Save lesson to individual file in lessons/ directory
-                lesson_file = self.lessons_dir / f"{lesson_dict['lesson_id']}.json"
+                # Save lesson to individual file in lessons/L1/, lessons/L2/, etc.
+                level_dir = self.lessons_dir / level_letter
+                level_dir.mkdir(parents=True, exist_ok=True)
+                lesson_file = level_dir / f"{lesson_dict['lesson_id']}.json"
                 lesson_file.write_text(json.dumps(lesson_dict, ensure_ascii=False, indent=2), encoding="utf-8")
 
         if new_lessons:

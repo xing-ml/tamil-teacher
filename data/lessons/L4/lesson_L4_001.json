@@ -1,0 +1,97 @@
+{
+  "lesson_id": "lesson_L4_001",
+  "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+  "difficulty_level": "4",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 3,
+  "generated_at": "2026-05-04T22:41:56.845770",
+  "metadata": {
+    "entry_count": 3,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "中级",
+      "sentence_words": [
+        4,
+        16
+      ],
+      "features": [
+        "longer_sentences",
+        "emotion_expression",
+        "code_switching"
+      ],
+      "description": "长句子、情感表达、代码转换"
+    }
+  },
+  "entries": [
+    {
+      "text": "இருக்கானே ஆமா அதாங்க சின்ன பாண்டியன் ஆமா அவங்க அண்ணனுக்கு ஒன்னுன்னா பதறிடுவான் பாஞ்சிடுவான் சுருக்கமா சொன்னா",
+      "tanglish_text": "irukkaane aamaa adhaanga sinna paandiyan aamaa avanga annanukku onnunnaa padhariduvaan paanjiduvaan surukkamaa sonnaa",
+      "english_translation": "Yes, yes, that little Pandian, yes, did you say anything to his brother, Panchiduan, Panchiduan, in short?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 13
+    },
+    {
+      "text": "ராமசாமி தாரசாமி ராமசாமி ராமசாமி ராமசாமி தான் ஏண்ணே ஊரெல்லாம் கொட்டை அடிச்சு கூடிறத பார்த்து ஏதோ நம்ம பூதத்தாண்",
+      "tanglish_text": "raamasaami thaarasaami raamasaami raamasaami raamasaami thaan yennae oorellaam kottai adichchu koodiradha paarththu yedho namma poodhaththaan",
+      "english_translation": "Ramaswami Taraswami Ramaswami Ramaswami Ramaswami is the reason why the whole town is beating nuts.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 15
+    },
+    {
+      "text": "வீட்டு போயிருக்கு [இசை] [கரகோஷம்] [இசை] எல்லாருக்கும் வணக்கம் நான் ஒரு கோயிலை கட்டுனேன் நீங்க யாரும் சாமி கும்பிட",
+      "tanglish_text": "veettu poyirukku [isai] [garagosham] [isai] ellaarukkum vanakkam naan oru koyilai kattunen neenga yaarum saami kumbida",
+      "english_translation": "[Music] [Applause] [Music] Hello everyone, I built a temple, no one should bow to Sami.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 15
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "இருக்கானே ஆமா அதாங்க சின்ன பாண்டியன் ஆமா அவங்க அண்ணனுக்கு ஒன்னுன்னா பதறிடுவான் பாஞ்சிடுவான் சுருக்கமா சொன்னா",
+        "tanglish_text": "irukkaane aamaa adhaanga sinna paandiyan aamaa avanga annanukku onnunnaa padhariduvaan paanjiduvaan surukkamaa sonnaa"
+      },
+      "previous": [],
+      "next": [
+        "ராமசாமி தாரசாமி ராமசாமி ராமசாமி ராமசாமி தான் ஏண்ணே ஊரெல்லாம் கொட்டை அடிச்சு கூடிறத பார்த்து ஏதோ நம்ம பூதத்தாண்",
+        "வீட்டு போயிருக்கு [இசை] [கரகோஷம்] [இசை] எல்லாருக்கும் வணக்கம் நான் ஒரு கோயிலை கட்டுனேன் நீங்க யாரும் சாமி கும்பிட"
+      ]
+    },
+    {
+      "current": {
+        "text": "ராமசாமி தாரசாமி ராமசாமி ராமசாமி ராமசாமி தான் ஏண்ணே ஊரெல்லாம் கொட்டை அடிச்சு கூடிறத பார்த்து ஏதோ நம்ம பூதத்தாண்",
+        "tanglish_text": "raamasaami thaarasaami raamasaami raamasaami raamasaami thaan yennae oorellaam kottai adichchu koodiradha paarththu yedho namma poodhaththaan"
+      },
+      "previous": [
+        "இருக்கானே ஆமா அதாங்க சின்ன பாண்டியன் ஆமா அவங்க அண்ணனுக்கு ஒன்னுன்னா பதறிடுவான் பாஞ்சிடுவான் சுருக்கமா சொன்னா"
+      ],
+      "next": [
+        "வீட்டு போயிருக்கு [இசை] [கரகோஷம்] [இசை] எல்லாருக்கும் வணக்கம் நான் ஒரு கோயிலை கட்டுனேன் நீங்க யாரும் சாமி கும்பிட"
+      ]
+    },
+    {
+      "current": {
+        "text": "வீட்டு போயிருக்கு [இசை] [கரகோஷம்] [இசை] எல்லாருக்கும் வணக்கம் நான் ஒரு கோயிலை கட்டுனேன் நீங்க யாரும் சாமி கும்பிட",
+        "tanglish_text": "veettu poyirukku [isai] [garagosham] [isai] ellaarukkum vanakkam naan oru koyilai kattunen neenga yaarum saami kumbida"
+      },
+      "previous": [
+        "இருக்கானே ஆமா அதாங்க சின்ன பாண்டியன் ஆமா அவங்க அண்ணனுக்கு ஒன்னுன்னா பதறிடுவான் பாஞ்சிடுவான் சுருக்கமா சொன்னா",
+        "ராமசாமி தாரசாமி ராமசாமி ராமசாமி ராமசாமி தான் ஏண்ணே ஊரெல்லாம் கொட்டை அடிச்சு கூடிறத பார்த்து ஏதோ நம்ம பூதத்தாண்"
+      ],
+      "next": []
+    }
+  ]
+}

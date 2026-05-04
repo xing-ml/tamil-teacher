@@ -1,0 +1,73 @@
+{
+  "lesson_id": "lesson_L6_001",
+  "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+  "difficulty_level": "6",
+  "dialogue_type": "sentence",
+  "rating": "C",
+  "entry_count": 2,
+  "generated_at": "2026-05-04T22:41:39.960487",
+  "metadata": {
+    "entry_count": 2,
+    "avg_score": 0.43,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "高级",
+      "sentence_words": [
+        8,
+        30
+      ],
+      "features": [
+        "context_heavy",
+        "sarcasm",
+        "regional_variation"
+      ],
+      "description": "上下文依赖、讽刺、地方变体"
+    }
+  },
+  "entries": [
+    {
+      "text": "வீட்ல முடங்கி கிடக்கான் நீ எங்க புறப்பட்டீங்க நாள் முழுதும் உன்னையே இன்னைக்கு என் பர்த்டே எங்க என் சாக்லேட் ஊருக்குள்ள தான்",
+      "tanglish_text": "veetla mudangi kidakkaan nee enga purappatteenga naal muzhudhum unnaiyae innaikku en parthtae enga en saaklaet oorukkulla thaan",
+      "english_translation": "Paralyzed at home, where did you go? All day long, today is my birthday. Where is my chocolate?",
+      "colloquial_score": 0.43,
+      "source_type": "youtube",
+      "source_title": "Vezham Tamil Full Movie - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=s3dBN0G-kog",
+      "word_count": 17
+    },
+    {
+      "text": "ஒரு அதிசய பிறகு அவ்வளவுதான் இப்ப வருவான் பாருங்க வெளில ஏதோ வேர்ல்ட் வார்னால மாதிரி உங்களுக்கே ஒரு ஃபீலிங் இருக்கும் ஒரு கொசு ஈ விழுன உடனே கேப் இருக்காது வீட்டையே கம்ப்ளீட்டா சரி பண்ணி வைக்கிறான் அப்படியே என்னைக்காவது",
+      "tanglish_text": "oru adhisaya piragu avvalavudhaan ippa varuvaan paarunga velila yedho vaerlt vaarnaala maadhiri ungalukkae oru akbeeling irukkum oru kosu ee vizhuna udane kaep irukkaadhu veettaiyae kampleettaa seri panni vaikkiraan appadiyae ennaikkaavadhu",
+      "english_translation": "After a miracle, that's all he comes. Look, something is happening outside. You have a feeling like a mosquito fly falls. Immediately there is no cap. He repairs the house completely, just like that for me.",
+      "colloquial_score": 0.43,
+      "source_type": "youtube",
+      "source_title": "Vezham Tamil Full Movie - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=s3dBN0G-kog",
+      "word_count": 30
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "வீட்ல முடங்கி கிடக்கான் நீ எங்க புறப்பட்டீங்க நாள் முழுதும் உன்னையே இன்னைக்கு என் பர்த்டே எங்க என் சாக்லேட் ஊருக்குள்ள தான்",
+        "tanglish_text": "veetla mudangi kidakkaan nee enga purappatteenga naal muzhudhum unnaiyae innaikku en parthtae enga en saaklaet oorukkulla thaan"
+      },
+      "previous": [],
+      "next": [
+        "ஒரு அதிசய பிறகு அவ்வளவுதான் இப்ப வருவான் பாருங்க வெளில ஏதோ வேர்ல்ட் வார்னால மாதிரி உங்களுக்கே ஒரு ஃபீலிங் இருக்கும் ஒரு கொசு ஈ விழுன உடனே கேப் இருக்காது வீட்டையே கம்ப்ளீட்டா சரி பண்ணி வைக்கிறான் அப்படியே என்னைக்காவது"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஒரு அதிசய பிறகு அவ்வளவுதான் இப்ப வருவான் பாருங்க வெளில ஏதோ வேர்ல்ட் வார்னால மாதிரி உங்களுக்கே ஒரு ஃபீலிங் இருக்கும் ஒரு கொசு ஈ விழுன உடனே கேப் இருக்காது வீட்டையே கம்ப்ளீட்டா சரி பண்ணி வைக்கிறான் அப்படியே என்னைக்காவது",
+        "tanglish_text": "oru adhisaya piragu avvalavudhaan ippa varuvaan paarunga velila yedho vaerlt vaarnaala maadhiri ungalukkae oru akbeeling irukkum oru kosu ee vizhuna udane kaep irukkaadhu veettaiyae kampleettaa seri panni vaikkiraan appadiyae ennaikkaavadhu"
+      },
+      "previous": [
+        "வீட்ல முடங்கி கிடக்கான் நீ எங்க புறப்பட்டீங்க நாள் முழுதும் உன்னையே இன்னைக்கு என் பர்த்டே எங்க என் சாக்லேட் ஊருக்குள்ள தான்"
+      ],
+      "next": []
+    }
+  ]
+}

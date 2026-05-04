@@ -1,0 +1,265 @@
+{
+  "lesson_id": "lesson_L1_002",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 10,
+  "generated_at": "2026-05-04T22:41:43.097389",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "இந்த பேக்கையும் நீயே தூக்கிட்டு வா",
+      "tanglish_text": "indha paekkaiyum neeyae thookkittu vaa",
+      "english_translation": "Carry this bag yourself",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "அப்படி என்ன பெரிய கதை இருக்கு",
+      "tanglish_text": "appadi enna periya kadhai irukku",
+      "english_translation": "What a great story",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்",
+      "tanglish_text": "seri namma vandhu vaelaiya aarambippom",
+      "english_translation": "Well, let's come and start working",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "என்னடா காலைலயே குண்ட தூக்கி போடுற",
+      "tanglish_text": "ennadaa kaalailayae kunda thookki podura",
+      "english_translation": "Why don't you throw it away in the morning?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "அது உங்க அப்பன போய் கேளுடா",
+      "tanglish_text": "adhu unga appana poi kaeludaa",
+      "english_translation": "Don't go and ask your uncle",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு",
+      "tanglish_text": "namma periyasaami 55 vayasu aayiduchchu",
+      "english_translation": "Our Periaswamy has turned 55 years old",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்",
+      "tanglish_text": "ennadhaan kalyaanam pannaa pirachchanai aagum",
+      "english_translation": "What is the problem of marriage?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "இல்லம்மா இது 200 வருஷ சாபம்",
+      "tanglish_text": "illammaa idhu 200 varusha saabam",
+      "english_translation": "No, this is a 200 year curse",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "இது இன்னைக்கு நேத்து நடந்தது இல்ல",
+      "tanglish_text": "idhu innaikku naeththu nadandhadhu illa",
+      "english_translation": "This did not happen recently",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    },
+    {
+      "text": "அதே மாறி நிறைய கல்யாணம் நடந்துருக்கு",
+      "tanglish_text": "adhae maari niraiya kalyaanam nadandhurukku",
+      "english_translation": "A lot of marriages have happened with the same change",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 5
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "இந்த பேக்கையும் நீயே தூக்கிட்டு வா",
+        "tanglish_text": "indha paekkaiyum neeyae thookkittu vaa"
+      },
+      "previous": [],
+      "next": [
+        "அப்படி என்ன பெரிய கதை இருக்கு",
+        "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "அப்படி என்ன பெரிய கதை இருக்கு",
+        "tanglish_text": "appadi enna periya kadhai irukku"
+      },
+      "previous": [
+        "இந்த பேக்கையும் நீயே தூக்கிட்டு வா"
+      ],
+      "next": [
+        "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்",
+        "என்னடா காலைலயே குண்ட தூக்கி போடுற"
+      ]
+    },
+    {
+      "current": {
+        "text": "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்",
+        "tanglish_text": "seri namma vandhu vaelaiya aarambippom"
+      },
+      "previous": [
+        "இந்த பேக்கையும் நீயே தூக்கிட்டு வா",
+        "அப்படி என்ன பெரிய கதை இருக்கு"
+      ],
+      "next": [
+        "என்னடா காலைலயே குண்ட தூக்கி போடுற",
+        "அது உங்க அப்பன போய் கேளுடா"
+      ]
+    },
+    {
+      "current": {
+        "text": "என்னடா காலைலயே குண்ட தூக்கி போடுற",
+        "tanglish_text": "ennadaa kaalailayae kunda thookki podura"
+      },
+      "previous": [
+        "அப்படி என்ன பெரிய கதை இருக்கு",
+        "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்"
+      ],
+      "next": [
+        "அது உங்க அப்பன போய் கேளுடா",
+        "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு"
+      ]
+    },
+    {
+      "current": {
+        "text": "அது உங்க அப்பன போய் கேளுடா",
+        "tanglish_text": "adhu unga appana poi kaeludaa"
+      },
+      "previous": [
+        "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்",
+        "என்னடா காலைலயே குண்ட தூக்கி போடுற"
+      ],
+      "next": [
+        "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு",
+        "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்"
+      ]
+    },
+    {
+      "current": {
+        "text": "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு",
+        "tanglish_text": "namma periyasaami 55 vayasu aayiduchchu"
+      },
+      "previous": [
+        "என்னடா காலைலயே குண்ட தூக்கி போடுற",
+        "அது உங்க அப்பன போய் கேளுடா"
+      ],
+      "next": [
+        "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்",
+        "இல்லம்மா இது 200 வருஷ சாபம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்",
+        "tanglish_text": "ennadhaan kalyaanam pannaa pirachchanai aagum"
+      },
+      "previous": [
+        "அது உங்க அப்பன போய் கேளுடா",
+        "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு"
+      ],
+      "next": [
+        "இல்லம்மா இது 200 வருஷ சாபம்",
+        "இது இன்னைக்கு நேத்து நடந்தது இல்ல"
+      ]
+    },
+    {
+      "current": {
+        "text": "இல்லம்மா இது 200 வருஷ சாபம்",
+        "tanglish_text": "illammaa idhu 200 varusha saabam"
+      },
+      "previous": [
+        "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு",
+        "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்"
+      ],
+      "next": [
+        "இது இன்னைக்கு நேத்து நடந்தது இல்ல",
+        "அதே மாறி நிறைய கல்யாணம் நடந்துருக்கு"
+      ]
+    },
+    {
+      "current": {
+        "text": "இது இன்னைக்கு நேத்து நடந்தது இல்ல",
+        "tanglish_text": "idhu innaikku naeththu nadandhadhu illa"
+      },
+      "previous": [
+        "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்",
+        "இல்லம்மா இது 200 வருஷ சாபம்"
+      ],
+      "next": [
+        "அதே மாறி நிறைய கல்யாணம் நடந்துருக்கு"
+      ]
+    },
+    {
+      "current": {
+        "text": "அதே மாறி நிறைய கல்யாணம் நடந்துருக்கு",
+        "tanglish_text": "adhae maari niraiya kalyaanam nadandhurukku"
+      },
+      "previous": [
+        "இல்லம்மா இது 200 வருஷ சாபம்",
+        "இது இன்னைக்கு நேத்து நடந்தது இல்ல"
+      ],
+      "next": []
+    }
+  ]
+}

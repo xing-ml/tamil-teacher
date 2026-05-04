@@ -1,0 +1,241 @@
+{
+  "lesson_id": "lesson_L3_001",
+  "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+  "difficulty_level": "3",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 9,
+  "generated_at": "2026-05-04T22:41:53.347457",
+  "metadata": {
+    "entry_count": 9,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "初中级",
+      "sentence_words": [
+        3,
+        12
+      ],
+      "features": [
+        "compound_phrases",
+        "tense_usage",
+        "common_slang"
+      ],
+      "description": "复合短语、时态使用、常见俚语"
+    }
+  },
+  "entries": [
+    {
+      "text": "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க",
+      "tanglish_text": "yov avanga rendu paerum kalyaanam pannikka poradhaa oorukkulla paesitturaanga",
+      "english_translation": "Yo, they are both going to get married",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 9
+    },
+    {
+      "text": "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+      "tanglish_text": "ada aamaayaa nee vaera naanllaam veetுla rendaavadhu pillaiyaa pirandhurukkalaam",
+      "english_translation": "You may be the second child born in a house of four",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 9
+    },
+    {
+      "text": "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+      "tanglish_text": "indhaa indha aaloda thambi rendu pondaatti kattittu suththittu thiraraanappaa",
+      "english_translation": "Inda, this man's younger brother is a father of two",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 9
+    },
+    {
+      "text": "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+      "tanglish_text": "mudhal pondaattikku pirandha pulla vayasula innoru ponnai kalyaanam pannirukkaanappaa",
+      "english_translation": "Did he marry another girl when he was old enough to give birth to his first son?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 9
+    },
+    {
+      "text": "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+      "tanglish_text": "aanaal indha ooraar vasol ennaal kaadhaal kaetka mudiyavillai panjaayi kaetka mudiyavillai",
+      "english_translation": "But I could not hear the words of this villager, I could not hear panchayi",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 11
+    },
+    {
+      "text": "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+      "tanglish_text": "o o [garagosham] o o o oge [isai] idhaan un veedaa",
+      "english_translation": "Oh oh [applause] oh oh oh okay [music] This is your home",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 11
+    },
+    {
+      "text": "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+      "tanglish_text": "yen indha naasamaa pona oorla mudhal pillaiyaa vandhu pirandhu tholainjaennu theriyala",
+      "english_translation": "I don't know why the first child came to this ruined town and got lost",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 11
+    },
+    {
+      "text": "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்",
+      "tanglish_text": "seri azhaadheengammaa adhellaam saranan sonna maadhiri yaaraavadhu kilappi vitta kadhaiyaadhaan irukkum",
+      "english_translation": "Well, don't cry, it's just a story made up by someone like Saranan told",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 11
+    },
+    {
+      "text": "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா",
+      "tanglish_text": "yei adha periya anga paarudaa saravana oru pombalai pillaiya koottittu poraan kavanichcheengalaa",
+      "english_translation": "Hey, did you notice that in that big place Baruda Saravana was going to collect a doll for the children?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Movie HD - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=qyI6p-PBpi0",
+      "word_count": 12
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க",
+        "tanglish_text": "yov avanga rendu paerum kalyaanam pannikka poradhaa oorukkulla paesitturaanga"
+      },
+      "previous": [],
+      "next": [
+        "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+        "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா"
+      ]
+    },
+    {
+      "current": {
+        "text": "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+        "tanglish_text": "ada aamaayaa nee vaera naanllaam veetுla rendaavadhu pillaiyaa pirandhurukkalaam"
+      },
+      "previous": [
+        "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க"
+      ],
+      "next": [
+        "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+        "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா"
+      ]
+    },
+    {
+      "current": {
+        "text": "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+        "tanglish_text": "indhaa indha aaloda thambi rendu pondaatti kattittu suththittu thiraraanappaa"
+      },
+      "previous": [
+        "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க",
+        "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்"
+      ],
+      "next": [
+        "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+        "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை"
+      ]
+    },
+    {
+      "current": {
+        "text": "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+        "tanglish_text": "mudhal pondaattikku pirandha pulla vayasula innoru ponnai kalyaanam pannirukkaanappaa"
+      },
+      "previous": [
+        "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+        "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா"
+      ],
+      "next": [
+        "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+        "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+        "tanglish_text": "aanaal indha ooraar vasol ennaal kaadhaal kaetka mudiyavillai panjaayi kaetka mudiyavillai"
+      },
+      "previous": [
+        "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+        "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா"
+      ],
+      "next": [
+        "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+        "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+        "tanglish_text": "o o [garagosham] o o o oge [isai] idhaan un veedaa"
+      },
+      "previous": [
+        "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+        "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை"
+      ],
+      "next": [
+        "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+        "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+        "tanglish_text": "yen indha naasamaa pona oorla mudhal pillaiyaa vandhu pirandhu tholainjaennu theriyala"
+      },
+      "previous": [
+        "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+        "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா"
+      ],
+      "next": [
+        "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்",
+        "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா"
+      ]
+    },
+    {
+      "current": {
+        "text": "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்",
+        "tanglish_text": "seri azhaadheengammaa adhellaam saranan sonna maadhiri yaaraavadhu kilappi vitta kadhaiyaadhaan irukkum"
+      },
+      "previous": [
+        "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+        "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல"
+      ],
+      "next": [
+        "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா",
+        "tanglish_text": "yei adha periya anga paarudaa saravana oru pombalai pillaiya koottittu poraan kavanichcheengalaa"
+      },
+      "previous": [
+        "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+        "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்"
+      ],
+      "next": []
+    }
+  ]
+}

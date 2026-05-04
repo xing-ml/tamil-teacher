@@ -1,0 +1,169 @@
+{
+  "lesson_id": "lesson_L1_004",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 6,
+  "generated_at": "2026-05-04T22:41:47.915607",
+  "metadata": {
+    "entry_count": 6,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "பேர்ல உசுரு",
+      "tanglish_text": "paerla usuru",
+      "english_translation": "Pearl Usuru",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 2
+    },
+    {
+      "text": "அது தேவரை காத்த",
+      "tanglish_text": "adhu thaevarai kaaththa",
+      "english_translation": "It is to protect God",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 3
+    },
+    {
+      "text": "பாக்க தானே ஊரே",
+      "tanglish_text": "paakka thaane oorae",
+      "english_translation": "Paka Thane Ure",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 3
+    },
+    {
+      "text": "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க",
+      "tanglish_text": "pallikkoodaththai kattunen neenga yaarum padikka",
+      "english_translation": "I built the school so that none of you can study",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 5
+    },
+    {
+      "text": "குளத்தை வெட்டுன நீங்க யாரும் குளிக்கவே",
+      "tanglish_text": "kulaththai vettuna neenga yaarum kulikkavae",
+      "english_translation": "No one should bathe after cutting the pool",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 5
+    },
+    {
+      "text": "[இசை] ஓம் [இசை] யாரு பேருக்கு அடுத்",
+      "tanglish_text": "[isai] om [isai] yaaru paerukku aduth",
+      "english_translation": "[Music] Om [Music] Adut to whom",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Aan Paavam (1985 Tamil comedy) - Tamil subs",
+      "source_url": "https://www.youtube.com/watch?v=EnnMBmn__lo",
+      "word_count": 6
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "பேர்ல உசுரு",
+        "tanglish_text": "paerla usuru"
+      },
+      "previous": [],
+      "next": [
+        "அது தேவரை காத்த",
+        "பாக்க தானே ஊரே"
+      ]
+    },
+    {
+      "current": {
+        "text": "அது தேவரை காத்த",
+        "tanglish_text": "adhu thaevarai kaaththa"
+      },
+      "previous": [
+        "பேர்ல உசுரு"
+      ],
+      "next": [
+        "பாக்க தானே ஊரே",
+        "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க"
+      ]
+    },
+    {
+      "current": {
+        "text": "பாக்க தானே ஊரே",
+        "tanglish_text": "paakka thaane oorae"
+      },
+      "previous": [
+        "பேர்ல உசுரு",
+        "அது தேவரை காத்த"
+      ],
+      "next": [
+        "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க",
+        "குளத்தை வெட்டுன நீங்க யாரும் குளிக்கவே"
+      ]
+    },
+    {
+      "current": {
+        "text": "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க",
+        "tanglish_text": "pallikkoodaththai kattunen neenga yaarum padikka"
+      },
+      "previous": [
+        "அது தேவரை காத்த",
+        "பாக்க தானே ஊரே"
+      ],
+      "next": [
+        "குளத்தை வெட்டுன நீங்க யாரும் குளிக்கவே",
+        "[இசை] ஓம் [இசை] யாரு பேருக்கு அடுத்"
+      ]
+    },
+    {
+      "current": {
+        "text": "குளத்தை வெட்டுன நீங்க யாரும் குளிக்கவே",
+        "tanglish_text": "kulaththai vettuna neenga yaarum kulikkavae"
+      },
+      "previous": [
+        "பாக்க தானே ஊரே",
+        "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க"
+      ],
+      "next": [
+        "[இசை] ஓம் [இசை] யாரு பேருக்கு அடுத்"
+      ]
+    },
+    {
+      "current": {
+        "text": "[இசை] ஓம் [இசை] யாரு பேருக்கு அடுத்",
+        "tanglish_text": "[isai] om [isai] yaaru paerukku aduth"
+      },
+      "previous": [
+        "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க",
+        "குளத்தை வெட்டுன நீங்க யாரும் குளிக்கவே"
+      ],
+      "next": []
+    }
+  ]
+}
