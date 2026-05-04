@@ -1,0 +1,110 @@
+{
+  "lesson_id": "level1_sentence_0321e1bdd1c5f5adaf74b591731432ffea1d35b2_20260504_220018_1",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 10,
+  "generated_at": "2026-05-04T22:00:18.222288",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+      "tanglish_text": "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+      "english_translation": "The case for that is not even made public",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 5
+    },
+    {
+      "text": "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+      "tanglish_text": "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+      "english_translation": "But I start picking deeper",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 5
+    },
+    {
+      "text": "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+      "tanglish_text": "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+      "english_translation": "I doubted all of this",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 5
+    },
+    {
+      "text": "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+      "tanglish_text": "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+      "english_translation": "You are of no use to us",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+      "tanglish_text": "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+      "english_translation": "The CM has the authority to control you",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+      "tanglish_text": "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+      "english_translation": "Ekkuren >> It is our responsibility to elect the Chief Minister",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+      "tanglish_text": ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+      "english_translation": ">> we don't know what you do",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+      "tanglish_text": "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+      "english_translation": "But I can't pace you",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+      "tanglish_text": "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+      "english_translation": "XM Raghavan is our father",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல",
+      "tanglish_text": "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல",
+      "english_translation": "But till now no one is taking action for it",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    }
+  ]
+}

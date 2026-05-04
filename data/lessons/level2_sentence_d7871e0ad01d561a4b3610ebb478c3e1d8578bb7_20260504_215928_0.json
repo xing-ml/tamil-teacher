@@ -1,0 +1,62 @@
+{
+  "lesson_id": "level2_sentence_d7871e0ad01d561a4b3610ebb478c3e1d8578bb7_20260504_215928_0",
+  "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+  "difficulty_level": "2",
+  "dialogue_type": "sentence",
+  "entry_count": 4,
+  "generated_at": "2026-05-04T21:59:28.518196",
+  "metadata": {
+    "entry_count": 4,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "基础",
+      "sentence_words": [
+        2,
+        8
+      ],
+      "features": [
+        "short_sentences",
+        "basic_verbs",
+        "simple_responses"
+      ],
+      "description": "短句子、基础动词、简单回应"
+    }
+  },
+  "entries": [
+    {
+      "text": "பேர்ல ஒரு தூசு கூட பட விடமாட்டான் சின்",
+      "tanglish_text": "பேர்ல ஒரு தூசு கூட பட விடமாட்டான் சின்",
+      "english_translation": "Sin will not let a single dust fall on the pearl",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 7
+    },
+    {
+      "text": "ஆவணி மாசையிலும் வரும் ஐம்படி திங்களிலும் அன்பர் திருநாள் காணும்",
+      "tanglish_text": "ஆவணி மாசையிலும் வரும் ஐம்படி திங்களிலும் அன்பர் திருநாள் காணும்",
+      "english_translation": "Anbar Thirunal will also be seen in Avani Masai and in Imbadi Dimdu",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 8
+    },
+    {
+      "text": "அன்பர் திருநாள் ஏன் தம்பி ராமசாமி எங்க நீங்க வேற",
+      "tanglish_text": "அன்பர் திருநாள் ஏன் தம்பி ராமசாமி எங்க நீங்க வேற",
+      "english_translation": "Dear Thirunal, where are you, brother Ramaswami?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 8
+    },
+    {
+      "text": "மாதிரி ஒத்துமைக்கு இலக்கணமே என் பையனுங்க தான் பெரியவனுக்கு சின்",
+      "tanglish_text": "மாதிரி ஒத்துமைக்கு இலக்கணமே என் பையனுங்க தான் பெரியவனுக்கு சின்",
+      "english_translation": "For model agreement, grammar is my son's son's sin",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 8
+    }
+  ]
+}

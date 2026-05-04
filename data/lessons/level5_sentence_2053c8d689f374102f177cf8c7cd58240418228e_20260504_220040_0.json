@@ -1,0 +1,110 @@
+{
+  "lesson_id": "level5_sentence_2053c8d689f374102f177cf8c7cd58240418228e_20260504_220040_0",
+  "title": "Tamil Colloquial Level 5 - 进阶 (sentence)",
+  "difficulty_level": "5",
+  "dialogue_type": "sentence",
+  "entry_count": 10,
+  "generated_at": "2026-05-04T22:00:40.367258",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.3,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "进阶",
+      "sentence_words": [
+        6,
+        22
+      ],
+      "features": [
+        "multi_clause",
+        "implicit_meaning",
+        "fast_speech_patterns"
+      ],
+      "description": "多从句、隐含意思、快速口语模式"
+    }
+  },
+  "entries": [
+    {
+      "text": "Miss, Kunjiya is pinching me, miss",
+      "tanglish_text": "Miss, Kunjiya is pinching me, miss",
+      "english_translation": "Miss, Kunjiya is pinching me, miss",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "C, the Athenian tribes fought against the mighty Persians",
+      "tanglish_text": "C, the Athenian tribes fought against the mighty Persians",
+      "english_translation": "C, the Athenian tribes fought against the mighty Persians",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "- Okay, sir - Brother - Such a pain",
+      "tanglish_text": "- Okay, sir - Brother - Such a pain",
+      "english_translation": "- Okay, sir - Brother - Such a pain",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "You see, my name is my problem It's nothing",
+      "tanglish_text": "You see, my name is my problem It's nothing",
+      "english_translation": "You see, my name is my problem. It's nothing",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "After this year, we'll talk to the school- Mom",
+      "tanglish_text": "After this year, we'll talk to the school- Mom",
+      "english_translation": "After this year, we'll talk to the school- Mom",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "But we don't always address each other with our full names, right",
+      "tanglish_text": "But we don't always address each other with our full names, right",
+      "english_translation": "But we don't always address each other with our full names, right",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 12
+    },
+    {
+      "text": "Come here That day I wished I had never won Son, be patient",
+      "tanglish_text": "Come here That day I wished I had never won Son, be patient",
+      "english_translation": "Come here That day I wished I had never won Son, be patient",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 13
+    },
+    {
+      "text": "I'm getting late Just 5 minutes It's getting ready Mom, it's getting late",
+      "tanglish_text": "I'm getting late Just 5 minutes It's getting ready Mom, it's getting late",
+      "english_translation": "I'm getting late Just 5 minutes It's getting ready Mom, it's getting late",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 13
+    },
+    {
+      "text": "C for you Hey, will you refuse to come to school for all this",
+      "tanglish_text": "C for you Hey, will you refuse to come to school for all this",
+      "english_translation": "C for you Hey, will you refuse to come to school for all this",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 14
+    },
+    {
+      "text": "Bloody, change your name if you want to Just don't come near my shop anymore",
+      "tanglish_text": "Bloody, change your name if you want to Just don't come near my shop anymore",
+      "english_translation": "Bloody, change your name if you want to Just don't come near my shop anymore",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 15
+    }
+  ]
+}

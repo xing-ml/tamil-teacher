@@ -1,0 +1,102 @@
+{
+  "lesson_id": "level3_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_215934_0",
+  "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+  "difficulty_level": "3",
+  "dialogue_type": "sentence",
+  "entry_count": 9,
+  "generated_at": "2026-05-04T21:59:34.303256",
+  "metadata": {
+    "entry_count": 9,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "初中级",
+      "sentence_words": [
+        3,
+        12
+      ],
+      "features": [
+        "compound_phrases",
+        "tense_usage",
+        "common_slang"
+      ],
+      "description": "复合短语、时态使用、常见俚语"
+    }
+  },
+  "entries": [
+    {
+      "text": "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க",
+      "tanglish_text": "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க",
+      "english_translation": "Yo, they are both going to get married",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+      "tanglish_text": "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+      "english_translation": "You may be the second child born in a house of four",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+      "tanglish_text": "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+      "english_translation": "Inda, this man's younger brother is a father of two",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+      "tanglish_text": "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+      "english_translation": "Did he marry another girl when he was old enough to give birth to his first son?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 9
+    },
+    {
+      "text": "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+      "tanglish_text": "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+      "english_translation": "But I could not hear the words of this villager, I could not hear panchayi",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 11
+    },
+    {
+      "text": "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+      "tanglish_text": "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+      "english_translation": "Oh oh [applause] oh oh oh okay [music] This is your home",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 11
+    },
+    {
+      "text": "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+      "tanglish_text": "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+      "english_translation": "I don't know why the first child came to this ruined town and got lost",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 11
+    },
+    {
+      "text": "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்",
+      "tanglish_text": "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்",
+      "english_translation": "Well, don't cry, it's just a story made up by someone like Saranan told",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 11
+    },
+    {
+      "text": "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா",
+      "tanglish_text": "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா",
+      "english_translation": "Hey, did you notice that in that big place Baruda Saravana was going to collect a doll for the children?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 12
+    }
+  ]
+}

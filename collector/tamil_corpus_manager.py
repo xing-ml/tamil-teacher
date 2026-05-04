@@ -61,6 +61,8 @@ class TamilCorpusManager:
         self.corpus_dir.mkdir(parents=True, exist_ok=True)
         self.corpus_file = self.corpus_dir / "tamil_corpus.json"
         self.lessons_file = self.corpus_dir.parent / "lessons_registry" / "registry.json"
+        self.lessons_dir = self.corpus_dir.parent / "lessons"
+        self.lessons_dir.mkdir(parents=True, exist_ok=True)
         self.lessons_data = []
         self.difficulty_levels = self._load_difficulty_levels()
         self._load_corpus()
@@ -453,6 +455,10 @@ class TamilCorpusManager:
 
                 self.lessons_data.append(lesson_dict)
                 new_lessons.append(lesson_dict)
+                
+                # Save lesson to individual file in lessons/ directory
+                lesson_file = self.lessons_dir / f"{lesson_dict['lesson_id']}.json"
+                lesson_file.write_text(json.dumps(lesson_dict, ensure_ascii=False, indent=2), encoding="utf-8")
 
         if new_lessons:
             self._save_lessons()
@@ -521,6 +527,7 @@ def main() -> int:
         print(f"INFO Generated {len(lessons)} new lessons", file=sys.stderr)
         for lesson in lessons:
             print(f"  - {lesson['lesson_id']}: {lesson['title']} ({lesson['entry_count']} entries)", file=sys.stderr)
+        print(str(manager.lessons_file), file=sys.stdout)
 
     if args.get_lesson:
         # Format: "2_sentence" or just "2" (defaults to sentence)

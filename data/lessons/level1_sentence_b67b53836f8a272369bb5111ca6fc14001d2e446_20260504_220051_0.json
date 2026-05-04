@@ -1,0 +1,54 @@
+{
+  "lesson_id": "level1_sentence_b67b53836f8a272369bb5111ca6fc14001d2e446_20260504_220051_0",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 3,
+  "generated_at": "2026-05-04T22:00:51.644819",
+  "metadata": {
+    "entry_count": 3,
+    "avg_score": 0.35,
+    "source_types": [
+      "ddgs"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
+      "tanglish_text": "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
+      "english_translation": "Chat here only in tamil",
+      "colloquial_score": 0.35,
+      "source_type": "ddgs",
+      "word_count": 5
+    },
+    {
+      "text": "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
+      "tanglish_text": "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
+      "english_translation": "Use tag for good useful information",
+      "colloquial_score": 0.35,
+      "source_type": "ddgs",
+      "word_count": 5
+    },
+    {
+      "text": "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு",
+      "tanglish_text": "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு",
+      "english_translation": "Tamil chat is a group for Tamil speaking people",
+      "colloquial_score": 0.35,
+      "source_type": "ddgs",
+      "word_count": 6
+    }
+  ]
+}

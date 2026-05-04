@@ -1,0 +1,110 @@
+{
+  "lesson_id": "level1_sentence_988fd315ba788653c761b317f51e0e0bad21720e_20260504_220002_2",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 10,
+  "generated_at": "2026-05-04T22:00:02.076388",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.38,
+    "source_types": [
+      "ddgs"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "என் நண்பருக்கு அறிவுரை சொன்னேன்",
+      "tanglish_text": "என் நண்பருக்கு அறிவுரை சொன்னேன்",
+      "english_translation": "I advised my friend",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "முதியவர் என்னிடம் ஏதோ பேசினார்",
+      "tanglish_text": "முதியவர் என்னிடம் ஏதோ பேசினார்",
+      "english_translation": "The old man said something to me",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "அவர் மேலும் ஏதோ கேட்டார்",
+      "tanglish_text": "அவர் மேலும் ஏதோ கேட்டார்",
+      "english_translation": "He asked for something else",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "நான் ஏர்பாடைக் கழற்றி விட்டேன்",
+      "tanglish_text": "நான் ஏர்பாடைக் கழற்றி விட்டேன்",
+      "english_translation": "I took off my AirPods",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "நீங்கள் சாப்பிடவில்லையா என்று கேட்டார்",
+      "tanglish_text": "நீங்கள் சாப்பிடவில்லையா என்று கேட்டார்",
+      "english_translation": "He asked have you not eaten",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "இன்று நான் தாமதமாகச் சென்றிருந்தேன்",
+      "tanglish_text": "இன்று நான் தாமதமாகச் சென்றிருந்தேன்",
+      "english_translation": "I was late today",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "எனக்கு என்ன சொல்வதென்று தெரியவில்லை",
+      "tanglish_text": "எனக்கு என்ன சொல்வதென்று தெரியவில்லை",
+      "english_translation": "I don't know what to say",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "குரலிலும் முகத்திலும் ஆச்சரியம் தெரிந்தது",
+      "tanglish_text": "குரலிலும் முகத்திலும் ஆச்சரியம் தெரிந்தது",
+      "english_translation": "There was surprise in his voice and face",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "எனக்கும் எழுபத்து மூன்றுதான் என்றார்",
+      "tanglish_text": "எனக்கும் எழுபத்து மூன்றுதான் என்றார்",
+      "english_translation": "He said that I am only seventy three",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 4
+    },
+    {
+      "text": "நானும் என் மொழிபெயர்ப்பாளரும் வேலை செய்துகொண்டிருந்தோம்",
+      "tanglish_text": "நானும் என் மொழிபெயர்ப்பாளரும் வேலை செய்துகொண்டிருந்தோம்",
+      "english_translation": "My translator and I were working",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 5
+    }
+  ]
+}

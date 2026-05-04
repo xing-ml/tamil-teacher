@@ -1,0 +1,110 @@
+{
+  "lesson_id": "level1_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_215919_0",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 10,
+  "generated_at": "2026-05-04T21:59:19.154922",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "இறந்துருவாங்கம்மா",
+      "tanglish_text": "இறந்துருவாங்கம்மா",
+      "english_translation": "Will you die?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 1
+    },
+    {
+      "text": "நீங்களாச்சு சொல்லுங்கமா",
+      "tanglish_text": "நீங்களாச்சு சொல்லுங்கமா",
+      "english_translation": "Tell me about you",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 2
+    },
+    {
+      "text": "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+      "tanglish_text": "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+      "english_translation": "It's just a short distance away",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "ஒரு ரொமான்ஸ் லுக்கு",
+      "tanglish_text": "ஒரு ரொமான்ஸ் லுக்கு",
+      "english_translation": "For a romance",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "என்னப்பா இப்படி பண்றீங்க",
+      "tanglish_text": "என்னப்பா இப்படி பண்றீங்க",
+      "english_translation": "Why do you do this?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "அதெல்லாம் ஒன்னும் இல்ல",
+      "tanglish_text": "அதெல்லாம் ஒன்னும் இல்ல",
+      "english_translation": "All that is nothing",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "சும்மா கட்டுக்கதை இதெல்லாம்",
+      "tanglish_text": "சும்மா கட்டுக்கதை இதெல்லாம்",
+      "english_translation": "This is just a myth",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+      "tanglish_text": "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+      "english_translation": "Hey, where are you going?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 4
+    },
+    {
+      "text": "அப்படி நம்பி வந்த பொண்",
+      "tanglish_text": "அப்படி நம்பி வந்த பொண்",
+      "english_translation": "A girl who believed like that",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 4
+    },
+    {
+      "text": "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்",
+      "tanglish_text": "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்",
+      "english_translation": "I have been saying the same since I left",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 5
+    }
+  ]
+}

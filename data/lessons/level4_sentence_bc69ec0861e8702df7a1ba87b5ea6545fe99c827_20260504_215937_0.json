@@ -1,0 +1,54 @@
+{
+  "lesson_id": "level4_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_215937_0",
+  "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+  "difficulty_level": "4",
+  "dialogue_type": "sentence",
+  "entry_count": 3,
+  "generated_at": "2026-05-04T21:59:37.031200",
+  "metadata": {
+    "entry_count": 3,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "中级",
+      "sentence_words": [
+        4,
+        16
+      ],
+      "features": [
+        "longer_sentences",
+        "emotion_expression",
+        "code_switching"
+      ],
+      "description": "长句子、情感表达、代码转换"
+    }
+  },
+  "entries": [
+    {
+      "text": "இந்த ஊர்ல போறந்த முதல் பையனுக்கு கல்யாணம் ஆச்சுன்னா அவன் பொண்டாட்டி கொஞ்ச நாள்ல அமங்கலி ஆயிடுவா",
+      "tanglish_text": "இந்த ஊர்ல போறந்த முதல் பையனுக்கு கல்யாணம் ஆச்சுன்னா அவன் பொண்டாட்டி கொஞ்ச நாள்ல அமங்கலி ஆயிடுவா",
+      "english_translation": "If the first boy who goes to this town gets married, he will become pregnant in a few days.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 13
+    },
+    {
+      "text": "[இசை] ஓம் ஸ்மோக்கிங் காசஸ் கேன்சர் ஸ்மோக்கிங் கில்ஸ் புகைப்பிடித்தல் புற்று நோயை உண்டாக்கும் மற்றும் உயிரை கொள்ளும்",
+      "tanglish_text": "[இசை] ஓம் ஸ்மோக்கிங் காசஸ் கேன்சர் ஸ்மோக்கிங் கில்ஸ் புகைப்பிடித்தல் புற்று நோயை உண்டாக்கும் மற்றும் உயிரை கொள்ளும்",
+      "english_translation": "[Music] Om Smoking Causes Cancer Smoking Kills Smoking causes cancer and kills.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 14
+    },
+    {
+      "text": "[இசை] [இசை] [இசை] [இசை] [இசை] [கரகோஷம்] சீக்கிரம் வா அக்கா [இசை] [கரகோஷம்] ஆத்தா என் மருமகளுக்கு பொண்ணுதான் பொறக்கணும்",
+      "tanglish_text": "[இசை] [இசை] [இசை] [இசை] [இசை] [கரகோஷம்] சீக்கிரம் வா அக்கா [இசை] [கரகோஷம்] ஆத்தா என் மருமகளுக்கு பொண்ணுதான் பொறக்கணும்",
+      "english_translation": "[MUSIC] [MUSIC] [MUSIC] [MUSIC] [MUSIC] [CLAPPING] Come quickly sister [MUSIC] [CLAPPING] Father, my daughter-in-law needs a daughter.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 16
+    }
+  ]
+}

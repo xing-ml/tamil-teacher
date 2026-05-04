@@ -1,0 +1,62 @@
+{
+  "lesson_id": "level1_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_215925_2",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 4,
+  "generated_at": "2026-05-04T21:59:25.602265",
+  "metadata": {
+    "entry_count": 4,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது",
+      "tanglish_text": "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது",
+      "english_translation": "I can't take any more than that",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+      "tanglish_text": "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+      "english_translation": "I am going to marry this girl",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா",
+      "tanglish_text": "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா",
+      "english_translation": "Don't you know that you are the eldest child in the family?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    },
+    {
+      "text": "இது இந்த ஊரோட பால போன சாபம்",
+      "tanglish_text": "இது இந்த ஊரோட பால போன சாபம்",
+      "english_translation": "This is the curse of this town",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    }
+  ]
+}

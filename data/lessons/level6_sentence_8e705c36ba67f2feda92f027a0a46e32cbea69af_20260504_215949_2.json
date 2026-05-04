@@ -1,0 +1,94 @@
+{
+  "lesson_id": "level6_sentence_8e705c36ba67f2feda92f027a0a46e32cbea69af_20260504_215949_2",
+  "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+  "difficulty_level": "6",
+  "dialogue_type": "sentence",
+  "entry_count": 8,
+  "generated_at": "2026-05-04T21:59:49.617144",
+  "metadata": {
+    "entry_count": 8,
+    "avg_score": 0.44,
+    "source_types": [
+      "ddgs"
+    ],
+    "level_definition": {
+      "name": "高级",
+      "sentence_words": [
+        8,
+        30
+      ],
+      "features": [
+        "context_heavy",
+        "sarcasm",
+        "regional_variation"
+      ],
+      "description": "上下文依赖、讽刺、地方变体"
+    }
+  },
+  "entries": [
+    {
+      "text": "அவரது “என் இனிய இயந்திரா” மற்றும் “மீண்டும் ஜீனோ” போன்ற படைப்புகள் மிசேல் புகோவின் அதிகாரம் மற்றும் கண்காணிப்பு கோட்பாட்டின் இலக்கிய பிரதிநிதிகளாகக் கருதப்படலாம்",
+      "tanglish_text": "அவரது “என் இனிய இயந்திரா” மற்றும் “மீண்டும் ஜீனோ” போன்ற படைப்புகள் மிசேல் புகோவின் அதிகாரம் மற்றும் கண்காணிப்பு கோட்பாட்டின் இலக்கிய பிரதிநிதிகளாகக் கருதப்படலாம்",
+      "english_translation": "His works such as “My Sweet Machine” and “Geno Again” can be considered as literary representatives of Michel Bucod's theory of power and surveillance.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 18
+    },
+    {
+      "text": "குடும்பம், ஊர், மரபு, சாதி ஆகிய அடையாளங்களின் பங்கு குறைந்து, தொழில், அறிவு, நகர்ப்புற உறவுகள், தொழில்நுட்ப தொடர்புகள் முக்கியமாவதை அவரது கதைகள் வெளிப்படுத்துகின்றன",
+      "tanglish_text": "குடும்பம், ஊர், மரபு, சாதி ஆகிய அடையாளங்களின் பங்கு குறைந்து, தொழில், அறிவு, நகர்ப்புற உறவுகள், தொழில்நுட்ப தொடர்புகள் முக்கியமாவதை அவரது கதைகள் வெளிப்படுத்துகின்றன",
+      "english_translation": "His stories reveal that the identity of family, village, tradition and caste is diminishing and profession, knowledge, urban relations and technological connections are becoming important.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 18
+    },
+    {
+      "text": "பெண்ணிய சமூகவியல் பார்வையில், சுஜாதா பெண்களை மரபுவழி தமிழ் இலக்கியத்தை விட சுயசார்பும் அறிவார்ந்ததுமானவர்களாக சித்தரித்தாலும், ஆண் பார்வையின் சில கட்டமைப்புகளிலிருந்து முழுமையாக விடுபடவில்லை",
+      "tanglish_text": "பெண்ணிய சமூகவியல் பார்வையில், சுஜாதா பெண்களை மரபுவழி தமிழ் இலக்கியத்தை விட சுயசார்பும் அறிவார்ந்ததுமானவர்களாக சித்தரித்தாலும், ஆண் பார்வையின் சில கட்டமைப்புகளிலிருந்து முழுமையாக விடுபடவில்லை",
+      "english_translation": "From a feminist sociological perspective, although Sujatha portrays women as more independent and intelligent than conventional Tamil literature, she is not entirely free from certain constructs of the male gaze.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 18
+    },
+    {
+      "text": "தமிழில் நவீனத்துவம் பலரால் அறிமுகப்படுத்தப்பட்டிருந்தாலும், அறிவியல் மற்றும் தொழில்நுட்ப நவீனத்துவத்தை இலக்கியமாகவும் கலாச்சாரமாகவும் பொதுமக்கள் மனநிலைக்குள் கொண்டு வந்தவர் என்ற வகையில் சுஜாதாவின் இடம் தனித்துவமானது",
+      "tanglish_text": "தமிழில் நவீனத்துவம் பலரால் அறிமுகப்படுத்தப்பட்டிருந்தாலும், அறிவியல் மற்றும் தொழில்நுட்ப நவீனத்துவத்தை இலக்கியமாகவும் கலாச்சாரமாகவும் பொதுமக்கள் மனநிலைக்குள் கொண்டு வந்தவர் என்ற வகையில் சுஜாதாவின் இடம் தனித்துவமானது",
+      "english_translation": "Although modernism in Tamil has been introduced by many, Sujatha's place is unique as the person who brought scientific and technological modernity into the public mind in literature and culture.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 19
+    },
+    {
+      "text": "அவர் படைப்புகளை சமூகவியல் கோணத்தில் வாசிக்கும்போது, தமிழ் சமூகத்தின் பாரம்பரிய அமைப்பிலிருந்து தகவல் சார்ந்த, நகர்ப்புற, தொழில்நுட்ப மைய வாழ்க்கைக்கு நகரும் மாற்றப் பாதையை தெளிவாகக் காண முடிகிறது",
+      "tanglish_text": "அவர் படைப்புகளை சமூகவியல் கோணத்தில் வாசிக்கும்போது, தமிழ் சமூகத்தின் பாரம்பரிய அமைப்பிலிருந்து தகவல் சார்ந்த, நகர்ப்புற, தொழில்நுட்ப மைய வாழ்க்கைக்கு நகரும் மாற்றப் பாதையை தெளிவாகக் காண முடிகிறது",
+      "english_translation": "Reading his works from a sociological perspective, one can clearly see the transition path of Tamil society moving from a traditional structure to an information-based, urban, technology-centric life.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 21
+    },
+    {
+      "text": "பியர் போர்டியூவின் கலாச்சார மூலதனம் கோட்பாட்டின் அடிப்படையில் பார்க்கும்போது, சுஜாதா தமிழில் அறிவியல், கணினி, மின்னணு, விண்வெளி, குற்றவியல், மனவியல் ஆகிய துறைகளை அறிமுகப்படுத்திய விதம் வாசகர்களின் கலாச்சார திறனை விரிவுபடுத்தியது",
+      "tanglish_text": "பியர் போர்டியூவின் கலாச்சார மூலதனம் கோட்பாட்டின் அடிப்படையில் பார்க்கும்போது, சுஜாதா தமிழில் அறிவியல், கணினி, மின்னணு, விண்வெளி, குற்றவியல், மனவியல் ஆகிய துறைகளை அறிமுகப்படுத்திய விதம் வாசகர்களின் கலாச்சார திறனை விரிவுபடுத்தியது",
+      "english_translation": "Based on Pierre Bourdieu's theory of cultural capital, Sujatha's introduction of the fields of science, computing, electronics, space, criminology, and psychology into Tamil broadened the readers' cultural competence.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 23
+    },
+    {
+      "text": "தகவல் மைய அரசியல், தனிநபர் சுதந்திரம், செயற்கை கட்டுப்பாடு, அரசியல் கண்காணிப்பு ஆகியவை இந்நாவல்களில் வெளிப்படும் போது, தொழில்நுட்பம் வெறும் முன்னேற்றமல்ல, அது சமூக கட்டுப்பாட்டின் கருவியாகவும் அமையக்கூடும் என்ற எச்சரிக்கை உருவாகிறது",
+      "tanglish_text": "தகவல் மைய அரசியல், தனிநபர் சுதந்திரம், செயற்கை கட்டுப்பாடு, அரசியல் கண்காணிப்பு ஆகியவை இந்நாவல்களில் வெளிப்படும் போது, தொழில்நுட்பம் வெறும் முன்னேற்றமல்ல, அது சமூக கட்டுப்பாட்டின் கருவியாகவும் அமையக்கூடும் என்ற எச்சரிக்கை உருவாகிறது",
+      "english_translation": "As information-centric politics, individual freedom, artificial control, and political surveillance emerge in these novels, there is a warning that technology is not just progress, it can also become a tool of social control.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 24
+    },
+    {
+      "text": "எமில் டர்கைமின் சமூக ஒற்றுமை கோட்பாட்டின் அடிப்படையில் பார்க்கும்போது, சுஜாதா எழுதிய சமூக மாற்றப் படைப்புகள் பாரம்பரிய இயந்திர ஒற்றுமையிலிருந்து நவீன கருவி சார்ந்த உயிரியல் ஒற்றுமைக்கு நகரும் தமிழ்ச் சமூகத்தை பிரதிபலிக்கின்றன",
+      "tanglish_text": "எமில் டர்கைமின் சமூக ஒற்றுமை கோட்பாட்டின் அடிப்படையில் பார்க்கும்போது, சுஜாதா எழுதிய சமூக மாற்றப் படைப்புகள் பாரம்பரிய இயந்திர ஒற்றுமையிலிருந்து நவீன கருவி சார்ந்த உயிரியல் ஒற்றுமைக்கு நகரும் தமிழ்ச் சமூகத்தை பிரதிபலிக்கின்றன",
+      "english_translation": "Based on Emile Durkheim's theory of social unity, Sujatha's works of social change reflect Tamil society moving from traditional mechanical unity to modern instrumental biological unity.",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 24
+    }
+  ]
+}

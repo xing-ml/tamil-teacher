@@ -1,0 +1,110 @@
+{
+  "lesson_id": "level1_sentence_2053c8d689f374102f177cf8c7cd58240418228e_20260504_220035_1",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 10,
+  "generated_at": "2026-05-04T22:00:35.034236",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.3,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "Who is Kunjithapadham",
+      "tanglish_text": "Who is Kunjithapadham",
+      "english_translation": "Who is Kunjithapadham",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "Hang in there",
+      "tanglish_text": "Hang in there",
+      "english_translation": "Hang in there",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "How much longer",
+      "tanglish_text": "How much longer",
+      "english_translation": "How much longer",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "Okay, be safe",
+      "tanglish_text": "Okay, be safe",
+      "english_translation": "Okay, be safe",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "- What's it",
+      "tanglish_text": "- What's it",
+      "english_translation": "- What's it",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "What's your procedure",
+      "tanglish_text": "What's your procedure",
+      "english_translation": "What's your procedure",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 3
+    },
+    {
+      "text": "Yeah, sir Okay Brother",
+      "tanglish_text": "Yeah, sir Okay Brother",
+      "english_translation": "Yes, sir Okay Brother",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 4
+    },
+    {
+      "text": "Go, I say Mr",
+      "tanglish_text": "Go, I say Mr",
+      "english_translation": "Go, I say Mr",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 4
+    },
+    {
+      "text": "Save our family Kunjithapadham",
+      "tanglish_text": "Save our family Kunjithapadham",
+      "english_translation": "Save our family Kunjithapadham",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 4
+    },
+    {
+      "text": "- Here ma'm Shush",
+      "tanglish_text": "- Here ma'm Shush",
+      "english_translation": "- Here ma'm Shush",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 4
+    }
+  ]
+}

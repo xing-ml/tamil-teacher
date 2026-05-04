@@ -1,0 +1,46 @@
+{
+  "lesson_id": "level2_sentence_8e705c36ba67f2feda92f027a0a46e32cbea69af_20260504_215941_0",
+  "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+  "difficulty_level": "2",
+  "dialogue_type": "sentence",
+  "entry_count": 2,
+  "generated_at": "2026-05-04T21:59:41.390481",
+  "metadata": {
+    "entry_count": 2,
+    "avg_score": 0.44,
+    "source_types": [
+      "ddgs"
+    ],
+    "level_definition": {
+      "name": "基础",
+      "sentence_words": [
+        2,
+        8
+      ],
+      "features": [
+        "short_sentences",
+        "basic_verbs",
+        "simple_responses"
+      ],
+      "description": "短句子、基础动词、简单回应"
+    }
+  },
+  "entries": [
+    {
+      "text": "இதுவே அவரது எழுத்தை புரட்சிகர மார்க்சிய இலக்கியத்திலிருந்து வேறுபடுத்துகிறது",
+      "tanglish_text": "இதுவே அவரது எழுத்தை புரட்சிகர மார்க்சிய இலக்கியத்திலிருந்து வேறுபடுத்துகிறது",
+      "english_translation": "This is what distinguishes his writing from revolutionary Marxist literature",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 7
+    },
+    {
+      "text": "இது அவரின் காலத்தின் சமூக பாலின அரசியலை பிரதிபலிக்கிறது",
+      "tanglish_text": "இது அவரின் காலத்தின் சமூக பாலின அரசியலை பிரதிபலிக்கிறது",
+      "english_translation": "It reflects the socio-gender politics of his time",
+      "colloquial_score": 0.44,
+      "source_type": "ddgs",
+      "word_count": 7
+    }
+  ]
+}

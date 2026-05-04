@@ -1,0 +1,62 @@
+{
+  "lesson_id": "level4_sentence_988fd315ba788653c761b317f51e0e0bad21720e_20260504_220011_0",
+  "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+  "difficulty_level": "4",
+  "dialogue_type": "sentence",
+  "entry_count": 4,
+  "generated_at": "2026-05-04T22:00:11.491771",
+  "metadata": {
+    "entry_count": 4,
+    "avg_score": 0.38,
+    "source_types": [
+      "ddgs"
+    ],
+    "level_definition": {
+      "name": "中级",
+      "sentence_words": [
+        4,
+        16
+      ],
+      "features": [
+        "longer_sentences",
+        "emotion_expression",
+        "code_switching"
+      ],
+      "description": "长句子、情感表达、代码转换"
+    }
+  },
+  "entries": [
+    {
+      "text": "ஆரம்பித்து சில நிமிடங்களிலேயே என் நண்பருக்கு அவர் என்ன பேசுகிறார் என்றே ஒரு வார்த்தை கூட மனதில் பதியவில்லை",
+      "tanglish_text": "ஆரம்பித்து சில நிமிடங்களிலேயே என் நண்பருக்கு அவர் என்ன பேசுகிறார் என்றே ஒரு வார்த்தை கூட மனதில் பதியவில்லை",
+      "english_translation": "Within minutes of starting, my friend had no idea what he was talking about",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 14
+    },
+    {
+      "text": "அப்போது அந்தப் பக்கமாக ஒரு பரிசாரகரிடம் நான் சற்று உரத்த குரலில் “இவர்களுக்கு சாம்பார் கொடுங்கள்” என்று சொன்னேன்",
+      "tanglish_text": "அப்போது அந்தப் பக்கமாக ஒரு பரிசாரகரிடம் நான் சற்று உரத்த குரலில் “இவர்களுக்கு சாம்பார் கொடுங்கள்” என்று சொன்னேன்",
+      "english_translation": "Then I said in a slightly loud voice to a parisharakar on the other side, \"Give them sambar\".",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 14
+    },
+    {
+      "text": "நான் வழக்கம் போல் காதுகளில் ஏர்பாட் போட்டு She’s Gone கேட்டுக்கொண்டிருந்ததால் அவர் என்ன சொன்னார் என்று தெரியவில்லை",
+      "tanglish_text": "நான் வழக்கம் போல் காதுகளில் ஏர்பாட் போட்டு She’s Gone கேட்டுக்கொண்டிருந்ததால் அவர் என்ன சொன்னார் என்று தெரியவில்லை",
+      "english_translation": "I was listening to She's Gone with my earphones as usual so I didn't know what he said",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 14
+    },
+    {
+      "text": "ஆனால் வேடிக்கை என்னவென்றால், என்னிடம் சம்பவத்தைச் சொன்ன நண்பர் என்னிடமும் மனைவியிடமும் மற்ற நெருங்கிய நண்பர்களிடமும் மூர்க்கமாக நடந்து கொள்வார்",
+      "tanglish_text": "ஆனால் வேடிக்கை என்னவென்றால், என்னிடம் சம்பவத்தைச் சொன்ன நண்பர் என்னிடமும் மனைவியிடமும் மற்ற நெருங்கிய நண்பர்களிடமும் மூர்க்கமாக நடந்து கொள்வார்",
+      "english_translation": "But the funny thing is that the friend who told me about the incident would be aggressive towards me, his wife and other close friends",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 15
+    }
+  ]
+}

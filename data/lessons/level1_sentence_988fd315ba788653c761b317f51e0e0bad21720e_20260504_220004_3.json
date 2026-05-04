@@ -1,0 +1,86 @@
+{
+  "lesson_id": "level1_sentence_988fd315ba788653c761b317f51e0e0bad21720e_20260504_220004_3",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 7,
+  "generated_at": "2026-05-04T22:00:04.386988",
+  "metadata": {
+    "entry_count": 7,
+    "avg_score": 0.38,
+    "source_types": [
+      "ddgs"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "பார்ப்பதற்கு பெரிய பிஸினஸ்மேன் மாதிரி இருந்தார்",
+      "tanglish_text": "பார்ப்பதற்கு பெரிய பிஸினஸ்மேன் மாதிரி இருந்தார்",
+      "english_translation": "He looked like a great businessman",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 5
+    },
+    {
+      "text": "இம்மாதிரி ஆட்களிடம் மூர்க்கமாக நடந்து கொள்ளுங்கள்",
+      "tanglish_text": "இம்மாதிரி ஆட்களிடம் மூர்க்கமாக நடந்து கொள்ளுங்கள்",
+      "english_translation": "Be fierce with such people",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 5
+    },
+    {
+      "text": "இல்லை, வீட்டுக்குப் போய் சாப்பிடுவேன் என்றேன்",
+      "tanglish_text": "இல்லை, வீட்டுக்குப் போய் சாப்பிடுவேன் என்றேன்",
+      "english_translation": "I said no, I will go home and eat",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 5
+    },
+    {
+      "text": "ஆனால் தோற்றம் எண்பத்து மூன்றைக் காட்டியது",
+      "tanglish_text": "ஆனால் தோற்றம் எண்பத்து மூன்றைக் காட்டியது",
+      "english_translation": "But the appearance showed eighty-three",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 5
+    },
+    {
+      "text": "ஒருமுறை ரஷ்யன் செண்டரில் நடந்தது ஞாபகம் வருகிறது",
+      "tanglish_text": "ஒருமுறை ரஷ்யன் செண்டரில் நடந்தது ஞாபகம் வருகிறது",
+      "english_translation": "I remember what happened at the Russian Center once",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 6
+    },
+    {
+      "text": "என் எதிரே ஒரு முதியவர் தோசை சாப்பிட்டுக்கொண்டிருந்தார்",
+      "tanglish_text": "என் எதிரே ஒரு முதியவர் தோசை சாப்பிட்டுக்கொண்டிருந்தார்",
+      "english_translation": "An old man was eating dosa in front of me",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 6
+    },
+    {
+      "text": "இருந்தாலும் மரியாதைக்குத் தலையை அன்புடன் ஆட்டி வைத்தேன்",
+      "tanglish_text": "இருந்தாலும் மரியாதைக்குத் தலையை அன்புடன் ஆட்டி வைத்தேன்",
+      "english_translation": "However, I politely nodded my head in deference",
+      "colloquial_score": 0.38,
+      "source_type": "ddgs",
+      "word_count": 6
+    }
+  ]
+}

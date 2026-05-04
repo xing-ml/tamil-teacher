@@ -1,0 +1,46 @@
+{
+  "lesson_id": "level3_sentence_2053c8d689f374102f177cf8c7cd58240418228e_20260504_220048_0",
+  "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+  "difficulty_level": "3",
+  "dialogue_type": "sentence",
+  "entry_count": 2,
+  "generated_at": "2026-05-04T22:00:48.077584",
+  "metadata": {
+    "entry_count": 2,
+    "avg_score": 0.3,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "初中级",
+      "sentence_words": [
+        3,
+        12
+      ],
+      "features": [
+        "compound_phrases",
+        "tense_usage",
+        "common_slang"
+      ],
+      "description": "复合短语、时态使用、常见俚语"
+    }
+  },
+  "entries": [
+    {
+      "text": "- Here ma'm - Deepesh - Here ma'm - Kunjithapadham",
+      "tanglish_text": "- Here ma'm - Deepesh - Here ma'm - Kunjithapadham",
+      "english_translation": "- Here ma'm - Deepesh - Here ma'm - Kunjithapadham",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 10
+    },
+    {
+      "text": "800 metre track race goes to: Kunji Why are you laughing",
+      "tanglish_text": "800 metre track race goes to: Kunji Why are you laughing",
+      "english_translation": "800 meter track race goes to: Kunji Why are you laughing",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 11
+    }
+  ]
+}

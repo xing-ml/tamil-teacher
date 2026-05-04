@@ -1,0 +1,38 @@
+{
+  "lesson_id": "level1_sentence_0321e1bdd1c5f5adaf74b591731432ffea1d35b2_20260504_220021_2",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "entry_count": 1,
+  "generated_at": "2026-05-04T22:00:21.341160",
+  "metadata": {
+    "entry_count": 1,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "[இசை] இனிமே நீங்கதான் சார் நடவடிக்கை எடுக்கணும்",
+      "tanglish_text": "[இசை] இனிமே நீங்கதான் சார் நடவடிக்கை எடுக்கணும்",
+      "english_translation": "[Music] Now you have to take action, sir",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "word_count": 6
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "lesson_id": "level5_sentence_2053c8d689f374102f177cf8c7cd58240418228e_20260504_220043_1",
+  "title": "Tamil Colloquial Level 5 - 进阶 (sentence)",
+  "difficulty_level": "5",
+  "dialogue_type": "sentence",
+  "entry_count": 7,
+  "generated_at": "2026-05-04T22:00:43.424985",
+  "metadata": {
+    "entry_count": 7,
+    "avg_score": 0.3,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "进阶",
+      "sentence_words": [
+        6,
+        22
+      ],
+      "features": [
+        "multi_clause",
+        "implicit_meaning",
+        "fast_speech_patterns"
+      ],
+      "description": "多从句、隐含意思、快速口语模式"
+    }
+  },
+  "entries": [
+    {
+      "text": "No other go We've decided to do a caesarean section Sign here Doctor, is something wrong",
+      "tanglish_text": "No other go We've decided to do a caesarean section Sign here Doctor, is something wrong",
+      "english_translation": "No other go We've decided to do a caesarean section Sign here Doctor, something is wrong",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 16
+    },
+    {
+      "text": "When everyone laughed at my name, at first it used to make me happy Hey, Vijaya",
+      "tanglish_text": "When everyone laughed at my name, at first it used to make me happy Hey, Vijaya",
+      "english_translation": "When everyone laughed at my name, at first it used to make me happy Hey, Vijaya",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 16
+    },
+    {
+      "text": "Pass the ball here This one's for Vicky And this is for Kunji Why this name, Granny",
+      "tanglish_text": "Pass the ball here This one's for Vicky And this is for Kunji Why this name, Granny",
+      "english_translation": "Pass the ball here This one's for Vicky And this is for Kunji Why this name, Granny",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 17
+    },
+    {
+      "text": "Just tell me what name you want I'll change it in the gazette and get the T",
+      "tanglish_text": "Just tell me what name you want I'll change it in the gazette and get the T",
+      "english_translation": "Just tell me what name you want I'll change it in the gazette and get the T",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 17
+    },
+    {
+      "text": "in a marathon battle and won Phidipius, an Athenian warrior, ran for about 42 kilometres to his country",
+      "tanglish_text": "in a marathon battle and won Phidipius, an Athenian warrior, ran for about 42 kilometres to his country",
+      "english_translation": "in a marathon battle and won Phidipius, an Athenian warrior, ran for about 42 kilometers to his country",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 18
+    },
+    {
+      "text": "to announce this victory and then died His undying spirit gave birth to the idea of a marathon",
+      "tanglish_text": "to announce this victory and then died His undying spirit gave birth to the idea of a marathon",
+      "english_translation": "to announce this victory and then died His undying spirit gave birth to the idea of ​​a marathon",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 18
+    },
+    {
+      "text": "- While calling my name Hello, can't give special instructions to you, go sit What I'm trying to say is- Go sit",
+      "tanglish_text": "- While calling my name Hello, can't give special instructions to you, go sit What I'm trying to say is- Go sit",
+      "english_translation": "- While calling my name Hello, can't give special instructions to you, go sit What I'm trying to say is- Go sit",
+      "colloquial_score": 0.3,
+      "source_type": "youtube",
+      "word_count": 22
+    }
+  ]
+}
