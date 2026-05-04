@@ -69,12 +69,7 @@ YouTube/网页采集 → 清洗过滤 → 课程上下文构建 → 语料库管
 | `collector/llm_evaluator.py` | 基于 LLM 的课程质量评估 | ❌ 无用（被 test_classification_pipeline.py 使用） |
 | `bin/tamil_lesson_analyzer.py` | 完整分析流水线（classifier → context → LLM eval） | ❌ 无用 |
 
-### 🎬 演示/工具
-
-| 文件 | 职责 |
-|------|------|
-| `demo_v2.2.py` | 演示脚本 — 展示语料库及音译转换 |
-| `check_system.py` | 系统完整性检查 — 验证所有组件就位 |
+### 📁 配置文件
 
 ### 📁 配置文件
 
