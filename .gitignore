@@ -1,0 +1,32 @@
+# ============================================================
+# tamil-colloquial-teacher — .gitignore
+# ============================================================
+
+# ── Temporary / runtime output ──────────────────────────────
+temp/
+
+# ── Python bytecode / cache ─────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Intermediate data and cache are tracked in git
+
+# ── Logs ────────────────────────────────────────────────────
+*.log
+
+# ── Environment / secrets ───────────────────────────────────
+.env
+.env.*
+
+# ── OS / editor junk ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

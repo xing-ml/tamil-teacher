@@ -1,0 +1,10 @@
+{
+  "version": "v1.0",
+  "last_updated": "2026-05-03",
+  "dialogue_cache": {},
+  "stats": {
+    "total_cached": 0,
+    "today_used": 0,
+    "scenarios_covered": []
+  }
+}

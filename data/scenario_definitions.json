@@ -1,0 +1,154 @@
+{
+  "version": "v2.0",
+  "total_subscenarios": 63,
+  "scenarios": [
+    {
+      "id": "greeting",
+      "name": "日常问候与寒暄",
+      "frequency_weight": 5,
+      "subscenarios": [
+        {"id": "greet_basic", "desc": "简单打招呼"},
+        {"id": "ask_how", "desc": "问近况"},
+        {"id": "morning", "desc": "早上问候"},
+        {"id": "goodbye", "desc": "告别"},
+        {"id": "introduce", "desc": "自我介绍"},
+        {"id": "ask_name", "desc": "问名字"},
+        {"id": "ask_family", "desc": "问家庭情况"},
+        {"id": "long_time", "desc": "好久不见"}
+      ]
+    },
+    {
+      "id": "social",
+      "name": "社交闲聊",
+      "frequency_weight": 4,
+      "subscenarios": [
+        {"id": "daily_chat", "desc": "聊今天做了什么"},
+        {"id": "hobby", "desc": "聊兴趣爱好"},
+        {"id": "movie", "desc": "聊电影/节目"},
+        {"id": "gossip", "desc": "八卦聊天"},
+        {"id": "weekend", "desc": "聊周末安排"},
+        {"id": "news", "desc": "聊新闻"},
+        {"id": "random", "desc": "随意闲聊"}
+      ]
+    },
+    {
+      "id": "emotion",
+      "name": "表达感受与情感",
+      "frequency_weight": 5,
+      "subscenarios": [
+        {"id": "happy", "desc": "表达开心"},
+        {"id": "sad", "desc": "表达难过"},
+        {"id": "angry", "desc": "表达生气"},
+        {"id": "tired", "desc": "表达疲惫"},
+        {"id": "stress", "desc": "表达压力"},
+        {"id": "excited", "desc": "表达兴奋"},
+        {"id": "fear", "desc": "表达害怕"},
+        {"id": "surprise", "desc": "表达惊讶"},
+        {"id": "disappointed", "desc": "表达失望"}
+      ]
+    },
+    {
+      "id": "family",
+      "name": "家庭与亲密关系",
+      "frequency_weight": 4,
+      "subscenarios": [
+        {"id": "parents", "desc": "与父母聊天"},
+        {"id": "siblings", "desc": "兄弟姐妹"},
+        {"id": "partner", "desc": "伴侣交流"},
+        {"id": "care", "desc": "表达关心"},
+        {"id": "family_argue", "desc": "家庭争执"},
+        {"id": "family_joke", "desc": "家庭玩笑"}
+      ]
+    },
+    {
+      "id": "shopping",
+      "name": "购物与交易",
+      "frequency_weight": 4,
+      "subscenarios": [
+        {"id": "ask_price", "desc": "问价格"},
+        {"id": "bargain", "desc": "砍价"},
+        {"id": "compare", "desc": "比较商品"},
+        {"id": "complain_price", "desc": "嫌贵"},
+        {"id": "pay", "desc": "付款"},
+        {"id": "return", "desc": "退货"},
+        {"id": "discount", "desc": "问折扣"}
+      ]
+    },
+    {
+      "id": "food",
+      "name": "饮食与餐饮",
+      "frequency_weight": 5,
+      "subscenarios": [
+        {"id": "order", "desc": "点餐"},
+        {"id": "recommend", "desc": "问推荐"},
+        {"id": "taste_good", "desc": "评价好吃"},
+        {"id": "taste_bad", "desc": "吐槽难吃"},
+        {"id": "bill", "desc": "结账"},
+        {"id": "favorite", "desc": "聊喜欢的食物"},
+        {"id": "invite", "desc": "请吃饭"},
+        {"id": "wait_food", "desc": "催菜"}
+      ]
+    },
+    {
+      "id": "transport",
+      "name": "出行与交通",
+      "frequency_weight": 3,
+      "subscenarios": [
+        {"id": "direction", "desc": "问路"},
+        {"id": "taxi", "desc": "打车"},
+        {"id": "bus", "desc": "坐公交"},
+        {"id": "ticket", "desc": "买票"},
+        {"id": "delay", "desc": "交通延误"},
+        {"id": "plan", "desc": "出行计划"}
+      ]
+    },
+    {
+      "id": "help",
+      "name": "求助与指示",
+      "frequency_weight": 3,
+      "subscenarios": [
+        {"id": "ask_help", "desc": "请求帮助"},
+        {"id": "give_direction", "desc": "给指示"},
+        {"id": "clarify", "desc": "没听懂再问"},
+        {"id": "borrow", "desc": "借东西"},
+        {"id": "emergency", "desc": "紧急求助"}
+      ]
+    },
+    {
+      "id": "work",
+      "name": "工作场景",
+      "frequency_weight": 4,
+      "subscenarios": [
+        {"id": "meeting", "desc": "会议"},
+        {"id": "task", "desc": "任务分配"},
+        {"id": "deadline", "desc": "截止时间"},
+        {"id": "feedback", "desc": "反馈"},
+        {"id": "complain", "desc": "吐槽工作"},
+        {"id": "colleague", "desc": "同事聊天"}
+      ]
+    },
+    {
+      "id": "service",
+      "name": "服务与公共场景",
+      "frequency_weight": 3,
+      "subscenarios": [
+        {"id": "hotel", "desc": "酒店"},
+        {"id": "doctor", "desc": "医院"},
+        {"id": "repair", "desc": "维修"},
+        {"id": "haircut", "desc": "理发"},
+        {"id": "complain", "desc": "投诉服务"}
+      ]
+    },
+    {
+      "id": "conflict",
+      "name": "冲突与争论",
+      "frequency_weight": 2,
+      "subscenarios": [
+        {"id": "disagree", "desc": "不同意"},
+        {"id": "argument", "desc": "争论"},
+        {"id": "insult_light", "desc": "轻度攻击"},
+        {"id": "conflict_strong", "desc": "强冲突"}
+      ]
+    }
+  ]
+}

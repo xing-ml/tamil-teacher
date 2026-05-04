@@ -1,0 +1,799 @@
+{
+  "lessons": [
+    {
+      "lesson_id": "level6_sentence_d4f7e50b344c55125569c76200819b981861c0d1_20260504_202402_0",
+      "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "entry_count": 2,
+      "generated_at": "2026-05-04T20:24:02.484026",
+      "metadata": {
+        "entry_count": 2,
+        "avg_score": 0.43,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "高级",
+          "sentence_words": [
+            8,
+            30
+          ],
+          "features": [
+            "context_heavy",
+            "sarcasm",
+            "regional_variation"
+          ],
+          "description": "上下文依赖、讽刺、地方变体"
+        }
+      },
+      "entries": [
+        {
+          "text": "வீட்ல முடங்கி கிடக்கான் நீ எங்க புறப்பட்டீங்க நாள் முழுதும் உன்னையே இன்னைக்கு என் பர்த்டே எங்க என் சாக்லேட் ஊருக்குள்ள தான்",
+          "tanglish_text": "வீட்ல முடங்கி கிடக்கான் நீ எங்க புறப்பட்டீங்க நாள் முழுதும் உன்னையே இன்னைக்கு என் பர்த்டே எங்க என் சாக்லேட் ஊருக்குள்ள தான்",
+          "english_translation": "Paralyzed at home, where did you go? All day long, today is my birthday. Where is my chocolate?",
+          "colloquial_score": 0.43,
+          "source_type": "youtube",
+          "word_count": 17
+        },
+        {
+          "text": "ஒரு அதிசய பிறகு அவ்வளவுதான் இப்ப வருவான் பாருங்க வெளில ஏதோ வேர்ல்ட் வார்னால மாதிரி உங்களுக்கே ஒரு ஃபீலிங் இருக்கும் ஒரு கொசு ஈ விழுன உடனே கேப் இருக்காது வீட்டையே கம்ப்ளீட்டா சரி பண்ணி வைக்கிறான் அப்படியே என்னைக்காவது",
+          "tanglish_text": "ஒரு அதிசய பிறகு அவ்வளவுதான் இப்ப வருவான் பாருங்க வெளில ஏதோ வேர்ல்ட் வார்னால மாதிரி உங்களுக்கே ஒரு ஃபீலிங் இருக்கும் ஒரு கொசு ஈ விழுன உடனே கேப் இருக்காது வீட்டையே கம்ப்ளீட்டா சரி பண்ணி வைக்கிறான் அப்படியே என்னைக்காவது",
+          "english_translation": "After a miracle, that's all he comes. Look, something is happening outside. You have a feeling like a mosquito fly falls. Immediately there is no cap. He repairs the house completely, just like that for me.",
+          "colloquial_score": 0.43,
+          "source_type": "youtube",
+          "word_count": 30
+        }
+      ]
+    },
+    {
+      "lesson_id": "level1_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_202403_0",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "entry_count": 10,
+      "generated_at": "2026-05-04T20:24:03.005068",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "இறந்துருவாங்கம்மா",
+          "tanglish_text": "இறந்துருவாங்கம்மா",
+          "english_translation": "Will you die?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 1
+        },
+        {
+          "text": "நீங்களாச்சு சொல்லுங்கமா",
+          "tanglish_text": "நீங்களாச்சு சொல்லுங்கமா",
+          "english_translation": "Tell me about you",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 2
+        },
+        {
+          "text": "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+          "tanglish_text": "கொஞ்ச தூரம்தான் பக்கத்துலதான்",
+          "english_translation": "It's just a short distance away",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 3
+        },
+        {
+          "text": "ஒரு ரொமான்ஸ் லுக்கு",
+          "tanglish_text": "ஒரு ரொமான்ஸ் லுக்கு",
+          "english_translation": "For a romance",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 3
+        },
+        {
+          "text": "என்னப்பா இப்படி பண்றீங்க",
+          "tanglish_text": "என்னப்பா இப்படி பண்றீங்க",
+          "english_translation": "Why do you do this?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 3
+        },
+        {
+          "text": "அதெல்லாம் ஒன்னும் இல்ல",
+          "tanglish_text": "அதெல்லாம் ஒன்னும் இல்ல",
+          "english_translation": "All that is nothing",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 3
+        },
+        {
+          "text": "சும்மா கட்டுக்கதை இதெல்லாம்",
+          "tanglish_text": "சும்மா கட்டுக்கதை இதெல்லாம்",
+          "english_translation": "This is just a myth",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 3
+        },
+        {
+          "text": "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+          "tanglish_text": "ஏப்பா இங்கிட்டு எங்க போறாங்க",
+          "english_translation": "Hey, where are you going?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 4
+        },
+        {
+          "text": "அப்படி நம்பி வந்த பொண்",
+          "tanglish_text": "அப்படி நம்பி வந்த பொண்",
+          "english_translation": "A girl who believed like that",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 4
+        },
+        {
+          "text": "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்",
+          "tanglish_text": "கிளம்புனதுல இருந்து இதேதான் சொல்லிட்டு இருக்கேன்",
+          "english_translation": "I have been saying the same since I left",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        }
+      ]
+    },
+    {
+      "lesson_id": "level1_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_202405_1",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "entry_count": 10,
+      "generated_at": "2026-05-04T20:24:05.986679",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "இந்த பேக்கையும் நீயே தூக்கிட்டு வா",
+          "tanglish_text": "இந்த பேக்கையும் நீயே தூக்கிட்டு வா",
+          "english_translation": "Carry this bag yourself",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "அப்படி என்ன பெரிய கதை இருக்கு",
+          "tanglish_text": "அப்படி என்ன பெரிய கதை இருக்கு",
+          "english_translation": "What a great story",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்",
+          "tanglish_text": "சரி நம்ம வந்து வேலைய ஆரம்பிப்போம்",
+          "english_translation": "Well, let's come and start working",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "என்னடா காலைலயே குண்ட தூக்கி போடுற",
+          "tanglish_text": "என்னடா காலைலயே குண்ட தூக்கி போடுற",
+          "english_translation": "Why don't you throw it away in the morning?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "அது உங்க அப்பன போய் கேளுடா",
+          "tanglish_text": "அது உங்க அப்பன போய் கேளுடா",
+          "english_translation": "Don't go and ask your uncle",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு",
+          "tanglish_text": "நம்ம பெரியசாமி 55 வயசு ஆயிடுச்சு",
+          "english_translation": "Our Periaswamy has turned 55 years old",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்",
+          "tanglish_text": "என்னதான் கல்யாணம் பண்ணா பிரச்சனை ஆகும்",
+          "english_translation": "What is the problem of marriage?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "இல்லம்மா இது 200 வருஷ சாபம்",
+          "tanglish_text": "இல்லம்மா இது 200 வருஷ சாபம்",
+          "english_translation": "No, this is a 200 year curse",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "இது இன்னைக்கு நேத்து நடந்தது இல்ல",
+          "tanglish_text": "இது இன்னைக்கு நேத்து நடந்தது இல்ல",
+          "english_translation": "This did not happen recently",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "அதே மாறி நிறைய கல்யாணம் நடந்துருக்கு",
+          "tanglish_text": "அதே மாறி நிறைய கல்யாணம் நடந்துருக்கு",
+          "english_translation": "A lot of marriages have happened with the same change",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        }
+      ]
+    },
+    {
+      "lesson_id": "level1_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_202408_2",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "entry_count": 4,
+      "generated_at": "2026-05-04T20:24:08.530729",
+      "metadata": {
+        "entry_count": 4,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது",
+          "tanglish_text": "என்னாலல்லாம் இதுக்கு மேலல்லாம் தூக்கிட்டு வர முடியாது",
+          "english_translation": "I can't take any more than that",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 6
+        },
+        {
+          "text": "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+          "tanglish_text": "ஆமாமா இந்த பொண்ணைதான் கல்யாணம் பண்ணிக்க போறேன்",
+          "english_translation": "I am going to marry this girl",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 6
+        },
+        {
+          "text": "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா",
+          "tanglish_text": "நீங்க வீட்டுக்கு மூத்த பிள்ளை உங்களுக்கு தெரியாதா",
+          "english_translation": "Don't you know that you are the eldest child in the family?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 6
+        },
+        {
+          "text": "இது இந்த ஊரோட பால போன சாபம்",
+          "tanglish_text": "இது இந்த ஊரோட பால போன சாபம்",
+          "english_translation": "This is the curse of this town",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 6
+        }
+      ]
+    },
+    {
+      "lesson_id": "level1_sentence_d7871e0ad01d561a4b3610ebb478c3e1d8578bb7_20260504_202410_0",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "entry_count": 6,
+      "generated_at": "2026-05-04T20:24:10.141747",
+      "metadata": {
+        "entry_count": 6,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "பேர்ல உசுரு",
+          "tanglish_text": "பேர்ல உசுரு",
+          "english_translation": "Pearl Usuru",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 2
+        },
+        {
+          "text": "அது தேவரை காத்த",
+          "tanglish_text": "அது தேவரை காத்த",
+          "english_translation": "It is to protect God",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 3
+        },
+        {
+          "text": "பாக்க தானே ஊரே",
+          "tanglish_text": "பாக்க தானே ஊரே",
+          "english_translation": "Paka Thane Ure",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 3
+        },
+        {
+          "text": "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க",
+          "tanglish_text": "பள்ளிக்கூடத்தை கட்டுனேன் நீங்க யாரும் படிக்க",
+          "english_translation": "I built a school so that none of you can study",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "குளத்தை வெட்டுன நீங்க யாரும் குளிக்கவே",
+          "tanglish_text": "குளத்தை வெட்டுன நீங்க யாரும் குளிக்கவே",
+          "english_translation": "No one should bathe after cutting the pool",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 5
+        },
+        {
+          "text": "[இசை] ஓம் [இசை] யாரு பேருக்கு அடுத்",
+          "tanglish_text": "[இசை] ஓம் [இசை] யாரு பேருக்கு அடுத்",
+          "english_translation": "[Music] Om [Music] Adut to whom",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 6
+        }
+      ]
+    },
+    {
+      "lesson_id": "level2_sentence_d7871e0ad01d561a4b3610ebb478c3e1d8578bb7_20260504_202415_0",
+      "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "entry_count": 4,
+      "generated_at": "2026-05-04T20:24:15.182393",
+      "metadata": {
+        "entry_count": 4,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "基础",
+          "sentence_words": [
+            2,
+            8
+          ],
+          "features": [
+            "short_sentences",
+            "basic_verbs",
+            "simple_responses"
+          ],
+          "description": "短句子、基础动词、简单回应"
+        }
+      },
+      "entries": [
+        {
+          "text": "பேர்ல ஒரு தூசு கூட பட விடமாட்டான் சின்",
+          "tanglish_text": "பேர்ல ஒரு தூசு கூட பட விடமாட்டான் சின்",
+          "english_translation": "Sin will not let a single dust fall on the pearl",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 7
+        },
+        {
+          "text": "ஆவணி மாசையிலும் வரும் ஐம்படி திங்களிலும் அன்பர் திருநாள் காணும்",
+          "tanglish_text": "ஆவணி மாசையிலும் வரும் ஐம்படி திங்களிலும் அன்பர் திருநாள் காணும்",
+          "english_translation": "Anbar Thirunal will also be seen in Avani Masai and in Imbadi Dimdu",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 8
+        },
+        {
+          "text": "அன்பர் திருநாள் ஏன் தம்பி ராமசாமி எங்க நீங்க வேற",
+          "tanglish_text": "அன்பர் திருநாள் ஏன் தம்பி ராமசாமி எங்க நீங்க வேற",
+          "english_translation": "Dear Thirunal, where are you, brother Ramaswami?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 8
+        },
+        {
+          "text": "மாதிரி ஒத்துமைக்கு இலக்கணமே என் பையனுங்க தான் பெரியவனுக்கு சின்",
+          "tanglish_text": "மாதிரி ஒத்துமைக்கு இலக்கணமே என் பையனுங்க தான் பெரியவனுக்கு சின்",
+          "english_translation": "For model agreement, grammar is my son's son's sin",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 8
+        }
+      ]
+    },
+    {
+      "lesson_id": "level2_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_202418_0",
+      "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "entry_count": 4,
+      "generated_at": "2026-05-04T20:24:18.848123",
+      "metadata": {
+        "entry_count": 4,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "基础",
+          "sentence_words": [
+            2,
+            8
+          ],
+          "features": [
+            "short_sentences",
+            "basic_verbs",
+            "simple_responses"
+          ],
+          "description": "短句子、基础动词、简单回应"
+        }
+      },
+      "entries": [
+        {
+          "text": "இன்னும் எவ்வளவு தூரம் தான்டா போகணும் உங்க ஊருக்கு",
+          "tanglish_text": "இன்னும் எவ்வளவு தூரம் தான்டா போகணும் உங்க ஊருக்கு",
+          "english_translation": "How far do you have to go to your town?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 7
+        },
+        {
+          "text": "வீட்டுக்கு முத பிள்ளையா பிறந்து இன்னும் கஷ்டப்பட்டுிட்டுதான் இருக்காப்பள",
+          "tanglish_text": "வீட்டுக்கு முத பிள்ளையா பிறந்து இன்னும் கஷ்டப்பட்டுிட்டுதான் இருக்காப்பள",
+          "english_translation": "The first child of the family was born and she was still struggling",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 7
+        },
+        {
+          "text": "இந்த ஊர்காரங்க பண்ண தப்புனால இன்னும் அனுபவிச்சிட்டு இருக்காங்க",
+          "tanglish_text": "இந்த ஊர்காரங்க பண்ண தப்புனால இன்னும் அனுபவிச்சிட்டு இருக்காங்க",
+          "english_translation": "They are still experiencing the mistake of making this home",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 7
+        },
+        {
+          "text": "மூத்த பிள்ளைக்கு கல்யாணம் ஆனா என்ன ஆகும்னு உங்களுக்கு தெரியும்ல்ல",
+          "tanglish_text": "மூத்த பிள்ளைக்கு கல்யாணம் ஆனா என்ன ஆகும்னு உங்களுக்கு தெரியும்ல்ல",
+          "english_translation": "You never know what will happen if the eldest child gets married",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 8
+        }
+      ]
+    },
+    {
+      "lesson_id": "level3_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_202421_0",
+      "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "entry_count": 9,
+      "generated_at": "2026-05-04T20:24:21.847951",
+      "metadata": {
+        "entry_count": 9,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "初中级",
+          "sentence_words": [
+            3,
+            12
+          ],
+          "features": [
+            "compound_phrases",
+            "tense_usage",
+            "common_slang"
+          ],
+          "description": "复合短语、时态使用、常见俚语"
+        }
+      },
+      "entries": [
+        {
+          "text": "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க",
+          "tanglish_text": "யோவ் அவங்க ரெண்டு பேரும் கல்யாணம் பண்ணிக்க போறதா ஊருக்குள்ள பேசிட்டுறாங்க",
+          "english_translation": "Yo, they are both going to get married",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 9
+        },
+        {
+          "text": "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+          "tanglish_text": "அட ஆமாயா நீ வேற நான்ல்லாம் வீட்ுல ரெண்டாவது பிள்ளையா பிறந்துருக்கலாம்",
+          "english_translation": "You may be the second child born in a house of four",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 9
+        },
+        {
+          "text": "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+          "tanglish_text": "இந்தா இந்த ஆளோட தம்பி ரெண்டு பொண்டாட்டி கட்டிட்டு சுத்திட்டு திரறானப்பா",
+          "english_translation": "Inda, this man's younger brother is a father of two",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 9
+        },
+        {
+          "text": "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+          "tanglish_text": "முதல் பொண்டாட்டிக்கு பிறந்த புள்ள வயசுல இன்னொரு பொண்ணை கல்யாணம் பண்ணிருக்கானப்பா",
+          "english_translation": "Did he marry another girl when he was old enough to give birth to his first son?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 9
+        },
+        {
+          "text": "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+          "tanglish_text": "ஆனால் இந்த ஊரார் வசொல் என்னால் காதால் கேட்க முடியவில்லை பஞ்சாயி கேட்க முடியவில்லை",
+          "english_translation": "But I could not hear the words of this villager, I could not hear panchayi",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 11
+        },
+        {
+          "text": "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+          "tanglish_text": "ஓ ஓ [கரகோஷம்] ஓ ஓ ஓ ஓகே [இசை] இதான் உன் வீடா",
+          "english_translation": "Oh oh [applause] oh oh oh okay [music] This is your home",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 11
+        },
+        {
+          "text": "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+          "tanglish_text": "ஏன் இந்த நாசமா போன ஊர்ல முதல் பிள்ளையா வந்து பிறந்து தொலைஞ்சேன்னு தெரியல",
+          "english_translation": "I don't know why the first child came to this ruined town and got lost",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 11
+        },
+        {
+          "text": "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்",
+          "tanglish_text": "சரி அழாதீங்கம்மா அதெல்லாம் சரணன் சொன்ன மாதிரி யாராவது கிளப்பி விட்ட கதையாதான் இருக்கும்",
+          "english_translation": "Well, don't cry, it's just a story made up by someone like Saranan told",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 11
+        },
+        {
+          "text": "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா",
+          "tanglish_text": "ஏய் அத பெரிய அங்க பாருடா சரவண ஒரு பொம்பளை பிள்ளைய கூட்டிட்டு போறான் கவனிச்சீங்களா",
+          "english_translation": "Hey, did you notice that in that big place Baruda Saravana was going to collect a doll for the children?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 12
+        }
+      ]
+    },
+    {
+      "lesson_id": "level4_sentence_d7871e0ad01d561a4b3610ebb478c3e1d8578bb7_20260504_202428_0",
+      "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "entry_count": 3,
+      "generated_at": "2026-05-04T20:24:28.780119",
+      "metadata": {
+        "entry_count": 3,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "中级",
+          "sentence_words": [
+            4,
+            16
+          ],
+          "features": [
+            "longer_sentences",
+            "emotion_expression",
+            "code_switching"
+          ],
+          "description": "长句子、情感表达、代码转换"
+        }
+      },
+      "entries": [
+        {
+          "text": "இருக்கானே ஆமா அதாங்க சின்ன பாண்டியன் ஆமா அவங்க அண்ணனுக்கு ஒன்னுன்னா பதறிடுவான் பாஞ்சிடுவான் சுருக்கமா சொன்னா",
+          "tanglish_text": "இருக்கானே ஆமா அதாங்க சின்ன பாண்டியன் ஆமா அவங்க அண்ணனுக்கு ஒன்னுன்னா பதறிடுவான் பாஞ்சிடுவான் சுருக்கமா சொன்னா",
+          "english_translation": "Yes, yes, that little Pandian, yes, did you say anything to his brother, Panchiduan, Panchiduan, in short?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 13
+        },
+        {
+          "text": "ராமசாமி தாரசாமி ராமசாமி ராமசாமி ராமசாமி தான் ஏண்ணே ஊரெல்லாம் கொட்டை அடிச்சு கூடிறத பார்த்து ஏதோ நம்ம பூதத்தாண்",
+          "tanglish_text": "ராமசாமி தாரசாமி ராமசாமி ராமசாமி ராமசாமி தான் ஏண்ணே ஊரெல்லாம் கொட்டை அடிச்சு கூடிறத பார்த்து ஏதோ நம்ம பூதத்தாண்",
+          "english_translation": "Ramaswami Taraswami Ramaswami Ramaswami Ramaswami is the reason why the whole town is beating nuts.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 15
+        },
+        {
+          "text": "வீட்டு போயிருக்கு [இசை] [கரகோஷம்] [இசை] எல்லாருக்கும் வணக்கம் நான் ஒரு கோயிலை கட்டுனேன் நீங்க யாரும் சாமி கும்பிட",
+          "tanglish_text": "வீட்டு போயிருக்கு [இசை] [கரகோஷம்] [இசை] எல்லாருக்கும் வணக்கம் நான் ஒரு கோயிலை கட்டுனேன் நீங்க யாரும் சாமி கும்பிட",
+          "english_translation": "[Music] [Applause] [Music] Hello everyone, I built a temple, no one should bow to Sami.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 15
+        }
+      ]
+    },
+    {
+      "lesson_id": "level4_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_202430_0",
+      "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "entry_count": 3,
+      "generated_at": "2026-05-04T20:24:30.894862",
+      "metadata": {
+        "entry_count": 3,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "中级",
+          "sentence_words": [
+            4,
+            16
+          ],
+          "features": [
+            "longer_sentences",
+            "emotion_expression",
+            "code_switching"
+          ],
+          "description": "长句子、情感表达、代码转换"
+        }
+      },
+      "entries": [
+        {
+          "text": "இந்த ஊர்ல போறந்த முதல் பையனுக்கு கல்யாணம் ஆச்சுன்னா அவன் பொண்டாட்டி கொஞ்ச நாள்ல அமங்கலி ஆயிடுவா",
+          "tanglish_text": "இந்த ஊர்ல போறந்த முதல் பையனுக்கு கல்யாணம் ஆச்சுன்னா அவன் பொண்டாட்டி கொஞ்ச நாள்ல அமங்கலி ஆயிடுவா",
+          "english_translation": "If the first boy who goes to this town gets married, he will become pregnant in a few days.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 13
+        },
+        {
+          "text": "[இசை] ஓம் ஸ்மோக்கிங் காசஸ் கேன்சர் ஸ்மோக்கிங் கில்ஸ் புகைப்பிடித்தல் புற்று நோயை உண்டாக்கும் மற்றும் உயிரை கொள்ளும்",
+          "tanglish_text": "[இசை] ஓம் ஸ்மோக்கிங் காசஸ் கேன்சர் ஸ்மோக்கிங் கில்ஸ் புகைப்பிடித்தல் புற்று நோயை உண்டாக்கும் மற்றும் உயிரை கொள்ளும்",
+          "english_translation": "[Music] Om Smoking Causes Cancer Smoking Kills Smoking causes cancer and kills.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 14
+        },
+        {
+          "text": "[இசை] [இசை] [இசை] [இசை] [இசை] [கரகோஷம்] சீக்கிரம் வா அக்கா [இசை] [கரகோஷம்] ஆத்தா என் மருமகளுக்கு பொண்ணுதான் பொறக்கணும்",
+          "tanglish_text": "[இசை] [இசை] [இசை] [இசை] [இசை] [கரகோஷம்] சீக்கிரம் வா அக்கா [இசை] [கரகோஷம்] ஆத்தா என் மருமகளுக்கு பொண்ணுதான் பொறக்கணும்",
+          "english_translation": "[MUSIC] [MUSIC] [MUSIC] [MUSIC] [MUSIC] [CLAPPING] Come quickly sister [MUSIC] [CLAPPING] Father, my daughter-in-law needs a daughter.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 16
+        }
+      ]
+    },
+    {
+      "lesson_id": "level6_sentence_bc69ec0861e8702df7a1ba87b5ea6545fe99c827_20260504_202433_0",
+      "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "entry_count": 3,
+      "generated_at": "2026-05-04T20:24:33.368993",
+      "metadata": {
+        "entry_count": 3,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "高级",
+          "sentence_words": [
+            8,
+            30
+          ],
+          "features": [
+            "context_heavy",
+            "sarcasm",
+            "regional_variation"
+          ],
+          "description": "上下文依赖、讽刺、地方变体"
+        }
+      },
+      "entries": [
+        {
+          "text": "கன்சம்ஷன் ஆப் ஆல்கஹால் இஸ் இன்சரிஸ் டுஹெல்த் மது அருந்துதல் உடல் நலத்திற்கு கேடு பீ சேப் டோன்ட் டிரிங்க் அண்ட் டிரைவ் பாதுகாப்பாக இருப்பீர் மத இருந்துவிட்டு வாகனம் ஓட்டாதீர்",
+          "tanglish_text": "கன்சம்ஷன் ஆப் ஆல்கஹால் இஸ் இன்சரிஸ் டுஹெல்த் மது அருந்துதல் உடல் நலத்திற்கு கேடு பீ சேப் டோன்ட் டிரிங்க் அண்ட் டிரைவ் பாதுகாப்பாக இருப்பீர் மத இருந்துவிட்டு வாகனம் ஓட்டாதீர்",
+          "english_translation": "Consumption of Alcohol is Injurious to Health Drinking Alcohol is Harmful to Health Be Safe Don't Drink and Drive Be Safe Be Religious Don't Drive",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 23
+        },
+        {
+          "text": "அப்படி என்னமா ஆயிரும் நாங்க கல்யாணம் பண்ணா ஏய் அதெல்லாம் ஒன்னு சரவணா ரொம்ப தப்பு பண்ற இந்த பிள்ளைகிட்ட ஒண்ணுமே சொல்லலையா நீயே நீ என்ன என்கிட்ட இருந்து மறைச்ச",
+          "tanglish_text": "அப்படி என்னமா ஆயிரும் நாங்க கல்யாணம் பண்ணா ஏய் அதெல்லாம் ஒன்னு சரவணா ரொம்ப தப்பு பண்ற இந்த பிள்ளைகிட்ட ஒண்ணுமே சொல்லலையா நீயே நீ என்ன என்கிட்ட இருந்து மறைச்ச",
+          "english_translation": "So what is it, we are not getting married, hey, it's all one thing, Saravana, it's a big mistake, don't you say anything to this child, what are you hiding from me?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 23
+        },
+        {
+          "text": "முறைக்கிறாளப்பா என்னடா இப்படி இருக்காங்க உங்க ஊருக்காரங்க பின்னாடியே வரானுங்க நான்தான் உங்ககிட்ட முன்னாடியே சொல்லி இருக்கேன்ல எங்க ஊருக்காரங்க எப்படின்னு என்ன அழகா இருக்க போயிட்டு முதல்ல குளிச்சிட்டு வா நம்ம கோவில ஓகே",
+          "tanglish_text": "முறைக்கிறாளப்பா என்னடா இப்படி இருக்காங்க உங்க ஊருக்காரங்க பின்னாடியே வரானுங்க நான்தான் உங்ககிட்ட முன்னாடியே சொல்லி இருக்கேன்ல எங்க ஊருக்காரங்க எப்படின்னு என்ன அழகா இருக்க போயிட்டு முதல்ல குளிச்சிட்டு வா நம்ம கோவில ஓகே",
+          "english_translation": "Why are you like this? Your villagers are coming behind.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "word_count": 26
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-05-04T20:24:36.388028"
+}

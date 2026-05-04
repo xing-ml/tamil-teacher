@@ -1,0 +1,61 @@
+{
+  "version": "v1.0",
+  "difficulty_levels": {
+    "1": {
+      "name": "入门",
+      "sentence_words": [1, 6],
+      "features": ["single_words", "basic_questions", "high_repetition"],
+      "description": "单个词汇、简单疑问句、高频重复"
+    },
+    "2": {
+      "name": "基础",
+      "sentence_words": [2, 8],
+      "features": ["short_sentences", "basic_verbs", "simple_responses"],
+      "description": "短句子、基础动词、简单回应"
+    },
+    "3": {
+      "name": "初中级",
+      "sentence_words": [3, 12],
+      "features": ["compound_phrases", "tense_usage", "common_slang"],
+      "description": "复合短语、时态使用、常见俚语"
+    },
+    "4": {
+      "name": "中级",
+      "sentence_words": [4, 16],
+      "features": ["longer_sentences", "emotion_expression", "code_switching"],
+      "description": "长句子、情感表达、代码转换"
+    },
+    "5": {
+      "name": "进阶",
+      "sentence_words": [6, 22],
+      "features": ["multi_clause", "implicit_meaning", "fast_speech_patterns"],
+      "description": "多从句、隐含意思、快速口语模式"
+    },
+    "6": {
+      "name": "高级",
+      "sentence_words": [8, 30],
+      "features": ["context_heavy", "sarcasm", "regional_variation"],
+      "description": "上下文依赖、讽刺、地方变体"
+    }
+  },
+  "curriculum": {
+    "round_1": {
+      "days": "1-120",
+      "target_levels": [1, 2],
+      "focus": "理解基础口语 + 高频表达",
+      "description": "入门阶段，学习基本词汇和简单对话"
+    },
+    "round_2": {
+      "days": "121-240",
+      "target_levels": [2, 3],
+      "focus": "自然表达 + 简单情绪",
+      "description": "中级阶段，学习自然表达和情感表达"
+    },
+    "round_3": {
+      "days": "241-365",
+      "target_levels": [3, 4],
+      "focus": "复杂句 + 真实语境",
+      "description": "进阶阶段，学习复杂句式和真实场景应用"
+    }
+  }
+}

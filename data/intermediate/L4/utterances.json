@@ -1,0 +1,19 @@
+[
+  {
+    "utterance_id": "17a2016b5a40",
+    "level": "L4",
+    "target_text": "apram oru mass scene",
+    "target_tanglish": "apram oru mass scene",
+    "preceding_2": [
+      "hello seri enna irukku",
+      "nee enna panren"
+    ],
+    "following_2": [
+      "dei dei poda loosu",
+      "theriyum theriyum seri seri"
+    ],
+    "linguistic_score": 7.0,
+    "pragmatic_score": 1.0,
+    "final_score": 5.5
+  }
+]

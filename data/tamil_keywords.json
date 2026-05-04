@@ -1,0 +1,114 @@
+{
+  "version": "v1.0",
+  "last_updated": "2026-05-03",
+  "colloquial_keywords": {
+    "core": [
+      "enna",
+      "epdi",
+      "eppadi",
+      "enga",
+      "yen",
+      "ippo",
+      "apram",
+      "seri",
+      "illa",
+      "irukku",
+      "venuma",
+      "theriyuma",
+      "paathiya",
+      "solra",
+      "kekka"
+    ],
+    "verbs_spoken": [
+      "panra",
+      "varra",
+      "varren",
+      "pora",
+      "poren",
+      "sapdra",
+      "saptiya",
+      "paakra",
+      "pesra",
+      "kudikra",
+      "nikka",
+      "ukkaru",
+      "eduthu"
+    ],
+    "particles": [
+      "da",
+      "dei",
+      "di",
+      "pa",
+      "ma",
+      "machi",
+      "machan",
+      "bro",
+      "anna",
+      "thambi",
+      "mapla"
+    ],
+    "emotion": [
+      "aiyyo",
+      "ada",
+      "paavam",
+      "romba",
+      "semma",
+      "super",
+      "vera level",
+      "seri seri",
+      "summa"
+    ],
+    "slang_common": [
+      "mokka",
+      "figure",
+      "jollu",
+      "mass",
+      "scene",
+      "matter",
+      "set aagiduchu",
+      "adjust panniko",
+      "time pass",
+      "feelings"
+    ],
+    "phrases_common": [
+      "enna da panra",
+      "enga pora",
+      "saptiya illa",
+      "late ah vandha",
+      "romba nalla",
+      "enna problem",
+      "seri pa",
+      "ippo varren",
+      "wait pannunga"
+    ],
+    "aggressive_light": [
+      "dei enna da",
+      "enna da idhu",
+      "ipdi panra",
+      "seri da podhum",
+      "summa iru",
+      "enna problem da"
+    ],
+    "aggressive_strong": [
+      "poda",
+      "podi",
+      "loosu",
+      "mental",
+      "summa iru da",
+      "dei stop pannuda",
+      "vaangala na vidu",
+      "enna da nee"
+    ],
+    "chennai_slang": [
+      "eguru",
+      "mams",
+      "looku vidu",
+      "cutting",
+      "periya paruppu"
+    ]
+  },
+  "dynamic_learned": {
+    "last_added": [],
+    "frequency_stats": {}
+  }
+}
