@@ -60,7 +60,7 @@ class TamilCorpusManager:
         self.corpus_dir = Path(corpus_dir)
         self.corpus_dir.mkdir(parents=True, exist_ok=True)
         self.corpus_file = self.corpus_dir / "tamil_corpus.json"
-        self.lessons_file = self.corpus_dir / "lessons_registry.json"
+        self.lessons_file = self.corpus_dir.parent / "lessons_registry" / "registry.json"
         self.lessons_data = []
         self.difficulty_levels = self._load_difficulty_levels()
         self._load_corpus()
@@ -68,7 +68,7 @@ class TamilCorpusManager:
     
     def _load_difficulty_levels(self) -> dict:
         """Load difficulty level definitions."""
-        difficulty_file = self.corpus_dir.parent / "difficulty_levels.json"
+        difficulty_file = self.corpus_dir.parent / "definitions" / "difficulty_definitions.json"
         if difficulty_file.exists():
             try:
                 data = json.loads(difficulty_file.read_text(encoding="utf-8"))

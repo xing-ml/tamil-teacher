@@ -140,7 +140,7 @@ def build_context(
 ) -> dict:
     today = datetime.now().astimezone()
     cycle_info = determine_cycle_info(difficulty_data, today)
-    cache_hashes = set(cache_data.get("dialogue_cache", {}).keys())
+    cache_hashes = set(cache_data.get("dialogue_used", {}).keys())
     target_window = level_window(difficulty_data, cycle_info["target_levels"])
 
     dialogues = []
