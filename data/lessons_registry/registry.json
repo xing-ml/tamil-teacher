@@ -1,10 +1,11 @@
 {
   "lesson_counts": {
-    "6": 2,
-    "1": 5,
-    "2": 2,
-    "3": 1,
-    "4": 2
+    "6": 4,
+    "1": 14,
+    "2": 6,
+    "3": 4,
+    "5": 1,
+    "4": 4
   },
   "lessons": [
     {
@@ -14,7 +15,7 @@
       "dialogue_type": "sentence",
       "rating": "C",
       "entry_count": 2,
-      "generated_at": "2026-05-05T12:31:29.954827",
+      "generated_at": "2026-05-05T13:06:05.869428",
       "metadata": {
         "entry_count": 2,
         "avg_score": 0.43,
@@ -87,7 +88,7 @@
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 10,
-      "generated_at": "2026-05-05T12:31:29.958409",
+      "generated_at": "2026-05-05T13:06:05.872079",
       "metadata": {
         "entry_count": 10,
         "avg_score": 0.37,
@@ -352,7 +353,7 @@
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 10,
-      "generated_at": "2026-05-05T12:31:29.962331",
+      "generated_at": "2026-05-05T13:06:05.874852",
       "metadata": {
         "entry_count": 10,
         "avg_score": 0.37,
@@ -617,7 +618,7 @@
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 4,
-      "generated_at": "2026-05-05T12:31:29.965346",
+      "generated_at": "2026-05-05T13:06:05.877677",
       "metadata": {
         "entry_count": 4,
         "avg_score": 0.37,
@@ -738,7 +739,7 @@
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 6,
-      "generated_at": "2026-05-05T12:31:29.996412",
+      "generated_at": "2026-05-05T13:06:05.880687",
       "metadata": {
         "entry_count": 6,
         "avg_score": 0.37,
@@ -901,13 +902,1124 @@
       ]
     },
     {
+      "lesson_id": "lesson_L1_005",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.883680",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": ">> சாப்பிடியா",
+          "tanglish_text": ">> saappidiyaa",
+          "english_translation": ">> do you eat",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 2
+        },
+        {
+          "text": ">> மன்னிச்சு",
+          "tanglish_text": ">> mannichchu",
+          "english_translation": ">> sorry",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 2
+        },
+        {
+          "text": "அவரா இப்படி ஆயிட்டாரு",
+          "tanglish_text": "avaraa ippadi aayittaaru",
+          "english_translation": "He was like this",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 3
+        },
+        {
+          "text": "நான் மிலிட்ரி காரன்",
+          "tanglish_text": "naan militri kaaran",
+          "english_translation": "I am a military man",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 3
+        },
+        {
+          "text": ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+          "tanglish_text": ">> saappittugittae ses aadalaam",
+          "english_translation": ">> You can play chess while eating",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 4
+        },
+        {
+          "text": ">> ஆடு மாயா போயிடுச்ச",
+          "tanglish_text": ">> aadu maayaa poyiduchcha",
+          "english_translation": ">> The goat is gone",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 4
+        },
+        {
+          "text": "[சிரிப்பு] >> காலி பசங்க",
+          "tanglish_text": "[sirippu] >> kaali pasanga",
+          "english_translation": "[Laughter] >> Galli Basanga",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 4
+        },
+        {
+          "text": ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+          "tanglish_text": ">> maamaa kovichchukkaadheenga maamaa",
+          "english_translation": ">> Uncle, don't be rude, uncle",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 4
+        },
+        {
+          "text": ">> உனக்கு எந்த பூ பிடிக்கும்",
+          "tanglish_text": ">> unakku endha poo pidikkum",
+          "english_translation": ">> which flower do you like?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 5
+        },
+        {
+          "text": ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்",
+          "tanglish_text": ">> unakku pidichchadhellaam enakku pidikkum",
+          "english_translation": ">> i like whatever you like",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 5
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": ">> சாப்பிடியா",
+            "tanglish_text": ">> saappidiyaa"
+          },
+          "previous": [],
+          "next": [
+            ">> மன்னிச்சு",
+            "அவரா இப்படி ஆயிட்டாரு"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> மன்னிச்சு",
+            "tanglish_text": ">> mannichchu"
+          },
+          "previous": [
+            ">> சாப்பிடியா"
+          ],
+          "next": [
+            "அவரா இப்படி ஆயிட்டாரு",
+            "நான் மிலிட்ரி காரன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "அவரா இப்படி ஆயிட்டாரு",
+            "tanglish_text": "avaraa ippadi aayittaaru"
+          },
+          "previous": [
+            ">> சாப்பிடியா",
+            ">> மன்னிச்சு"
+          ],
+          "next": [
+            "நான் மிலிட்ரி காரன்",
+            ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்"
+          ]
+        },
+        {
+          "current": {
+            "text": "நான் மிலிட்ரி காரன்",
+            "tanglish_text": "naan militri kaaran"
+          },
+          "previous": [
+            ">> மன்னிச்சு",
+            "அவரா இப்படி ஆயிட்டாரு"
+          ],
+          "next": [
+            ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+            ">> ஆடு மாயா போயிடுச்ச"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+            "tanglish_text": ">> saappittugittae ses aadalaam"
+          },
+          "previous": [
+            "அவரா இப்படி ஆயிட்டாரு",
+            "நான் மிலிட்ரி காரன்"
+          ],
+          "next": [
+            ">> ஆடு மாயா போயிடுச்ச",
+            "[சிரிப்பு] >> காலி பசங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ஆடு மாயா போயிடுச்ச",
+            "tanglish_text": ">> aadu maayaa poyiduchcha"
+          },
+          "previous": [
+            "நான் மிலிட்ரி காரன்",
+            ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்"
+          ],
+          "next": [
+            "[சிரிப்பு] >> காலி பசங்க",
+            ">> மாமா கோவிச்சுக்காதீங்க மாமா"
+          ]
+        },
+        {
+          "current": {
+            "text": "[சிரிப்பு] >> காலி பசங்க",
+            "tanglish_text": "[sirippu] >> kaali pasanga"
+          },
+          "previous": [
+            ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+            ">> ஆடு மாயா போயிடுச்ச"
+          ],
+          "next": [
+            ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+            ">> உனக்கு எந்த பூ பிடிக்கும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+            "tanglish_text": ">> maamaa kovichchukkaadheenga maamaa"
+          },
+          "previous": [
+            ">> ஆடு மாயா போயிடுச்ச",
+            "[சிரிப்பு] >> காலி பசங்க"
+          ],
+          "next": [
+            ">> உனக்கு எந்த பூ பிடிக்கும்",
+            ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> உனக்கு எந்த பூ பிடிக்கும்",
+            "tanglish_text": ">> unakku endha poo pidikkum"
+          },
+          "previous": [
+            "[சிரிப்பு] >> காலி பசங்க",
+            ">> மாமா கோவிச்சுக்காதீங்க மாமா"
+          ],
+          "next": [
+            ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்",
+            "tanglish_text": ">> unakku pidichchadhellaam enakku pidikkum"
+          },
+          "previous": [
+            ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+            ">> உனக்கு எந்த பூ பிடிக்கும்"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_006",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.886532",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "உன் கதைதான் ஏற்கனவே எனக்கு தெரியுமே",
+          "tanglish_text": "un kadhaidhaan yerkanavae enakku theriyumae",
+          "english_translation": "I already know your story",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 5
+        },
+        {
+          "text": "இல்ல செஸ் ஆடிக்கிட்டே சாப்பிடலாம் கமான்",
+          "tanglish_text": "illa ses aadikkittae saappidalaam kamaan",
+          "english_translation": "Illa chess, let's eat it",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 5
+        },
+        {
+          "text": "கடமை தவிர்ந்தவனை ஷூட் பண்ண வேண்டியதுதான்",
+          "tanglish_text": "kadamai thavirndhavanai shoot panna vaendiyadhudhaan",
+          "english_translation": "The dereliction of duty should be shot",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 5
+        },
+        {
+          "text": "இவர் முன்னாடி நிக்கறதுக்கே எல்லாரும் பயப்படுவாங்க டாக்டர்",
+          "tanglish_text": "ivar munnaadi nikkaradhukkae ellaarum payappaduvaanga daaktar",
+          "english_translation": "Doctor, everyone should be afraid because of his past",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 6
+        },
+        {
+          "text": ">> உன் கூட சாப்பிடலாம்னு தான் வந்துருக்கேன்",
+          "tanglish_text": ">> un kooda saappidalaamnu thaan vandhurukkaen",
+          "english_translation": ">> I came just so you can eat too",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 6
+        },
+        {
+          "text": ">> ஞாயிற்றுக்கிழமை >> வழக்கமா என்ன செய்வ",
+          "tanglish_text": ">> njaayitrukkizhamai >> vazhakkamaa enna seiva",
+          "english_translation": ">> sunday >> what do you usually do",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 6
+        },
+        {
+          "text": ">> நேத்து சாயந்திரம் மார்க்கெட்ல ஆட்டுக்கால் கிடைக்கிறது",
+          "tanglish_text": ">> naeththu saayandhiram maarkketla aattukkaal kidaikkiradhu",
+          "english_translation": ">> Goat meat is available in Nethu Sayantram market",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 6
+        },
+        {
+          "text": ">> எங்க காலேஜ்ல உட்காரதுக்கு இடம் இருக்கு",
+          "tanglish_text": ">> enga kaalaejla utkaaradhukku idam irukku",
+          "english_translation": ">> We have a place to sit in our college",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 6
+        },
+        {
+          "text": ">> ஆனா சைட் அடிக்க பொண்ணுங்கதான் இல்ல",
+          "tanglish_text": ">> aanaa sait adikka ponnungadhaan illa",
+          "english_translation": ">> But it's not just a girl to hit the site",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 6
+        },
+        {
+          "text": ">> பின்ன பொண்ண சைட் அடிக்கவா வர்றோம்",
+          "tanglish_text": ">> pinna ponna sait adikkavaa varrom",
+          "english_translation": ">> Pinna Ponna Site Hitkava come",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 6
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "உன் கதைதான் ஏற்கனவே எனக்கு தெரியுமே",
+            "tanglish_text": "un kadhaidhaan yerkanavae enakku theriyumae"
+          },
+          "previous": [],
+          "next": [
+            "இல்ல செஸ் ஆடிக்கிட்டே சாப்பிடலாம் கமான்",
+            "கடமை தவிர்ந்தவனை ஷூட் பண்ண வேண்டியதுதான்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இல்ல செஸ் ஆடிக்கிட்டே சாப்பிடலாம் கமான்",
+            "tanglish_text": "illa ses aadikkittae saappidalaam kamaan"
+          },
+          "previous": [
+            "உன் கதைதான் ஏற்கனவே எனக்கு தெரியுமே"
+          ],
+          "next": [
+            "கடமை தவிர்ந்தவனை ஷூட் பண்ண வேண்டியதுதான்",
+            "இவர் முன்னாடி நிக்கறதுக்கே எல்லாரும் பயப்படுவாங்க டாக்டர்"
+          ]
+        },
+        {
+          "current": {
+            "text": "கடமை தவிர்ந்தவனை ஷூட் பண்ண வேண்டியதுதான்",
+            "tanglish_text": "kadamai thavirndhavanai shoot panna vaendiyadhudhaan"
+          },
+          "previous": [
+            "உன் கதைதான் ஏற்கனவே எனக்கு தெரியுமே",
+            "இல்ல செஸ் ஆடிக்கிட்டே சாப்பிடலாம் கமான்"
+          ],
+          "next": [
+            "இவர் முன்னாடி நிக்கறதுக்கே எல்லாரும் பயப்படுவாங்க டாக்டர்",
+            ">> உன் கூட சாப்பிடலாம்னு தான் வந்துருக்கேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இவர் முன்னாடி நிக்கறதுக்கே எல்லாரும் பயப்படுவாங்க டாக்டர்",
+            "tanglish_text": "ivar munnaadi nikkaradhukkae ellaarum payappaduvaanga daaktar"
+          },
+          "previous": [
+            "இல்ல செஸ் ஆடிக்கிட்டே சாப்பிடலாம் கமான்",
+            "கடமை தவிர்ந்தவனை ஷூட் பண்ண வேண்டியதுதான்"
+          ],
+          "next": [
+            ">> உன் கூட சாப்பிடலாம்னு தான் வந்துருக்கேன்",
+            ">> ஞாயிற்றுக்கிழமை >> வழக்கமா என்ன செய்வ"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> உன் கூட சாப்பிடலாம்னு தான் வந்துருக்கேன்",
+            "tanglish_text": ">> un kooda saappidalaamnu thaan vandhurukkaen"
+          },
+          "previous": [
+            "கடமை தவிர்ந்தவனை ஷூட் பண்ண வேண்டியதுதான்",
+            "இவர் முன்னாடி நிக்கறதுக்கே எல்லாரும் பயப்படுவாங்க டாக்டர்"
+          ],
+          "next": [
+            ">> ஞாயிற்றுக்கிழமை >> வழக்கமா என்ன செய்வ",
+            ">> நேத்து சாயந்திரம் மார்க்கெட்ல ஆட்டுக்கால் கிடைக்கிறது"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ஞாயிற்றுக்கிழமை >> வழக்கமா என்ன செய்வ",
+            "tanglish_text": ">> njaayitrukkizhamai >> vazhakkamaa enna seiva"
+          },
+          "previous": [
+            "இவர் முன்னாடி நிக்கறதுக்கே எல்லாரும் பயப்படுவாங்க டாக்டர்",
+            ">> உன் கூட சாப்பிடலாம்னு தான் வந்துருக்கேன்"
+          ],
+          "next": [
+            ">> நேத்து சாயந்திரம் மார்க்கெட்ல ஆட்டுக்கால் கிடைக்கிறது",
+            ">> எங்க காலேஜ்ல உட்காரதுக்கு இடம் இருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> நேத்து சாயந்திரம் மார்க்கெட்ல ஆட்டுக்கால் கிடைக்கிறது",
+            "tanglish_text": ">> naeththu saayandhiram maarkketla aattukkaal kidaikkiradhu"
+          },
+          "previous": [
+            ">> உன் கூட சாப்பிடலாம்னு தான் வந்துருக்கேன்",
+            ">> ஞாயிற்றுக்கிழமை >> வழக்கமா என்ன செய்வ"
+          ],
+          "next": [
+            ">> எங்க காலேஜ்ல உட்காரதுக்கு இடம் இருக்கு",
+            ">> ஆனா சைட் அடிக்க பொண்ணுங்கதான் இல்ல"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> எங்க காலேஜ்ல உட்காரதுக்கு இடம் இருக்கு",
+            "tanglish_text": ">> enga kaalaejla utkaaradhukku idam irukku"
+          },
+          "previous": [
+            ">> ஞாயிற்றுக்கிழமை >> வழக்கமா என்ன செய்வ",
+            ">> நேத்து சாயந்திரம் மார்க்கெட்ல ஆட்டுக்கால் கிடைக்கிறது"
+          ],
+          "next": [
+            ">> ஆனா சைட் அடிக்க பொண்ணுங்கதான் இல்ல",
+            ">> பின்ன பொண்ண சைட் அடிக்கவா வர்றோம்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ஆனா சைட் அடிக்க பொண்ணுங்கதான் இல்ல",
+            "tanglish_text": ">> aanaa sait adikka ponnungadhaan illa"
+          },
+          "previous": [
+            ">> நேத்து சாயந்திரம் மார்க்கெட்ல ஆட்டுக்கால் கிடைக்கிறது",
+            ">> எங்க காலேஜ்ல உட்காரதுக்கு இடம் இருக்கு"
+          ],
+          "next": [
+            ">> பின்ன பொண்ண சைட் அடிக்கவா வர்றோம்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> பின்ன பொண்ண சைட் அடிக்கவா வர்றோம்",
+            "tanglish_text": ">> pinna ponna sait adikkavaa varrom"
+          },
+          "previous": [
+            ">> எங்க காலேஜ்ல உட்காரதுக்கு இடம் இருக்கு",
+            ">> ஆனா சைட் அடிக்க பொண்ணுங்கதான் இல்ல"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_007",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.889065",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "வணக்கம் சார்",
+          "tanglish_text": "vanakkam saar",
+          "english_translation": "hello sir",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 2
+        },
+        {
+          "text": "அப்படி செய்யல",
+          "tanglish_text": "appadi seiyala",
+          "english_translation": "Don't do that",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 2
+        },
+        {
+          "text": "சொல்லுங்க சார்",
+          "tanglish_text": "sollunga saar",
+          "english_translation": "Tell me sir",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 2
+        },
+        {
+          "text": ">> சாரி சார்",
+          "tanglish_text": ">> saari saar",
+          "english_translation": ">> bye sir",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 3
+        },
+        {
+          "text": "வாயா சுப்பராஜ் எப்படி இருக்கற",
+          "tanglish_text": "vaayaa supparaaj eppadi irukkara",
+          "english_translation": "How are you Vaya Subbaraj?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 4
+        },
+        {
+          "text": ">> நல்லா இருக்கு சார்",
+          "tanglish_text": ">> nallaa irukku saar",
+          "english_translation": ">> good sir",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 4
+        },
+        {
+          "text": ">> என்ன பேசுறீங்க நீங்க",
+          "tanglish_text": ">> enna paesureenga neenga",
+          "english_translation": ">> what are you talking about",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 4
+        },
+        {
+          "text": "யாரை பத்தி தப்பா பேசுறீங்க",
+          "tanglish_text": "yaarai paththi thappaa paesureenga",
+          "english_translation": "Who are you talking about?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 4
+        },
+        {
+          "text": ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்",
+          "tanglish_text": ">> yaaruppaa neengallaam enna vaenum",
+          "english_translation": ">> Yoruba, whatever you want",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 5
+        },
+        {
+          "text": ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்",
+          "tanglish_text": ">> andha padhaviyila paraththaiyaadhaan irukkanum",
+          "english_translation": ">> Bharatiya should be in that post",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 5
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "வணக்கம் சார்",
+            "tanglish_text": "vanakkam saar"
+          },
+          "previous": [],
+          "next": [
+            "அப்படி செய்யல",
+            "சொல்லுங்க சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "அப்படி செய்யல",
+            "tanglish_text": "appadi seiyala"
+          },
+          "previous": [
+            "வணக்கம் சார்"
+          ],
+          "next": [
+            "சொல்லுங்க சார்",
+            ">> சாரி சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "சொல்லுங்க சார்",
+            "tanglish_text": "sollunga saar"
+          },
+          "previous": [
+            "வணக்கம் சார்",
+            "அப்படி செய்யல"
+          ],
+          "next": [
+            ">> சாரி சார்",
+            "வாயா சுப்பராஜ் எப்படி இருக்கற"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> சாரி சார்",
+            "tanglish_text": ">> saari saar"
+          },
+          "previous": [
+            "அப்படி செய்யல",
+            "சொல்லுங்க சார்"
+          ],
+          "next": [
+            "வாயா சுப்பராஜ் எப்படி இருக்கற",
+            ">> நல்லா இருக்கு சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "வாயா சுப்பராஜ் எப்படி இருக்கற",
+            "tanglish_text": "vaayaa supparaaj eppadi irukkara"
+          },
+          "previous": [
+            "சொல்லுங்க சார்",
+            ">> சாரி சார்"
+          ],
+          "next": [
+            ">> நல்லா இருக்கு சார்",
+            ">> என்ன பேசுறீங்க நீங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> நல்லா இருக்கு சார்",
+            "tanglish_text": ">> nallaa irukku saar"
+          },
+          "previous": [
+            ">> சாரி சார்",
+            "வாயா சுப்பராஜ் எப்படி இருக்கற"
+          ],
+          "next": [
+            ">> என்ன பேசுறீங்க நீங்க",
+            "யாரை பத்தி தப்பா பேசுறீங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> என்ன பேசுறீங்க நீங்க",
+            "tanglish_text": ">> enna paesureenga neenga"
+          },
+          "previous": [
+            "வாயா சுப்பராஜ் எப்படி இருக்கற",
+            ">> நல்லா இருக்கு சார்"
+          ],
+          "next": [
+            "யாரை பத்தி தப்பா பேசுறீங்க",
+            ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "யாரை பத்தி தப்பா பேசுறீங்க",
+            "tanglish_text": "yaarai paththi thappaa paesureenga"
+          },
+          "previous": [
+            ">> நல்லா இருக்கு சார்",
+            ">> என்ன பேசுறீங்க நீங்க"
+          ],
+          "next": [
+            ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்",
+            ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்",
+            "tanglish_text": ">> yaaruppaa neengallaam enna vaenum"
+          },
+          "previous": [
+            ">> என்ன பேசுறீங்க நீங்க",
+            "யாரை பத்தி தப்பா பேசுறீங்க"
+          ],
+          "next": [
+            ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்",
+            "tanglish_text": ">> andha padhaviyila paraththaiyaadhaan irukkanum"
+          },
+          "previous": [
+            "யாரை பத்தி தப்பா பேசுறீங்க",
+            ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_008",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.891909",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+          "tanglish_text": "adhukkaana kaes kooda pabail pannala",
+          "english_translation": "The case for that is not even made public",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 5
+        },
+        {
+          "text": "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+          "tanglish_text": "pat ai staart pikking teeppar",
+          "english_translation": "But I start picking deeper",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 5
+        },
+        {
+          "text": "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+          "tanglish_text": "idhu ellaamae enakku sandhaegamaa irundhadhu",
+          "english_translation": "I doubted all of this",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 5
+        },
+        {
+          "text": "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+          "tanglish_text": "neenga vandhu engalukku endha pirayojanamum illai",
+          "english_translation": "You are of no use to us",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        },
+        {
+          "text": "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+          "tanglish_text": "ungalai kattuppaduththura adhigaaram siem kitta irukku",
+          "english_translation": "The CM has the authority to control you",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        },
+        {
+          "text": "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+          "tanglish_text": "yekkuraen >> mudhalamaichcharai thaerndhedukkaradhu engaloda poruppu",
+          "english_translation": "Ekkuren >> It is our responsibility to elect the Chief Minister",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        },
+        {
+          "text": ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+          "tanglish_text": ">> nee enna seiviyo engalukku theriyaadhu",
+          "english_translation": ">> we don't know what you do",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        },
+        {
+          "text": "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+          "tanglish_text": "aanaa ennaala ungalai paes panna mudiyala",
+          "english_translation": "But I can't pace you",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        },
+        {
+          "text": "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+          "tanglish_text": "ekchi em raagavan avardhaan enga appaa",
+          "english_translation": "XM Raghavan is our father",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        },
+        {
+          "text": "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல",
+          "tanglish_text": "aanaa idhuvaraikkum adhukkaana nadavadikkai yaarumae edukkala",
+          "english_translation": "But till now no one is taking action for it",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+            "tanglish_text": "adhukkaana kaes kooda pabail pannala"
+          },
+          "previous": [],
+          "next": [
+            "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+            "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது"
+          ]
+        },
+        {
+          "current": {
+            "text": "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+            "tanglish_text": "pat ai staart pikking teeppar"
+          },
+          "previous": [
+            "அதுக்கான கேஸ் கூட பபைல் பண்ணல"
+          ],
+          "next": [
+            "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+            "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை"
+          ]
+        },
+        {
+          "current": {
+            "text": "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+            "tanglish_text": "idhu ellaamae enakku sandhaegamaa irundhadhu"
+          },
+          "previous": [
+            "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+            "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்"
+          ],
+          "next": [
+            "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+            "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+            "tanglish_text": "neenga vandhu engalukku endha pirayojanamum illai"
+          },
+          "previous": [
+            "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+            "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது"
+          ],
+          "next": [
+            "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+            "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு"
+          ]
+        },
+        {
+          "current": {
+            "text": "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+            "tanglish_text": "ungalai kattuppaduththura adhigaaram siem kitta irukku"
+          },
+          "previous": [
+            "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+            "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை"
+          ],
+          "next": [
+            "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+            ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+            "tanglish_text": "yekkuraen >> mudhalamaichcharai thaerndhedukkaradhu engaloda poruppu"
+          },
+          "previous": [
+            "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+            "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு"
+          ],
+          "next": [
+            ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+            "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+            "tanglish_text": ">> nee enna seiviyo engalukku theriyaadhu"
+          },
+          "previous": [
+            "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+            "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு"
+          ],
+          "next": [
+            "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+            "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+            "tanglish_text": "aanaa ennaala ungalai paes panna mudiyala"
+          },
+          "previous": [
+            "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+            ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது"
+          ],
+          "next": [
+            "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+            "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல"
+          ]
+        },
+        {
+          "current": {
+            "text": "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+            "tanglish_text": "ekchi em raagavan avardhaan enga appaa"
+          },
+          "previous": [
+            ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+            "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல"
+          ],
+          "next": [
+            "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல",
+            "tanglish_text": "aanaa idhuvaraikkum adhukkaana nadavadikkai yaarumae edukkala"
+          },
+          "previous": [
+            "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+            "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_009",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 1,
+      "generated_at": "2026-05-05T13:06:05.894240",
+      "metadata": {
+        "entry_count": 1,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "[இசை] இனிமே நீங்கதான் சார் நடவடிக்கை எடுக்கணும்",
+          "tanglish_text": "[isai] inimae neengadhaan saar nadavadikkai edukkanum",
+          "english_translation": "[Music] Now you have to take action, sir",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 6
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "[இசை] இனிமே நீங்கதான் சார் நடவடிக்கை எடுக்கணும்",
+            "tanglish_text": "[isai] inimae neengadhaan saar nadavadikkai edukkanum"
+          },
+          "previous": [],
+          "next": []
+        }
+      ]
+    },
+    {
       "lesson_id": "lesson_L2_001",
       "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
       "difficulty_level": "2",
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 4,
-      "generated_at": "2026-05-05T12:31:30.000060",
+      "generated_at": "2026-05-05T13:06:05.897068",
       "metadata": {
         "entry_count": 4,
         "avg_score": 0.37,
@@ -1028,7 +2140,7 @@
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 4,
-      "generated_at": "2026-05-05T12:31:30.003271",
+      "generated_at": "2026-05-05T13:06:05.899569",
       "metadata": {
         "entry_count": 4,
         "avg_score": 0.37,
@@ -1143,13 +2255,495 @@
       ]
     },
     {
+      "lesson_id": "lesson_L2_003",
+      "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 8,
+      "generated_at": "2026-05-05T13:06:05.901993",
+      "metadata": {
+        "entry_count": 8,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "基础",
+          "sentence_words": [
+            2,
+            8
+          ],
+          "features": [
+            "short_sentences",
+            "basic_verbs",
+            "simple_responses"
+          ],
+          "description": "短句子、基础动词、简单回应"
+        }
+      },
+      "entries": [
+        {
+          "text": ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்",
+          "tanglish_text": ">> enakku enakku indha vellai poodhaan pidikkum",
+          "english_translation": ">> I like this white flower",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 7
+        },
+        {
+          "text": "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+          "tanglish_text": "daaktar avarukku indha nilaimai yerpattadhukku kaaranam enna",
+          "english_translation": "Dr. What caused this condition to happen to him",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 7
+        },
+        {
+          "text": "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+          "tanglish_text": "jenaral aabiragaam parambarai parambaraiyaa periya kudumbaththai saerndhavar",
+          "english_translation": "General Abraham Paramparai belonged to a great family",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 7
+        },
+        {
+          "text": "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+          "tanglish_text": "[sirippu] >> naan unna kaekkalappaa maeriya kaettaen",
+          "english_translation": "[Laughter] >> I asked you for your kekalappa mariya",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 7
+        },
+        {
+          "text": ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+          "tanglish_text": ">> appa paayaa >> yen innaikku seiva",
+          "english_translation": ">> Appa Paya >> Why do it today",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 7
+        },
+        {
+          "text": ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+          "tanglish_text": ">> appo ponnungalai sait adikkadhaan inga vareengalaa",
+          "english_translation": ">> So do you come here just to hit the girls?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 7
+        },
+        {
+          "text": ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா",
+          "tanglish_text": ">> paalo naandhaan sarchchukku poi 20 varusham aachchaedaa",
+          "english_translation": ">> Paul, I've been going to church for 20 years",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 8
+        },
+        {
+          "text": "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு",
+          "tanglish_text": "en manaivi aashaa irandhu innaiyoda 20 varusham aachchu",
+          "english_translation": "It has been 20 years since my wife Asha passed away",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 8
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்",
+            "tanglish_text": ">> enakku enakku indha vellai poodhaan pidikkum"
+          },
+          "previous": [],
+          "next": [
+            "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+            "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்"
+          ]
+        },
+        {
+          "current": {
+            "text": "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+            "tanglish_text": "daaktar avarukku indha nilaimai yerpattadhukku kaaranam enna"
+          },
+          "previous": [
+            ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்"
+          ],
+          "next": [
+            "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+            "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+            "tanglish_text": "jenaral aabiragaam parambarai parambaraiyaa periya kudumbaththai saerndhavar"
+          },
+          "previous": [
+            ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்",
+            "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன"
+          ],
+          "next": [
+            "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+            ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ"
+          ]
+        },
+        {
+          "current": {
+            "text": "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+            "tanglish_text": "[sirippu] >> naan unna kaekkalappaa maeriya kaettaen"
+          },
+          "previous": [
+            "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+            "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்"
+          ],
+          "next": [
+            ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+            ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+            "tanglish_text": ">> appa paayaa >> yen innaikku seiva"
+          },
+          "previous": [
+            "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+            "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்"
+          ],
+          "next": [
+            ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+            ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+            "tanglish_text": ">> appo ponnungalai sait adikkadhaan inga vareengalaa"
+          },
+          "previous": [
+            "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+            ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ"
+          ],
+          "next": [
+            ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா",
+            "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா",
+            "tanglish_text": ">> paalo naandhaan sarchchukku poi 20 varusham aachchaedaa"
+          },
+          "previous": [
+            ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+            ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா"
+          ],
+          "next": [
+            "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு"
+          ]
+        },
+        {
+          "current": {
+            "text": "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு",
+            "tanglish_text": "en manaivi aashaa irandhu innaiyoda 20 varusham aachchu"
+          },
+          "previous": [
+            ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+            ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L2_004",
+      "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.904880",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "基础",
+          "sentence_words": [
+            2,
+            8
+          ],
+          "features": [
+            "short_sentences",
+            "basic_verbs",
+            "simple_responses"
+          ],
+          "description": "短句子、基础动词、简单回应"
+        }
+      },
+      "entries": [
+        {
+          "text": "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்",
+          "tanglish_text": "udane chennaikku poi andha thambiya siem aakkuraen",
+          "english_translation": "I will immediately go to Chennai and make that brother CM",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 7
+        },
+        {
+          "text": "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+          "tanglish_text": "[isai] kashtamaa irundhaalum konjam seekkiramaa pannittaa nalladhu",
+          "english_translation": "[Music] Even if it's difficult, it's better to do it a little faster",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 7
+        },
+        {
+          "text": "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+          "tanglish_text": "niraiya thadavai ungalai meet pannumnu ninaichchaen saar",
+          "english_translation": "I thought I would meet you many times sir",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 7
+        },
+        {
+          "text": "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+          "tanglish_text": "avara traes panna naanga niraiya trai pannom",
+          "english_translation": "We tried a lot to trace him",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 7
+        },
+        {
+          "text": "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+          "tanglish_text": "yaarukko bayanthudhaan avar indha oorai vittu poyirukkaaru",
+          "english_translation": "He left this town because he was afraid of someone",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 7
+        },
+        {
+          "text": "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+          "tanglish_text": "aanaa avarai elakt panra adhigaaram mattum engalukku illa",
+          "english_translation": "But we do not have the power to elect him",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 8
+        },
+        {
+          "text": "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+          "tanglish_text": "ungaloda uyir nanbar katchi thalaivar andha varadharaajan thaan",
+          "english_translation": "Your best friend is the party leader Varadarajan",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 8
+        },
+        {
+          "text": "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+          "tanglish_text": "enakku indha vishayam theriya vandhappa kooda naan nambala",
+          "english_translation": "I couldn't believe it even when I came to know about this",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 8
+        },
+        {
+          "text": "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு",
+          "tanglish_text": "andha manogar seiyara aththanai paavangalukkum varadharaajan thunaiyaa irukkaaru",
+          "english_translation": "Varadarajan will help all the sins that Manohar commits",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 8
+        },
+        {
+          "text": "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப",
+          "tanglish_text": "enna paarkka vandhurukkeengannu therinjaa kandippaa ungalaiyum akbaalo pa",
+          "english_translation": "If you know what you have come to see, then follow you too",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 8
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்",
+            "tanglish_text": "udane chennaikku poi andha thambiya siem aakkuraen"
+          },
+          "previous": [],
+          "next": [
+            "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+            "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+            "tanglish_text": "[isai] kashtamaa irundhaalum konjam seekkiramaa pannittaa nalladhu"
+          },
+          "previous": [
+            "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்"
+          ],
+          "next": [
+            "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+            "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்"
+          ]
+        },
+        {
+          "current": {
+            "text": "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+            "tanglish_text": "niraiya thadavai ungalai meet pannumnu ninaichchaen saar"
+          },
+          "previous": [
+            "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்",
+            "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது"
+          ],
+          "next": [
+            "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+            "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு"
+          ]
+        },
+        {
+          "current": {
+            "text": "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+            "tanglish_text": "avara traes panna naanga niraiya trai pannom"
+          },
+          "previous": [
+            "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+            "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்"
+          ],
+          "next": [
+            "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+            "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல"
+          ]
+        },
+        {
+          "current": {
+            "text": "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+            "tanglish_text": "yaarukko bayanthudhaan avar indha oorai vittu poyirukkaaru"
+          },
+          "previous": [
+            "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+            "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்"
+          ],
+          "next": [
+            "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+            "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+            "tanglish_text": "aanaa avarai elakt panra adhigaaram mattum engalukku illa"
+          },
+          "previous": [
+            "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+            "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு"
+          ],
+          "next": [
+            "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+            "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல"
+          ]
+        },
+        {
+          "current": {
+            "text": "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+            "tanglish_text": "ungaloda uyir nanbar katchi thalaivar andha varadharaajan thaan"
+          },
+          "previous": [
+            "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+            "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல"
+          ],
+          "next": [
+            "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+            "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு"
+          ]
+        },
+        {
+          "current": {
+            "text": "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+            "tanglish_text": "enakku indha vishayam theriya vandhappa kooda naan nambala"
+          },
+          "previous": [
+            "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+            "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்"
+          ],
+          "next": [
+            "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு",
+            "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப"
+          ]
+        },
+        {
+          "current": {
+            "text": "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு",
+            "tanglish_text": "andha manogar seiyara aththanai paavangalukkum varadharaajan thunaiyaa irukkaaru"
+          },
+          "previous": [
+            "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+            "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல"
+          ],
+          "next": [
+            "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப"
+          ]
+        },
+        {
+          "current": {
+            "text": "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப",
+            "tanglish_text": "enna paarkka vandhurukkeengannu therinjaa kandippaa ungalaiyum akbaalo pa"
+          },
+          "previous": [
+            "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+            "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
       "lesson_id": "lesson_L3_001",
       "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
       "difficulty_level": "3",
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 9,
-      "generated_at": "2026-05-05T12:31:30.005988",
+      "generated_at": "2026-05-05T13:06:05.907503",
       "metadata": {
         "entry_count": 9,
         "avg_score": 0.37,
@@ -1384,13 +2978,544 @@
       ]
     },
     {
+      "lesson_id": "lesson_L5_001",
+      "title": "Tamil Colloquial Level 5 - 进阶 (sentence)",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 6,
+      "generated_at": "2026-05-05T13:06:05.909653",
+      "metadata": {
+        "entry_count": 6,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "进阶",
+          "sentence_words": [
+            6,
+            22
+          ],
+          "features": [
+            "multi_clause",
+            "implicit_meaning",
+            "fast_speech_patterns"
+          ],
+          "description": "多从句、隐含意思、快速口语模式"
+        }
+      },
+      "entries": [
+        {
+          "text": "டிபன் இட்லி, தோசை, வடை, பூரி >> இன்னைக்கு என்ன கிழமை",
+          "tanglish_text": "tiban itli, thosai, vadai, poori >> innaikku enna kizhamai",
+          "english_translation": "Tiban Idli, Dosa, Vada, Puri >> What a day today",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 9
+        },
+        {
+          "text": "அந்த உயிர் இல்லாம இந்த உடம்பு மட்டும் தனியா எங்கேயுமே போறதில்லை ஆபீஸ தவிர இந்த உலகத்துல எனக்கு இருக்கறதெல்லாம் ஒரே மகள் ஒரே நண்பன்",
+          "tanglish_text": "andha uyir illaama indha udambu mattum thaniyaa engaeyumae poradhillai aabeesa thavira indha ulagaththula enakku irukkaradhellaam orae magal orae nanban",
+          "english_translation": "Without that life, only this body alone, I don't go anywhere, except for the office, all I have in this world is one daughter, one friend.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 19
+        },
+        {
+          "text": "அண்டர்ஸ்டாண்ட் [சிரிப்பு] அழகுடா அங்க பாரு ஏன்பா காலங்காத்தால பொம்பளை பிள்ளைங்க படிக்கிற காலேஜ்ல வந்து உட்கார்ந்து இருக்கீங்களே உங்க காலேஜ்ல உட்காரதுக்கு இடமே இல்லையா",
+          "tanglish_text": "andarstaant [sirippu] azhagudaa anga paaru yenbaa kaalangaaththaala pombalai pillainga padikkira kaalaejla vandhu utkaarndhu irukkeengalae unga kaalaejla utkaaradhukku idamae illaiyaa",
+          "english_translation": "Understand [Laughter] You are not beautiful, why are you sitting in the college where Bombay children are studying?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 19
+        },
+        {
+          "text": "ப்ளீஸ் தேங்க்யூ போட பார்வர்ட் வாட்ச் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ஹட் [இசை] என்ன தெரியுதா",
+          "tanglish_text": "plees thaengkyoo poda paarvart vaatch lept rait lept rait lept rait lept rait lept rait lept hat [isai] enna theriyudhaa",
+          "english_translation": "Please Thank You Forward Watch Left Right Left Right Left Right Left Right Left Right Left Hat [Music] Do you know what?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 20
+        },
+        {
+          "text": "ஏன்டா டேய் என்ன சாப்பிடா யப்பா உன் மிலிட்ரி தர்பரை பார்த்தாலே பயமா இருக்கு எப்படி அமைதியா சாப்பிடுறது டேய் ஒவ்வொருத்தரும் தன்னுடைய கடமையை ஒழுங்கா செய்யணும்",
+          "tanglish_text": "yendaa taei enna saappidaa yappaa un militri tharbarai paarththaalae payamaa irukku eppadi amaidhiyaa saappiduradhu taei ovvoruththarum thannudaiya kadamaiyai ozhungaa seiyanum",
+          "english_translation": "Why don't you eat bro, I'm afraid to see your military turbar, how can you eat calmly bro, everyone should do their duty properly",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 20
+        },
+        {
+          "text": "என்னடி முனி அம்மா உன் கண்ணிலே மையி யாரு வச்ச மையி இது நான் வச்ச மையி நீ முன்னாலே போனா நான் பின்னாலே வாறேன் ஏரிக்கரை ஓரத்திலே ஏத்து",
+          "tanglish_text": "ennadi muni ammaa un kannilae maiyi yaaru vachcha maiyi idhu naan vachcha maiyi nee munnaalae ponaa naan pinnaalae vaaraen yerikkarai oraththilae yeththu",
+          "english_translation": "Ennadi Muni Amma, Maii in your eyes, who is Vacha Maii?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 22
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "டிபன் இட்லி, தோசை, வடை, பூரி >> இன்னைக்கு என்ன கிழமை",
+            "tanglish_text": "tiban itli, thosai, vadai, poori >> innaikku enna kizhamai"
+          },
+          "previous": [],
+          "next": [
+            "அந்த உயிர் இல்லாம இந்த உடம்பு மட்டும் தனியா எங்கேயுமே போறதில்லை ஆபீஸ தவிர இந்த உலகத்துல எனக்கு இருக்கறதெல்லாம் ஒரே மகள் ஒரே நண்பன்",
+            "அண்டர்ஸ்டாண்ட் [சிரிப்பு] அழகுடா அங்க பாரு ஏன்பா காலங்காத்தால பொம்பளை பிள்ளைங்க படிக்கிற காலேஜ்ல வந்து உட்கார்ந்து இருக்கீங்களே உங்க காலேஜ்ல உட்காரதுக்கு இடமே இல்லையா"
+          ]
+        },
+        {
+          "current": {
+            "text": "அந்த உயிர் இல்லாம இந்த உடம்பு மட்டும் தனியா எங்கேயுமே போறதில்லை ஆபீஸ தவிர இந்த உலகத்துல எனக்கு இருக்கறதெல்லாம் ஒரே மகள் ஒரே நண்பன்",
+            "tanglish_text": "andha uyir illaama indha udambu mattum thaniyaa engaeyumae poradhillai aabeesa thavira indha ulagaththula enakku irukkaradhellaam orae magal orae nanban"
+          },
+          "previous": [
+            "டிபன் இட்லி, தோசை, வடை, பூரி >> இன்னைக்கு என்ன கிழமை"
+          ],
+          "next": [
+            "அண்டர்ஸ்டாண்ட் [சிரிப்பு] அழகுடா அங்க பாரு ஏன்பா காலங்காத்தால பொம்பளை பிள்ளைங்க படிக்கிற காலேஜ்ல வந்து உட்கார்ந்து இருக்கீங்களே உங்க காலேஜ்ல உட்காரதுக்கு இடமே இல்லையா",
+            "ப்ளீஸ் தேங்க்யூ போட பார்வர்ட் வாட்ச் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ஹட் [இசை] என்ன தெரியுதா"
+          ]
+        },
+        {
+          "current": {
+            "text": "அண்டர்ஸ்டாண்ட் [சிரிப்பு] அழகுடா அங்க பாரு ஏன்பா காலங்காத்தால பொம்பளை பிள்ளைங்க படிக்கிற காலேஜ்ல வந்து உட்கார்ந்து இருக்கீங்களே உங்க காலேஜ்ல உட்காரதுக்கு இடமே இல்லையா",
+            "tanglish_text": "andarstaant [sirippu] azhagudaa anga paaru yenbaa kaalangaaththaala pombalai pillainga padikkira kaalaejla vandhu utkaarndhu irukkeengalae unga kaalaejla utkaaradhukku idamae illaiyaa"
+          },
+          "previous": [
+            "டிபன் இட்லி, தோசை, வடை, பூரி >> இன்னைக்கு என்ன கிழமை",
+            "அந்த உயிர் இல்லாம இந்த உடம்பு மட்டும் தனியா எங்கேயுமே போறதில்லை ஆபீஸ தவிர இந்த உலகத்துல எனக்கு இருக்கறதெல்லாம் ஒரே மகள் ஒரே நண்பன்"
+          ],
+          "next": [
+            "ப்ளீஸ் தேங்க்யூ போட பார்வர்ட் வாட்ச் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ஹட் [இசை] என்ன தெரியுதா",
+            "ஏன்டா டேய் என்ன சாப்பிடா யப்பா உன் மிலிட்ரி தர்பரை பார்த்தாலே பயமா இருக்கு எப்படி அமைதியா சாப்பிடுறது டேய் ஒவ்வொருத்தரும் தன்னுடைய கடமையை ஒழுங்கா செய்யணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "ப்ளீஸ் தேங்க்யூ போட பார்வர்ட் வாட்ச் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ஹட் [இசை] என்ன தெரியுதா",
+            "tanglish_text": "plees thaengkyoo poda paarvart vaatch lept rait lept rait lept rait lept rait lept rait lept hat [isai] enna theriyudhaa"
+          },
+          "previous": [
+            "அந்த உயிர் இல்லாம இந்த உடம்பு மட்டும் தனியா எங்கேயுமே போறதில்லை ஆபீஸ தவிர இந்த உலகத்துல எனக்கு இருக்கறதெல்லாம் ஒரே மகள் ஒரே நண்பன்",
+            "அண்டர்ஸ்டாண்ட் [சிரிப்பு] அழகுடா அங்க பாரு ஏன்பா காலங்காத்தால பொம்பளை பிள்ளைங்க படிக்கிற காலேஜ்ல வந்து உட்கார்ந்து இருக்கீங்களே உங்க காலேஜ்ல உட்காரதுக்கு இடமே இல்லையா"
+          ],
+          "next": [
+            "ஏன்டா டேய் என்ன சாப்பிடா யப்பா உன் மிலிட்ரி தர்பரை பார்த்தாலே பயமா இருக்கு எப்படி அமைதியா சாப்பிடுறது டேய் ஒவ்வொருத்தரும் தன்னுடைய கடமையை ஒழுங்கா செய்யணும்",
+            "என்னடி முனி அம்மா உன் கண்ணிலே மையி யாரு வச்ச மையி இது நான் வச்ச மையி நீ முன்னாலே போனா நான் பின்னாலே வாறேன் ஏரிக்கரை ஓரத்திலே ஏத்து"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஏன்டா டேய் என்ன சாப்பிடா யப்பா உன் மிலிட்ரி தர்பரை பார்த்தாலே பயமா இருக்கு எப்படி அமைதியா சாப்பிடுறது டேய் ஒவ்வொருத்தரும் தன்னுடைய கடமையை ஒழுங்கா செய்யணும்",
+            "tanglish_text": "yendaa taei enna saappidaa yappaa un militri tharbarai paarththaalae payamaa irukku eppadi amaidhiyaa saappiduradhu taei ovvoruththarum thannudaiya kadamaiyai ozhungaa seiyanum"
+          },
+          "previous": [
+            "அண்டர்ஸ்டாண்ட் [சிரிப்பு] அழகுடா அங்க பாரு ஏன்பா காலங்காத்தால பொம்பளை பிள்ளைங்க படிக்கிற காலேஜ்ல வந்து உட்கார்ந்து இருக்கீங்களே உங்க காலேஜ்ல உட்காரதுக்கு இடமே இல்லையா",
+            "ப்ளீஸ் தேங்க்யூ போட பார்வர்ட் வாட்ச் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ஹட் [இசை] என்ன தெரியுதா"
+          ],
+          "next": [
+            "என்னடி முனி அம்மா உன் கண்ணிலே மையி யாரு வச்ச மையி இது நான் வச்ச மையி நீ முன்னாலே போனா நான் பின்னாலே வாறேன் ஏரிக்கரை ஓரத்திலே ஏத்து"
+          ]
+        },
+        {
+          "current": {
+            "text": "என்னடி முனி அம்மா உன் கண்ணிலே மையி யாரு வச்ச மையி இது நான் வச்ச மையி நீ முன்னாலே போனா நான் பின்னாலே வாறேன் ஏரிக்கரை ஓரத்திலே ஏத்து",
+            "tanglish_text": "ennadi muni ammaa un kannilae maiyi yaaru vachcha maiyi idhu naan vachcha maiyi nee munnaalae ponaa naan pinnaalae vaaraen yerikkarai oraththilae yeththu"
+          },
+          "previous": [
+            "ப்ளீஸ் தேங்க்யூ போட பார்வர்ட் வாட்ச் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ஹட் [இசை] என்ன தெரியுதா",
+            "ஏன்டா டேய் என்ன சாப்பிடா யப்பா உன் மிலிட்ரி தர்பரை பார்த்தாலே பயமா இருக்கு எப்படி அமைதியா சாப்பிடுறது டேய் ஒவ்வொருத்தரும் தன்னுடைய கடமையை ஒழுங்கா செய்யணும்"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L3_002",
+      "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.911698",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "初中级",
+          "sentence_words": [
+            3,
+            12
+          ],
+          "features": [
+            "compound_phrases",
+            "tense_usage",
+            "common_slang"
+          ],
+          "description": "复合短语、时态使用、常见俚语"
+        }
+      },
+      "entries": [
+        {
+          "text": ">> உங்கள மாதிரி ஊர் சுத்தல்லாம் நினைச்சு உடையில போடல அவரு",
+          "tanglish_text": ">> ungala maadhiri oor suththallaam ninaichchu udaiyila podala avaru",
+          "english_translation": ">> He thought he could clean up the town like you",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 9
+        },
+        {
+          "text": "ஆனா பிரஷருக்கு பயந்து என் டியூட்டிய செய்யாம உங்களையே தோக்கடிச்சிட்டேன் சார்",
+          "tanglish_text": "aanaa pirasharukku bayanthu en tiyoottiya seiyaama ungalaiyae thokkadichchittaen saar",
+          "english_translation": "But fearing the pressure, I did not do my duty and killed you sir",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 9
+        },
+        {
+          "text": "அவன் சட்ட விரோதமா சேர்த்த சொத்துக்கெல்லாம் அவனுக்கு ஒரு பார்ட்னர் இருக்கான்",
+          "tanglish_text": "avan satta virodhamaa saerththa soththukkellaam avanukku oru paartnar irukkaan",
+          "english_translation": "He has a partner for all his ill-gotten gains",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 9
+        },
+        {
+          "text": "[இசை] இது நடந்து கொஞ்ச நாளைக்கு அப்புறம் உங்க அப்பா இறந்துட்டாரு",
+          "tanglish_text": "[isai] idhu nadandhu konja naalaikku appuram unga appaa irandhuttaaru",
+          "english_translation": "[Music] A few days after this happened, your father died",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 9
+        },
+        {
+          "text": ">> ஏன் பட்டினத்துல இருக்கற மாதிரி பட்டி காட்டணும் இருக்கணும்னு ஆசைப்பட்டவர் அவரு",
+          "tanglish_text": ">> yen pattinaththula irukkara maadhiri patti kaattanum irukkanumnu aasaippattavar avaru",
+          "english_translation": ">> Why is he the one who wanted to starve himself?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 10
+        },
+        {
+          "text": "சோ அவுட் ஆப் கயூரியாசிட்டி இந்த கேஸ நானே இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சேன்",
+          "tanglish_text": "so avut aap kayooriyaasitti indha kaesa naane investiget panna aarambichchaen",
+          "english_translation": "So out of curiosity I started investigating this case myself",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 10
+        },
+        {
+          "text": "அவர் இறந்து போனது போஸ்ட்மார்ட்டம் பண்ணாம இருந்தது ஈம சடங்கு உடனே செஞ்சது",
+          "tanglish_text": "avar irandhu ponadhu postmaarttam pannaama irundhadhu eema sadangu udane senjadhu",
+          "english_translation": "He died without a postmortem and the ritual was performed immediately",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 10
+        },
+        {
+          "text": "நான் அங்க இருக்கறது சேப் இல்லைன்னு தெரிஞ்சு ஊர விட்டு தலைமறை வாயிட்டேன்",
+          "tanglish_text": "naan anga irukkaradhu saep illainnu therinju oora vittu thalaimarai vaayittaen",
+          "english_translation": "Knowing that I was not there, I left the town and went into hiding",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 10
+        },
+        {
+          "text": "வெக்காளி அம்மன் மேல சத்தியமா சொல்ற உன்ன ஊர விட்டு எல்லாரும் அடிச்சு துரத்துவோம்",
+          "tanglish_text": "vekkaali amman maela saththiyamaa solra unna oora vittu ellaarum adichchu thuraththuvom",
+          "english_translation": "We will beat and chase you all out of your town if you say the truth to Vekkali Amman",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 11
+        },
+        {
+          "text": "அந்த கில்ட்லதான் பர்சனலா நானும் என் டீமும் அந்த கேஸ இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சோம்",
+          "tanglish_text": "andha kiltladhaan parsanalaa naanum en teemum andha kaesa investiget panna aarambichchom",
+          "english_translation": "My team and I personally started investigating the case in that guild",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 11
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": ">> உங்கள மாதிரி ஊர் சுத்தல்லாம் நினைச்சு உடையில போடல அவரு",
+            "tanglish_text": ">> ungala maadhiri oor suththallaam ninaichchu udaiyila podala avaru"
+          },
+          "previous": [],
+          "next": [
+            "ஆனா பிரஷருக்கு பயந்து என் டியூட்டிய செய்யாம உங்களையே தோக்கடிச்சிட்டேன் சார்",
+            "அவன் சட்ட விரோதமா சேர்த்த சொத்துக்கெல்லாம் அவனுக்கு ஒரு பார்ட்னர் இருக்கான்"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஆனா பிரஷருக்கு பயந்து என் டியூட்டிய செய்யாம உங்களையே தோக்கடிச்சிட்டேன் சார்",
+            "tanglish_text": "aanaa pirasharukku bayanthu en tiyoottiya seiyaama ungalaiyae thokkadichchittaen saar"
+          },
+          "previous": [
+            ">> உங்கள மாதிரி ஊர் சுத்தல்லாம் நினைச்சு உடையில போடல அவரு"
+          ],
+          "next": [
+            "அவன் சட்ட விரோதமா சேர்த்த சொத்துக்கெல்லாம் அவனுக்கு ஒரு பார்ட்னர் இருக்கான்",
+            "[இசை] இது நடந்து கொஞ்ச நாளைக்கு அப்புறம் உங்க அப்பா இறந்துட்டாரு"
+          ]
+        },
+        {
+          "current": {
+            "text": "அவன் சட்ட விரோதமா சேர்த்த சொத்துக்கெல்லாம் அவனுக்கு ஒரு பார்ட்னர் இருக்கான்",
+            "tanglish_text": "avan satta virodhamaa saerththa soththukkellaam avanukku oru paartnar irukkaan"
+          },
+          "previous": [
+            ">> உங்கள மாதிரி ஊர் சுத்தல்லாம் நினைச்சு உடையில போடல அவரு",
+            "ஆனா பிரஷருக்கு பயந்து என் டியூட்டிய செய்யாம உங்களையே தோக்கடிச்சிட்டேன் சார்"
+          ],
+          "next": [
+            "[இசை] இது நடந்து கொஞ்ச நாளைக்கு அப்புறம் உங்க அப்பா இறந்துட்டாரு",
+            ">> ஏன் பட்டினத்துல இருக்கற மாதிரி பட்டி காட்டணும் இருக்கணும்னு ஆசைப்பட்டவர் அவரு"
+          ]
+        },
+        {
+          "current": {
+            "text": "[இசை] இது நடந்து கொஞ்ச நாளைக்கு அப்புறம் உங்க அப்பா இறந்துட்டாரு",
+            "tanglish_text": "[isai] idhu nadandhu konja naalaikku appuram unga appaa irandhuttaaru"
+          },
+          "previous": [
+            "ஆனா பிரஷருக்கு பயந்து என் டியூட்டிய செய்யாம உங்களையே தோக்கடிச்சிட்டேன் சார்",
+            "அவன் சட்ட விரோதமா சேர்த்த சொத்துக்கெல்லாம் அவனுக்கு ஒரு பார்ட்னர் இருக்கான்"
+          ],
+          "next": [
+            ">> ஏன் பட்டினத்துல இருக்கற மாதிரி பட்டி காட்டணும் இருக்கணும்னு ஆசைப்பட்டவர் அவரு",
+            "சோ அவுட் ஆப் கயூரியாசிட்டி இந்த கேஸ நானே இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ஏன் பட்டினத்துல இருக்கற மாதிரி பட்டி காட்டணும் இருக்கணும்னு ஆசைப்பட்டவர் அவரு",
+            "tanglish_text": ">> yen pattinaththula irukkara maadhiri patti kaattanum irukkanumnu aasaippattavar avaru"
+          },
+          "previous": [
+            "அவன் சட்ட விரோதமா சேர்த்த சொத்துக்கெல்லாம் அவனுக்கு ஒரு பார்ட்னர் இருக்கான்",
+            "[இசை] இது நடந்து கொஞ்ச நாளைக்கு அப்புறம் உங்க அப்பா இறந்துட்டாரு"
+          ],
+          "next": [
+            "சோ அவுட் ஆப் கயூரியாசிட்டி இந்த கேஸ நானே இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சேன்",
+            "அவர் இறந்து போனது போஸ்ட்மார்ட்டம் பண்ணாம இருந்தது ஈம சடங்கு உடனே செஞ்சது"
+          ]
+        },
+        {
+          "current": {
+            "text": "சோ அவுட் ஆப் கயூரியாசிட்டி இந்த கேஸ நானே இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சேன்",
+            "tanglish_text": "so avut aap kayooriyaasitti indha kaesa naane investiget panna aarambichchaen"
+          },
+          "previous": [
+            "[இசை] இது நடந்து கொஞ்ச நாளைக்கு அப்புறம் உங்க அப்பா இறந்துட்டாரு",
+            ">> ஏன் பட்டினத்துல இருக்கற மாதிரி பட்டி காட்டணும் இருக்கணும்னு ஆசைப்பட்டவர் அவரு"
+          ],
+          "next": [
+            "அவர் இறந்து போனது போஸ்ட்மார்ட்டம் பண்ணாம இருந்தது ஈம சடங்கு உடனே செஞ்சது",
+            "நான் அங்க இருக்கறது சேப் இல்லைன்னு தெரிஞ்சு ஊர விட்டு தலைமறை வாயிட்டேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "அவர் இறந்து போனது போஸ்ட்மார்ட்டம் பண்ணாம இருந்தது ஈம சடங்கு உடனே செஞ்சது",
+            "tanglish_text": "avar irandhu ponadhu postmaarttam pannaama irundhadhu eema sadangu udane senjadhu"
+          },
+          "previous": [
+            ">> ஏன் பட்டினத்துல இருக்கற மாதிரி பட்டி காட்டணும் இருக்கணும்னு ஆசைப்பட்டவர் அவரு",
+            "சோ அவுட் ஆப் கயூரியாசிட்டி இந்த கேஸ நானே இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சேன்"
+          ],
+          "next": [
+            "நான் அங்க இருக்கறது சேப் இல்லைன்னு தெரிஞ்சு ஊர விட்டு தலைமறை வாயிட்டேன்",
+            "வெக்காளி அம்மன் மேல சத்தியமா சொல்ற உன்ன ஊர விட்டு எல்லாரும் அடிச்சு துரத்துவோம்"
+          ]
+        },
+        {
+          "current": {
+            "text": "நான் அங்க இருக்கறது சேப் இல்லைன்னு தெரிஞ்சு ஊர விட்டு தலைமறை வாயிட்டேன்",
+            "tanglish_text": "naan anga irukkaradhu saep illainnu therinju oora vittu thalaimarai vaayittaen"
+          },
+          "previous": [
+            "சோ அவுட் ஆப் கயூரியாசிட்டி இந்த கேஸ நானே இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சேன்",
+            "அவர் இறந்து போனது போஸ்ட்மார்ட்டம் பண்ணாம இருந்தது ஈம சடங்கு உடனே செஞ்சது"
+          ],
+          "next": [
+            "வெக்காளி அம்மன் மேல சத்தியமா சொல்ற உன்ன ஊர விட்டு எல்லாரும் அடிச்சு துரத்துவோம்",
+            "அந்த கில்ட்லதான் பர்சனலா நானும் என் டீமும் அந்த கேஸ இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சோம்"
+          ]
+        },
+        {
+          "current": {
+            "text": "வெக்காளி அம்மன் மேல சத்தியமா சொல்ற உன்ன ஊர விட்டு எல்லாரும் அடிச்சு துரத்துவோம்",
+            "tanglish_text": "vekkaali amman maela saththiyamaa solra unna oora vittu ellaarum adichchu thuraththuvom"
+          },
+          "previous": [
+            "அவர் இறந்து போனது போஸ்ட்மார்ட்டம் பண்ணாம இருந்தது ஈம சடங்கு உடனே செஞ்சது",
+            "நான் அங்க இருக்கறது சேப் இல்லைன்னு தெரிஞ்சு ஊர விட்டு தலைமறை வாயிட்டேன்"
+          ],
+          "next": [
+            "அந்த கில்ட்லதான் பர்சனலா நானும் என் டீமும் அந்த கேஸ இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சோம்"
+          ]
+        },
+        {
+          "current": {
+            "text": "அந்த கில்ட்லதான் பர்சனலா நானும் என் டீமும் அந்த கேஸ இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சோம்",
+            "tanglish_text": "andha kiltladhaan parsanalaa naanum en teemum andha kaesa investiget panna aarambichchom"
+          },
+          "previous": [
+            "நான் அங்க இருக்கறது சேப் இல்லைன்னு தெரிஞ்சு ஊர விட்டு தலைமறை வாயிட்டேன்",
+            "வெக்காளி அம்மன் மேல சத்தியமா சொல்ற உன்ன ஊர விட்டு எல்லாரும் அடிச்சு துரத்துவோம்"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L3_003",
+      "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 3,
+      "generated_at": "2026-05-05T13:06:05.914233",
+      "metadata": {
+        "entry_count": 3,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "初中级",
+          "sentence_words": [
+            3,
+            12
+          ],
+          "features": [
+            "compound_phrases",
+            "tense_usage",
+            "common_slang"
+          ],
+          "description": "复合短语、时态使用、常见俚语"
+        }
+      },
+      "entries": [
+        {
+          "text": "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது",
+          "tanglish_text": "appa mithraana akpreelaans investigettiv jarnalist andha kaesa paththi niraiya saegarichchirukkaarunnu therinjadhu",
+          "english_translation": "A friend of mine, a freelance investigative journalist, learned that the case column had collected a lot.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 11
+        },
+        {
+          "text": "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு",
+          "tanglish_text": "seeniyar most investigettiv jarnalist vaera oru staetla yaarukkum theriyaama thiruttuththanamaa edhukku",
+          "english_translation": "Sr. Most Investigative Journalist in another state without anyone's knowledge why plagiarism?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 11
+        },
+        {
+          "text": "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்",
+          "tanglish_text": "idhula shaakking niyoos ennannaa unga appaavoda maranam iyarkaiyaanadhu illainnu avar sandhaegappaduraaru saar",
+          "english_translation": "The shocking news is that he suspects that your father's death was not natural",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 12
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது",
+            "tanglish_text": "appa mithraana akpreelaans investigettiv jarnalist andha kaesa paththi niraiya saegarichchirukkaarunnu therinjadhu"
+          },
+          "previous": [],
+          "next": [
+            "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு",
+            "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு",
+            "tanglish_text": "seeniyar most investigettiv jarnalist vaera oru staetla yaarukkum theriyaama thiruttuththanamaa edhukku"
+          },
+          "previous": [
+            "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது"
+          ],
+          "next": [
+            "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்",
+            "tanglish_text": "idhula shaakking niyoos ennannaa unga appaavoda maranam iyarkaiyaanadhu illainnu avar sandhaegappaduraaru saar"
+          },
+          "previous": [
+            "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது",
+            "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
       "lesson_id": "lesson_L4_001",
       "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
       "difficulty_level": "4",
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 3,
-      "generated_at": "2026-05-05T12:31:30.008297",
+      "generated_at": "2026-05-05T13:06:05.919141",
       "metadata": {
         "entry_count": 3,
         "avg_score": 0.37,
@@ -1487,7 +3612,7 @@
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 3,
-      "generated_at": "2026-05-05T12:31:30.010642",
+      "generated_at": "2026-05-05T13:06:05.922127",
       "metadata": {
         "entry_count": 3,
         "avg_score": 0.37,
@@ -1578,13 +3703,182 @@
       ]
     },
     {
+      "lesson_id": "lesson_L4_003",
+      "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 6,
+      "generated_at": "2026-05-05T13:06:05.926282",
+      "metadata": {
+        "entry_count": 6,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "中级",
+          "sentence_words": [
+            4,
+            16
+          ],
+          "features": [
+            "longer_sentences",
+            "emotion_expression",
+            "code_switching"
+          ],
+          "description": "长句子、情感表达、代码转换"
+        }
+      },
+      "entries": [
+        {
+          "text": "[இசை] ஆர்மி பே >> [இசை] >> சார் நான் எங்க இருக்கேன்னு உங்களுக்கு எப்படி தெரியும்",
+          "tanglish_text": "[isai] aarmi pae >> [isai] >> saar naan enga irukkaennu ungalukku eppadi theriyum",
+          "english_translation": "[MUSIC] ARMY BAY >> [MUSIC] >> Sir how do you know where I am",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 13
+        },
+        {
+          "text": "[இசை] >> [இசை] >> எனக்கு தெரிஞ்ச இன்பர்மேஷன் எவிடன்ஸ் எல்லாமே இந்த பென் டிரைவ்ல இருக்கு",
+          "tanglish_text": "[isai] >> [isai] >> enakku therinja inbarmaeshan evidans ellaamae indha pen tiraivla irukku",
+          "english_translation": "[Music] >> [Music] >> All the information evidence I know is in this pen drive",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 13
+        },
+        {
+          "text": "[இசை] >> ஹாய் அரவிந்த் ஹலோ சார் எப்படி இருக்கீங்க உடாருங்க என்ன நம்பி ஒரு இம்பார்டன்ட் கேஸ் ஒப்படிச்சீங்க",
+          "tanglish_text": "[isai] >> haai aravinth halo saar eppadi irukkeenga udaarunga enna nambi oru imbaardant kaes oppadichcheenga",
+          "english_translation": "[Music] >> Hi Arvind Hello sir how are you Udarunga what do you believe and compare an important case",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 15
+        },
+        {
+          "text": "வாய் [பெருமூச்சு] ரொம்ப நாளாவே எதிர்கட்சி தலைவர் கிருஷ்ணமூர்த்தியோட பையன் வருமானத்துக்கு அதிகமா சொத்து சேர்த்ததா எங்களுக்கு இன்பர்மேஷன் வந்துச்சு",
+          "tanglish_text": "vaai [berumoochchu] romba naalaavae edhirgatchi thalaivar kirushnamoorththiyoda paiyan varumaanaththukku adhigamaa soththu saerththadhaa engalukku inbarmaeshan vandhuchchu",
+          "english_translation": "Vai [sigh] For a long time now, we have received information that the son of opposition leader Krishnamurthy has added more property to his income.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 15
+        },
+        {
+          "text": "ஆசை வார்த்தை எதையும் காட்டாம சுயநலமா எத பத்தியும் யோசிக்காம எங்களுக்கு என்ன வேணும்னு தெரிஞ்சு தனியா நின்னு தைரியமா செஞ்சாரு",
+          "tanglish_text": "aasai vaarththai edhaiyum kaattaama suyanalamaa edha paththiyum yosikkaama engalukku enna vaenumnu therinju thaniyaa ninnu thairiyamaa senjaaru",
+          "english_translation": "Don't show any words of desire, don't think about anything selfish, know what we want, and dare to stand alone.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 16
+        },
+        {
+          "text": "சாகுறதுக்கு கொஞ்ச நாள் முன்னாடி உங்ககிட்ட ஏதோ இம்பார்ட்டன்ட் விஷயம் டிஸ்கஸ் பண்ணாரமே [இசை] அதுக்கப்புறம் நீங்க திடீர்னு காணாம போயிட்டீங்க",
+          "tanglish_text": "saaguradhukku konja naal munnaadi ungagitta yedho imbaarttant vishayam tiskas pannaaramae [isai] adhukkappuram neenga thideernu kaanaama poyitteenga",
+          "english_translation": "A few days ago, I was discussing something important with you [music] and suddenly you disappeared.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+          "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+          "word_count": 16
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "[இசை] ஆர்மி பே >> [இசை] >> சார் நான் எங்க இருக்கேன்னு உங்களுக்கு எப்படி தெரியும்",
+            "tanglish_text": "[isai] aarmi pae >> [isai] >> saar naan enga irukkaennu ungalukku eppadi theriyum"
+          },
+          "previous": [],
+          "next": [
+            "[இசை] >> [இசை] >> எனக்கு தெரிஞ்ச இன்பர்மேஷன் எவிடன்ஸ் எல்லாமே இந்த பென் டிரைவ்ல இருக்கு",
+            "[இசை] >> ஹாய் அரவிந்த் ஹலோ சார் எப்படி இருக்கீங்க உடாருங்க என்ன நம்பி ஒரு இம்பார்டன்ட் கேஸ் ஒப்படிச்சீங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": "[இசை] >> [இசை] >> எனக்கு தெரிஞ்ச இன்பர்மேஷன் எவிடன்ஸ் எல்லாமே இந்த பென் டிரைவ்ல இருக்கு",
+            "tanglish_text": "[isai] >> [isai] >> enakku therinja inbarmaeshan evidans ellaamae indha pen tiraivla irukku"
+          },
+          "previous": [
+            "[இசை] ஆர்மி பே >> [இசை] >> சார் நான் எங்க இருக்கேன்னு உங்களுக்கு எப்படி தெரியும்"
+          ],
+          "next": [
+            "[இசை] >> ஹாய் அரவிந்த் ஹலோ சார் எப்படி இருக்கீங்க உடாருங்க என்ன நம்பி ஒரு இம்பார்டன்ட் கேஸ் ஒப்படிச்சீங்க",
+            "வாய் [பெருமூச்சு] ரொம்ப நாளாவே எதிர்கட்சி தலைவர் கிருஷ்ணமூர்த்தியோட பையன் வருமானத்துக்கு அதிகமா சொத்து சேர்த்ததா எங்களுக்கு இன்பர்மேஷன் வந்துச்சு"
+          ]
+        },
+        {
+          "current": {
+            "text": "[இசை] >> ஹாய் அரவிந்த் ஹலோ சார் எப்படி இருக்கீங்க உடாருங்க என்ன நம்பி ஒரு இம்பார்டன்ட் கேஸ் ஒப்படிச்சீங்க",
+            "tanglish_text": "[isai] >> haai aravinth halo saar eppadi irukkeenga udaarunga enna nambi oru imbaardant kaes oppadichcheenga"
+          },
+          "previous": [
+            "[இசை] ஆர்மி பே >> [இசை] >> சார் நான் எங்க இருக்கேன்னு உங்களுக்கு எப்படி தெரியும்",
+            "[இசை] >> [இசை] >> எனக்கு தெரிஞ்ச இன்பர்மேஷன் எவிடன்ஸ் எல்லாமே இந்த பென் டிரைவ்ல இருக்கு"
+          ],
+          "next": [
+            "வாய் [பெருமூச்சு] ரொம்ப நாளாவே எதிர்கட்சி தலைவர் கிருஷ்ணமூர்த்தியோட பையன் வருமானத்துக்கு அதிகமா சொத்து சேர்த்ததா எங்களுக்கு இன்பர்மேஷன் வந்துச்சு",
+            "ஆசை வார்த்தை எதையும் காட்டாம சுயநலமா எத பத்தியும் யோசிக்காம எங்களுக்கு என்ன வேணும்னு தெரிஞ்சு தனியா நின்னு தைரியமா செஞ்சாரு"
+          ]
+        },
+        {
+          "current": {
+            "text": "வாய் [பெருமூச்சு] ரொம்ப நாளாவே எதிர்கட்சி தலைவர் கிருஷ்ணமூர்த்தியோட பையன் வருமானத்துக்கு அதிகமா சொத்து சேர்த்ததா எங்களுக்கு இன்பர்மேஷன் வந்துச்சு",
+            "tanglish_text": "vaai [berumoochchu] romba naalaavae edhirgatchi thalaivar kirushnamoorththiyoda paiyan varumaanaththukku adhigamaa soththu saerththadhaa engalukku inbarmaeshan vandhuchchu"
+          },
+          "previous": [
+            "[இசை] >> [இசை] >> எனக்கு தெரிஞ்ச இன்பர்மேஷன் எவிடன்ஸ் எல்லாமே இந்த பென் டிரைவ்ல இருக்கு",
+            "[இசை] >> ஹாய் அரவிந்த் ஹலோ சார் எப்படி இருக்கீங்க உடாருங்க என்ன நம்பி ஒரு இம்பார்டன்ட் கேஸ் ஒப்படிச்சீங்க"
+          ],
+          "next": [
+            "ஆசை வார்த்தை எதையும் காட்டாம சுயநலமா எத பத்தியும் யோசிக்காம எங்களுக்கு என்ன வேணும்னு தெரிஞ்சு தனியா நின்னு தைரியமா செஞ்சாரு",
+            "சாகுறதுக்கு கொஞ்ச நாள் முன்னாடி உங்ககிட்ட ஏதோ இம்பார்ட்டன்ட் விஷயம் டிஸ்கஸ் பண்ணாரமே [இசை] அதுக்கப்புறம் நீங்க திடீர்னு காணாம போயிட்டீங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஆசை வார்த்தை எதையும் காட்டாம சுயநலமா எத பத்தியும் யோசிக்காம எங்களுக்கு என்ன வேணும்னு தெரிஞ்சு தனியா நின்னு தைரியமா செஞ்சாரு",
+            "tanglish_text": "aasai vaarththai edhaiyum kaattaama suyanalamaa edha paththiyum yosikkaama engalukku enna vaenumnu therinju thaniyaa ninnu thairiyamaa senjaaru"
+          },
+          "previous": [
+            "[இசை] >> ஹாய் அரவிந்த் ஹலோ சார் எப்படி இருக்கீங்க உடாருங்க என்ன நம்பி ஒரு இம்பார்டன்ட் கேஸ் ஒப்படிச்சீங்க",
+            "வாய் [பெருமூச்சு] ரொம்ப நாளாவே எதிர்கட்சி தலைவர் கிருஷ்ணமூர்த்தியோட பையன் வருமானத்துக்கு அதிகமா சொத்து சேர்த்ததா எங்களுக்கு இன்பர்மேஷன் வந்துச்சு"
+          ],
+          "next": [
+            "சாகுறதுக்கு கொஞ்ச நாள் முன்னாடி உங்ககிட்ட ஏதோ இம்பார்ட்டன்ட் விஷயம் டிஸ்கஸ் பண்ணாரமே [இசை] அதுக்கப்புறம் நீங்க திடீர்னு காணாம போயிட்டீங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": "சாகுறதுக்கு கொஞ்ச நாள் முன்னாடி உங்ககிட்ட ஏதோ இம்பார்ட்டன்ட் விஷயம் டிஸ்கஸ் பண்ணாரமே [இசை] அதுக்கப்புறம் நீங்க திடீர்னு காணாம போயிட்டீங்க",
+            "tanglish_text": "saaguradhukku konja naal munnaadi ungagitta yedho imbaarttant vishayam tiskas pannaaramae [isai] adhukkappuram neenga thideernu kaanaama poyitteenga"
+          },
+          "previous": [
+            "வாய் [பெருமூச்சு] ரொம்ப நாளாவே எதிர்கட்சி தலைவர் கிருஷ்ணமூர்த்தியோட பையன் வருமானத்துக்கு அதிகமா சொத்து சேர்த்ததா எங்களுக்கு இன்பர்மேஷன் வந்துச்சு",
+            "ஆசை வார்த்தை எதையும் காட்டாம சுயநலமா எத பத்தியும் யோசிக்காம எங்களுக்கு என்ன வேணும்னு தெரிஞ்சு தனியா நின்னு தைரியமா செஞ்சாரு"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
       "lesson_id": "lesson_L6_002",
       "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
       "difficulty_level": "6",
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 3,
-      "generated_at": "2026-05-05T12:31:30.013248",
+      "generated_at": "2026-05-05T13:06:05.930557",
       "metadata": {
         "entry_count": 3,
         "avg_score": 0.37,
@@ -1675,13 +3969,86 @@
       ]
     },
     {
-      "lesson_id": "lesson_L1_005",
+      "lesson_id": "lesson_L6_003",
+      "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 2,
+      "generated_at": "2026-05-05T13:06:05.933383",
+      "metadata": {
+        "entry_count": 2,
+        "avg_score": 0.37,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "高级",
+          "sentence_words": [
+            8,
+            30
+          ],
+          "features": [
+            "context_heavy",
+            "sarcasm",
+            "regional_variation"
+          ],
+          "description": "上下文依赖、讽刺、地方变体"
+        }
+      },
+      "entries": [
+        {
+          "text": "[சிரிப்பு] கம் ஆல்பவர்ட் பட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் லெப்ட் லெப்ட் >> ராணுவத்துல ஒரு சிங்கம் மாதிரி கர்ஜனை பண்ணிக்கிட்டு இருந்த ஜெனரல் எபிரகாமா இவரு",
+          "tanglish_text": "[sirippu] kam aalbavart pat lept rait lept rait lept rait lept lept lept >> raanuvaththula oru singam maadhiri karjanai pannikkittu irundha jenaral ebiragaamaa ivaru",
+          "english_translation": "[Laughter] COME ALBERT BUT LEFT RIGHT LEFT RIGHT LEFT RIGHT LEFT LEFT LEFT >> This is General Ibrahima who roared like a lion in the army.",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 24
+        },
+        {
+          "text": "ஐ அம் பிரிகேடியர் பிரதாப் சிங் சிம்லாவல உங்க ரெஜிமெண்ட்ல இருந்தவன் ஐ வாஸ் வரிங் அண்டர் யூ சார் என்ன தெரியல [இசை] ஓ மை காட் பிஜங்கள் உங்களுக்கு எந்த பூ பிடிக்கும்",
+          "tanglish_text": "ai am pirigediyar piradhaap sing simlaavala unga rejimentla irundhavan ai vaas varing andar yoo saar enna theriyala [isai] o mai kaat pijangal ungalukku endha poo pidikkum",
+          "english_translation": "I am Brigadier Pratap Singh Shimlawala I was in your regiment I was under you Sir I don't know what [Music] Oh my god Bijal which flower do you like?",
+          "colloquial_score": 0.37,
+          "source_type": "youtube",
+          "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+          "word_count": 26
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "[சிரிப்பு] கம் ஆல்பவர்ட் பட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் லெப்ட் லெப்ட் >> ராணுவத்துல ஒரு சிங்கம் மாதிரி கர்ஜனை பண்ணிக்கிட்டு இருந்த ஜெனரல் எபிரகாமா இவரு",
+            "tanglish_text": "[sirippu] kam aalbavart pat lept rait lept rait lept rait lept lept lept >> raanuvaththula oru singam maadhiri karjanai pannikkittu irundha jenaral ebiragaamaa ivaru"
+          },
+          "previous": [],
+          "next": [
+            "ஐ அம் பிரிகேடியர் பிரதாப் சிங் சிம்லாவல உங்க ரெஜிமெண்ட்ல இருந்தவன் ஐ வாஸ் வரிங் அண்டர் யூ சார் என்ன தெரியல [இசை] ஓ மை காட் பிஜங்கள் உங்களுக்கு எந்த பூ பிடிக்கும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஐ அம் பிரிகேடியர் பிரதாப் சிங் சிம்லாவல உங்க ரெஜிமெண்ட்ல இருந்தவன் ஐ வாஸ் வரிங் அண்டர் யூ சார் என்ன தெரியல [இசை] ஓ மை காட் பிஜங்கள் உங்களுக்கு எந்த பூ பிடிக்கும்",
+            "tanglish_text": "ai am pirigediyar piradhaap sing simlaavala unga rejimentla irundhavan ai vaas varing andar yoo saar enna theriyala [isai] o mai kaat pijangal ungalukku endha poo pidikkum"
+          },
+          "previous": [
+            "[சிரிப்பு] கம் ஆல்பவர்ட் பட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் லெப்ட் லெப்ட் >> ராணுவத்துல ஒரு சிங்கம் மாதிரி கர்ஜனை பண்ணிக்கிட்டு இருந்த ஜெனரல் எபிரகாமா இவரு"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_010",
       "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
       "difficulty_level": "1",
       "dialogue_type": "sentence",
       "rating": "D",
       "entry_count": 3,
-      "generated_at": "2026-05-05T12:31:30.015882",
+      "generated_at": "2026-05-05T13:06:05.935933",
       "metadata": {
         "entry_count": 3,
         "avg_score": 0.35,
@@ -1770,7 +4137,1674 @@
           "next": []
         }
       ]
+    },
+    {
+      "lesson_id": "lesson_L1_011",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.938250",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்",
+          "tanglish_text": "rejistraeshan vachchukkalaam",
+          "english_translation": "Registration can be done",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 2
+        },
+        {
+          "text": "இந்த அனாதைகளுக்காக",
+          "tanglish_text": "indha anaadhaigalukkaaga",
+          "english_translation": "For these orphans",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 2
+        },
+        {
+          "text": "என் பேரு கண்ணபிரான்",
+          "tanglish_text": "en paeru kannabiraan",
+          "english_translation": "My name is Kannabran",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 3
+        },
+        {
+          "text": "அதான் இந்த கண்ணபிரான்",
+          "tanglish_text": "adhaan indha kannabiraan",
+          "english_translation": "That is this Kannapraan",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 3
+        },
+        {
+          "text": "எனக்கு ஆஸ்மா இருக்கு",
+          "tanglish_text": "enakku aasmaa irukku",
+          "english_translation": "I have asthma",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 3
+        },
+        {
+          "text": "அதுக்கு மருந்தே கிடையாது",
+          "tanglish_text": "adhukku marundhae kidaiyaadhu",
+          "english_translation": "There is no cure for it",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 3
+        },
+        {
+          "text": "ஒன்னும் கவனத்துலயே இல்ல",
+          "tanglish_text": "onnum kavanaththulayae illa",
+          "english_translation": "Nothing is in focus",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 3
+        },
+        {
+          "text": "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+          "tanglish_text": "raet evvalavunnu sollidunga",
+          "english_translation": "Tell me the rate",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 3
+        },
+        {
+          "text": "இல்லன்னா மரியாதை கெட்டிடம்",
+          "tanglish_text": "illannaa mariyaadhai kettidam",
+          "english_translation": "Otherwise respect is bad",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 3
+        },
+        {
+          "text": "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்",
+          "tanglish_text": "vivasaayaththula idhellaam senjadhu naandhaan",
+          "english_translation": "I am the one who did all this in agriculture",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 4
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்",
+            "tanglish_text": "rejistraeshan vachchukkalaam"
+          },
+          "previous": [],
+          "next": [
+            "இந்த அனாதைகளுக்காக",
+            "என் பேரு கண்ணபிரான்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இந்த அனாதைகளுக்காக",
+            "tanglish_text": "indha anaadhaigalukkaaga"
+          },
+          "previous": [
+            "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்"
+          ],
+          "next": [
+            "என் பேரு கண்ணபிரான்",
+            "அதான் இந்த கண்ணபிரான்"
+          ]
+        },
+        {
+          "current": {
+            "text": "என் பேரு கண்ணபிரான்",
+            "tanglish_text": "en paeru kannabiraan"
+          },
+          "previous": [
+            "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்",
+            "இந்த அனாதைகளுக்காக"
+          ],
+          "next": [
+            "அதான் இந்த கண்ணபிரான்",
+            "எனக்கு ஆஸ்மா இருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": "அதான் இந்த கண்ணபிரான்",
+            "tanglish_text": "adhaan indha kannabiraan"
+          },
+          "previous": [
+            "இந்த அனாதைகளுக்காக",
+            "என் பேரு கண்ணபிரான்"
+          ],
+          "next": [
+            "எனக்கு ஆஸ்மா இருக்கு",
+            "அதுக்கு மருந்தே கிடையாது"
+          ]
+        },
+        {
+          "current": {
+            "text": "எனக்கு ஆஸ்மா இருக்கு",
+            "tanglish_text": "enakku aasmaa irukku"
+          },
+          "previous": [
+            "என் பேரு கண்ணபிரான்",
+            "அதான் இந்த கண்ணபிரான்"
+          ],
+          "next": [
+            "அதுக்கு மருந்தே கிடையாது",
+            "ஒன்னும் கவனத்துலயே இல்ல"
+          ]
+        },
+        {
+          "current": {
+            "text": "அதுக்கு மருந்தே கிடையாது",
+            "tanglish_text": "adhukku marundhae kidaiyaadhu"
+          },
+          "previous": [
+            "அதான் இந்த கண்ணபிரான்",
+            "எனக்கு ஆஸ்மா இருக்கு"
+          ],
+          "next": [
+            "ஒன்னும் கவனத்துலயே இல்ல",
+            "ரேட் எவ்வளவுன்னு சொல்லிடுங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஒன்னும் கவனத்துலயே இல்ல",
+            "tanglish_text": "onnum kavanaththulayae illa"
+          },
+          "previous": [
+            "எனக்கு ஆஸ்மா இருக்கு",
+            "அதுக்கு மருந்தே கிடையாது"
+          ],
+          "next": [
+            "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+            "இல்லன்னா மரியாதை கெட்டிடம்"
+          ]
+        },
+        {
+          "current": {
+            "text": "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+            "tanglish_text": "raet evvalavunnu sollidunga"
+          },
+          "previous": [
+            "அதுக்கு மருந்தே கிடையாது",
+            "ஒன்னும் கவனத்துலயே இல்ல"
+          ],
+          "next": [
+            "இல்லன்னா மரியாதை கெட்டிடம்",
+            "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இல்லன்னா மரியாதை கெட்டிடம்",
+            "tanglish_text": "illannaa mariyaadhai kettidam"
+          },
+          "previous": [
+            "ஒன்னும் கவனத்துலயே இல்ல",
+            "ரேட் எவ்வளவுன்னு சொல்லிடுங்க"
+          ],
+          "next": [
+            "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்"
+          ]
+        },
+        {
+          "current": {
+            "text": "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்",
+            "tanglish_text": "vivasaayaththula idhellaam senjadhu naandhaan"
+          },
+          "previous": [
+            "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+            "இல்லன்னா மரியாதை கெட்டிடம்"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_012",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.940687",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "எனக்கு எதிரான சைட்டே இருக்கக்கூடாது",
+          "tanglish_text": "enakku edhiraana saittae irukkakkoodaadhu",
+          "english_translation": "There should not be a site against me",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 4
+        },
+        {
+          "text": "குட்டி அணையாட்டம் பூசனிக்காய் காய்ச்சிருக்கு",
+          "tanglish_text": "kutti anaiyaattam poosanikkaai kaaichchirukku",
+          "english_translation": "Kutty Damayatam has boiled pumpkin",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 4
+        },
+        {
+          "text": ">> பிரைடே வச்சுக்கலாமா ரிஜிஸ்ட்ரேஷன்",
+          "tanglish_text": ">> piraidae vachchukkalaamaa rijistraeshan",
+          "english_translation": ">> Friday Vachukalama Registration",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 4
+        },
+        {
+          "text": "வாங்க கார்டன் சைட்ல காத்து வாங்கலாம்",
+          "tanglish_text": "vaanga kaardan saitla kaaththu vaangalaam",
+          "english_translation": "You can wait to buy it on the garden site",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": "வாங்க இதான் என் பண்ண சைட்டு",
+          "tanglish_text": "vaanga idhaan en panna saittu",
+          "english_translation": "Buy this is my site",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": "சும்மா மலைப்பாம்பு மாதிரி புடலங்காய் வளர்ந்துருக்கு",
+          "tanglish_text": "summaa malaippaambu maadhiri pudalangaai valarndhurukku",
+          "english_translation": "Butalangai has grown like a python",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": "அது அவங்க தலை மாதிரியே காய்ச்சிருக்கு",
+          "tanglish_text": "adhu avanga thalai maadhiriyae kaaichchirukku",
+          "english_translation": "It was brewed like his head",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": "அவனை புடிச்சு தென்னை மரத்துக்கு போட்டேன்",
+          "tanglish_text": "avanai pudichchu thennai maraththukku pottaen",
+          "english_translation": "I crushed him and put him on a coconut tree",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": "இந்த முருங்கை மரத்துக்கு யார போட்டோம்யா",
+          "tanglish_text": "indha murungai maraththukku yaara pottomyaa",
+          "english_translation": "Who planted this drumstick tree?",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": "நாங்க பெரிய ஜெர்னலிஸ்ட் ஞாபகம் வச்சுக்கோங்க",
+          "tanglish_text": "naanga periya jernalist njaabagam vachchukkonga",
+          "english_translation": "Let us remember the great journalist",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "எனக்கு எதிரான சைட்டே இருக்கக்கூடாது",
+            "tanglish_text": "enakku edhiraana saittae irukkakkoodaadhu"
+          },
+          "previous": [],
+          "next": [
+            "குட்டி அணையாட்டம் பூசனிக்காய் காய்ச்சிருக்கு",
+            ">> பிரைடே வச்சுக்கலாமா ரிஜிஸ்ட்ரேஷன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "குட்டி அணையாட்டம் பூசனிக்காய் காய்ச்சிருக்கு",
+            "tanglish_text": "kutti anaiyaattam poosanikkaai kaaichchirukku"
+          },
+          "previous": [
+            "எனக்கு எதிரான சைட்டே இருக்கக்கூடாது"
+          ],
+          "next": [
+            ">> பிரைடே வச்சுக்கலாமா ரிஜிஸ்ட்ரேஷன்",
+            "வாங்க கார்டன் சைட்ல காத்து வாங்கலாம்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> பிரைடே வச்சுக்கலாமா ரிஜிஸ்ட்ரேஷன்",
+            "tanglish_text": ">> piraidae vachchukkalaamaa rijistraeshan"
+          },
+          "previous": [
+            "எனக்கு எதிரான சைட்டே இருக்கக்கூடாது",
+            "குட்டி அணையாட்டம் பூசனிக்காய் காய்ச்சிருக்கு"
+          ],
+          "next": [
+            "வாங்க கார்டன் சைட்ல காத்து வாங்கலாம்",
+            "வாங்க இதான் என் பண்ண சைட்டு"
+          ]
+        },
+        {
+          "current": {
+            "text": "வாங்க கார்டன் சைட்ல காத்து வாங்கலாம்",
+            "tanglish_text": "vaanga kaardan saitla kaaththu vaangalaam"
+          },
+          "previous": [
+            "குட்டி அணையாட்டம் பூசனிக்காய் காய்ச்சிருக்கு",
+            ">> பிரைடே வச்சுக்கலாமா ரிஜிஸ்ட்ரேஷன்"
+          ],
+          "next": [
+            "வாங்க இதான் என் பண்ண சைட்டு",
+            "சும்மா மலைப்பாம்பு மாதிரி புடலங்காய் வளர்ந்துருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": "வாங்க இதான் என் பண்ண சைட்டு",
+            "tanglish_text": "vaanga idhaan en panna saittu"
+          },
+          "previous": [
+            ">> பிரைடே வச்சுக்கலாமா ரிஜிஸ்ட்ரேஷன்",
+            "வாங்க கார்டன் சைட்ல காத்து வாங்கலாம்"
+          ],
+          "next": [
+            "சும்மா மலைப்பாம்பு மாதிரி புடலங்காய் வளர்ந்துருக்கு",
+            "அது அவங்க தலை மாதிரியே காய்ச்சிருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": "சும்மா மலைப்பாம்பு மாதிரி புடலங்காய் வளர்ந்துருக்கு",
+            "tanglish_text": "summaa malaippaambu maadhiri pudalangaai valarndhurukku"
+          },
+          "previous": [
+            "வாங்க கார்டன் சைட்ல காத்து வாங்கலாம்",
+            "வாங்க இதான் என் பண்ண சைட்டு"
+          ],
+          "next": [
+            "அது அவங்க தலை மாதிரியே காய்ச்சிருக்கு",
+            "அவனை புடிச்சு தென்னை மரத்துக்கு போட்டேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "அது அவங்க தலை மாதிரியே காய்ச்சிருக்கு",
+            "tanglish_text": "adhu avanga thalai maadhiriyae kaaichchirukku"
+          },
+          "previous": [
+            "வாங்க இதான் என் பண்ண சைட்டு",
+            "சும்மா மலைப்பாம்பு மாதிரி புடலங்காய் வளர்ந்துருக்கு"
+          ],
+          "next": [
+            "அவனை புடிச்சு தென்னை மரத்துக்கு போட்டேன்",
+            "இந்த முருங்கை மரத்துக்கு யார போட்டோம்யா"
+          ]
+        },
+        {
+          "current": {
+            "text": "அவனை புடிச்சு தென்னை மரத்துக்கு போட்டேன்",
+            "tanglish_text": "avanai pudichchu thennai maraththukku pottaen"
+          },
+          "previous": [
+            "சும்மா மலைப்பாம்பு மாதிரி புடலங்காய் வளர்ந்துருக்கு",
+            "அது அவங்க தலை மாதிரியே காய்ச்சிருக்கு"
+          ],
+          "next": [
+            "இந்த முருங்கை மரத்துக்கு யார போட்டோம்யா",
+            "நாங்க பெரிய ஜெர்னலிஸ்ட் ஞாபகம் வச்சுக்கோங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": "இந்த முருங்கை மரத்துக்கு யார போட்டோம்யா",
+            "tanglish_text": "indha murungai maraththukku yaara pottomyaa"
+          },
+          "previous": [
+            "அது அவங்க தலை மாதிரியே காய்ச்சிருக்கு",
+            "அவனை புடிச்சு தென்னை மரத்துக்கு போட்டேன்"
+          ],
+          "next": [
+            "நாங்க பெரிய ஜெர்னலிஸ்ட் ஞாபகம் வச்சுக்கோங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": "நாங்க பெரிய ஜெர்னலிஸ்ட் ஞாபகம் வச்சுக்கோங்க",
+            "tanglish_text": "naanga periya jernalist njaabagam vachchukkonga"
+          },
+          "previous": [
+            "அவனை புடிச்சு தென்னை மரத்துக்கு போட்டேன்",
+            "இந்த முருங்கை மரத்துக்கு யார போட்டோம்யா"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_013",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.943103",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": "நம்ம தேசமே ஒரு அனாத ஆசிரமம்",
+          "tanglish_text": "namma thaesamae oru anaadha aasiramam",
+          "english_translation": "Our nation is an orphanage",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": ">> ஓஹோ ஊரே வாங்குறவருக்கு நம்ம",
+          "tanglish_text": ">> oho oorae vaanguravarukku namma",
+          "english_translation": ">> Oh, ours is for the buyer",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 5
+        },
+        {
+          "text": "விஸ்வமித்திரர் மறுஜென்மம் எடுத்து வந்தா எப்படி இருக்கும்",
+          "tanglish_text": "visvamiththirar marujenmam eduththu vandhaa eppadi irukkum",
+          "english_translation": "What would it be like if Vishwamitra was reincarnated?",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        },
+        {
+          "text": "சின்னது எல்லாத்தையும் பெருசாக்கி காட்டுறதுதான் என் லட்சியமே",
+          "tanglish_text": "sinnadhu ellaaththaiyum perusaakki kaatturadhudhaan en latchiyamae",
+          "english_translation": "My ambition is to magnify everything that is small",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        },
+        {
+          "text": "பரலோகத்திலிருந்து பாதாளம் வரைக்கும் என் சைட்டாதான் இருக்கணும்",
+          "tanglish_text": "paralogaththilirundhu paadhaalam varaikkum en saittaadhaan irukkanum",
+          "english_translation": "From the heavens to the underworld, my site must be there",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        },
+        {
+          "text": "இது இமயமலையில இருந்து வர வச்ச கல்லு",
+          "tanglish_text": "idhu imayamalaiyila irundhu vara vachcha kallu",
+          "english_translation": "It is a stone from the Himalayas",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        },
+        {
+          "text": "நீங்க என்ன நினைச்சாலும் கேர் பண்ண மாட்டோம்",
+          "tanglish_text": "neenga enna ninaichchaalum kaer panna maattom",
+          "english_translation": "We don't care what you think",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        },
+        {
+          "text": ">> அதான் பண்ணைக்கு உங்களை கூப்பிட்டு அனுப்பிச்சது",
+          "tanglish_text": ">> adhaan pannaikku ungalai kooppittu anuppichchadhu",
+          "english_translation": ">> That's what sent you to the farm",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        },
+        {
+          "text": ">> ஆனா நாங்கதான் வாங்க போறோம்னு சொல்லிருப்பாங்களே",
+          "tanglish_text": ">> aanaa naangadhaan vaanga poromnu solliruppaangalae",
+          "english_translation": ">> But you would have said that we are going to buy it",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        },
+        {
+          "text": "இந்த ஊரை தாண்டி ஒரு சைட் இருக்கு",
+          "tanglish_text": "indha oorai thaandi oru sait irukku",
+          "english_translation": "There is a site beyond this town",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "நம்ம தேசமே ஒரு அனாத ஆசிரமம்",
+            "tanglish_text": "namma thaesamae oru anaadha aasiramam"
+          },
+          "previous": [],
+          "next": [
+            ">> ஓஹோ ஊரே வாங்குறவருக்கு நம்ம",
+            "விஸ்வமித்திரர் மறுஜென்மம் எடுத்து வந்தா எப்படி இருக்கும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ஓஹோ ஊரே வாங்குறவருக்கு நம்ம",
+            "tanglish_text": ">> oho oorae vaanguravarukku namma"
+          },
+          "previous": [
+            "நம்ம தேசமே ஒரு அனாத ஆசிரமம்"
+          ],
+          "next": [
+            "விஸ்வமித்திரர் மறுஜென்மம் எடுத்து வந்தா எப்படி இருக்கும்",
+            "சின்னது எல்லாத்தையும் பெருசாக்கி காட்டுறதுதான் என் லட்சியமே"
+          ]
+        },
+        {
+          "current": {
+            "text": "விஸ்வமித்திரர் மறுஜென்மம் எடுத்து வந்தா எப்படி இருக்கும்",
+            "tanglish_text": "visvamiththirar marujenmam eduththu vandhaa eppadi irukkum"
+          },
+          "previous": [
+            "நம்ம தேசமே ஒரு அனாத ஆசிரமம்",
+            ">> ஓஹோ ஊரே வாங்குறவருக்கு நம்ம"
+          ],
+          "next": [
+            "சின்னது எல்லாத்தையும் பெருசாக்கி காட்டுறதுதான் என் லட்சியமே",
+            "பரலோகத்திலிருந்து பாதாளம் வரைக்கும் என் சைட்டாதான் இருக்கணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "சின்னது எல்லாத்தையும் பெருசாக்கி காட்டுறதுதான் என் லட்சியமே",
+            "tanglish_text": "sinnadhu ellaaththaiyum perusaakki kaatturadhudhaan en latchiyamae"
+          },
+          "previous": [
+            ">> ஓஹோ ஊரே வாங்குறவருக்கு நம்ம",
+            "விஸ்வமித்திரர் மறுஜென்மம் எடுத்து வந்தா எப்படி இருக்கும்"
+          ],
+          "next": [
+            "பரலோகத்திலிருந்து பாதாளம் வரைக்கும் என் சைட்டாதான் இருக்கணும்",
+            "இது இமயமலையில இருந்து வர வச்ச கல்லு"
+          ]
+        },
+        {
+          "current": {
+            "text": "பரலோகத்திலிருந்து பாதாளம் வரைக்கும் என் சைட்டாதான் இருக்கணும்",
+            "tanglish_text": "paralogaththilirundhu paadhaalam varaikkum en saittaadhaan irukkanum"
+          },
+          "previous": [
+            "விஸ்வமித்திரர் மறுஜென்மம் எடுத்து வந்தா எப்படி இருக்கும்",
+            "சின்னது எல்லாத்தையும் பெருசாக்கி காட்டுறதுதான் என் லட்சியமே"
+          ],
+          "next": [
+            "இது இமயமலையில இருந்து வர வச்ச கல்லு",
+            "நீங்க என்ன நினைச்சாலும் கேர் பண்ண மாட்டோம்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இது இமயமலையில இருந்து வர வச்ச கல்லு",
+            "tanglish_text": "idhu imayamalaiyila irundhu vara vachcha kallu"
+          },
+          "previous": [
+            "சின்னது எல்லாத்தையும் பெருசாக்கி காட்டுறதுதான் என் லட்சியமே",
+            "பரலோகத்திலிருந்து பாதாளம் வரைக்கும் என் சைட்டாதான் இருக்கணும்"
+          ],
+          "next": [
+            "நீங்க என்ன நினைச்சாலும் கேர் பண்ண மாட்டோம்",
+            ">> அதான் பண்ணைக்கு உங்களை கூப்பிட்டு அனுப்பிச்சது"
+          ]
+        },
+        {
+          "current": {
+            "text": "நீங்க என்ன நினைச்சாலும் கேர் பண்ண மாட்டோம்",
+            "tanglish_text": "neenga enna ninaichchaalum kaer panna maattom"
+          },
+          "previous": [
+            "பரலோகத்திலிருந்து பாதாளம் வரைக்கும் என் சைட்டாதான் இருக்கணும்",
+            "இது இமயமலையில இருந்து வர வச்ச கல்லு"
+          ],
+          "next": [
+            ">> அதான் பண்ணைக்கு உங்களை கூப்பிட்டு அனுப்பிச்சது",
+            ">> ஆனா நாங்கதான் வாங்க போறோம்னு சொல்லிருப்பாங்களே"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> அதான் பண்ணைக்கு உங்களை கூப்பிட்டு அனுப்பிச்சது",
+            "tanglish_text": ">> adhaan pannaikku ungalai kooppittu anuppichchadhu"
+          },
+          "previous": [
+            "இது இமயமலையில இருந்து வர வச்ச கல்லு",
+            "நீங்க என்ன நினைச்சாலும் கேர் பண்ண மாட்டோம்"
+          ],
+          "next": [
+            ">> ஆனா நாங்கதான் வாங்க போறோம்னு சொல்லிருப்பாங்களே",
+            "இந்த ஊரை தாண்டி ஒரு சைட் இருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ஆனா நாங்கதான் வாங்க போறோம்னு சொல்லிருப்பாங்களே",
+            "tanglish_text": ">> aanaa naangadhaan vaanga poromnu solliruppaangalae"
+          },
+          "previous": [
+            "நீங்க என்ன நினைச்சாலும் கேர் பண்ண மாட்டோம்",
+            ">> அதான் பண்ணைக்கு உங்களை கூப்பிட்டு அனுப்பிச்சது"
+          ],
+          "next": [
+            "இந்த ஊரை தாண்டி ஒரு சைட் இருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": "இந்த ஊரை தாண்டி ஒரு சைட் இருக்கு",
+            "tanglish_text": "indha oorai thaandi oru sait irukku"
+          },
+          "previous": [
+            ">> அதான் பண்ணைக்கு உங்களை கூப்பிட்டு அனுப்பிச்சது",
+            ">> ஆனா நாங்கதான் வாங்க போறோம்னு சொல்லிருப்பாங்களே"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L1_014",
+      "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 1,
+      "generated_at": "2026-05-05T13:06:05.946117",
+      "metadata": {
+        "entry_count": 1,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "入门",
+          "sentence_words": [
+            1,
+            6
+          ],
+          "features": [
+            "single_words",
+            "basic_questions",
+            "high_repetition"
+          ],
+          "description": "单个词汇、简单疑问句、高频重复"
+        }
+      },
+      "entries": [
+        {
+          "text": ">> அந்த ஊர் முனையிலேயே நீங்க கட்டிக்கலாமே",
+          "tanglish_text": ">> andha oor munaiyilaeyae neenga kattikkalaamae",
+          "english_translation": ">> You can build at the end of that town",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 6
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": ">> அந்த ஊர் முனையிலேயே நீங்க கட்டிக்கலாமே",
+            "tanglish_text": ">> andha oor munaiyilaeyae neenga kattikkalaamae"
+          },
+          "previous": [],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L2_005",
+      "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 10,
+      "generated_at": "2026-05-05T13:06:05.948551",
+      "metadata": {
+        "entry_count": 10,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "基础",
+          "sentence_words": [
+            2,
+            8
+          ],
+          "features": [
+            "short_sentences",
+            "basic_verbs",
+            "simple_responses"
+          ],
+          "description": "短句子、基础动词、简单回应"
+        }
+      },
+      "entries": [
+        {
+          "text": "நம்ம அரசாங்கம் எனக்கு கொடுத்திருக்கிற விருது வந்து கலைமாமணி",
+          "tanglish_text": "namma arasaangam enakku koduththirukkira virudhu vandhu kalaimaamani",
+          "english_translation": "The award given to me by our government is Kalaimamani",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 7
+        },
+        {
+          "text": "நாங்க உண்மைகளை மட்டும்தான் எழுதி இருக்கோம் எழுத போறோம்",
+          "tanglish_text": "naanga unmaigalai mattumdhaan ezhudhi irukkom ezhudha porom",
+          "english_translation": "We are going to write only the facts",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 7
+        },
+        {
+          "text": ">> முருங்கை மரத்துக்கு முனிசிபல் வெட்டி போட்டோம் சார்",
+          "tanglish_text": ">> murungai maraththukku munisibal vetti pottom saar",
+          "english_translation": ">> Sir, we cut down the municipal for the Moringa tree",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 7
+        },
+        {
+          "text": ">> இந்த இடத்தை விக்கறத நாங்க யாருக்கும் சொல்லலையே",
+          "tanglish_text": ">> indha idaththai vikkaradha naanga yaarukkum sollalaiyae",
+          "english_translation": ">> We don't tell anyone to sell this place",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 7
+        },
+        {
+          "text": "இப்ப என் பங்குக்கு எடுத்து நான் நடத்திக்கிட்டு இருக்கேன்",
+          "tanglish_text": "ippa en pangukku eduththu naan nadaththikkittu irukkaen",
+          "english_translation": "Now I have taken my role and am running it",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 7
+        },
+        {
+          "text": "டேய் ஜெயா விஜயா வாங்கடா >> குட் மார்னிங் சார்",
+          "tanglish_text": "taei jeyaa vijayaa vaangadaa >> kut maarning saar",
+          "english_translation": "Dei Jaya Vijaya Wangada >> Good morning sir",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": "இதெல்லாம் நான் உரம் போடுறதுனாலயோ இல்ல மண் வளர்த்துனாலயோ வளரல",
+          "tanglish_text": "idhellaam naan uram poduradhunaalayo illa man valarththunaalayo valarala",
+          "english_translation": "All this does not grow because I fertilize or cultivate the soil",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": "இந்த பொட்லங்கொடிக்கு ரெண்டு செக்யூரிட்டி ஆபீசர சுட்டு எருவா போட்டுருக்கேன்",
+          "tanglish_text": "indha potlangodikku rendu sekyooritti aabeesara suttu eruvaa potturukkaen",
+          "english_translation": "Two security officers shot and dunged this Potlankodi flag.",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": "ஐயோ இந்த பலா மரத்துக்கு பல பேர வெட்டி போட்டுருக்கேன்",
+          "tanglish_text": "aiyo indha palaa maraththukku pala paera vetti potturukkaen",
+          "english_translation": "Alas, I have cut many pieces for this jack tree",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": ">> இப்ப இதுக்கு யார ஓரமா போட போறேன்னு தெரியுமா",
+          "tanglish_text": ">> ippa idhukku yaara oramaa poda poraennu theriyumaa",
+          "english_translation": ">> Do you know who I'm going to side with this now?",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "நம்ம அரசாங்கம் எனக்கு கொடுத்திருக்கிற விருது வந்து கலைமாமணி",
+            "tanglish_text": "namma arasaangam enakku koduththirukkira virudhu vandhu kalaimaamani"
+          },
+          "previous": [],
+          "next": [
+            "நாங்க உண்மைகளை மட்டும்தான் எழுதி இருக்கோம் எழுத போறோம்",
+            ">> முருங்கை மரத்துக்கு முனிசிபல் வெட்டி போட்டோம் சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "நாங்க உண்மைகளை மட்டும்தான் எழுதி இருக்கோம் எழுத போறோம்",
+            "tanglish_text": "naanga unmaigalai mattumdhaan ezhudhi irukkom ezhudha porom"
+          },
+          "previous": [
+            "நம்ம அரசாங்கம் எனக்கு கொடுத்திருக்கிற விருது வந்து கலைமாமணி"
+          ],
+          "next": [
+            ">> முருங்கை மரத்துக்கு முனிசிபல் வெட்டி போட்டோம் சார்",
+            ">> இந்த இடத்தை விக்கறத நாங்க யாருக்கும் சொல்லலையே"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> முருங்கை மரத்துக்கு முனிசிபல் வெட்டி போட்டோம் சார்",
+            "tanglish_text": ">> murungai maraththukku munisibal vetti pottom saar"
+          },
+          "previous": [
+            "நம்ம அரசாங்கம் எனக்கு கொடுத்திருக்கிற விருது வந்து கலைமாமணி",
+            "நாங்க உண்மைகளை மட்டும்தான் எழுதி இருக்கோம் எழுத போறோம்"
+          ],
+          "next": [
+            ">> இந்த இடத்தை விக்கறத நாங்க யாருக்கும் சொல்லலையே",
+            "இப்ப என் பங்குக்கு எடுத்து நான் நடத்திக்கிட்டு இருக்கேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> இந்த இடத்தை விக்கறத நாங்க யாருக்கும் சொல்லலையே",
+            "tanglish_text": ">> indha idaththai vikkaradha naanga yaarukkum sollalaiyae"
+          },
+          "previous": [
+            "நாங்க உண்மைகளை மட்டும்தான் எழுதி இருக்கோம் எழுத போறோம்",
+            ">> முருங்கை மரத்துக்கு முனிசிபல் வெட்டி போட்டோம் சார்"
+          ],
+          "next": [
+            "இப்ப என் பங்குக்கு எடுத்து நான் நடத்திக்கிட்டு இருக்கேன்",
+            "டேய் ஜெயா விஜயா வாங்கடா >> குட் மார்னிங் சார்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இப்ப என் பங்குக்கு எடுத்து நான் நடத்திக்கிட்டு இருக்கேன்",
+            "tanglish_text": "ippa en pangukku eduththu naan nadaththikkittu irukkaen"
+          },
+          "previous": [
+            ">> முருங்கை மரத்துக்கு முனிசிபல் வெட்டி போட்டோம் சார்",
+            ">> இந்த இடத்தை விக்கறத நாங்க யாருக்கும் சொல்லலையே"
+          ],
+          "next": [
+            "டேய் ஜெயா விஜயா வாங்கடா >> குட் மார்னிங் சார்",
+            "இதெல்லாம் நான் உரம் போடுறதுனாலயோ இல்ல மண் வளர்த்துனாலயோ வளரல"
+          ]
+        },
+        {
+          "current": {
+            "text": "டேய் ஜெயா விஜயா வாங்கடா >> குட் மார்னிங் சார்",
+            "tanglish_text": "taei jeyaa vijayaa vaangadaa >> kut maarning saar"
+          },
+          "previous": [
+            ">> இந்த இடத்தை விக்கறத நாங்க யாருக்கும் சொல்லலையே",
+            "இப்ப என் பங்குக்கு எடுத்து நான் நடத்திக்கிட்டு இருக்கேன்"
+          ],
+          "next": [
+            "இதெல்லாம் நான் உரம் போடுறதுனாலயோ இல்ல மண் வளர்த்துனாலயோ வளரல",
+            "இந்த பொட்லங்கொடிக்கு ரெண்டு செக்யூரிட்டி ஆபீசர சுட்டு எருவா போட்டுருக்கேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இதெல்லாம் நான் உரம் போடுறதுனாலயோ இல்ல மண் வளர்த்துனாலயோ வளரல",
+            "tanglish_text": "idhellaam naan uram poduradhunaalayo illa man valarththunaalayo valarala"
+          },
+          "previous": [
+            "இப்ப என் பங்குக்கு எடுத்து நான் நடத்திக்கிட்டு இருக்கேன்",
+            "டேய் ஜெயா விஜயா வாங்கடா >> குட் மார்னிங் சார்"
+          ],
+          "next": [
+            "இந்த பொட்லங்கொடிக்கு ரெண்டு செக்யூரிட்டி ஆபீசர சுட்டு எருவா போட்டுருக்கேன்",
+            "ஐயோ இந்த பலா மரத்துக்கு பல பேர வெட்டி போட்டுருக்கேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இந்த பொட்லங்கொடிக்கு ரெண்டு செக்யூரிட்டி ஆபீசர சுட்டு எருவா போட்டுருக்கேன்",
+            "tanglish_text": "indha potlangodikku rendu sekyooritti aabeesara suttu eruvaa potturukkaen"
+          },
+          "previous": [
+            "டேய் ஜெயா விஜயா வாங்கடா >> குட் மார்னிங் சார்",
+            "இதெல்லாம் நான் உரம் போடுறதுனாலயோ இல்ல மண் வளர்த்துனாலயோ வளரல"
+          ],
+          "next": [
+            "ஐயோ இந்த பலா மரத்துக்கு பல பேர வெட்டி போட்டுருக்கேன்",
+            ">> இப்ப இதுக்கு யார ஓரமா போட போறேன்னு தெரியுமா"
+          ]
+        },
+        {
+          "current": {
+            "text": "ஐயோ இந்த பலா மரத்துக்கு பல பேர வெட்டி போட்டுருக்கேன்",
+            "tanglish_text": "aiyo indha palaa maraththukku pala paera vetti potturukkaen"
+          },
+          "previous": [
+            "இதெல்லாம் நான் உரம் போடுறதுனாலயோ இல்ல மண் வளர்த்துனாலயோ வளரல",
+            "இந்த பொட்லங்கொடிக்கு ரெண்டு செக்யூரிட்டி ஆபீசர சுட்டு எருவா போட்டுருக்கேன்"
+          ],
+          "next": [
+            ">> இப்ப இதுக்கு யார ஓரமா போட போறேன்னு தெரியுமா"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> இப்ப இதுக்கு யார ஓரமா போட போறேன்னு தெரியுமா",
+            "tanglish_text": ">> ippa idhukku yaara oramaa poda poraennu theriyumaa"
+          },
+          "previous": [
+            "இந்த பொட்லங்கொடிக்கு ரெண்டு செக்யூரிட்டி ஆபீசர சுட்டு எருவா போட்டுருக்கேன்",
+            "ஐயோ இந்த பலா மரத்துக்கு பல பேர வெட்டி போட்டுருக்கேன்"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L2_006",
+      "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 5,
+      "generated_at": "2026-05-05T13:06:05.951385",
+      "metadata": {
+        "entry_count": 5,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "基础",
+          "sentence_words": [
+            2,
+            8
+          ],
+          "features": [
+            "short_sentences",
+            "basic_verbs",
+            "simple_responses"
+          ],
+          "description": "短句子、基础动词、简单回应"
+        }
+      },
+      "entries": [
+        {
+          "text": "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்",
+          "tanglish_text": "idhu paiv staar paargam restaarant katturadhukku nalla sendar",
+          "english_translation": "It is a good center for setting up a five star parcum restaurant",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+          "tanglish_text": "idha romba kaalamaa enga munnorgal nadaththikkittu irukkara aasiramam",
+          "english_translation": "This is an ashram that our ancestors have been running for a long time",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+          "tanglish_text": ">> raamasaami saar thaniyaa namakku anaadha aasiramamllaam irukku",
+          "english_translation": ">> Sir Ramaswami, we also have an orphan ashram",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது",
+          "tanglish_text": ">> taei unga panakkaara thimira idhoda niruththikkittaa nalladhu",
+          "english_translation": ">> You better stop your rich arrogance",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        },
+        {
+          "text": "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்",
+          "tanglish_text": "illaatti ponaa un potto maalaiyoda inga rijistar aayidum",
+          "english_translation": "If not, your photo will be registered here",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 8
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்",
+            "tanglish_text": "idhu paiv staar paargam restaarant katturadhukku nalla sendar"
+          },
+          "previous": [],
+          "next": [
+            "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+            ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு"
+          ]
+        },
+        {
+          "current": {
+            "text": "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+            "tanglish_text": "idha romba kaalamaa enga munnorgal nadaththikkittu irukkara aasiramam"
+          },
+          "previous": [
+            "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்"
+          ],
+          "next": [
+            ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+            ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+            "tanglish_text": ">> raamasaami saar thaniyaa namakku anaadha aasiramamllaam irukku"
+          },
+          "previous": [
+            "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்",
+            "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்"
+          ],
+          "next": [
+            ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது",
+            "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது",
+            "tanglish_text": ">> taei unga panakkaara thimira idhoda niruththikkittaa nalladhu"
+          },
+          "previous": [
+            "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+            ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு"
+          ],
+          "next": [
+            "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்",
+            "tanglish_text": "illaatti ponaa un potto maalaiyoda inga rijistar aayidum"
+          },
+          "previous": [
+            ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+            ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L3_004",
+      "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 8,
+      "generated_at": "2026-05-05T13:06:05.953736",
+      "metadata": {
+        "entry_count": 8,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "初中级",
+          "sentence_words": [
+            3,
+            12
+          ],
+          "features": [
+            "compound_phrases",
+            "tense_usage",
+            "common_slang"
+          ],
+          "description": "复合短语、时态使用、常见俚语"
+        }
+      },
+      "entries": [
+        {
+          "text": ">> குட் மார்னிங் இவர் நம்ம தோட்டக்காரர் இன்ஸ்பெக்டர் ஆக்கி விட்டேன்",
+          "tanglish_text": ">> kut maarning ivar namma thottakkaarar inspektar aakki vittaen",
+          "english_translation": ">> Good morning, this is our gardener inspector",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 9
+        },
+        {
+          "text": "ரொம்ப நாளா ஒரு போலீஸ் ஆபீசர் என்கிட்ட தெனாவட்டா பேசிட்டே இருந்தான்",
+          "tanglish_text": "romba naalaa oru polees aabeesar engitta thenaavattaa paesittae irundhaan",
+          "english_translation": "A police officer kept talking to me for a long time",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 9
+        },
+        {
+          "text": ">> அப்படின்னா உங்க பணத்தை வச்சு எது வேணாலும் வாங்கிக்கலாம்னு நினைக்கிறீங்களா",
+          "tanglish_text": ">> appadinnaa unga panaththai vachchu edhu vaenaalum vaangikkalaamnu ninaikkireengalaa",
+          "english_translation": ">> So do you think you can buy whatever you want with your money?",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 9
+        },
+        {
+          "text": "டேய் ராமசாமி அந்த சின்ன இடத்தை கொடுத்தா குடியா முழுகி போயிடும்",
+          "tanglish_text": "taei raamasaami andha sinna idaththai koduththaa kudiyaa muzhugi poyidum",
+          "english_translation": "If Dei Ramasamy gives that small space, the house will be full",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 9
+        },
+        {
+          "text": "பங்காளி சண்டை போட்ட ரெண்டு பைல வெட்டி இந்த பப்பாளி மரத்துக்கு போட்டேன்",
+          "tanglish_text": "pangaali sandai potta rendu paila vetti indha pappaali maraththukku pottaen",
+          "english_translation": "I cut the two piles that my partner had quarreled with and put them on this papaya tree",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 10
+        },
+        {
+          "text": ">> இப்ப இந்த செடியில மரம் மாதிரி பெருசு பெருசா பூ பூக்கணும்",
+          "tanglish_text": ">> ippa indha sediyila maram maadhiri perusu perusaa poo pookkanum",
+          "english_translation": ">> Now this plant should bloom like a tree",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 10
+        },
+        {
+          "text": ">> ஈவி இறக்கலாம இத்தனை கொலை செஞ்சுட்டு தைரியமா வேற பேசிட்டு இருக்கீங்க",
+          "tanglish_text": ">> eevi irakkalaama iththanai kolai senjuttu thairiyamaa vaera paesittu irukkeenga",
+          "english_translation": ">> How dare you kill so many people so that Evie can't die and talk about something else",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 10
+        },
+        {
+          "text": "அங்க இருக்கற முள்ளு செடி எல்லாம் வெட்டிட்டு, குறைஞ்ச ரேட்டு கொடுக்கறதா சொல்லிவிட்டாரு எங்க அப்பா",
+          "tanglish_text": "anga irukkara mullu sedi ellaam vettittu, kurainja raettu kodukkaradhaa sollivittaaru enga appaa",
+          "english_translation": "Our father told me to cut all the thorn plants there and pay a lower rate",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 12
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": ">> குட் மார்னிங் இவர் நம்ம தோட்டக்காரர் இன்ஸ்பெக்டர் ஆக்கி விட்டேன்",
+            "tanglish_text": ">> kut maarning ivar namma thottakkaarar inspektar aakki vittaen"
+          },
+          "previous": [],
+          "next": [
+            "ரொம்ப நாளா ஒரு போலீஸ் ஆபீசர் என்கிட்ட தெனாவட்டா பேசிட்டே இருந்தான்",
+            ">> அப்படின்னா உங்க பணத்தை வச்சு எது வேணாலும் வாங்கிக்கலாம்னு நினைக்கிறீங்களா"
+          ]
+        },
+        {
+          "current": {
+            "text": "ரொம்ப நாளா ஒரு போலீஸ் ஆபீசர் என்கிட்ட தெனாவட்டா பேசிட்டே இருந்தான்",
+            "tanglish_text": "romba naalaa oru polees aabeesar engitta thenaavattaa paesittae irundhaan"
+          },
+          "previous": [
+            ">> குட் மார்னிங் இவர் நம்ம தோட்டக்காரர் இன்ஸ்பெக்டர் ஆக்கி விட்டேன்"
+          ],
+          "next": [
+            ">> அப்படின்னா உங்க பணத்தை வச்சு எது வேணாலும் வாங்கிக்கலாம்னு நினைக்கிறீங்களா",
+            "டேய் ராமசாமி அந்த சின்ன இடத்தை கொடுத்தா குடியா முழுகி போயிடும்"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> அப்படின்னா உங்க பணத்தை வச்சு எது வேணாலும் வாங்கிக்கலாம்னு நினைக்கிறீங்களா",
+            "tanglish_text": ">> appadinnaa unga panaththai vachchu edhu vaenaalum vaangikkalaamnu ninaikkireengalaa"
+          },
+          "previous": [
+            ">> குட் மார்னிங் இவர் நம்ம தோட்டக்காரர் இன்ஸ்பெக்டர் ஆக்கி விட்டேன்",
+            "ரொம்ப நாளா ஒரு போலீஸ் ஆபீசர் என்கிட்ட தெனாவட்டா பேசிட்டே இருந்தான்"
+          ],
+          "next": [
+            "டேய் ராமசாமி அந்த சின்ன இடத்தை கொடுத்தா குடியா முழுகி போயிடும்",
+            "பங்காளி சண்டை போட்ட ரெண்டு பைல வெட்டி இந்த பப்பாளி மரத்துக்கு போட்டேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "டேய் ராமசாமி அந்த சின்ன இடத்தை கொடுத்தா குடியா முழுகி போயிடும்",
+            "tanglish_text": "taei raamasaami andha sinna idaththai koduththaa kudiyaa muzhugi poyidum"
+          },
+          "previous": [
+            "ரொம்ப நாளா ஒரு போலீஸ் ஆபீசர் என்கிட்ட தெனாவட்டா பேசிட்டே இருந்தான்",
+            ">> அப்படின்னா உங்க பணத்தை வச்சு எது வேணாலும் வாங்கிக்கலாம்னு நினைக்கிறீங்களா"
+          ],
+          "next": [
+            "பங்காளி சண்டை போட்ட ரெண்டு பைல வெட்டி இந்த பப்பாளி மரத்துக்கு போட்டேன்",
+            ">> இப்ப இந்த செடியில மரம் மாதிரி பெருசு பெருசா பூ பூக்கணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "பங்காளி சண்டை போட்ட ரெண்டு பைல வெட்டி இந்த பப்பாளி மரத்துக்கு போட்டேன்",
+            "tanglish_text": "pangaali sandai potta rendu paila vetti indha pappaali maraththukku pottaen"
+          },
+          "previous": [
+            ">> அப்படின்னா உங்க பணத்தை வச்சு எது வேணாலும் வாங்கிக்கலாம்னு நினைக்கிறீங்களா",
+            "டேய் ராமசாமி அந்த சின்ன இடத்தை கொடுத்தா குடியா முழுகி போயிடும்"
+          ],
+          "next": [
+            ">> இப்ப இந்த செடியில மரம் மாதிரி பெருசு பெருசா பூ பூக்கணும்",
+            ">> ஈவி இறக்கலாம இத்தனை கொலை செஞ்சுட்டு தைரியமா வேற பேசிட்டு இருக்கீங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> இப்ப இந்த செடியில மரம் மாதிரி பெருசு பெருசா பூ பூக்கணும்",
+            "tanglish_text": ">> ippa indha sediyila maram maadhiri perusu perusaa poo pookkanum"
+          },
+          "previous": [
+            "டேய் ராமசாமி அந்த சின்ன இடத்தை கொடுத்தா குடியா முழுகி போயிடும்",
+            "பங்காளி சண்டை போட்ட ரெண்டு பைல வெட்டி இந்த பப்பாளி மரத்துக்கு போட்டேன்"
+          ],
+          "next": [
+            ">> ஈவி இறக்கலாம இத்தனை கொலை செஞ்சுட்டு தைரியமா வேற பேசிட்டு இருக்கீங்க",
+            "அங்க இருக்கற முள்ளு செடி எல்லாம் வெட்டிட்டு, குறைஞ்ச ரேட்டு கொடுக்கறதா சொல்லிவிட்டாரு எங்க அப்பா"
+          ]
+        },
+        {
+          "current": {
+            "text": ">> ஈவி இறக்கலாம இத்தனை கொலை செஞ்சுட்டு தைரியமா வேற பேசிட்டு இருக்கீங்க",
+            "tanglish_text": ">> eevi irakkalaama iththanai kolai senjuttu thairiyamaa vaera paesittu irukkeenga"
+          },
+          "previous": [
+            "பங்காளி சண்டை போட்ட ரெண்டு பைல வெட்டி இந்த பப்பாளி மரத்துக்கு போட்டேன்",
+            ">> இப்ப இந்த செடியில மரம் மாதிரி பெருசு பெருசா பூ பூக்கணும்"
+          ],
+          "next": [
+            "அங்க இருக்கற முள்ளு செடி எல்லாம் வெட்டிட்டு, குறைஞ்ச ரேட்டு கொடுக்கறதா சொல்லிவிட்டாரு எங்க அப்பா"
+          ]
+        },
+        {
+          "current": {
+            "text": "அங்க இருக்கற முள்ளு செடி எல்லாம் வெட்டிட்டு, குறைஞ்ச ரேட்டு கொடுக்கறதா சொல்லிவிட்டாரு எங்க அப்பா",
+            "tanglish_text": "anga irukkara mullu sedi ellaam vettittu, kurainja raettu kodukkaradhaa sollivittaaru enga appaa"
+          },
+          "previous": [
+            ">> இப்ப இந்த செடியில மரம் மாதிரி பெருசு பெருசா பூ பூக்கணும்",
+            ">> ஈவி இறக்கலாம இத்தனை கொலை செஞ்சுட்டு தைரியமா வேற பேசிட்டு இருக்கீங்க"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L4_004",
+      "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 4,
+      "generated_at": "2026-05-05T13:06:05.956203",
+      "metadata": {
+        "entry_count": 4,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "中级",
+          "sentence_words": [
+            4,
+            16
+          ],
+          "features": [
+            "longer_sentences",
+            "emotion_expression",
+            "code_switching"
+          ],
+          "description": "长句子、情感表达、代码转换"
+        }
+      },
+      "entries": [
+        {
+          "text": "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க",
+          "tanglish_text": "adhula neenga anaadhai naan anaadhai ivanga ellaarum anaadha aakchuvali aasiramangalla irukkaradhunaaladhaan anaadhaigalae valarraanga",
+          "english_translation": "And you are an orphan, I am an orphan, and all of them are actually orphans because they are in orphanages.",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 13
+        },
+        {
+          "text": "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+          "tanglish_text": "adhukkaaga yendaa vambu panra andha kannabaran irukkaane avan saadhaarana manushan illa ooraiyae vaangiduvaan",
+          "english_translation": "Why is that Kannaparan making a fuss about it, he will buy the town where there is no common man",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 13
+        },
+        {
+          "text": "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்",
+          "tanglish_text": "unmai ennannu solraen indha poosanikkaai sedikku enakku edhiraa vaelai senja kalektar oruththarai saavadichchu uramaa vachchirukkaen",
+          "english_translation": "I will tell you the truth, the collector who worked against me for this pumpkin plant put one and a half booths of manure.",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 15
+        },
+        {
+          "text": "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்",
+          "tanglish_text": "ket laast ai set kat laast 24 mani naeraththula indha idam enga paerukku rejistar aaganum",
+          "english_translation": "Get Last I Set Cut Last Within 24 hours this place has to be registered",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 15
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க",
+            "tanglish_text": "adhula neenga anaadhai naan anaadhai ivanga ellaarum anaadha aakchuvali aasiramangalla irukkaradhunaaladhaan anaadhaigalae valarraanga"
+          },
+          "previous": [],
+          "next": [
+            "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+            "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்"
+          ]
+        },
+        {
+          "current": {
+            "text": "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+            "tanglish_text": "adhukkaaga yendaa vambu panra andha kannabaran irukkaane avan saadhaarana manushan illa ooraiyae vaangiduvaan"
+          },
+          "previous": [
+            "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க"
+          ],
+          "next": [
+            "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்",
+            "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்",
+            "tanglish_text": "unmai ennannu solraen indha poosanikkaai sedikku enakku edhiraa vaelai senja kalektar oruththarai saavadichchu uramaa vachchirukkaen"
+          },
+          "previous": [
+            "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க",
+            "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்"
+          ],
+          "next": [
+            "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்"
+          ]
+        },
+        {
+          "current": {
+            "text": "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்",
+            "tanglish_text": "ket laast ai set kat laast 24 mani naeraththula indha idam enga paerukku rejistar aaganum"
+          },
+          "previous": [
+            "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+            "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்"
+          ],
+          "next": []
+        }
+      ]
+    },
+    {
+      "lesson_id": "lesson_L6_004",
+      "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "rating": "D",
+      "entry_count": 2,
+      "generated_at": "2026-05-05T13:06:05.958918",
+      "metadata": {
+        "entry_count": 2,
+        "avg_score": 0.32,
+        "source_types": [
+          "youtube"
+        ],
+        "level_definition": {
+          "name": "高级",
+          "sentence_words": [
+            8,
+            30
+          ],
+          "features": [
+            "context_heavy",
+            "sarcasm",
+            "regional_variation"
+          ],
+          "description": "上下文依赖、讽刺、地方变体"
+        }
+      },
+      "entries": [
+        {
+          "text": ">> இன்ஸ்பெக்டர் கண்ண முடிக்க உங்களதான் ஏய் ஐயோ ஜர்னலிஸ்ட் நல்லா நல்லா மெதுவா தள்ளுங்கயா செத்தவனுக்கு வலிக்க போகுது அப்பா நாளைக்கு இந்த செடியில பேனா பேப்பர் பூத்தாலும் பூக்கும்",
+          "tanglish_text": ">> inspektar kanna mudikka ungaladhaan yei aiyo jarnalist nallaa nallaa medhuvaa thallungayaa seththavanukku valikka pogudhu appaa naalaikku indha sediyila paenaa paeppar pooththaalum pookkum",
+          "english_translation": ">> INSPECTOR KANNA FINISHES YOU ARE YOU O OH JOURNALIST NALA NALA MEDUA TOLUNGAYA SEDTHAVAN IS GOING TO PAIN PAPA TOMORROW EVEN IF PEN AND PAPER BLOSSOM ON THIS PLANT WILL BLOOM",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 23
+        },
+        {
+          "text": "காட் இஸ் கிரேட் ஏய் ஷெல்பி >> ஐயா கும்புறாங்க >> வேலைய செய் இந்த ஊர் மைதானத்தில என்னோட பலிங்க சிலை வைக்கணும்னு எனக்கு ஒரு சின்ன சின்ன ஆசை அதுக்குதான் செதுக்குறாங்க",
+          "tanglish_text": "kaat is kiraet yei shelbi >> aiyaa kumburaanga >> vaelaiya sei indha oor maidhaanaththila ennoda palinga silai vaikkanumnu enakku oru sinna sinna aasai adhukkudhaan sedhukkuraanga",
+          "english_translation": "God is great hey Shelby >> Mr. Kumpuranga >> Work I have a small wish to put a statue of me in the ground of this town.",
+          "colloquial_score": 0.32,
+          "source_type": "youtube",
+          "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+          "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+          "word_count": 25
+        }
+      ],
+      "dialogue": [
+        {
+          "current": {
+            "text": ">> இன்ஸ்பெக்டர் கண்ண முடிக்க உங்களதான் ஏய் ஐயோ ஜர்னலிஸ்ட் நல்லா நல்லா மெதுவா தள்ளுங்கயா செத்தவனுக்கு வலிக்க போகுது அப்பா நாளைக்கு இந்த செடியில பேனா பேப்பர் பூத்தாலும் பூக்கும்",
+            "tanglish_text": ">> inspektar kanna mudikka ungaladhaan yei aiyo jarnalist nallaa nallaa medhuvaa thallungayaa seththavanukku valikka pogudhu appaa naalaikku indha sediyila paenaa paeppar pooththaalum pookkum"
+          },
+          "previous": [],
+          "next": [
+            "காட் இஸ் கிரேட் ஏய் ஷெல்பி >> ஐயா கும்புறாங்க >> வேலைய செய் இந்த ஊர் மைதானத்தில என்னோட பலிங்க சிலை வைக்கணும்னு எனக்கு ஒரு சின்ன சின்ன ஆசை அதுக்குதான் செதுக்குறாங்க"
+          ]
+        },
+        {
+          "current": {
+            "text": "காட் இஸ் கிரேட் ஏய் ஷெல்பி >> ஐயா கும்புறாங்க >> வேலைய செய் இந்த ஊர் மைதானத்தில என்னோட பலிங்க சிலை வைக்கணும்னு எனக்கு ஒரு சின்ன சின்ன ஆசை அதுக்குதான் செதுக்குறாங்க",
+            "tanglish_text": "kaat is kiraet yei shelbi >> aiyaa kumburaanga >> vaelaiya sei indha oor maidhaanaththila ennoda palinga silai vaikkanumnu enakku oru sinna sinna aasai adhukkudhaan sedhukkuraanga"
+          },
+          "previous": [
+            ">> இன்ஸ்பெக்டர் கண்ண முடிக்க உங்களதான் ஏய் ஐயோ ஜர்னலிஸ்ட் நல்லா நல்லா மெதுவா தள்ளுங்கயா செத்தவனுக்கு வலிக்க போகுது அப்பா நாளைக்கு இந்த செடியில பேனா பேப்பர் பூத்தாலும் பூக்கும்"
+          ],
+          "next": []
+        }
+      ]
     }
   ],
-  "updated_at": "2026-05-05T12:31:30.018684"
+  "updated_at": "2026-05-05T13:06:05.961868"
 }

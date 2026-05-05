@@ -4,13 +4,13 @@
   "difficulty_level": "1",
   "dialogue_type": "sentence",
   "rating": "D",
-  "entry_count": 3,
-  "generated_at": "2026-05-05T12:31:30.015882",
+  "entry_count": 10,
+  "generated_at": "2026-05-05T13:06:05.883680",
   "metadata": {
-    "entry_count": 3,
-    "avg_score": 0.35,
+    "entry_count": 10,
+    "avg_score": 0.37,
     "source_types": [
-      "ddgs"
+      "youtube"
     ],
     "level_definition": {
       "name": "入门",
@@ -28,68 +28,236 @@
   },
   "entries": [
     {
-      "text": "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
-      "tanglish_text": "ingu thamizhil mattumae arattai adikkavum",
-      "english_translation": "Chat here only in tamil",
-      "colloquial_score": 0.35,
-      "source_type": "ddgs",
-      "source_title": "English ( India )",
-      "source_url": "https://telegramchannels.me/en-in/groups/tamil",
+      "text": ">> சாப்பிடியா",
+      "tanglish_text": ">> saappidiyaa",
+      "english_translation": ">> do you eat",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 2
+    },
+    {
+      "text": ">> மன்னிச்சு",
+      "tanglish_text": ">> mannichchu",
+      "english_translation": ">> sorry",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 2
+    },
+    {
+      "text": "அவரா இப்படி ஆயிட்டாரு",
+      "tanglish_text": "avaraa ippadi aayittaaru",
+      "english_translation": "He was like this",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 3
+    },
+    {
+      "text": "நான் மிலிட்ரி காரன்",
+      "tanglish_text": "naan militri kaaran",
+      "english_translation": "I am a military man",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 3
+    },
+    {
+      "text": ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+      "tanglish_text": ">> saappittugittae ses aadalaam",
+      "english_translation": ">> You can play chess while eating",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 4
+    },
+    {
+      "text": ">> ஆடு மாயா போயிடுச்ச",
+      "tanglish_text": ">> aadu maayaa poyiduchcha",
+      "english_translation": ">> The goat is gone",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 4
+    },
+    {
+      "text": "[சிரிப்பு] >> காலி பசங்க",
+      "tanglish_text": "[sirippu] >> kaali pasanga",
+      "english_translation": "[Laughter] >> Galli Basanga",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 4
+    },
+    {
+      "text": ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+      "tanglish_text": ">> maamaa kovichchukkaadheenga maamaa",
+      "english_translation": ">> Uncle, don't be rude, uncle",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 4
+    },
+    {
+      "text": ">> உனக்கு எந்த பூ பிடிக்கும்",
+      "tanglish_text": ">> unakku endha poo pidikkum",
+      "english_translation": ">> which flower do you like?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
       "word_count": 5
     },
     {
-      "text": "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
-      "tanglish_text": "nalla payanulla thagavalgalukku tag ubayogikkavum",
-      "english_translation": "Use tag for good useful information",
-      "colloquial_score": 0.35,
-      "source_type": "ddgs",
-      "source_title": "English ( India )",
-      "source_url": "https://telegramchannels.me/en-in/groups/tamil",
+      "text": ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்",
+      "tanglish_text": ">> unakku pidichchadhellaam enakku pidikkum",
+      "english_translation": ">> i like whatever you like",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
       "word_count": 5
-    },
-    {
-      "text": "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு",
-      "tanglish_text": "Tamil chat idhu thamizh paesubavargalukkaana kuzhu",
-      "english_translation": "Tamil chat is a group for Tamil speaking people",
-      "colloquial_score": 0.35,
-      "source_type": "ddgs",
-      "source_title": "English ( India )",
-      "source_url": "https://telegramchannels.me/en-in/groups/tamil",
-      "word_count": 6
     }
   ],
   "dialogue": [
     {
       "current": {
-        "text": "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
-        "tanglish_text": "ingu thamizhil mattumae arattai adikkavum"
+        "text": ">> சாப்பிடியா",
+        "tanglish_text": ">> saappidiyaa"
       },
       "previous": [],
       "next": [
-        "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
-        "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு"
+        ">> மன்னிச்சு",
+        "அவரா இப்படி ஆயிட்டாரு"
       ]
     },
     {
       "current": {
-        "text": "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
-        "tanglish_text": "nalla payanulla thagavalgalukku tag ubayogikkavum"
+        "text": ">> மன்னிச்சு",
+        "tanglish_text": ">> mannichchu"
       },
       "previous": [
-        "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்"
+        ">> சாப்பிடியா"
       ],
       "next": [
-        "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு"
+        "அவரா இப்படி ஆயிட்டாரு",
+        "நான் மிலிட்ரி காரன்"
       ]
     },
     {
       "current": {
-        "text": "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு",
-        "tanglish_text": "Tamil chat idhu thamizh paesubavargalukkaana kuzhu"
+        "text": "அவரா இப்படி ஆயிட்டாரு",
+        "tanglish_text": "avaraa ippadi aayittaaru"
       },
       "previous": [
-        "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
-        "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்"
+        ">> சாப்பிடியா",
+        ">> மன்னிச்சு"
+      ],
+      "next": [
+        "நான் மிலிட்ரி காரன்",
+        ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "நான் மிலிட்ரி காரன்",
+        "tanglish_text": "naan militri kaaran"
+      },
+      "previous": [
+        ">> மன்னிச்சு",
+        "அவரா இப்படி ஆயிட்டாரு"
+      ],
+      "next": [
+        ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+        ">> ஆடு மாயா போயிடுச்ச"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+        "tanglish_text": ">> saappittugittae ses aadalaam"
+      },
+      "previous": [
+        "அவரா இப்படி ஆயிட்டாரு",
+        "நான் மிலிட்ரி காரன்"
+      ],
+      "next": [
+        ">> ஆடு மாயா போயிடுச்ச",
+        "[சிரிப்பு] >> காலி பசங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> ஆடு மாயா போயிடுச்ச",
+        "tanglish_text": ">> aadu maayaa poyiduchcha"
+      },
+      "previous": [
+        "நான் மிலிட்ரி காரன்",
+        ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்"
+      ],
+      "next": [
+        "[சிரிப்பு] >> காலி பசங்க",
+        ">> மாமா கோவிச்சுக்காதீங்க மாமா"
+      ]
+    },
+    {
+      "current": {
+        "text": "[சிரிப்பு] >> காலி பசங்க",
+        "tanglish_text": "[sirippu] >> kaali pasanga"
+      },
+      "previous": [
+        ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+        ">> ஆடு மாயா போயிடுச்ச"
+      ],
+      "next": [
+        ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+        ">> உனக்கு எந்த பூ பிடிக்கும்"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+        "tanglish_text": ">> maamaa kovichchukkaadheenga maamaa"
+      },
+      "previous": [
+        ">> ஆடு மாயா போயிடுச்ச",
+        "[சிரிப்பு] >> காலி பசங்க"
+      ],
+      "next": [
+        ">> உனக்கு எந்த பூ பிடிக்கும்",
+        ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> உனக்கு எந்த பூ பிடிக்கும்",
+        "tanglish_text": ">> unakku endha poo pidikkum"
+      },
+      "previous": [
+        "[சிரிப்பு] >> காலி பசங்க",
+        ">> மாமா கோவிச்சுக்காதீங்க மாமா"
+      ],
+      "next": [
+        ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்",
+        "tanglish_text": ">> unakku pidichchadhellaam enakku pidikkum"
+      },
+      "previous": [
+        ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+        ">> உனக்கு எந்த பூ பிடிக்கும்"
       ],
       "next": []
     }

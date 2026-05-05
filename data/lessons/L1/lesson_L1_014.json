@@ -1,0 +1,51 @@
+{
+  "lesson_id": "lesson_L1_014",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 1,
+  "generated_at": "2026-05-05T13:06:05.946117",
+  "metadata": {
+    "entry_count": 1,
+    "avg_score": 0.32,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": ">> அந்த ஊர் முனையிலேயே நீங்க கட்டிக்கலாமே",
+      "tanglish_text": ">> andha oor munaiyilaeyae neenga kattikkalaamae",
+      "english_translation": ">> You can build at the end of that town",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 6
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": ">> அந்த ஊர் முனையிலேயே நீங்க கட்டிக்கலாமே",
+        "tanglish_text": ">> andha oor munaiyilaeyae neenga kattikkalaamae"
+      },
+      "previous": [],
+      "next": []
+    }
+  ]
+}

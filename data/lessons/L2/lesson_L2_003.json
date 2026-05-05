@@ -1,0 +1,217 @@
+{
+  "lesson_id": "lesson_L2_003",
+  "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+  "difficulty_level": "2",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 8,
+  "generated_at": "2026-05-05T13:06:05.901993",
+  "metadata": {
+    "entry_count": 8,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "基础",
+      "sentence_words": [
+        2,
+        8
+      ],
+      "features": [
+        "short_sentences",
+        "basic_verbs",
+        "simple_responses"
+      ],
+      "description": "短句子、基础动词、简单回应"
+    }
+  },
+  "entries": [
+    {
+      "text": ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்",
+      "tanglish_text": ">> enakku enakku indha vellai poodhaan pidikkum",
+      "english_translation": ">> I like this white flower",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 7
+    },
+    {
+      "text": "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+      "tanglish_text": "daaktar avarukku indha nilaimai yerpattadhukku kaaranam enna",
+      "english_translation": "Dr. What caused this condition to happen to him",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 7
+    },
+    {
+      "text": "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+      "tanglish_text": "jenaral aabiragaam parambarai parambaraiyaa periya kudumbaththai saerndhavar",
+      "english_translation": "General Abraham Paramparai belonged to a great family",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 7
+    },
+    {
+      "text": "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+      "tanglish_text": "[sirippu] >> naan unna kaekkalappaa maeriya kaettaen",
+      "english_translation": "[Laughter] >> I asked you for your kekalappa mariya",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 7
+    },
+    {
+      "text": ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+      "tanglish_text": ">> appa paayaa >> yen innaikku seiva",
+      "english_translation": ">> Appa Paya >> Why do it today",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 7
+    },
+    {
+      "text": ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+      "tanglish_text": ">> appo ponnungalai sait adikkadhaan inga vareengalaa",
+      "english_translation": ">> So do you come here just to hit the girls?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 7
+    },
+    {
+      "text": ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா",
+      "tanglish_text": ">> paalo naandhaan sarchchukku poi 20 varusham aachchaedaa",
+      "english_translation": ">> Paul, I've been going to church for 20 years",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 8
+    },
+    {
+      "text": "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு",
+      "tanglish_text": "en manaivi aashaa irandhu innaiyoda 20 varusham aachchu",
+      "english_translation": "It has been 20 years since my wife Asha passed away",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 8
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்",
+        "tanglish_text": ">> enakku enakku indha vellai poodhaan pidikkum"
+      },
+      "previous": [],
+      "next": [
+        "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+        "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்"
+      ]
+    },
+    {
+      "current": {
+        "text": "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+        "tanglish_text": "daaktar avarukku indha nilaimai yerpattadhukku kaaranam enna"
+      },
+      "previous": [
+        ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்"
+      ],
+      "next": [
+        "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+        "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+        "tanglish_text": "jenaral aabiragaam parambarai parambaraiyaa periya kudumbaththai saerndhavar"
+      },
+      "previous": [
+        ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்",
+        "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன"
+      ],
+      "next": [
+        "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+        ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ"
+      ]
+    },
+    {
+      "current": {
+        "text": "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+        "tanglish_text": "[sirippu] >> naan unna kaekkalappaa maeriya kaettaen"
+      },
+      "previous": [
+        "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+        "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்"
+      ],
+      "next": [
+        ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+        ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+        "tanglish_text": ">> appa paayaa >> yen innaikku seiva"
+      },
+      "previous": [
+        "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+        "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்"
+      ],
+      "next": [
+        ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+        ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+        "tanglish_text": ">> appo ponnungalai sait adikkadhaan inga vareengalaa"
+      },
+      "previous": [
+        "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+        ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ"
+      ],
+      "next": [
+        ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா",
+        "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா",
+        "tanglish_text": ">> paalo naandhaan sarchchukku poi 20 varusham aachchaedaa"
+      },
+      "previous": [
+        ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+        ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா"
+      ],
+      "next": [
+        "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு"
+      ]
+    },
+    {
+      "current": {
+        "text": "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு",
+        "tanglish_text": "en manaivi aashaa irandhu innaiyoda 20 varusham aachchu"
+      },
+      "previous": [
+        ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+        ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா"
+      ],
+      "next": []
+    }
+  ]
+}

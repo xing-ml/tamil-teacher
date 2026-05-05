@@ -1,0 +1,97 @@
+{
+  "lesson_id": "lesson_L3_003",
+  "title": "Tamil Colloquial Level 3 - 初中级 (sentence)",
+  "difficulty_level": "3",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 3,
+  "generated_at": "2026-05-05T13:06:05.914233",
+  "metadata": {
+    "entry_count": 3,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "初中级",
+      "sentence_words": [
+        3,
+        12
+      ],
+      "features": [
+        "compound_phrases",
+        "tense_usage",
+        "common_slang"
+      ],
+      "description": "复合短语、时态使用、常见俚语"
+    }
+  },
+  "entries": [
+    {
+      "text": "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது",
+      "tanglish_text": "appa mithraana akpreelaans investigettiv jarnalist andha kaesa paththi niraiya saegarichchirukkaarunnu therinjadhu",
+      "english_translation": "A friend of mine, a freelance investigative journalist, learned that the case column had collected a lot.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 11
+    },
+    {
+      "text": "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு",
+      "tanglish_text": "seeniyar most investigettiv jarnalist vaera oru staetla yaarukkum theriyaama thiruttuththanamaa edhukku",
+      "english_translation": "Sr. Most Investigative Journalist in another state without anyone's knowledge why plagiarism?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 11
+    },
+    {
+      "text": "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்",
+      "tanglish_text": "idhula shaakking niyoos ennannaa unga appaavoda maranam iyarkaiyaanadhu illainnu avar sandhaegappaduraaru saar",
+      "english_translation": "The shocking news is that he suspects that your father's death was not natural",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 12
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது",
+        "tanglish_text": "appa mithraana akpreelaans investigettiv jarnalist andha kaesa paththi niraiya saegarichchirukkaarunnu therinjadhu"
+      },
+      "previous": [],
+      "next": [
+        "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு",
+        "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்"
+      ]
+    },
+    {
+      "current": {
+        "text": "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு",
+        "tanglish_text": "seeniyar most investigettiv jarnalist vaera oru staetla yaarukkum theriyaama thiruttuththanamaa edhukku"
+      },
+      "previous": [
+        "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது"
+      ],
+      "next": [
+        "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்"
+      ]
+    },
+    {
+      "current": {
+        "text": "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்",
+        "tanglish_text": "idhula shaakking niyoos ennannaa unga appaavoda maranam iyarkaiyaanadhu illainnu avar sandhaegappaduraaru saar"
+      },
+      "previous": [
+        "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது",
+        "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு"
+      ],
+      "next": []
+    }
+  ]
+}

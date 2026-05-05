@@ -1,0 +1,73 @@
+{
+  "lesson_id": "lesson_L6_003",
+  "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+  "difficulty_level": "6",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 2,
+  "generated_at": "2026-05-05T13:06:05.933383",
+  "metadata": {
+    "entry_count": 2,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "高级",
+      "sentence_words": [
+        8,
+        30
+      ],
+      "features": [
+        "context_heavy",
+        "sarcasm",
+        "regional_variation"
+      ],
+      "description": "上下文依赖、讽刺、地方变体"
+    }
+  },
+  "entries": [
+    {
+      "text": "[சிரிப்பு] கம் ஆல்பவர்ட் பட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் லெப்ட் லெப்ட் >> ராணுவத்துல ஒரு சிங்கம் மாதிரி கர்ஜனை பண்ணிக்கிட்டு இருந்த ஜெனரல் எபிரகாமா இவரு",
+      "tanglish_text": "[sirippu] kam aalbavart pat lept rait lept rait lept rait lept lept lept >> raanuvaththula oru singam maadhiri karjanai pannikkittu irundha jenaral ebiragaamaa ivaru",
+      "english_translation": "[Laughter] COME ALBERT BUT LEFT RIGHT LEFT RIGHT LEFT RIGHT LEFT LEFT LEFT >> This is General Ibrahima who roared like a lion in the army.",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 24
+    },
+    {
+      "text": "ஐ அம் பிரிகேடியர் பிரதாப் சிங் சிம்லாவல உங்க ரெஜிமெண்ட்ல இருந்தவன் ஐ வாஸ் வரிங் அண்டர் யூ சார் என்ன தெரியல [இசை] ஓ மை காட் பிஜங்கள் உங்களுக்கு எந்த பூ பிடிக்கும்",
+      "tanglish_text": "ai am pirigediyar piradhaap sing simlaavala unga rejimentla irundhavan ai vaas varing andar yoo saar enna theriyala [isai] o mai kaat pijangal ungalukku endha poo pidikkum",
+      "english_translation": "I am Brigadier Pratap Singh Shimlawala I was in your regiment I was under you Sir I don't know what [Music] Oh my god Bijal which flower do you like?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "word_count": 26
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "[சிரிப்பு] கம் ஆல்பவர்ட் பட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் லெப்ட் லெப்ட் >> ராணுவத்துல ஒரு சிங்கம் மாதிரி கர்ஜனை பண்ணிக்கிட்டு இருந்த ஜெனரல் எபிரகாமா இவரு",
+        "tanglish_text": "[sirippu] kam aalbavart pat lept rait lept rait lept rait lept lept lept >> raanuvaththula oru singam maadhiri karjanai pannikkittu irundha jenaral ebiragaamaa ivaru"
+      },
+      "previous": [],
+      "next": [
+        "ஐ அம் பிரிகேடியர் பிரதாப் சிங் சிம்லாவல உங்க ரெஜிமெண்ட்ல இருந்தவன் ஐ வாஸ் வரிங் அண்டர் யூ சார் என்ன தெரியல [இசை] ஓ மை காட் பிஜங்கள் உங்களுக்கு எந்த பூ பிடிக்கும்"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஐ அம் பிரிகேடியர் பிரதாப் சிங் சிம்லாவல உங்க ரெஜிமெண்ட்ல இருந்தவன் ஐ வாஸ் வரிங் அண்டர் யூ சார் என்ன தெரியல [இசை] ஓ மை காட் பிஜங்கள் உங்களுக்கு எந்த பூ பிடிக்கும்",
+        "tanglish_text": "ai am pirigediyar piradhaap sing simlaavala unga rejimentla irundhavan ai vaas varing andar yoo saar enna theriyala [isai] o mai kaat pijangal ungalukku endha poo pidikkum"
+      },
+      "previous": [
+        "[சிரிப்பு] கம் ஆல்பவர்ட் பட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் லெப்ட் லெப்ட் >> ராணுவத்துல ஒரு சிங்கம் மாதிரி கர்ஜனை பண்ணிக்கிட்டு இருந்த ஜெனரல் எபிரகாமா இவரு"
+      ],
+      "next": []
+    }
+  ]
+}

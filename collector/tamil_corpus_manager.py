@@ -347,7 +347,16 @@ class TamilCorpusManager:
                 continue
 
             tanglish_text = self._tamil_to_tanglish(dialogue["text"])
-            english_translation = self._translate_to_english(dialogue["text"])
+            
+            # Use English translation from cleaned dialogue if available (from subtitles)
+            # Otherwise fall back to Google Translate
+            english_translation = dialogue.get("english_translation", "")
+            translation_source = dialogue.get("translation_source", "")
+            
+            if not english_translation:
+                # Fall back to Google Translate
+                english_translation = self._translate_to_english(dialogue["text"])
+                translation_source = "machine"
 
             entry = CorpusEntry(
                 entry_id=entry_id,
@@ -366,6 +375,7 @@ class TamilCorpusManager:
                 metadata={
                     "detected_keywords": dialogue.get("detected_keywords", []),
                     "source_fingerprint": hashlib.sha1(dialogue["text"].encode()).hexdigest(),
+                    "translation_source": translation_source,
                 }
             )
 

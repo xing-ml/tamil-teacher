@@ -1,0 +1,145 @@
+{
+  "lesson_id": "lesson_L2_006",
+  "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+  "difficulty_level": "2",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 5,
+  "generated_at": "2026-05-05T13:06:05.951385",
+  "metadata": {
+    "entry_count": 5,
+    "avg_score": 0.32,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "基础",
+      "sentence_words": [
+        2,
+        8
+      ],
+      "features": [
+        "short_sentences",
+        "basic_verbs",
+        "simple_responses"
+      ],
+      "description": "短句子、基础动词、简单回应"
+    }
+  },
+  "entries": [
+    {
+      "text": "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்",
+      "tanglish_text": "idhu paiv staar paargam restaarant katturadhukku nalla sendar",
+      "english_translation": "It is a good center for setting up a five star parcum restaurant",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 8
+    },
+    {
+      "text": "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+      "tanglish_text": "idha romba kaalamaa enga munnorgal nadaththikkittu irukkara aasiramam",
+      "english_translation": "This is an ashram that our ancestors have been running for a long time",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 8
+    },
+    {
+      "text": ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+      "tanglish_text": ">> raamasaami saar thaniyaa namakku anaadha aasiramamllaam irukku",
+      "english_translation": ">> Sir Ramaswami, we also have an orphan ashram",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 8
+    },
+    {
+      "text": ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது",
+      "tanglish_text": ">> taei unga panakkaara thimira idhoda niruththikkittaa nalladhu",
+      "english_translation": ">> You better stop your rich arrogance",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 8
+    },
+    {
+      "text": "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்",
+      "tanglish_text": "illaatti ponaa un potto maalaiyoda inga rijistar aayidum",
+      "english_translation": "If not, your photo will be registered here",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 8
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்",
+        "tanglish_text": "idhu paiv staar paargam restaarant katturadhukku nalla sendar"
+      },
+      "previous": [],
+      "next": [
+        "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+        ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு"
+      ]
+    },
+    {
+      "current": {
+        "text": "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+        "tanglish_text": "idha romba kaalamaa enga munnorgal nadaththikkittu irukkara aasiramam"
+      },
+      "previous": [
+        "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்"
+      ],
+      "next": [
+        ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+        ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+        "tanglish_text": ">> raamasaami saar thaniyaa namakku anaadha aasiramamllaam irukku"
+      },
+      "previous": [
+        "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்",
+        "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்"
+      ],
+      "next": [
+        ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது",
+        "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது",
+        "tanglish_text": ">> taei unga panakkaara thimira idhoda niruththikkittaa nalladhu"
+      },
+      "previous": [
+        "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+        ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு"
+      ],
+      "next": [
+        "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்"
+      ]
+    },
+    {
+      "current": {
+        "text": "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்",
+        "tanglish_text": "illaatti ponaa un potto maalaiyoda inga rijistar aayidum"
+      },
+      "previous": [
+        ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+        ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது"
+      ],
+      "next": []
+    }
+  ]
+}

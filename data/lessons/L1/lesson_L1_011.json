@@ -1,0 +1,265 @@
+{
+  "lesson_id": "lesson_L1_011",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 10,
+  "generated_at": "2026-05-05T13:06:05.938250",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.32,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்",
+      "tanglish_text": "rejistraeshan vachchukkalaam",
+      "english_translation": "Registration can be done",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 2
+    },
+    {
+      "text": "இந்த அனாதைகளுக்காக",
+      "tanglish_text": "indha anaadhaigalukkaaga",
+      "english_translation": "For these orphans",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 2
+    },
+    {
+      "text": "என் பேரு கண்ணபிரான்",
+      "tanglish_text": "en paeru kannabiraan",
+      "english_translation": "My name is Kannabran",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 3
+    },
+    {
+      "text": "அதான் இந்த கண்ணபிரான்",
+      "tanglish_text": "adhaan indha kannabiraan",
+      "english_translation": "That is this Kannapraan",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 3
+    },
+    {
+      "text": "எனக்கு ஆஸ்மா இருக்கு",
+      "tanglish_text": "enakku aasmaa irukku",
+      "english_translation": "I have asthma",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 3
+    },
+    {
+      "text": "அதுக்கு மருந்தே கிடையாது",
+      "tanglish_text": "adhukku marundhae kidaiyaadhu",
+      "english_translation": "There is no cure for it",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 3
+    },
+    {
+      "text": "ஒன்னும் கவனத்துலயே இல்ல",
+      "tanglish_text": "onnum kavanaththulayae illa",
+      "english_translation": "Nothing is in focus",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 3
+    },
+    {
+      "text": "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+      "tanglish_text": "raet evvalavunnu sollidunga",
+      "english_translation": "Tell me the rate",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 3
+    },
+    {
+      "text": "இல்லன்னா மரியாதை கெட்டிடம்",
+      "tanglish_text": "illannaa mariyaadhai kettidam",
+      "english_translation": "Otherwise respect is bad",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 3
+    },
+    {
+      "text": "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்",
+      "tanglish_text": "vivasaayaththula idhellaam senjadhu naandhaan",
+      "english_translation": "I am the one who did all this in agriculture",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 4
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்",
+        "tanglish_text": "rejistraeshan vachchukkalaam"
+      },
+      "previous": [],
+      "next": [
+        "இந்த அனாதைகளுக்காக",
+        "என் பேரு கண்ணபிரான்"
+      ]
+    },
+    {
+      "current": {
+        "text": "இந்த அனாதைகளுக்காக",
+        "tanglish_text": "indha anaadhaigalukkaaga"
+      },
+      "previous": [
+        "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்"
+      ],
+      "next": [
+        "என் பேரு கண்ணபிரான்",
+        "அதான் இந்த கண்ணபிரான்"
+      ]
+    },
+    {
+      "current": {
+        "text": "என் பேரு கண்ணபிரான்",
+        "tanglish_text": "en paeru kannabiraan"
+      },
+      "previous": [
+        "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்",
+        "இந்த அனாதைகளுக்காக"
+      ],
+      "next": [
+        "அதான் இந்த கண்ணபிரான்",
+        "எனக்கு ஆஸ்மா இருக்கு"
+      ]
+    },
+    {
+      "current": {
+        "text": "அதான் இந்த கண்ணபிரான்",
+        "tanglish_text": "adhaan indha kannabiraan"
+      },
+      "previous": [
+        "இந்த அனாதைகளுக்காக",
+        "என் பேரு கண்ணபிரான்"
+      ],
+      "next": [
+        "எனக்கு ஆஸ்மா இருக்கு",
+        "அதுக்கு மருந்தே கிடையாது"
+      ]
+    },
+    {
+      "current": {
+        "text": "எனக்கு ஆஸ்மா இருக்கு",
+        "tanglish_text": "enakku aasmaa irukku"
+      },
+      "previous": [
+        "என் பேரு கண்ணபிரான்",
+        "அதான் இந்த கண்ணபிரான்"
+      ],
+      "next": [
+        "அதுக்கு மருந்தே கிடையாது",
+        "ஒன்னும் கவனத்துலயே இல்ல"
+      ]
+    },
+    {
+      "current": {
+        "text": "அதுக்கு மருந்தே கிடையாது",
+        "tanglish_text": "adhukku marundhae kidaiyaadhu"
+      },
+      "previous": [
+        "அதான் இந்த கண்ணபிரான்",
+        "எனக்கு ஆஸ்மா இருக்கு"
+      ],
+      "next": [
+        "ஒன்னும் கவனத்துலயே இல்ல",
+        "ரேட் எவ்வளவுன்னு சொல்லிடுங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஒன்னும் கவனத்துலயே இல்ல",
+        "tanglish_text": "onnum kavanaththulayae illa"
+      },
+      "previous": [
+        "எனக்கு ஆஸ்மா இருக்கு",
+        "அதுக்கு மருந்தே கிடையாது"
+      ],
+      "next": [
+        "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+        "இல்லன்னா மரியாதை கெட்டிடம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+        "tanglish_text": "raet evvalavunnu sollidunga"
+      },
+      "previous": [
+        "அதுக்கு மருந்தே கிடையாது",
+        "ஒன்னும் கவனத்துலயே இல்ல"
+      ],
+      "next": [
+        "இல்லன்னா மரியாதை கெட்டிடம்",
+        "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்"
+      ]
+    },
+    {
+      "current": {
+        "text": "இல்லன்னா மரியாதை கெட்டிடம்",
+        "tanglish_text": "illannaa mariyaadhai kettidam"
+      },
+      "previous": [
+        "ஒன்னும் கவனத்துலயே இல்ல",
+        "ரேட் எவ்வளவுன்னு சொல்லிடுங்க"
+      ],
+      "next": [
+        "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்"
+      ]
+    },
+    {
+      "current": {
+        "text": "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்",
+        "tanglish_text": "vivasaayaththula idhellaam senjadhu naandhaan"
+      },
+      "previous": [
+        "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+        "இல்லன்னா மரியாதை கெட்டிடம்"
+      ],
+      "next": []
+    }
+  ]
+}

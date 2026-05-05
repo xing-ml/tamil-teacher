@@ -1,0 +1,265 @@
+{
+  "lesson_id": "lesson_L1_007",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 10,
+  "generated_at": "2026-05-05T13:06:05.889065",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "வணக்கம் சார்",
+      "tanglish_text": "vanakkam saar",
+      "english_translation": "hello sir",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 2
+    },
+    {
+      "text": "அப்படி செய்யல",
+      "tanglish_text": "appadi seiyala",
+      "english_translation": "Don't do that",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 2
+    },
+    {
+      "text": "சொல்லுங்க சார்",
+      "tanglish_text": "sollunga saar",
+      "english_translation": "Tell me sir",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 2
+    },
+    {
+      "text": ">> சாரி சார்",
+      "tanglish_text": ">> saari saar",
+      "english_translation": ">> bye sir",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 3
+    },
+    {
+      "text": "வாயா சுப்பராஜ் எப்படி இருக்கற",
+      "tanglish_text": "vaayaa supparaaj eppadi irukkara",
+      "english_translation": "How are you Vaya Subbaraj?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 4
+    },
+    {
+      "text": ">> நல்லா இருக்கு சார்",
+      "tanglish_text": ">> nallaa irukku saar",
+      "english_translation": ">> good sir",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 4
+    },
+    {
+      "text": ">> என்ன பேசுறீங்க நீங்க",
+      "tanglish_text": ">> enna paesureenga neenga",
+      "english_translation": ">> what are you talking about",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 4
+    },
+    {
+      "text": "யாரை பத்தி தப்பா பேசுறீங்க",
+      "tanglish_text": "yaarai paththi thappaa paesureenga",
+      "english_translation": "Who are you talking about?",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 4
+    },
+    {
+      "text": ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்",
+      "tanglish_text": ">> yaaruppaa neengallaam enna vaenum",
+      "english_translation": ">> Yoruba, whatever you want",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 5
+    },
+    {
+      "text": ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்",
+      "tanglish_text": ">> andha padhaviyila paraththaiyaadhaan irukkanum",
+      "english_translation": ">> Bharatiya should be in that post",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 5
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "வணக்கம் சார்",
+        "tanglish_text": "vanakkam saar"
+      },
+      "previous": [],
+      "next": [
+        "அப்படி செய்யல",
+        "சொல்லுங்க சார்"
+      ]
+    },
+    {
+      "current": {
+        "text": "அப்படி செய்யல",
+        "tanglish_text": "appadi seiyala"
+      },
+      "previous": [
+        "வணக்கம் சார்"
+      ],
+      "next": [
+        "சொல்லுங்க சார்",
+        ">> சாரி சார்"
+      ]
+    },
+    {
+      "current": {
+        "text": "சொல்லுங்க சார்",
+        "tanglish_text": "sollunga saar"
+      },
+      "previous": [
+        "வணக்கம் சார்",
+        "அப்படி செய்யல"
+      ],
+      "next": [
+        ">> சாரி சார்",
+        "வாயா சுப்பராஜ் எப்படி இருக்கற"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> சாரி சார்",
+        "tanglish_text": ">> saari saar"
+      },
+      "previous": [
+        "அப்படி செய்யல",
+        "சொல்லுங்க சார்"
+      ],
+      "next": [
+        "வாயா சுப்பராஜ் எப்படி இருக்கற",
+        ">> நல்லா இருக்கு சார்"
+      ]
+    },
+    {
+      "current": {
+        "text": "வாயா சுப்பராஜ் எப்படி இருக்கற",
+        "tanglish_text": "vaayaa supparaaj eppadi irukkara"
+      },
+      "previous": [
+        "சொல்லுங்க சார்",
+        ">> சாரி சார்"
+      ],
+      "next": [
+        ">> நல்லா இருக்கு சார்",
+        ">> என்ன பேசுறீங்க நீங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> நல்லா இருக்கு சார்",
+        "tanglish_text": ">> nallaa irukku saar"
+      },
+      "previous": [
+        ">> சாரி சார்",
+        "வாயா சுப்பராஜ் எப்படி இருக்கற"
+      ],
+      "next": [
+        ">> என்ன பேசுறீங்க நீங்க",
+        "யாரை பத்தி தப்பா பேசுறீங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> என்ன பேசுறீங்க நீங்க",
+        "tanglish_text": ">> enna paesureenga neenga"
+      },
+      "previous": [
+        "வாயா சுப்பராஜ் எப்படி இருக்கற",
+        ">> நல்லா இருக்கு சார்"
+      ],
+      "next": [
+        "யாரை பத்தி தப்பா பேசுறீங்க",
+        ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்"
+      ]
+    },
+    {
+      "current": {
+        "text": "யாரை பத்தி தப்பா பேசுறீங்க",
+        "tanglish_text": "yaarai paththi thappaa paesureenga"
+      },
+      "previous": [
+        ">> நல்லா இருக்கு சார்",
+        ">> என்ன பேசுறீங்க நீங்க"
+      ],
+      "next": [
+        ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்",
+        ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்",
+        "tanglish_text": ">> yaaruppaa neengallaam enna vaenum"
+      },
+      "previous": [
+        ">> என்ன பேசுறீங்க நீங்க",
+        "யாரை பத்தி தப்பா பேசுறீங்க"
+      ],
+      "next": [
+        ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்",
+        "tanglish_text": ">> andha padhaviyila paraththaiyaadhaan irukkanum"
+      },
+      "previous": [
+        "யாரை பத்தி தப்பா பேசுறீங்க",
+        ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்"
+      ],
+      "next": []
+    }
+  ]
+}

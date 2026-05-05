@@ -13,10 +13,11 @@
       "tanglish_text": "irandhadhil oruvar vanaththurai amaichchar maariyappanin ilaiya",
       "english_translation": "One of the deceased is Forest Minister Mariappan's junior",
       "word_count": 6,
-      "added_at": "2026-05-05T12:31:15.623368",
+      "added_at": "2026-05-05T13:04:22.912336",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "7249ebce04da53b9efc7fc97b4ad334b146d0b54"
+        "source_fingerprint": "7249ebce04da53b9efc7fc97b4ad334b146d0b54",
+        "translation_source": "machine"
       }
     },
     {
@@ -32,10 +33,11 @@
       "tanglish_text": "veetla mudangi kidakkaan nee enga purappatteenga naal muzhudhum unnaiyae innaikku en parthtae enga en saaklaet oorukkulla thaan",
       "english_translation": "Paralyzed at home, where did you go? All day long, today is my birthday. Where is my chocolate?",
       "word_count": 17,
-      "added_at": "2026-05-05T12:31:15.859969",
+      "added_at": "2026-05-05T13:04:23.144048",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "4b557e0105e57ced54da586a46f7a34fe20a2b2a"
+        "source_fingerprint": "4b557e0105e57ced54da586a46f7a34fe20a2b2a",
+        "translation_source": "machine"
       }
     },
     {
@@ -51,10 +53,11 @@
       "tanglish_text": "oru adhisaya piragu avvalavudhaan ippa varuvaan paarunga velila yedho vaerlt vaarnaala maadhiri ungalukkae oru akbeeling irukkum oru kosu ee vizhuna udane kaep irukkaadhu veettaiyae kampleettaa seri panni vaikkiraan appadiyae ennaikkaavadhu",
       "english_translation": "After a miracle, that's all he comes. Look, something is happening outside. You have a feeling like a mosquito fly falls. Immediately there is no cap. He repairs the house completely, just like that for me.",
       "word_count": 30,
-      "added_at": "2026-05-05T12:31:16.076951",
+      "added_at": "2026-05-05T13:04:23.379944",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "e50d5873824fcd3d9c6850b4aa703054d611a5ed"
+        "source_fingerprint": "e50d5873824fcd3d9c6850b4aa703054d611a5ed",
+        "translation_source": "machine"
       }
     },
     {
@@ -70,10 +73,11 @@
       "tanglish_text": "irandhuruvaangammaa",
       "english_translation": "Will you die?",
       "word_count": 1,
-      "added_at": "2026-05-05T12:31:16.325617",
+      "added_at": "2026-05-05T13:04:23.562727",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "b205a885a69117ddb6d570392f8a2801d58f8fe4"
+        "source_fingerprint": "b205a885a69117ddb6d570392f8a2801d58f8fe4",
+        "translation_source": "machine"
       }
     },
     {
@@ -89,10 +93,11 @@
       "tanglish_text": "paerla usuru",
       "english_translation": "Pearl Usuru",
       "word_count": 2,
-      "added_at": "2026-05-05T12:31:16.532168",
+      "added_at": "2026-05-05T13:04:23.782944",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "d527ebb865f45256397e77be5760e6679b62b99f"
+        "source_fingerprint": "d527ebb865f45256397e77be5760e6679b62b99f",
+        "translation_source": "machine"
       }
     },
     {
@@ -108,10 +113,111 @@
       "tanglish_text": "neengalaachchu sollungamaa",
       "english_translation": "Tell me about you",
       "word_count": 2,
-      "added_at": "2026-05-05T12:31:16.773069",
+      "added_at": "2026-05-05T13:04:23.974470",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "4eb075a0d95b44c46bf194a4d7f077c0fe7e6c34"
+        "source_fingerprint": "4eb075a0d95b44c46bf194a4d7f077c0fe7e6c34",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "edc27cfed904e3d5f5979088fcc5714be1505e7c",
+      "text": ">> சாப்பிடியா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> saappidiyaa",
+      "english_translation": ">> do you eat",
+      "word_count": 2,
+      "added_at": "2026-05-05T13:04:24.440706",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "34a5dda492f27cd53fad11698c26766a57c3b2bb",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "eed7a7f333e2305f1e8991f99779bdb3370a0e41",
+      "text": ">> மன்னிச்சு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> mannichchu",
+      "english_translation": ">> sorry",
+      "word_count": 2,
+      "added_at": "2026-05-05T13:04:24.889250",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "67e3b9f42cb21eecda8507916f96fab55db9fdfe",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "d71f49eeed5bfac01f3ad050de025fa3716b05de",
+      "text": "வணக்கம் சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "vanakkam saar",
+      "english_translation": "hello sir",
+      "word_count": 2,
+      "added_at": "2026-05-05T13:04:25.093409",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "d975c50769682d003e749225f96a65b2aeffdb42",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "917398aefa930c99d10d57fb5a429dd324d89375",
+      "text": "அப்படி செய்யல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "appadi seiyala",
+      "english_translation": "Don't do that",
+      "word_count": 2,
+      "added_at": "2026-05-05T13:04:25.554527",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "4cac681e86e280e4a871db4e1487645b85af25ef",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "ba1981008ca960b738711ee9c9c3c832fda065ed",
+      "text": "சொல்லுங்க சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "sollunga saar",
+      "english_translation": "Tell me sir",
+      "word_count": 2,
+      "added_at": "2026-05-05T13:04:25.794438",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "057543f5eda2f18ba4ff552a76ea6e1b86eeab2f",
+        "translation_source": "machine"
       }
     },
     {
@@ -127,10 +233,11 @@
       "tanglish_text": "adhu thaevarai kaaththa",
       "english_translation": "It is to protect God",
       "word_count": 3,
-      "added_at": "2026-05-05T12:31:16.978969",
+      "added_at": "2026-05-05T13:04:25.954714",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "51d25a6564c92c0f3b4ff7847a65c9ea63122b6c"
+        "source_fingerprint": "51d25a6564c92c0f3b4ff7847a65c9ea63122b6c",
+        "translation_source": "machine"
       }
     },
     {
@@ -146,10 +253,11 @@
       "tanglish_text": "paakka thaane oorae",
       "english_translation": "Paka Thane Ure",
       "word_count": 3,
-      "added_at": "2026-05-05T12:31:17.187068",
+      "added_at": "2026-05-05T13:04:26.130519",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "be3e9abb115b44654bff5405d8d69a72196e695b"
+        "source_fingerprint": "be3e9abb115b44654bff5405d8d69a72196e695b",
+        "translation_source": "machine"
       }
     },
     {
@@ -165,10 +273,11 @@
       "tanglish_text": "konja thooramdhaan pakkaththuladhaan",
       "english_translation": "It's just a short distance away",
       "word_count": 3,
-      "added_at": "2026-05-05T12:31:17.615599",
+      "added_at": "2026-05-05T13:04:26.302411",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "e20a01b24925304d1a84d8857c85782658eeefcf"
+        "source_fingerprint": "e20a01b24925304d1a84d8857c85782658eeefcf",
+        "translation_source": "machine"
       }
     },
     {
@@ -184,10 +293,11 @@
       "tanglish_text": "oru romaans lukku",
       "english_translation": "For a romance",
       "word_count": 3,
-      "added_at": "2026-05-05T12:31:17.824923",
+      "added_at": "2026-05-05T13:04:26.525109",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "92905ecb8cec61cee19c4ac210095b21e46ef440"
+        "source_fingerprint": "92905ecb8cec61cee19c4ac210095b21e46ef440",
+        "translation_source": "machine"
       }
     },
     {
@@ -203,10 +313,11 @@
       "tanglish_text": "ennappaa ippadi panreenga",
       "english_translation": "Why do you do this?",
       "word_count": 3,
-      "added_at": "2026-05-05T12:31:18.047060",
+      "added_at": "2026-05-05T13:04:26.759699",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "f2e780de4d087cfd16702836bf5e624d39c631f4"
+        "source_fingerprint": "f2e780de4d087cfd16702836bf5e624d39c631f4",
+        "translation_source": "machine"
       }
     },
     {
@@ -222,10 +333,11 @@
       "tanglish_text": "adhellaam onnum illa",
       "english_translation": "All that is nothing",
       "word_count": 3,
-      "added_at": "2026-05-05T12:31:18.254080",
+      "added_at": "2026-05-05T13:04:27.157334",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "35ae5bf0220024286cc0d59f328bd1bd019db7df"
+        "source_fingerprint": "35ae5bf0220024286cc0d59f328bd1bd019db7df",
+        "translation_source": "machine"
       }
     },
     {
@@ -241,10 +353,71 @@
       "tanglish_text": "summaa kattukkadhai idhellaam",
       "english_translation": "This is just a myth",
       "word_count": 3,
-      "added_at": "2026-05-05T12:31:18.426548",
+      "added_at": "2026-05-05T13:04:27.406966",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "24278b1b9896eea527dbfe74a264039a3de1ac11"
+        "source_fingerprint": "24278b1b9896eea527dbfe74a264039a3de1ac11",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "3f19d44c7f053f8808a597a2c2ac7b99c86a21d3",
+      "text": "அவரா இப்படி ஆயிட்டாரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "avaraa ippadi aayittaaru",
+      "english_translation": "He was like this",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:04:27.914103",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8f3b1f4d45a7297eb4aa7bc981f3c7437a2d7d74",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "185636c22036aa5bebf8c99b19925c2b628277f4",
+      "text": "நான் மிலிட்ரி காரன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "naan militri kaaran",
+      "english_translation": "I am a military man",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:04:28.476987",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "ae4f27c07ce7545be89e8f50746e1c0c7acee28e",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f916a8e7a792a31f4b243cd6dd82b27ba7f9dd02",
+      "text": ">> சாரி சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> saari saar",
+      "english_translation": ">> bye sir",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:04:28.708796",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "4498e436d53aeb24203305522e0e51f462c93d24",
+        "translation_source": "machine"
       }
     },
     {
@@ -260,10 +433,11 @@
       "tanglish_text": "yeppaa ingittu enga poraanga",
       "english_translation": "Hey, where are you going?",
       "word_count": 4,
-      "added_at": "2026-05-05T12:31:18.608778",
+      "added_at": "2026-05-05T13:04:28.894376",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "d5203c20ab41d9b2da17bb1cb3a7b71861d6f452"
+        "source_fingerprint": "d5203c20ab41d9b2da17bb1cb3a7b71861d6f452",
+        "translation_source": "machine"
       }
     },
     {
@@ -279,10 +453,171 @@
       "tanglish_text": "appadi nambi vandha pon",
       "english_translation": "A girl who believed like that",
       "word_count": 4,
-      "added_at": "2026-05-05T12:31:18.890826",
+      "added_at": "2026-05-05T13:04:29.137993",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "f4c02f83ede5fdd97112f28979dd8c20c21c6ec9"
+        "source_fingerprint": "f4c02f83ede5fdd97112f28979dd8c20c21c6ec9",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "50bf9b95d330ac448726a424b04da34d3d889e53",
+      "text": ">> சாப்பிட்டுகிட்டே செஸ் ஆடலாம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> saappittugittae ses aadalaam",
+      "english_translation": ">> You can play chess while eating",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:29.590034",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "45f6c3ea2f973b41dde6a35e0076dba8b95135a4",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "14edef64c7150521894297c42d31f42c7548c0eb",
+      "text": ">> ஆடு மாயா போயிடுச்ச",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> aadu maayaa poyiduchcha",
+      "english_translation": ">> The goat is gone",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:29.998992",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c00a3b5a131b212ae08cdad1399c66eea71abfe1",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "45f8ae6962e36e032c65338accd382710d0b70be",
+      "text": "[சிரிப்பு] >> காலி பசங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[sirippu] >> kaali pasanga",
+      "english_translation": "[Laughter] >> Galli Basanga",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:31.245022",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "9367e0ed78a4781d6e58f109dfd5174200d98d96",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "68a5cbe81ee7032958ecd1e84dd97f2cdaf7ef61",
+      "text": ">> மாமா கோவிச்சுக்காதீங்க மாமா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> maamaa kovichchukkaadheenga maamaa",
+      "english_translation": ">> Uncle, don't be rude, uncle",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:31.686271",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "06dd2d480125896cc106298cf77c016476830c50",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "93ff65174f2a3c6cb5613ae685fdcc25e4caadea",
+      "text": "வாயா சுப்பராஜ் எப்படி இருக்கற",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "vaayaa supparaaj eppadi irukkara",
+      "english_translation": "How are you Vaya Subbaraj?",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:31.856026",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "40c608b30db6a7dca7de6ab0b43029497be47114",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "2996941e4e149d4db7485d39279f59332945a231",
+      "text": ">> நல்லா இருக்கு சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> nallaa irukku saar",
+      "english_translation": ">> good sir",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:32.102837",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "2d07a38454b7ed40b253513944558cfa9052a946",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "e986e1cd8d745625e371bc7fd20a9edb574707f4",
+      "text": ">> என்ன பேசுறீங்க நீங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> enna paesureenga neenga",
+      "english_translation": ">> what are you talking about",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:32.256891",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b775f9ca665057da9ad324205d8aeabf214ca6da",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "5eaab02cd9b99af5c27f3a2e26bf812a639c91f3",
+      "text": "யாரை பத்தி தப்பா பேசுறீங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "yaarai paththi thappaa paesureenga",
+      "english_translation": "Who are you talking about?",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:04:32.505208",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "7ea9572f655032b78b318573588de07d8e8e3ee8",
+        "translation_source": "machine"
       }
     },
     {
@@ -298,10 +633,11 @@
       "tanglish_text": "pallikkoodaththai kattunen neenga yaarum padikka",
       "english_translation": "I built the school so that none of you can study",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:19.095391",
+      "added_at": "2026-05-05T13:04:32.756270",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "107103ee70dd914b70f0de109b03809ea3f80fc7"
+        "source_fingerprint": "107103ee70dd914b70f0de109b03809ea3f80fc7",
+        "translation_source": "machine"
       }
     },
     {
@@ -317,10 +653,11 @@
       "tanglish_text": "kulaththai vettuna neenga yaarum kulikkavae",
       "english_translation": "No one should bathe after cutting the pool",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:19.261698",
+      "added_at": "2026-05-05T13:04:32.923859",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "b2a7aa4d82b9bb78f554eaf8a6783be83430e603"
+        "source_fingerprint": "b2a7aa4d82b9bb78f554eaf8a6783be83430e603",
+        "translation_source": "machine"
       }
     },
     {
@@ -336,10 +673,11 @@
       "tanglish_text": "kilambunadhula irundhu idhaedhaan sollittu irukkaen",
       "english_translation": "I have been saying the same since I left",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:19.437962",
+      "added_at": "2026-05-05T13:04:33.199347",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "d3bf24b5c391ca994401ad9f4c6cab5c3d0af0a5"
+        "source_fingerprint": "d3bf24b5c391ca994401ad9f4c6cab5c3d0af0a5",
+        "translation_source": "machine"
       }
     },
     {
@@ -355,10 +693,11 @@
       "tanglish_text": "indha paekkaiyum neeyae thookkittu vaa",
       "english_translation": "Carry this bag yourself",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:19.630352",
+      "added_at": "2026-05-05T13:04:33.476605",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "2b33207800a2471a66cae0ae243093bf16b67bca"
+        "source_fingerprint": "2b33207800a2471a66cae0ae243093bf16b67bca",
+        "translation_source": "machine"
       }
     },
     {
@@ -374,10 +713,11 @@
       "tanglish_text": "appadi enna periya kadhai irukku",
       "english_translation": "What a great story",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:19.819359",
+      "added_at": "2026-05-05T13:04:33.684083",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "876fb4716a67c8752c30a2c55f721992cf62dcbf"
+        "source_fingerprint": "876fb4716a67c8752c30a2c55f721992cf62dcbf",
+        "translation_source": "machine"
       }
     },
     {
@@ -393,10 +733,11 @@
       "tanglish_text": "seri namma vandhu vaelaiya aarambippom",
       "english_translation": "Well, let's come and start working",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:20.324387",
+      "added_at": "2026-05-05T13:04:33.886918",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "a7fbb4eedc02c477718e2f452d5e5288fea3e027"
+        "source_fingerprint": "a7fbb4eedc02c477718e2f452d5e5288fea3e027",
+        "translation_source": "machine"
       }
     },
     {
@@ -412,10 +753,11 @@
       "tanglish_text": "ennadaa kaalailayae kunda thookki podura",
       "english_translation": "Why don't you throw it away in the morning?",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:20.504844",
+      "added_at": "2026-05-05T13:04:34.089829",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "4e0f13940f492947ed88c50984ca8c646603f4f4"
+        "source_fingerprint": "4e0f13940f492947ed88c50984ca8c646603f4f4",
+        "translation_source": "machine"
       }
     },
     {
@@ -431,10 +773,11 @@
       "tanglish_text": "adhu unga appana poi kaeludaa",
       "english_translation": "Don't go and ask your uncle",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:20.726343",
+      "added_at": "2026-05-05T13:04:34.280223",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "55706bc2b773c18eebad45c07e91b923c531e818"
+        "source_fingerprint": "55706bc2b773c18eebad45c07e91b923c531e818",
+        "translation_source": "machine"
       }
     },
     {
@@ -450,10 +793,11 @@
       "tanglish_text": "namma periyasaami 55 vayasu aayiduchchu",
       "english_translation": "Our Periaswamy has turned 55 years old",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:21.013035",
+      "added_at": "2026-05-05T13:04:34.467324",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "45d9ded9bbd48d8f9ed3d91600905ca3075c78ac"
+        "source_fingerprint": "45d9ded9bbd48d8f9ed3d91600905ca3075c78ac",
+        "translation_source": "machine"
       }
     },
     {
@@ -469,10 +813,11 @@
       "tanglish_text": "ennadhaan kalyaanam pannaa pirachchanai aagum",
       "english_translation": "What is the problem of marriage?",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:21.225577",
+      "added_at": "2026-05-05T13:04:34.684496",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "1e1e571689902fd138f0380558707e2d2b9099cc"
+        "source_fingerprint": "1e1e571689902fd138f0380558707e2d2b9099cc",
+        "translation_source": "machine"
       }
     },
     {
@@ -488,10 +833,11 @@
       "tanglish_text": "illammaa idhu 200 varusha saabam",
       "english_translation": "No, this is a 200 year curse",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:21.466605",
+      "added_at": "2026-05-05T13:04:34.901639",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "ae3d753eb824da5b7bd7b13b9f566b287995f932"
+        "source_fingerprint": "ae3d753eb824da5b7bd7b13b9f566b287995f932",
+        "translation_source": "machine"
       }
     },
     {
@@ -507,10 +853,11 @@
       "tanglish_text": "idhu innaikku naeththu nadandhadhu illa",
       "english_translation": "This did not happen recently",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:21.655904",
+      "added_at": "2026-05-05T13:04:35.107679",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "c6fc0e04aeafcf8062f5b6d762d5e21c0a2bf448"
+        "source_fingerprint": "c6fc0e04aeafcf8062f5b6d762d5e21c0a2bf448",
+        "translation_source": "machine"
       }
     },
     {
@@ -526,10 +873,211 @@
       "tanglish_text": "adhae maari niraiya kalyaanam nadandhurukku",
       "english_translation": "A lot of marriages have happened with the same change",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:21.838454",
+      "added_at": "2026-05-05T13:04:35.362593",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "9445dc36208b122d530df1182f779cd059357bb1"
+        "source_fingerprint": "9445dc36208b122d530df1182f779cd059357bb1",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "38489ab4c90b395c75146a201a29fe6ce2e8e146",
+      "text": ">> உனக்கு எந்த பூ பிடிக்கும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> unakku endha poo pidikkum",
+      "english_translation": ">> which flower do you like?",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:35.716817",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "19848eaecae593f86f1b132e6d434dfc33dd4401",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "98e75753cc270ba45a54e46fc00f73bcf5368734",
+      "text": ">> உனக்கு பிடிச்சதெல்லாம் எனக்கு பிடிக்கும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> unakku pidichchadhellaam enakku pidikkum",
+      "english_translation": ">> i like whatever you like",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:36.272487",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "aab08d6c2ade8cd65210a14ef028a1deaf9cc847",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "e08671cda455bed722f03de43ea1dfd8221828d9",
+      "text": "உன் கதைதான் ஏற்கனவே எனக்கு தெரியுமே",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "un kadhaidhaan yerkanavae enakku theriyumae",
+      "english_translation": "I already know your story",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:36.596016",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "f8b4c88e6c20ffe48d2147b7af7fa52bb822b31f",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f831726ec3b00fd7ce2ef837722a4358ee405bb8",
+      "text": "இல்ல செஸ் ஆடிக்கிட்டே சாப்பிடலாம் கமான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "illa ses aadikkittae saappidalaam kamaan",
+      "english_translation": "Illa chess, let's eat it",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:36.941271",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "961d37b28dec0dd67a4bd9ba070009642d828069",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1b4d2987824cff23195f83ea6694445cf8faa5a7",
+      "text": "கடமை தவிர்ந்தவனை ஷூட் பண்ண வேண்டியதுதான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "kadamai thavirndhavanai shoot panna vaendiyadhudhaan",
+      "english_translation": "The dereliction of duty should be shot",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:37.399806",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "36532497e0035df6d7e8b6ca515d2e8ba63e5f70",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "575946513aa1124d59596fd7aac89949f6c20a5a",
+      "text": ">> யாருப்பா நீங்கல்லாம் என்ன வேணும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> yaaruppaa neengallaam enna vaenum",
+      "english_translation": ">> Yoruba, whatever you want",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:37.601088",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "66b791e89f09ae89afe163d38a47cbc87b741802",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "7449464012eaa5772e7019588a9c4fe7d3412d9c",
+      "text": ">> அந்த பதவியில பரத்தையாதான் இருக்கணும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> andha padhaviyila paraththaiyaadhaan irukkanum",
+      "english_translation": ">> Bharatiya should be in that post",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:37.809193",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "19aef9fa2892bbd405d9537c09f7912c17a1ac33",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f6b6469a5d2b918780f01cefa00eb7a84f2ec00e",
+      "text": "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "adhukkaana kaes kooda pabail pannala",
+      "english_translation": "The case for that is not even made public",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:39.002928",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "95447eb66caff512971120c770db014f48c50954",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "7c6ea589d82028669412f54c03d4c08a571baed8",
+      "text": "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "pat ai staart pikking teeppar",
+      "english_translation": "But I start picking deeper",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:39.195778",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b814b2121c4ec16f17e4eb0d2913460c863b48d8",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "d2b186b88dbb6388586e33ec3eb67a85196e5190",
+      "text": "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "idhu ellaamae enakku sandhaegamaa irundhadhu",
+      "english_translation": "I doubted all of this",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:04:39.388854",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "993ced3443dd80afcbb529364a14351514b8ee71",
+        "translation_source": "machine"
       }
     },
     {
@@ -545,10 +1093,11 @@
       "tanglish_text": "[isai] om [isai] yaaru paerukku aduth",
       "english_translation": "[Music] Om [Music] Adut to whom",
       "word_count": 6,
-      "added_at": "2026-05-05T12:31:22.063723",
+      "added_at": "2026-05-05T13:04:39.572477",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "f9c5f6a896a3be1dc3a8ddb2357c6390e50ed0b4"
+        "source_fingerprint": "f9c5f6a896a3be1dc3a8ddb2357c6390e50ed0b4",
+        "translation_source": "machine"
       }
     },
     {
@@ -564,10 +1113,11 @@
       "tanglish_text": "ennaalallaam idhukku maelallaam thookkittu vara mudiyaadhu",
       "english_translation": "I can't take any more than that",
       "word_count": 6,
-      "added_at": "2026-05-05T12:31:22.261875",
+      "added_at": "2026-05-05T13:04:39.778565",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "5cc7baa267fb213d3ae7557fd9293b65499cf121"
+        "source_fingerprint": "5cc7baa267fb213d3ae7557fd9293b65499cf121",
+        "translation_source": "machine"
       }
     },
     {
@@ -583,10 +1133,11 @@
       "tanglish_text": "aamaamaa indha ponnaidhaan kalyaanam pannikka poraen",
       "english_translation": "I am going to marry this girl",
       "word_count": 6,
-      "added_at": "2026-05-05T12:31:22.440234",
+      "added_at": "2026-05-05T13:04:39.993783",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "20e1556740786b42e82c85327de3f1c6dd3cb8d8"
+        "source_fingerprint": "20e1556740786b42e82c85327de3f1c6dd3cb8d8",
+        "translation_source": "machine"
       }
     },
     {
@@ -602,10 +1153,11 @@
       "tanglish_text": "neenga veettukku mooththa pillai ungalukku theriyaadhaa",
       "english_translation": "Don't you know that you are the eldest child in the family?",
       "word_count": 6,
-      "added_at": "2026-05-05T12:31:22.623790",
+      "added_at": "2026-05-05T13:04:40.179304",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "0665ed9664b879d6ae222442ffbe5444948865d1"
+        "source_fingerprint": "0665ed9664b879d6ae222442ffbe5444948865d1",
+        "translation_source": "machine"
       }
     },
     {
@@ -621,10 +1173,311 @@
       "tanglish_text": "idhu indha ooroda paala pona saabam",
       "english_translation": "This is the curse of this town",
       "word_count": 6,
-      "added_at": "2026-05-05T12:31:22.817996",
+      "added_at": "2026-05-05T13:04:40.343712",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "b8fb2664efd1b2442c2203e3310a46a43b0e0a24"
+        "source_fingerprint": "b8fb2664efd1b2442c2203e3310a46a43b0e0a24",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "bc11efb7a42fd007c7435f6a81f5a970a254e80a",
+      "text": "இவர் முன்னாடி நிக்கறதுக்கே எல்லாரும் பயப்படுவாங்க டாக்டர்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "ivar munnaadi nikkaradhukkae ellaarum payappaduvaanga daaktar",
+      "english_translation": "Doctor, everyone should be afraid because of his past",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:40.863727",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "ea377eb3272e5adb4f151a19a3c1668709cedd64",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "601ae4a7d6283542e09bb15e2c3ec90896a1eb4c",
+      "text": ">> உன் கூட சாப்பிடலாம்னு தான் வந்துருக்கேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> un kooda saappidalaamnu thaan vandhurukkaen",
+      "english_translation": ">> I came just so you can eat too",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:41.225266",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "9f07cc9bf86da757cb1dd4ab47c56db8dc8d86f2",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "64e004e79a4ab6747195326166f89f7f006f73e5",
+      "text": ">> ஞாயிற்றுக்கிழமை >> வழக்கமா என்ன செய்வ",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> njaayitrukkizhamai >> vazhakkamaa enna seiva",
+      "english_translation": ">> sunday >> what do you usually do",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:41.627985",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8ca5a282e6fb079b64aa9caa024b22a194570c0a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "4769acdfecd250e2ed2eda994cfc6d29d8aab36d",
+      "text": ">> நேத்து சாயந்திரம் மார்க்கெட்ல ஆட்டுக்கால் கிடைக்கிறது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> naeththu saayandhiram maarkketla aattukkaal kidaikkiradhu",
+      "english_translation": ">> Goat meat is available in Nethu Sayantram market",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:42.274852",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "2eefe34da8e6bc2710d32f8bd9dfc876b0d273e4",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "ee0efabb72ece8b8d8c82735a96025579269552f",
+      "text": ">> எங்க காலேஜ்ல உட்காரதுக்கு இடம் இருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> enga kaalaejla utkaaradhukku idam irukku",
+      "english_translation": ">> We have a place to sit in our college",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:42.745593",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "dd0089437d5157a81deda2807d59af61aa882c1e",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "879a1623f2017509adec922988fabdb05e911fb0",
+      "text": ">> ஆனா சைட் அடிக்க பொண்ணுங்கதான் இல்ல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> aanaa sait adikka ponnungadhaan illa",
+      "english_translation": ">> But it's not just a girl to hit the site",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:43.975317",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "5b83e8bf6e0756e05ec2bfe069b0b2a4e94c00b9",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1caecea70f2752cc4b2707951b3d04a772604af1",
+      "text": ">> பின்ன பொண்ண சைட் அடிக்கவா வர்றோம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> pinna ponna sait adikkavaa varrom",
+      "english_translation": ">> Pinna Ponna Site Hitkava come",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:44.637040",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "51c122a1acae2724b936717e88fc1f76688ab89e",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "8ab4695bbeb0038bc07785c40ac15113b4a5817f",
+      "text": "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "neenga vandhu engalukku endha pirayojanamum illai",
+      "english_translation": "You are of no use to us",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:44.831037",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "5532eccc49444926c708a2a981f8ba0f1582f100",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "5c7edcf2538c58140656f78abe45c628836f5c83",
+      "text": "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "ungalai kattuppaduththura adhigaaram siem kitta irukku",
+      "english_translation": "The CM has the authority to control you",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:45.035148",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "61cd479c81b88e790b43bc65d7fa8203dddec00c",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "902d417d65ed93299a33e65377c61fd5d871aace",
+      "text": "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "yekkuraen >> mudhalamaichcharai thaerndhedukkaradhu engaloda poruppu",
+      "english_translation": "Ekkuren >> It is our responsibility to elect the Chief Minister",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:45.221444",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8c1421a369c8cdecc2297d665f452bb08f11ad0d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "70643745c239ba301042aca920205c04ce0ae51e",
+      "text": ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> nee enna seiviyo engalukku theriyaadhu",
+      "english_translation": ">> we don't know what you do",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:45.531389",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "93848ecae3a047953e578feb89b33acb03baf48d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1370fc0a427659ef3b0fc8101dd0583594b2a16d",
+      "text": "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "aanaa ennaala ungalai paes panna mudiyala",
+      "english_translation": "But I can't pace you",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:45.721675",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "afb69f07237ae691b8776091b6221f9baf8a1e7f",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "107aeb4189d75d027301595258ce8d0ee3ff6335",
+      "text": "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "ekchi em raagavan avardhaan enga appaa",
+      "english_translation": "XM Raghavan is our father",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:45.914106",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "6a213a348758982434fdf39cc522f0a746536e8d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "d25c5953a7cd6b6196d4b15b5bcda63de279a277",
+      "text": "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "aanaa idhuvaraikkum adhukkaana nadavadikkai yaarumae edukkala",
+      "english_translation": "But till now no one is taking action for it",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:46.090565",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "1888fd77fbaace1d1720ab02b8dddbc30ebf3de8",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "4ca8f97f9c656e36f7814f38188b876968d3da15",
+      "text": "[இசை] இனிமே நீங்கதான் சார் நடவடிக்கை எடுக்கணும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[isai] inimae neengadhaan saar nadavadikkai edukkanum",
+      "english_translation": "[Music] Now you have to take action, sir",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:04:46.369764",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "ebce6512cbb2718972fbb4d1e45ceb61503e1603",
+        "translation_source": "machine"
       }
     },
     {
@@ -640,10 +1493,11 @@
       "tanglish_text": "paerla oru thoosu kooda pada vidamaattaan sin",
       "english_translation": "Sin will not let a single dust fall on the pearl",
       "word_count": 7,
-      "added_at": "2026-05-05T12:31:22.997714",
+      "added_at": "2026-05-05T13:04:46.611842",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "adf6591c98385049cbac51cc42fb728614cc77af"
+        "source_fingerprint": "adf6591c98385049cbac51cc42fb728614cc77af",
+        "translation_source": "machine"
       }
     },
     {
@@ -659,10 +1513,11 @@
       "tanglish_text": "innum evvalavu thooram thaandaa poganum unga oorukku",
       "english_translation": "How far do you have to go to your town?",
       "word_count": 7,
-      "added_at": "2026-05-05T12:31:23.208671",
+      "added_at": "2026-05-05T13:04:46.832235",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "efe881ad6ce387a093122ec1c8cd419e38f3e92a"
+        "source_fingerprint": "efe881ad6ce387a093122ec1c8cd419e38f3e92a",
+        "translation_source": "machine"
       }
     },
     {
@@ -678,10 +1533,11 @@
       "tanglish_text": "veettukku mudha pillaiyaa pirandhu innum kashtappattuிttudhaan irukkaappala",
       "english_translation": "The first child of the family was born and she was still struggling",
       "word_count": 7,
-      "added_at": "2026-05-05T12:31:23.420227",
+      "added_at": "2026-05-05T13:04:47.090970",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "0d5d93a5891ddd71782b0a485e07310fc318e461"
+        "source_fingerprint": "0d5d93a5891ddd71782b0a485e07310fc318e461",
+        "translation_source": "machine"
       }
     },
     {
@@ -697,10 +1553,231 @@
       "tanglish_text": "indha oorgaaranga panna thappunaala innum anubavichchittu irukkaanga",
       "english_translation": "They are still experiencing the mistake of making this home",
       "word_count": 7,
-      "added_at": "2026-05-05T12:31:23.593810",
+      "added_at": "2026-05-05T13:04:47.276716",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "d5363eb6c273c233b610ba1e9226618b2f2dfb26"
+        "source_fingerprint": "d5363eb6c273c233b610ba1e9226618b2f2dfb26",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "49c77c1e2d9f4b15496a1751ac3242e031b95f9f",
+      "text": ">> எனக்கு எனக்கு இந்த வெள்ளை பூதான் பிடிக்கும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> enakku enakku indha vellai poodhaan pidikkum",
+      "english_translation": ">> I like this white flower",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:48.138080",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "387c45d17f11399a20be5c90525d7e876b505f79",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "dbdb5a7077088333b2bb93852e207d26b34b7f1c",
+      "text": "டாக்டர் அவருக்கு இந்த நிலைமை ஏற்பட்டதுக்கு காரணம் என்ன",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "daaktar avarukku indha nilaimai yerpattadhukku kaaranam enna",
+      "english_translation": "Dr. What caused this condition to happen to him",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:49.816401",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "48dc570911a1e6a4ceb0c5ec6d2685134f6330c4",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "7ca83864d50c0746a302c2d73664de48722d09a5",
+      "text": "ஜெனரல் ஆபிரகாம் பரம்பரை பரம்பரையா பெரிய குடும்பத்தை சேர்ந்தவர்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "jenaral aabiragaam parambarai parambaraiyaa periya kudumbaththai saerndhavar",
+      "english_translation": "General Abraham Paramparai belonged to a great family",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:50.627005",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "bb386e353c9778eaeaaf8b128e3ba81967aa57c2",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "73e8a1dd3de4abbd15e07f9468013f8cc1d92eed",
+      "text": "[சிரிப்பு] >> நான் உன்ன கேக்கலப்பா மேரிய கேட்டேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[sirippu] >> naan unna kaekkalappaa maeriya kaettaen",
+      "english_translation": "[Laughter] >> I asked you for your kekalappa mariya",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:51.015258",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "7b48787f7a135b875c926c9cf689dea6b094c7ec",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "d10d5ab6b9a0597350e0c12a914e68c08ee79092",
+      "text": ">> அப்ப பாயா >> ஏன் இன்னைக்கு செய்வ",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> appa paayaa >> yen innaikku seiva",
+      "english_translation": ">> Appa Paya >> Why do it today",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:51.686068",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "523c0fd8d6fc4b359aabcfa2dcf7b4ae1a0cd27e",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "51ffbe1432a17fbc4803688e9676d61ae6715866",
+      "text": ">> அப்போ பொண்ணுங்களை சைட் அடிக்கதான் இங்க வரீங்களா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> appo ponnungalai sait adikkadhaan inga vareengalaa",
+      "english_translation": ">> So do you come here just to hit the girls?",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:52.357514",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8548d8ecf2fab43eb37f8bb07e506524b0a63bdb",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "e2021e32f64b06e3f95eb2d5a1dcdbaa11414544",
+      "text": "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "udane chennaikku poi andha thambiya siem aakkuraen",
+      "english_translation": "I will immediately go to Chennai and make that brother CM",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:52.564902",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "e0f04b6aeba473ad06ad733e13d89344f40df5d0",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "651a6befdfc031d86ff749b458d0e7e92a21bb26",
+      "text": "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[isai] kashtamaa irundhaalum konjam seekkiramaa pannittaa nalladhu",
+      "english_translation": "[Music] Even if it's difficult, it's better to do it a little faster",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:52.777827",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "705345c49ff5fac03187a1f05b85b2430f5a20d4",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "cc03fc968692fce45cd7f96005584ccc98af793b",
+      "text": "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "niraiya thadavai ungalai meet pannumnu ninaichchaen saar",
+      "english_translation": "I thought I would meet you many times sir",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:52.952691",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "24e44dfb2f9b4a2c0bb40ec397b14b868712469f",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "22d14ff1122774c6bc60065947786b1b920941ee",
+      "text": "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "avara traes panna naanga niraiya trai pannom",
+      "english_translation": "We tried a lot to trace him",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:53.150741",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "5d452fb0473d918b5713101a64c923ca50dc523a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "7aa9fa8e90e8ce00874c0661fadf3cb97b3542c8",
+      "text": "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "yaarukko bayanthudhaan avar indha oorai vittu poyirukkaaru",
+      "english_translation": "He left this town because he was afraid of someone",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:04:53.324230",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "0acf299b0d00f8350f46d07cdddff88344c25afd",
+        "translation_source": "machine"
       }
     },
     {
@@ -716,10 +1793,11 @@
       "tanglish_text": "aavani maasaiyilum varum aimbadi thingalilum anbar thirunaal kaanum",
       "english_translation": "Anbar Thirunal will also be seen in Avani Masai and in Imbadi Dimdu",
       "word_count": 8,
-      "added_at": "2026-05-05T12:31:23.783472",
+      "added_at": "2026-05-05T13:04:53.488583",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "3ed42f0ca13ded5cd20c21ec305ae344b04ca4ec"
+        "source_fingerprint": "3ed42f0ca13ded5cd20c21ec305ae344b04ca4ec",
+        "translation_source": "machine"
       }
     },
     {
@@ -735,10 +1813,11 @@
       "tanglish_text": "anbar thirunaal yen thambi raamasaami enga neenga vaera",
       "english_translation": "Dear Thirunal, where are you, brother Ramaswami?",
       "word_count": 8,
-      "added_at": "2026-05-05T12:31:23.979555",
+      "added_at": "2026-05-05T13:04:53.690055",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "58881ec632475ef42de7afa7380f36fe2967a763"
+        "source_fingerprint": "58881ec632475ef42de7afa7380f36fe2967a763",
+        "translation_source": "machine"
       }
     },
     {
@@ -754,10 +1833,11 @@
       "tanglish_text": "maadhiri oththumaikku ilakkanamae en paiyanunga thaan periyavanukku sin",
       "english_translation": "For model agreement, grammar is my son's son's sin",
       "word_count": 8,
-      "added_at": "2026-05-05T12:31:24.296603",
+      "added_at": "2026-05-05T13:04:53.848944",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "9611d260073b9280e69b07d8205b56854c1a762e"
+        "source_fingerprint": "9611d260073b9280e69b07d8205b56854c1a762e",
+        "translation_source": "machine"
       }
     },
     {
@@ -773,10 +1853,151 @@
       "tanglish_text": "mooththa pillaikku kalyaanam aanaa enna aagumnu ungalukku theriyumlla",
       "english_translation": "You never know what will happen if the eldest child gets married",
       "word_count": 8,
-      "added_at": "2026-05-05T12:31:24.545297",
+      "added_at": "2026-05-05T13:04:54.098696",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "39279989ce191093a95ec66f9180462dc915c08b"
+        "source_fingerprint": "39279989ce191093a95ec66f9180462dc915c08b",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "96d208d97b89f2a6956d1943b5726018ad11ca10",
+      "text": ">> பாலோ நான்தான் சர்ச்சுக்கு போய் 20 வருஷம் ஆச்சேடா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> paalo naandhaan sarchchukku poi 20 varusham aachchaedaa",
+      "english_translation": ">> Paul, I've been going to church for 20 years",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:04:55.189563",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "439cad00fb88a3f8bfb965219fa24087c0e3384d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f8d63d767b5c50c01286b8a7b7da6ea64a91bb07",
+      "text": "என் மனைவி ஆஷா இறந்து இன்னையோட 20 வருஷம் ஆச்சு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "en manaivi aashaa irandhu innaiyoda 20 varusham aachchu",
+      "english_translation": "It has been 20 years since my wife Asha passed away",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:04:55.635031",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "25d249f21ef97930d73520b5405124c0854adb1e",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f59f6d57e892b51744bb127daeffc9421bf85cfe",
+      "text": "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "aanaa avarai elakt panra adhigaaram mattum engalukku illa",
+      "english_translation": "But we do not have the power to elect him",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:04:55.852722",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "6dc956bd5196a8ba42381d216c186bec0c1a2131",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f9498f2d972e8de6c61773cd260aefc039d462b7",
+      "text": "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "ungaloda uyir nanbar katchi thalaivar andha varadharaajan thaan",
+      "english_translation": "Your best friend is the party leader Varadarajan",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:04:56.048599",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "82eb3e2246e73201529cd7fca360ad72fc752a50",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "39551808e8810a94c8d7c4d34e1ad9acd80121de",
+      "text": "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "enakku indha vishayam theriya vandhappa kooda naan nambala",
+      "english_translation": "I couldn't believe it even when I came to know about this",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:04:56.229573",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "cfe94de5b7314cdec9fd6192c28cd325afdb5fca",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "5c5e505301c2d0625d50b67f5d494c3bcc14c882",
+      "text": "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "andha manogar seiyara aththanai paavangalukkum varadharaajan thunaiyaa irukkaaru",
+      "english_translation": "Varadarajan will help all the sins that Manohar commits",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:04:56.519393",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "bd14e3d04b2ff90aef31cad6491805fbf6c8ec9d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "fcc2719a0d5815e713d06dd1bbae277d4079d409",
+      "text": "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "enna paarkka vandhurukkeengannu therinjaa kandippaa ungalaiyum akbaalo pa",
+      "english_translation": "If you know what you have come to see, then follow you too",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:04:56.734287",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "90cda68587837302e7320f75adedc18f30c9540b",
+        "translation_source": "machine"
       }
     },
     {
@@ -792,10 +2013,11 @@
       "tanglish_text": "yov avanga rendu paerum kalyaanam pannikka poradhaa oorukkulla paesitturaanga",
       "english_translation": "Yo, they are both going to get married",
       "word_count": 9,
-      "added_at": "2026-05-05T12:31:24.828725",
+      "added_at": "2026-05-05T13:04:56.911189",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "fa2f16693507a506f154857b6c98c5c273a4ac2e"
+        "source_fingerprint": "fa2f16693507a506f154857b6c98c5c273a4ac2e",
+        "translation_source": "machine"
       }
     },
     {
@@ -811,10 +2033,11 @@
       "tanglish_text": "ada aamaayaa nee vaera naanllaam veetுla rendaavadhu pillaiyaa pirandhurukkalaam",
       "english_translation": "You may be the second child born in a house of four",
       "word_count": 9,
-      "added_at": "2026-05-05T12:31:25.039747",
+      "added_at": "2026-05-05T13:04:57.195188",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "364d8dab29dafa024b2c64520751c904852c2e13"
+        "source_fingerprint": "364d8dab29dafa024b2c64520751c904852c2e13",
+        "translation_source": "machine"
       }
     },
     {
@@ -830,10 +2053,11 @@
       "tanglish_text": "indhaa indha aaloda thambi rendu pondaatti kattittu suththittu thiraraanappaa",
       "english_translation": "Inda, this man's younger brother is a father of two",
       "word_count": 9,
-      "added_at": "2026-05-05T12:31:25.247609",
+      "added_at": "2026-05-05T13:04:57.374651",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "894dd9d76843c3d0310f400768b7ffd7f0cbb100"
+        "source_fingerprint": "894dd9d76843c3d0310f400768b7ffd7f0cbb100",
+        "translation_source": "machine"
       }
     },
     {
@@ -849,10 +2073,211 @@
       "tanglish_text": "mudhal pondaattikku pirandha pulla vayasula innoru ponnai kalyaanam pannirukkaanappaa",
       "english_translation": "Did he marry another girl when he was old enough to give birth to his first son?",
       "word_count": 9,
-      "added_at": "2026-05-05T12:31:25.485591",
+      "added_at": "2026-05-05T13:04:57.615914",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "f7cfb1f1bb0469e38bfc6dcc4a1a9c3249a7d60a"
+        "source_fingerprint": "f7cfb1f1bb0469e38bfc6dcc4a1a9c3249a7d60a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "4422059c2402810481356f82af6941f482bfd894",
+      "text": "டிபன் இட்லி, தோசை, வடை, பூரி >> இன்னைக்கு என்ன கிழமை",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "tiban itli, thosai, vadai, poori >> innaikku enna kizhamai",
+      "english_translation": "Tiban Idli, Dosa, Vada, Puri >> What a day today",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:04:58.786281",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "3242e7a5b301f3bc933e6515f3d0cdaf513126f9",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "31bb11f360b4740c0f1fe290e4fb9f8151dbce58",
+      "text": ">> உங்கள மாதிரி ஊர் சுத்தல்லாம் நினைச்சு உடையில போடல அவரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> ungala maadhiri oor suththallaam ninaichchu udaiyila podala avaru",
+      "english_translation": ">> He thought he could clean up the town like you",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:04:59.002305",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "42a38c2476e059bff551dcc8eba4569d7826bb27",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "528b7a297a2f936dc75f688d65e066bacad17237",
+      "text": "ஆனா பிரஷருக்கு பயந்து என் டியூட்டிய செய்யாம உங்களையே தோக்கடிச்சிட்டேன் சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "aanaa pirasharukku bayanthu en tiyoottiya seiyaama ungalaiyae thokkadichchittaen saar",
+      "english_translation": "But fearing the pressure, I did not do my duty and killed you sir",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:04:59.254046",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "9f1e2a064763e10a9fc725e4b8d7a9d189dfe0a6",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "b6ee347ce294210890b55cd3838bc165d9535f77",
+      "text": "அவன் சட்ட விரோதமா சேர்த்த சொத்துக்கெல்லாம் அவனுக்கு ஒரு பார்ட்னர் இருக்கான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "avan satta virodhamaa saerththa soththukkellaam avanukku oru paartnar irukkaan",
+      "english_translation": "He has a partner for all his ill-gotten gains",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:04:59.428803",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "f6f4c132829c9cef601f48d16e2fd858f5488c16",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "38a7dc404220c65b4705339efe0ad7d9583b40ca",
+      "text": "[இசை] இது நடந்து கொஞ்ச நாளைக்கு அப்புறம் உங்க அப்பா இறந்துட்டாரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[isai] idhu nadandhu konja naalaikku appuram unga appaa irandhuttaaru",
+      "english_translation": "[Music] A few days after this happened, your father died",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:04:59.589779",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b4b5c9eefe40b5b56c5600dc1843b4cb7d0cf27e",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "7fe4fa575fccaf6c9184e069f2fb86ad6543ba1b",
+      "text": "பக்தி, பண்பு, ஒழுக்கம், கட்டுப்பாடு இதுக்கெல்லாம் ஒரு உதாரணமா வாழ்ந்து காட்டினார் அவரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "pakthi, panbu, ozhukkam, kattuppaadu idhukkellaam oru udhaaranamaa vaazhndhu kaattinaar avaru",
+      "english_translation": "He lived as an example of piety, character, discipline and control",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:05:00.276701",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "dc2a316ea166bc732704a6246c74c68d2bcf9259",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "e094349e171099593ade1d39d2fee2d6914886d9",
+      "text": ">> ஏன் பட்டினத்துல இருக்கற மாதிரி பட்டி காட்டணும் இருக்கணும்னு ஆசைப்பட்டவர் அவரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> yen pattinaththula irukkara maadhiri patti kaattanum irukkanumnu aasaippattavar avaru",
+      "english_translation": ">> Why is he the one who wanted to starve himself?",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:05:00.525151",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "dfdec7b3b96a31ea495972b16b9ddb3d39761fda",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a8821f3ee2e325112a5f918f35503a929ec3b030",
+      "text": "சோ அவுட் ஆப் கயூரியாசிட்டி இந்த கேஸ நானே இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "so avut aap kayooriyaasitti indha kaesa naane investiget panna aarambichchaen",
+      "english_translation": "So out of curiosity I started investigating this case myself",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:05:00.762842",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "3511f4c095f288308f3989affb90b4da15803ee7",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a2e9d1aecee8fdb2e39cec86974aa970357a4109",
+      "text": "அவர் இறந்து போனது போஸ்ட்மார்ட்டம் பண்ணாம இருந்தது ஈம சடங்கு உடனே செஞ்சது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "avar irandhu ponadhu postmaarttam pannaama irundhadhu eema sadangu udane senjadhu",
+      "english_translation": "He died without a postmortem and the ritual was performed immediately",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:05:00.961199",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c638fec852e2804a9d72b01a4a49ac413ea3dc44",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "b362aae9f4348d8ad34b1d286177e6cef9b45b1c",
+      "text": "நான் அங்க இருக்கறது சேப் இல்லைன்னு தெரிஞ்சு ஊர விட்டு தலைமறை வாயிட்டேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "naan anga irukkaradhu saep illainnu therinju oora vittu thalaimarai vaayittaen",
+      "english_translation": "Knowing that I was not there, I left the town and went into hiding",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:05:01.177383",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c8c421430efe535c4c365dfe77025deac8969390",
+        "translation_source": "machine"
       }
     },
     {
@@ -868,10 +2293,11 @@
       "tanglish_text": "aanaal indha ooraar vasol ennaal kaadhaal kaetka mudiyavillai panjaayi kaetka mudiyavillai",
       "english_translation": "But I could not hear the words of this villager, I could not hear panchayi",
       "word_count": 11,
-      "added_at": "2026-05-05T12:31:25.727140",
+      "added_at": "2026-05-05T13:05:01.369768",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "978bbe57a6ac54051c9a81f3a1f7214997a52e2c"
+        "source_fingerprint": "978bbe57a6ac54051c9a81f3a1f7214997a52e2c",
+        "translation_source": "machine"
       }
     },
     {
@@ -887,10 +2313,11 @@
       "tanglish_text": "o o [garagosham] o o o oge [isai] idhaan un veedaa",
       "english_translation": "Oh oh [applause] oh oh oh okay [music] This is your home",
       "word_count": 11,
-      "added_at": "2026-05-05T12:31:25.912823",
+      "added_at": "2026-05-05T13:05:01.561735",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "350f08631429fea2f7192f7bcebec009abc5b2bd"
+        "source_fingerprint": "350f08631429fea2f7192f7bcebec009abc5b2bd",
+        "translation_source": "machine"
       }
     },
     {
@@ -906,10 +2333,11 @@
       "tanglish_text": "yen indha naasamaa pona oorla mudhal pillaiyaa vandhu pirandhu tholainjaennu theriyala",
       "english_translation": "I don't know why the first child came to this ruined town and got lost",
       "word_count": 11,
-      "added_at": "2026-05-05T12:31:26.129021",
+      "added_at": "2026-05-05T13:05:01.785029",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "ab1354c5d38ef89e828716ee5183c1f898bc1022"
+        "source_fingerprint": "ab1354c5d38ef89e828716ee5183c1f898bc1022",
+        "translation_source": "machine"
       }
     },
     {
@@ -925,10 +2353,91 @@
       "tanglish_text": "seri azhaadheengammaa adhellaam saranan sonna maadhiri yaaraavadhu kilappi vitta kadhaiyaadhaan irukkum",
       "english_translation": "Well, don't cry, it's just a story made up by someone like Saranan told",
       "word_count": 11,
-      "added_at": "2026-05-05T12:31:26.327180",
+      "added_at": "2026-05-05T13:05:02.021324",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "d8fd35c85ded0791c04d287e1cb9eadf8595bfe6"
+        "source_fingerprint": "d8fd35c85ded0791c04d287e1cb9eadf8595bfe6",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "bc4e79d43d40837569eb0119a7df58bd99b8ba78",
+      "text": "வெக்காளி அம்மன் மேல சத்தியமா சொல்ற உன்ன ஊர விட்டு எல்லாரும் அடிச்சு துரத்துவோம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "vekkaali amman maela saththiyamaa solra unna oora vittu ellaarum adichchu thuraththuvom",
+      "english_translation": "We will beat and chase you all out of your town if you say the truth to Vekkali Amman",
+      "word_count": 11,
+      "added_at": "2026-05-05T13:05:02.209884",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "7714aa992d44b492f90757da3b23e81caf2043f1",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "16b1ecaafe104efbf6f4a063e124fa4a9b0543ef",
+      "text": "அந்த கில்ட்லதான் பர்சனலா நானும் என் டீமும் அந்த கேஸ இன்வெஸ்டிகேட் பண்ண ஆரம்பிச்சோம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "andha kiltladhaan parsanalaa naanum en teemum andha kaesa investiget panna aarambichchom",
+      "english_translation": "My team and I personally started investigating the case in that guild",
+      "word_count": 11,
+      "added_at": "2026-05-05T13:05:02.370214",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "02365c82049ac602944b0557feaa004e14e93ea3",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "64d66eb05743dffe807f797256b79c9552237300",
+      "text": "அப்ப மித்ரான ஃப்ரீலான்ஸ் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் அந்த கேஸ பத்தி நிறைய சேகரிச்சிருக்காருன்னு தெரிஞ்சது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "appa mithraana akpreelaans investigettiv jarnalist andha kaesa paththi niraiya saegarichchirukkaarunnu therinjadhu",
+      "english_translation": "A friend of mine, a freelance investigative journalist, learned that the case column had collected a lot.",
+      "word_count": 11,
+      "added_at": "2026-05-05T13:05:02.564500",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "46973ac05309d1224bb73dd18e30db0846dd17e7",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f897265c16bfd6978393132333f1d16420ffa13a",
+      "text": "சீனியர் மோஸ்ட் இன்வெஸ்டிகேட்டிவ் ஜர்னலிஸ்ட் வேற ஒரு ஸ்டேட்ல யாருக்கும் தெரியாம திருட்டுத்தனமா எதுக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "seeniyar most investigettiv jarnalist vaera oru staetla yaarukkum theriyaama thiruttuththanamaa edhukku",
+      "english_translation": "Sr. Most Investigative Journalist in another state without anyone's knowledge why plagiarism?",
+      "word_count": 11,
+      "added_at": "2026-05-05T13:05:02.749090",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "5d261fc8522c4f4cb751f9f139be5a1c182332b9",
+        "translation_source": "machine"
       }
     },
     {
@@ -944,10 +2453,31 @@
       "tanglish_text": "yei adha periya anga paarudaa saravana oru pombalai pillaiya koottittu poraan kavanichcheengalaa",
       "english_translation": "Hey, did you notice that in that big place Baruda Saravana was going to collect a doll for the children?",
       "word_count": 12,
-      "added_at": "2026-05-05T12:31:26.498694",
+      "added_at": "2026-05-05T13:05:02.954461",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "3d011710b6b2ebcb9a9b722573e6d41137d22d4e"
+        "source_fingerprint": "3d011710b6b2ebcb9a9b722573e6d41137d22d4e",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a0384438ee1286575a2db9ebc3a6641ccc245d73",
+      "text": "இதுல ஷாக்கிங் நியூஸ் என்னன்னா உங்க அப்பாவோட மரணம் இயற்கையானது இல்லைன்னு அவர் சந்தேகப்படுறாரு சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "idhula shaakking niyoos ennannaa unga appaavoda maranam iyarkaiyaanadhu illainnu avar sandhaegappaduraaru saar",
+      "english_translation": "The shocking news is that he suspects that your father's death was not natural",
+      "word_count": 12,
+      "added_at": "2026-05-05T13:05:03.097716",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "f31a76ee42212e5d59c2c8d7c4b1b20a0fb4d232",
+        "translation_source": "machine"
       }
     },
     {
@@ -963,10 +2493,11 @@
       "tanglish_text": "irukkaane aamaa adhaanga sinna paandiyan aamaa avanga annanukku onnunnaa padhariduvaan paanjiduvaan surukkamaa sonnaa",
       "english_translation": "Yes, yes, that little Pandian, yes, did you say anything to his brother, Panchiduan, Panchiduan, in short?",
       "word_count": 13,
-      "added_at": "2026-05-05T12:31:26.767375",
+      "added_at": "2026-05-05T13:05:03.868593",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "45224171d255d05f2080440e897457602c01efc9"
+        "source_fingerprint": "45224171d255d05f2080440e897457602c01efc9",
+        "translation_source": "machine"
       }
     },
     {
@@ -982,10 +2513,51 @@
       "tanglish_text": "indha oorla porandha mudhal paiyanukku kalyaanam aachchunnaa avan pondaatti konja naalla amangali aayiduvaa",
       "english_translation": "If the first boy who goes to this town gets married, he will become pregnant in a few days.",
       "word_count": 13,
-      "added_at": "2026-05-05T12:31:26.937338",
+      "added_at": "2026-05-05T13:05:04.078302",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "36a8ae4b199406bd76f73899c4781e9f8f04a3aa"
+        "source_fingerprint": "36a8ae4b199406bd76f73899c4781e9f8f04a3aa",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1f52e10ead4e4b46764716a8598637663769a34c",
+      "text": "[இசை] ஆர்மி பே >> [இசை] >> சார் நான் எங்க இருக்கேன்னு உங்களுக்கு எப்படி தெரியும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[isai] aarmi pae >> [isai] >> saar naan enga irukkaennu ungalukku eppadi theriyum",
+      "english_translation": "[MUSIC] ARMY BAY >> [MUSIC] >> Sir how do you know where I am",
+      "word_count": 13,
+      "added_at": "2026-05-05T13:05:04.247094",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "9a8c6dfa4f7ed3ce8f31369028419547024a9211",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "50fde637e9ae930b6b923a7ac96e8a8cfab6d626",
+      "text": "[இசை] >> [இசை] >> எனக்கு தெரிஞ்ச இன்பர்மேஷன் எவிடன்ஸ் எல்லாமே இந்த பென் டிரைவ்ல இருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[isai] >> [isai] >> enakku therinja inbarmaeshan evidans ellaamae indha pen tiraivla irukku",
+      "english_translation": "[Music] >> [Music] >> All the information evidence I know is in this pen drive",
+      "word_count": 13,
+      "added_at": "2026-05-05T13:05:04.394402",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "5c18c32c2d7e019ddc548129681b47119648045b",
+        "translation_source": "machine"
       }
     },
     {
@@ -1001,10 +2573,31 @@
       "tanglish_text": "[isai] om smokking kaasas kaensar smokking kils pugaippidiththal putru noyai undaakkum matrum uyirai kollum",
       "english_translation": "[Music] Om Smoking Causes Cancer Smoking Kills Smoking causes cancer and kills.",
       "word_count": 14,
-      "added_at": "2026-05-05T12:31:27.174233",
+      "added_at": "2026-05-05T13:05:04.628011",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "cd925652939d44f6b088813cab2160a5041f62a9"
+        "source_fingerprint": "cd925652939d44f6b088813cab2160a5041f62a9",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c39fd3c3fe7ad7240158b2cec1b5675ddc3cdab6",
+      "text": "மிலிட்ரில இருந்து ரிட்டயர் ஆனதும் ஊருக்கு திரும்பி வந்து பெரிய அளவுல ஒரு பிசினஸ் ஆரம்பிச்சு நடத்திக்கிட்டு இருந்தார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "militrila irundhu rittayar aanadhum oorukku thirumbi vandhu periya alavula oru pisinas aarambichchu nadaththikkittu irundhaar",
+      "english_translation": "After retiring from the military, he came back to town and started a large-scale business.",
+      "word_count": 14,
+      "added_at": "2026-05-05T13:05:05.733989",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "d96eab5ef496c3c430d006f285cc3eaa5c8f0022",
+        "translation_source": "machine"
       }
     },
     {
@@ -1020,10 +2613,11 @@
       "tanglish_text": "raamasaami thaarasaami raamasaami raamasaami raamasaami thaan yennae oorellaam kottai adichchu koodiradha paarththu yedho namma poodhaththaan",
       "english_translation": "Ramaswami Taraswami Ramaswami Ramaswami Ramaswami is the reason why the whole town is beating nuts.",
       "word_count": 15,
-      "added_at": "2026-05-05T12:31:27.347358",
+      "added_at": "2026-05-05T13:05:05.954203",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "4481aca4a9e4afb08332fd978aaba56a781dcfc3"
+        "source_fingerprint": "4481aca4a9e4afb08332fd978aaba56a781dcfc3",
+        "translation_source": "machine"
       }
     },
     {
@@ -1039,10 +2633,51 @@
       "tanglish_text": "veettu poyirukku [isai] [garagosham] [isai] ellaarukkum vanakkam naan oru koyilai kattunen neenga yaarum saami kumbida",
       "english_translation": "[Music] [Applause] [Music] Hello everyone, I built a temple, no one should bow to Sami.",
       "word_count": 15,
-      "added_at": "2026-05-05T12:31:27.489819",
+      "added_at": "2026-05-05T13:05:06.248132",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "ae88860896412f70a70ecbcc58efc73601388846"
+        "source_fingerprint": "ae88860896412f70a70ecbcc58efc73601388846",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "fdcceb1b741ec0b46fb3a0be2aa6321451a6b0fd",
+      "text": "[இசை] >> ஹாய் அரவிந்த் ஹலோ சார் எப்படி இருக்கீங்க உடாருங்க என்ன நம்பி ஒரு இம்பார்டன்ட் கேஸ் ஒப்படிச்சீங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[isai] >> haai aravinth halo saar eppadi irukkeenga udaarunga enna nambi oru imbaardant kaes oppadichcheenga",
+      "english_translation": "[Music] >> Hi Arvind Hello sir how are you Udarunga what do you believe and compare an important case",
+      "word_count": 15,
+      "added_at": "2026-05-05T13:05:06.415206",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "be95063b9f8bafaad51bdac0752ea7700f8f9f59",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1129c0c48ad27b5e84cb4b117bedad1732d05822",
+      "text": "வாய் [பெருமூச்சு] ரொம்ப நாளாவே எதிர்கட்சி தலைவர் கிருஷ்ணமூர்த்தியோட பையன் வருமானத்துக்கு அதிகமா சொத்து சேர்த்ததா எங்களுக்கு இன்பர்மேஷன் வந்துச்சு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "vaai [berumoochchu] romba naalaavae edhirgatchi thalaivar kirushnamoorththiyoda paiyan varumaanaththukku adhigamaa soththu saerththadhaa engalukku inbarmaeshan vandhuchchu",
+      "english_translation": "Vai [sigh] For a long time now, we have received information that the son of opposition leader Krishnamurthy has added more property to his income.",
+      "word_count": 15,
+      "added_at": "2026-05-05T13:05:06.690113",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "daa33c118bcc39037d60562ae254a2bc60774bd7",
+        "translation_source": "machine"
       }
     },
     {
@@ -1058,10 +2693,171 @@
       "tanglish_text": "[isai] [isai] [isai] [isai] [isai] [garagosham] seekkiram vaa akkaa [isai] [garagosham] aaththaa en marumagalukku ponnudhaan porakkanum",
       "english_translation": "[MUSIC] [MUSIC] [MUSIC] [MUSIC] [MUSIC] [CLAPPING] Come quickly sister [MUSIC] [CLAPPING] Father, my daughter-in-law needs a daughter.",
       "word_count": 16,
-      "added_at": "2026-05-05T12:31:27.685791",
+      "added_at": "2026-05-05T13:05:06.950286",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "9e0cc6381098b435e7e3d1d93b210ceec272aecb"
+        "source_fingerprint": "9e0cc6381098b435e7e3d1d93b210ceec272aecb",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1f7773e13ac6e102dcfddfabaa3539360b485cc9",
+      "text": "ஆசை வார்த்தை எதையும் காட்டாம சுயநலமா எத பத்தியும் யோசிக்காம எங்களுக்கு என்ன வேணும்னு தெரிஞ்சு தனியா நின்னு தைரியமா செஞ்சாரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "aasai vaarththai edhaiyum kaattaama suyanalamaa edha paththiyum yosikkaama engalukku enna vaenumnu therinju thaniyaa ninnu thairiyamaa senjaaru",
+      "english_translation": "Don't show any words of desire, don't think about anything selfish, know what we want, and dare to stand alone.",
+      "word_count": 16,
+      "added_at": "2026-05-05T13:05:07.125100",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c8ae6fda25c8dfaea3bb1576cb33ab11de44bf31",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "674ca6afd4036f8aaaefb1e51d0cddcf92e873ad",
+      "text": "சாகுறதுக்கு கொஞ்ச நாள் முன்னாடி உங்ககிட்ட ஏதோ இம்பார்ட்டன்ட் விஷயம் டிஸ்கஸ் பண்ணாரமே [இசை] அதுக்கப்புறம் நீங்க திடீர்னு காணாம போயிட்டீங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "saaguradhukku konja naal munnaadi ungagitta yedho imbaarttant vishayam tiskas pannaaramae [isai] adhukkappuram neenga thideernu kaanaama poyitteenga",
+      "english_translation": "A few days ago, I was discussing something important with you [music] and suddenly you disappeared.",
+      "word_count": 16,
+      "added_at": "2026-05-05T13:05:07.282064",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "0a5304d18bfefd53d69d3f0d1fc849a1090e7fee",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c445e5f05804d861d186e719de7da7b39fd55136",
+      "text": ">> நாங்கல்லாம் ஒரு ஓதி மக்க >> சொல்லவே இல்ல >> ஓட்டு போட்டா நீங்க அஞ்சு வருஷத்துக்கு இருப்பீங்கன்னு நாங்க தேர்ந்தெடுத்தோம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": ">> naangallaam oru odhi makka >> sollavae illa >> ottu pottaa neenga anju varushaththukku iruppeengannu naanga thaerndheduththom",
+      "english_translation": ">> We are a nation of reciters >> No need to say >> We chose that you will stay for five years after voting.",
+      "word_count": 17,
+      "added_at": "2026-05-05T13:05:07.991664",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "638d5cc3fb9b353f651df7db573d1c62dde10527",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "ab80659db8866b47f4e858307229e20efc22d1bc",
+      "text": "அந்த உயிர் இல்லாம இந்த உடம்பு மட்டும் தனியா எங்கேயுமே போறதில்லை ஆபீஸ தவிர இந்த உலகத்துல எனக்கு இருக்கறதெல்லாம் ஒரே மகள் ஒரே நண்பன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "andha uyir illaama indha udambu mattum thaniyaa engaeyumae poradhillai aabeesa thavira indha ulagaththula enakku irukkaradhellaam orae magal orae nanban",
+      "english_translation": "Without that life, only this body alone, I don't go anywhere, except for the office, all I have in this world is one daughter, one friend.",
+      "word_count": 19,
+      "added_at": "2026-05-05T13:05:08.787992",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "e4a12efc74d55bfd0bbd9ab7b9e225678a41cc88",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "2c7a5a75004f6d8b22ef6c6c476f5ec29709537f",
+      "text": "அண்டர்ஸ்டாண்ட் [சிரிப்பு] அழகுடா அங்க பாரு ஏன்பா காலங்காத்தால பொம்பளை பிள்ளைங்க படிக்கிற காலேஜ்ல வந்து உட்கார்ந்து இருக்கீங்களே உங்க காலேஜ்ல உட்காரதுக்கு இடமே இல்லையா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "andarstaant [sirippu] azhagudaa anga paaru yenbaa kaalangaaththaala pombalai pillainga padikkira kaalaejla vandhu utkaarndhu irukkeengalae unga kaalaejla utkaaradhukku idamae illaiyaa",
+      "english_translation": "Understand [Laughter] You are not beautiful, why are you sitting in the college where Bombay children are studying?",
+      "word_count": 19,
+      "added_at": "2026-05-05T13:05:09.625122",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "5ce63e32dc304a210b48981020fe40cdf7d8d047",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "9ddd7330f8b67d66fce2698d8973a85346950b73",
+      "text": "ப்ளீஸ் தேங்க்யூ போட பார்வர்ட் வாட்ச் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ஹட் [இசை] என்ன தெரியுதா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "plees thaengkyoo poda paarvart vaatch lept rait lept rait lept rait lept rait lept rait lept hat [isai] enna theriyudhaa",
+      "english_translation": "Please Thank You Forward Watch Left Right Left Right Left Right Left Right Left Right Left Hat [Music] Do you know what?",
+      "word_count": 20,
+      "added_at": "2026-05-05T13:05:10.371371",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "7f50d3db2e447f0579b8fd8651d38114d86a281b",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "b2584f37038807d13fbdcdf295a49cbb57f08316",
+      "text": "ஏன்டா டேய் என்ன சாப்பிடா யப்பா உன் மிலிட்ரி தர்பரை பார்த்தாலே பயமா இருக்கு எப்படி அமைதியா சாப்பிடுறது டேய் ஒவ்வொருத்தரும் தன்னுடைய கடமையை ஒழுங்கா செய்யணும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "yendaa taei enna saappidaa yappaa un militri tharbarai paarththaalae payamaa irukku eppadi amaidhiyaa saappiduradhu taei ovvoruththarum thannudaiya kadamaiyai ozhungaa seiyanum",
+      "english_translation": "Why don't you eat bro, I'm afraid to see your military turbar, how can you eat calmly bro, everyone should do their duty properly",
+      "word_count": 20,
+      "added_at": "2026-05-05T13:05:11.164444",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "788bd3ee6cebf20b8dbebb53480c8232ec4ca483",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "63adde79299773eba86621f2196318ba96826310",
+      "text": "என்னடி முனி அம்மா உன் கண்ணிலே மையி யாரு வச்ச மையி இது நான் வச்ச மையி நீ முன்னாலே போனா நான் பின்னாலே வாறேன் ஏரிக்கரை ஓரத்திலே ஏத்து",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "5",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "ennadi muni ammaa un kannilae maiyi yaaru vachcha maiyi idhu naan vachcha maiyi nee munnaalae ponaa naan pinnaalae vaaraen yerikkarai oraththilae yeththu",
+      "english_translation": "Ennadi Muni Amma, Maii in your eyes, who is Vacha Maii?",
+      "word_count": 22,
+      "added_at": "2026-05-05T13:05:12.786490",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c989fee7260ed109decfe2d77b1ba4f7c7fbc9f7",
+        "translation_source": "machine"
       }
     },
     {
@@ -1077,10 +2873,11 @@
       "tanglish_text": "kansamshan aap aalgahaal is inseris tuhelth madhu arundhudhal udal nalaththirku kaedu pee saep tont tiringk ant tiraiv paadhugaappaaga iruppeer madha irundhuvittu vaaganam ottaadheer",
       "english_translation": "Consumption of Alcohol is Injurious to Health Drinking Alcohol is Harmful to Health Be Safe Don't Drink and Drive Be Safe Be Religious Don't Drive",
       "word_count": 23,
-      "added_at": "2026-05-05T12:31:27.911482",
+      "added_at": "2026-05-05T13:05:12.956725",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "f23e21373dc1ff14b628c19cf9645fd02c085278"
+        "source_fingerprint": "f23e21373dc1ff14b628c19cf9645fd02c085278",
+        "translation_source": "machine"
       }
     },
     {
@@ -1096,10 +2893,31 @@
       "tanglish_text": "appadi ennamaa aayirum naanga kalyaanam pannaa yei adhellaam onnu saravanaa romba thappu panra indha pillaigitta onnumae sollalaiyaa neeyae nee enna engitta irundhu maraichcha",
       "english_translation": "So what is it, we are not getting married, hey, it's all one thing, Saravana, it's a big mistake, don't you say anything to this child, what are you hiding from me?",
       "word_count": 23,
-      "added_at": "2026-05-05T12:31:28.063296",
+      "added_at": "2026-05-05T13:05:13.114349",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "3a5d5d774a98f257cc6fff00bdbcae2c5050f6f1"
+        "source_fingerprint": "3a5d5d774a98f257cc6fff00bdbcae2c5050f6f1",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c65cadfe903a073a8549a9e29c31f3c9efecabcc",
+      "text": "[சிரிப்பு] கம் ஆல்பவர்ட் பட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் ரைட் லெப்ட் லெப்ட் லெப்ட் >> ராணுவத்துல ஒரு சிங்கம் மாதிரி கர்ஜனை பண்ணிக்கிட்டு இருந்த ஜெனரல் எபிரகாமா இவரு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "[sirippu] kam aalbavart pat lept rait lept rait lept rait lept lept lept >> raanuvaththula oru singam maadhiri karjanai pannikkittu irundha jenaral ebiragaamaa ivaru",
+      "english_translation": "[Laughter] COME ALBERT BUT LEFT RIGHT LEFT RIGHT LEFT RIGHT LEFT LEFT LEFT >> This is General Ibrahima who roared like a lion in the army.",
+      "word_count": 24,
+      "added_at": "2026-05-05T13:05:14.336804",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "e368979738455a785f3e6db6ca5aa327473116e3",
+        "translation_source": "machine"
       }
     },
     {
@@ -1115,10 +2933,51 @@
       "tanglish_text": "muraikkiraalappaa ennadaa ippadi irukkaanga unga oorukkaaranga pinnaadiyae varaanunga naandhaan ungagitta munnaadiyae solli irukkaenla enga oorukkaaranga eppadinnu enna azhagaa irukka poyittu mudhalla kulichchittu vaa namma kovila oge",
       "english_translation": "Why are you like this? Your villagers are coming behind.",
       "word_count": 26,
-      "added_at": "2026-05-05T12:31:28.337966",
+      "added_at": "2026-05-05T13:05:14.545523",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "3e835050d513fdb917d51978c0c2e19b3e287196"
+        "source_fingerprint": "3e835050d513fdb917d51978c0c2e19b3e287196",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "8f5a0e9ef6b0bbac42d5cbfc31495ca4b6ec44d4",
+      "text": "ஐ அம் பிரிகேடியர் பிரதாப் சிங் சிம்லாவல உங்க ரெஜிமெண்ட்ல இருந்தவன் ஐ வாஸ் வரிங் அண்டர் யூ சார் என்ன தெரியல [இசை] ஓ மை காட் பிஜங்கள் உங்களுக்கு எந்த பூ பிடிக்கும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=4Foygd4YGCw",
+      "source_title": "Bandham (1985) Tamil Full Movie HD | Sivaji Ganesan, Shalini - YouTube",
+      "language": "ta",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "ai am pirigediyar piradhaap sing simlaavala unga rejimentla irundhavan ai vaas varing andar yoo saar enna theriyala [isai] o mai kaat pijangal ungalukku endha poo pidikkum",
+      "english_translation": "I am Brigadier Pratap Singh Shimlawala I was in your regiment I was under you Sir I don't know what [Music] Oh my god Bijal which flower do you like?",
+      "word_count": 26,
+      "added_at": "2026-05-05T13:05:15.736298",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b4970ad82cd9c6fa09353bb8b51afc76f3418d6a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "0e518cb1d08328399343892a58a94f5516010f71",
+      "text": "கவர்மெண்ட் சைடுல இருந்து ஒரு பெரிய மனுஷனும் அப்போசிஷன் சைடுல இருந்து ஒரு பெரிய மனுஷனும் பார்ட்னர்ஸா இருந்து இதை செய்யறது இட்ஸ் அன்மஜினபிள் சார் இட்ஸ் எரேர் டெட்லி காம்போ எல்லா எவிடன்ஸ்ும் இதுல இருக்கு சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "language": "ta",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.37,
+      "tanglish_text": "kavarment saidula irundhu oru periya manushanum apposishan saidula irundhu oru periya manushanum paartnarsaa irundhu idhai seiyaradhu its anmajinabil saar its eraer tetli kaambo ellaa evidansுm idhula irukku saar",
+      "english_translation": "A big man from govt side and a big man from opposition side doing this as partners its unimaginable sir its error deadly combo all evidence is there sir",
+      "word_count": 28,
+      "added_at": "2026-05-05T13:05:16.766603",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "e7b2f130919bff5056c24e52ee000a6b1cfbc4f9",
+        "translation_source": "machine"
       }
     },
     {
@@ -1134,10 +2993,11 @@
       "tanglish_text": "ingu thamizhil mattumae arattai adikkavum",
       "english_translation": "Chat here only in tamil",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:29.089929",
+      "added_at": "2026-05-05T13:05:16.898562",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "aa53d93cb488d8407fbeb4fd7d49ce74e14b2169"
+        "source_fingerprint": "aa53d93cb488d8407fbeb4fd7d49ce74e14b2169",
+        "translation_source": "machine"
       }
     },
     {
@@ -1153,10 +3013,11 @@
       "tanglish_text": "nalla payanulla thagavalgalukku tag ubayogikkavum",
       "english_translation": "Use tag for good useful information",
       "word_count": 5,
-      "added_at": "2026-05-05T12:31:29.283814",
+      "added_at": "2026-05-05T13:05:17.086650",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "2ca4cd82113ef7a6016f97af29765a2d3c1e9e45"
+        "source_fingerprint": "2ca4cd82113ef7a6016f97af29765a2d3c1e9e45",
+        "translation_source": "machine"
       }
     },
     {
@@ -1172,10 +3033,11 @@
       "tanglish_text": "Tamil chat idhu thamizh paesubavargalukkaana kuzhu",
       "english_translation": "Tamil chat is a group for Tamil speaking people",
       "word_count": 6,
-      "added_at": "2026-05-05T12:31:29.466377",
+      "added_at": "2026-05-05T13:05:18.314545",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "47247e1157cec9d3e29f57e826ee8d4fa99f48b4"
+        "source_fingerprint": "47247e1157cec9d3e29f57e826ee8d4fa99f48b4",
+        "translation_source": "machine"
       }
     },
     {
@@ -1191,34 +3053,1235 @@
       "tanglish_text": "idhara saenal,kuzhu lingk vilambaram seivadharku ingu anumadhi illai",
       "english_translation": "Advertising other channel, group link is not allowed here",
       "word_count": 8,
-      "added_at": "2026-05-05T12:31:29.946650",
+      "added_at": "2026-05-05T13:05:18.524457",
       "metadata": {
         "detected_keywords": [],
-        "source_fingerprint": "45b65c471b112b7fa436d93f60ce4e65378d28cd"
+        "source_fingerprint": "45b65c471b112b7fa436d93f60ce4e65378d28cd",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "063dd36912a12af9895eac1998c90db67cad2cbc",
+      "text": "ரெஜிஸ்ட்ரேஷன் வச்சுக்கலாம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "rejistraeshan vachchukkalaam",
+      "english_translation": "Registration can be done",
+      "word_count": 2,
+      "added_at": "2026-05-05T13:05:19.189779",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8ce1ac16bece2875cd92bf43636edd0a50c93cbe",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a8735c8691976a521138f821370550fe58f4a474",
+      "text": "இந்த அனாதைகளுக்காக",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "indha anaadhaigalukkaaga",
+      "english_translation": "For these orphans",
+      "word_count": 2,
+      "added_at": "2026-05-05T13:05:19.830019",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "0c8f722751fe1d0c71c59f5faf438380accce4fa",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "98732a9834ed5ad697f0e9257c7c8c68eca9a36a",
+      "text": "என் பேரு கண்ணபிரான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "en paeru kannabiraan",
+      "english_translation": "My name is Kannabran",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:05:20.344641",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b04b442490da2f7a5a0604410b4a5118f6953eed",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "9f266fcf0153df06cf56feb9954141387712bf37",
+      "text": "அதான் இந்த கண்ணபிரான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "adhaan indha kannabiraan",
+      "english_translation": "That is this Kannapraan",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:05:21.051912",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "70b93444337446ccc2f209933d13b85f93c569a8",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c051c75a8e9e9bf931d2b3e7de89b31a1df2ba89",
+      "text": "எனக்கு ஆஸ்மா இருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "enakku aasmaa irukku",
+      "english_translation": "I have asthma",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:05:22.173021",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "7cd32bd4724e5eb08a77dc3acdb36784d8d6ab42",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a93392212e0ccc13b409d0002cf8ad263f12aa4a",
+      "text": "அதுக்கு மருந்தே கிடையாது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "adhukku marundhae kidaiyaadhu",
+      "english_translation": "There is no cure for it",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:05:22.983225",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8daf7c808724188504867f411e620294df695188",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "488894c20ef2d3a4b032c059fe3e4adad6b0aedd",
+      "text": "ஒன்னும் கவனத்துலயே இல்ல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "onnum kavanaththulayae illa",
+      "english_translation": "Nothing is in focus",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:05:23.710859",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "dc7d8f182f82f515584041e67c8cd4f08f086be6",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "57d92c7dc93b2f05f1ea1b3b13dd83043283923d",
+      "text": "ரேட் எவ்வளவுன்னு சொல்லிடுங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "raet evvalavunnu sollidunga",
+      "english_translation": "Tell me the rate",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:05:25.047280",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "ee2ccc9ee4ee7051a856e6ca8fef807fc36abe9a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "5052d09b99475a02394283d57c172dbae270c330",
+      "text": "இல்லன்னா மரியாதை கெட்டிடம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "illannaa mariyaadhai kettidam",
+      "english_translation": "Otherwise respect is bad",
+      "word_count": 3,
+      "added_at": "2026-05-05T13:05:25.741906",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "f5aa5b676f4c1b8bafe4ac845c4f1d79e5197584",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "3bad46990ac86f9e45b755eb1be88c2a91d01cc6",
+      "text": "விவசாயத்துல இதெல்லாம் செஞ்சது நான்தான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "vivasaayaththula idhellaam senjadhu naandhaan",
+      "english_translation": "I am the one who did all this in agriculture",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:05:26.729987",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "adfc208690dd9065db41ca8c205e94dd8f2efce9",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "302ac0c754ce95dca81ddc00814063fa2f7ccef9",
+      "text": "எனக்கு எதிரான சைட்டே இருக்கக்கூடாது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "enakku edhiraana saittae irukkakkoodaadhu",
+      "english_translation": "There should not be a site against me",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:05:27.361472",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "f2050e3f31e0f569b9976ad637613cc5bdbb8984",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "fc3220456ec601691c0cdeed9c06c4078215434c",
+      "text": "குட்டி அணையாட்டம் பூசனிக்காய் காய்ச்சிருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "kutti anaiyaattam poosanikkaai kaaichchirukku",
+      "english_translation": "Kutty Damayatam has boiled pumpkin",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:05:27.999131",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "2555f280026baf568260dbeb5aa510908debd647",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c49eaa6f82046655dda97d63516510cd0524cf9c",
+      "text": ">> பிரைடே வச்சுக்கலாமா ரிஜிஸ்ட்ரேஷன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> piraidae vachchukkalaamaa rijistraeshan",
+      "english_translation": ">> Friday Vachukalama Registration",
+      "word_count": 4,
+      "added_at": "2026-05-05T13:05:28.551275",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "df1c1ff239e48ce9baa9e3d89976d94998bae357",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c358c226efdcd3c52fc32d4eb659d26dd2df5701",
+      "text": "வாங்க கார்டன் சைட்ல காத்து வாங்கலாம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "vaanga kaardan saitla kaaththu vaangalaam",
+      "english_translation": "You can wait to buy it on the garden site",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:29.374295",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "4d2e60cc058fcd616cc368c23ea030738d3f2637",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "4336621aa7422acd9b0b902e192bedef4b715765",
+      "text": "வாங்க இதான் என் பண்ண சைட்டு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "vaanga idhaan en panna saittu",
+      "english_translation": "Buy this is my site",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:30.397704",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "4408f27147df2dc413c942b703b8ecfa59ba1fbb",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "bd2d8367b6132a3404658cb7ce7ccf5c1b9c2896",
+      "text": "சும்மா மலைப்பாம்பு மாதிரி புடலங்காய் வளர்ந்துருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "summaa malaippaambu maadhiri pudalangaai valarndhurukku",
+      "english_translation": "Butalangai has grown like a python",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:31.159170",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "0e5f2798f35948806b5cc506aeb4aeba5d32de36",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "e91078eba9f8461412bdeb9dd9c59603869a0842",
+      "text": "அது அவங்க தலை மாதிரியே காய்ச்சிருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "adhu avanga thalai maadhiriyae kaaichchirukku",
+      "english_translation": "It was brewed like his head",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:31.756436",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "6ed9d1c31f5e2ce7c1ddc9f63ec0a205373ddc24",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "fa9d7128201b6a275233be0f0a02cbfb69cf318e",
+      "text": "அவனை புடிச்சு தென்னை மரத்துக்கு போட்டேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "avanai pudichchu thennai maraththukku pottaen",
+      "english_translation": "I crushed him and put him on a coconut tree",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:32.344423",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c9a30fa2c3aca5a296261ea6e0a39760b7b44833",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "71edf60a21e8bb9b0d0fa511d95a4aab8fbc12a7",
+      "text": "இந்த முருங்கை மரத்துக்கு யார போட்டோம்யா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "indha murungai maraththukku yaara pottomyaa",
+      "english_translation": "Who planted this drumstick tree?",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:33.063579",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "aacb0b93ecc43e1060c8978a8b7130b16f5c6cde",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a042bcca34f07852d5351df952bc907e0fff6a3d",
+      "text": "நாங்க பெரிய ஜெர்னலிஸ்ட் ஞாபகம் வச்சுக்கோங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "naanga periya jernalist njaabagam vachchukkonga",
+      "english_translation": "Let us remember the great journalist",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:33.667051",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "3262e7f908a24b1b73f0b59491d9fe517fa695eb",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "d921cee9e2a681ca145ea1ebf11d023fdb210a87",
+      "text": "நம்ம தேசமே ஒரு அனாத ஆசிரமம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "namma thaesamae oru anaadha aasiramam",
+      "english_translation": "Our nation is an orphanage",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:34.715215",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "ca9c0a2ac175ac1e50530a42938180e8a3d9425f",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "e5aff5f03d66e25469be56d705914746c12b383e",
+      "text": ">> ஓஹோ ஊரே வாங்குறவருக்கு நம்ம",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> oho oorae vaanguravarukku namma",
+      "english_translation": ">> Oh, ours is for the buyer",
+      "word_count": 5,
+      "added_at": "2026-05-05T13:05:35.431467",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "24dd1bd0168eba17b01e31e31a0825dbb0680c46",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "7723e41439fb4d1b153217b478665742986a0408",
+      "text": "விஸ்வமித்திரர் மறுஜென்மம் எடுத்து வந்தா எப்படி இருக்கும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "visvamiththirar marujenmam eduththu vandhaa eppadi irukkum",
+      "english_translation": "What would it be like if Vishwamitra was reincarnated?",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:36.870804",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "fc92196101bede733f58d92da74e55e11f0b2165",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c859574f4ade82e816baad216925caab966c4e42",
+      "text": "சின்னது எல்லாத்தையும் பெருசாக்கி காட்டுறதுதான் என் லட்சியமே",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "sinnadhu ellaaththaiyum perusaakki kaatturadhudhaan en latchiyamae",
+      "english_translation": "My ambition is to magnify everything that is small",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:37.876851",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8bc41ac741bb9a5b486553c88032f7632094a40d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "c90423ccbaec4c7edbc3f5781651685d79ae00d6",
+      "text": "பரலோகத்திலிருந்து பாதாளம் வரைக்கும் என் சைட்டாதான் இருக்கணும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "paralogaththilirundhu paadhaalam varaikkum en saittaadhaan irukkanum",
+      "english_translation": "From the heavens to the underworld, my site must be there",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:38.682384",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "421e2ddc53f04cd20187eb7c01791d41a834668a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "76517f3af4c836f4177c21026237fb614c5efdfc",
+      "text": "இது இமயமலையில இருந்து வர வச்ச கல்லு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "idhu imayamalaiyila irundhu vara vachcha kallu",
+      "english_translation": "It is a stone from the Himalayas",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:39.478335",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "f61b91bb48e33c7a34a2649a74562acc5d65b6fc",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "fe2cd90163603fd125b26385811e19c66a959193",
+      "text": "நீங்க என்ன நினைச்சாலும் கேர் பண்ண மாட்டோம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "neenga enna ninaichchaalum kaer panna maattom",
+      "english_translation": "We don't care what you think",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:40.406125",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "28ee2857dd6b604319683eda6a43cef846dd14e7",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "096416ed2435287cc7f6f5d5d81c530dc94a0c15",
+      "text": ">> அதான் பண்ணைக்கு உங்களை கூப்பிட்டு அனுப்பிச்சது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> adhaan pannaikku ungalai kooppittu anuppichchadhu",
+      "english_translation": ">> That's what sent you to the farm",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:41.082574",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "9f25e055294c7d24a33548bd3ecd7fcfdd461d40",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "98d69694da2a1fd5ebc3e5672bfe15d6c6a99e89",
+      "text": ">> ஆனா நாங்கதான் வாங்க போறோம்னு சொல்லிருப்பாங்களே",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> aanaa naangadhaan vaanga poromnu solliruppaangalae",
+      "english_translation": ">> But you would have said that we are going to buy it",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:41.845675",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c6d7bdeecb072fb440d4c8388772dfd9819fc14d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f9aee2136c7c612d41e3e334f905f150b3b30dfb",
+      "text": "இந்த ஊரை தாண்டி ஒரு சைட் இருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "indha oorai thaandi oru sait irukku",
+      "english_translation": "There is a site beyond this town",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:42.710826",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8f9b490940c12fce7f1a0a46a1722a4a4144c57a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "6cb3b5ee6f8591c14abbe39b7df446e7e280d3dc",
+      "text": ">> அந்த ஊர் முனையிலேயே நீங்க கட்டிக்கலாமே",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "1",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> andha oor munaiyilaeyae neenga kattikkalaamae",
+      "english_translation": ">> You can build at the end of that town",
+      "word_count": 6,
+      "added_at": "2026-05-05T13:05:43.102239",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "4b5dc59750503cace218a71946787509e99a9c7a",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "3a1add629b668c75a79c132dad510af4e9e50cfb",
+      "text": "நம்ம அரசாங்கம் எனக்கு கொடுத்திருக்கிற விருது வந்து கலைமாமணி",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "namma arasaangam enakku koduththirukkira virudhu vandhu kalaimaamani",
+      "english_translation": "The award given to me by our government is Kalaimamani",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:05:44.257976",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "91d6d504a9718b74385d78e49fdc2ee380c99448",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "35bec1a9d1e43a079ffaef826d26baa3cc8b5c7a",
+      "text": "நாங்க உண்மைகளை மட்டும்தான் எழுதி இருக்கோம் எழுத போறோம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "naanga unmaigalai mattumdhaan ezhudhi irukkom ezhudha porom",
+      "english_translation": "We are going to write only the facts",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:05:45.148036",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "065df97df8f3ed068a9b87febaa30522f96af08d",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "53fd7c1f3c55f4ca50ac8b0303913b7e61c76d24",
+      "text": ">> முருங்கை மரத்துக்கு முனிசிபல் வெட்டி போட்டோம் சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> murungai maraththukku munisibal vetti pottom saar",
+      "english_translation": ">> Sir, we cut down the municipal for the Moringa tree",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:05:45.478995",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "8a6c62bccd27bb41f9ba1ea0661273e492c3b1a4",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "90460eb27a60141ae97ec37830c54f83d369565b",
+      "text": ">> இந்த இடத்தை விக்கறத நாங்க யாருக்கும் சொல்லலையே",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> indha idaththai vikkaradha naanga yaarukkum sollalaiyae",
+      "english_translation": ">> We don't tell anyone to sell this place",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:05:46.245292",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b83025d1634652d0c2f06adce23bd2afaeb8a7f8",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a24513e299f26a8f3edce43eb3c460b9482692d6",
+      "text": "இப்ப என் பங்குக்கு எடுத்து நான் நடத்திக்கிட்டு இருக்கேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "ippa en pangukku eduththu naan nadaththikkittu irukkaen",
+      "english_translation": "Now I have taken my role and am running it",
+      "word_count": 7,
+      "added_at": "2026-05-05T13:05:46.758639",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "9fcbd26d0cbbeee9f9044de5b1881ebeb5f8bbe6",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "935f4bf28da0bbd47b0e060397d65eb955ad9c8d",
+      "text": "டேய் ஜெயா விஜயா வாங்கடா >> குட் மார்னிங் சார்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "taei jeyaa vijayaa vaangadaa >> kut maarning saar",
+      "english_translation": "Dei Jaya Vijaya Wangada >> Good morning sir",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:47.303877",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "bc25d6ce32fa6063c75e87e11e2cc6bea59b0a5b",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "12440c0b1ce30aa7b481da15bda8ae3ad2b86142",
+      "text": "இதெல்லாம் நான் உரம் போடுறதுனாலயோ இல்ல மண் வளர்த்துனாலயோ வளரல",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "idhellaam naan uram poduradhunaalayo illa man valarththunaalayo valarala",
+      "english_translation": "All this does not grow because I fertilize or cultivate the soil",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:48.078482",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "449dedec04d83aed7d3541638e8c7dc3fb1c2236",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "29989c4116899b1713e50b02b4ea7f8c9aff6ed9",
+      "text": "இந்த பொட்லங்கொடிக்கு ரெண்டு செக்யூரிட்டி ஆபீசர சுட்டு எருவா போட்டுருக்கேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "indha potlangodikku rendu sekyooritti aabeesara suttu eruvaa potturukkaen",
+      "english_translation": "Two security officers shot and dunged this Potlankodi flag.",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:48.746135",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "2aba8f6d912fbcba0f90f48b33e3024da5c0d05c",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "55d3b45586afc927dad7ca80aaaf1847fa6419ae",
+      "text": "ஐயோ இந்த பலா மரத்துக்கு பல பேர வெட்டி போட்டுருக்கேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "aiyo indha palaa maraththukku pala paera vetti potturukkaen",
+      "english_translation": "Alas, I have cut many pieces for this jack tree",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:49.644881",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "d83a225296f10b3f9143b0d467c2995fc70cb3fd",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1304f25152e4eb9defe2d004681786410d337350",
+      "text": ">> இப்ப இதுக்கு யார ஓரமா போட போறேன்னு தெரியுமா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> ippa idhukku yaara oramaa poda poraennu theriyumaa",
+      "english_translation": ">> Do you know who I'm going to side with this now?",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:50.954800",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "523b416ece9a32baf5a51fd45b539049679c4355",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1bf03a921142f3d16e8fdc8b0880d06f601782df",
+      "text": "இது பைவ் ஸ்டார் பார்கம் ரெஸ்டாரண்ட் கட்டுறதுக்கு நல்ல சென்டர்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "idhu paiv staar paargam restaarant katturadhukku nalla sendar",
+      "english_translation": "It is a good center for setting up a five star parcum restaurant",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:51.752465",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "ae362f0473c33f4ba9acb517dca82c76aed029ae",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "d251c46af86c5c22cdb1dde851be89c3e834e158",
+      "text": "இத ரொம்ப காலமா எங்க முன்னோர்கள் நடத்திக்கிட்டு இருக்கற ஆசிரமம்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "idha romba kaalamaa enga munnorgal nadaththikkittu irukkara aasiramam",
+      "english_translation": "This is an ashram that our ancestors have been running for a long time",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:52.504254",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "08620ad1feb15f4c88813d9f25b2a1dad4031f92",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "1e9f9b8c3ed4bdbde067019391271f1780596b96",
+      "text": ">> ராமசாமி சார் தனியா நமக்கு அனாத ஆசிரமம்ல்லாம் இருக்கு",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> raamasaami saar thaniyaa namakku anaadha aasiramamllaam irukku",
+      "english_translation": ">> Sir Ramaswami, we also have an orphan ashram",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:53.472285",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b0efb8b2c33c0ed0161d6ced01b82f11e5508ace",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "53141fe57fc299194a469efb8eb6993ee0801df4",
+      "text": ">> டேய் உங்க பணக்கார திமிர இதோட நிறுத்திக்கிட்டா நல்லது",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> taei unga panakkaara thimira idhoda niruththikkittaa nalladhu",
+      "english_translation": ">> You better stop your rich arrogance",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:54.042584",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "0e0446211ba74ba8d1c0b4c18b23829bae9b68e8",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "6dbc11584d72617c6a98ba5885c8074e4067f765",
+      "text": "இல்லாட்டி போனா உன் போட்டோ மாலையோட இங்க ரிஜிஸ்டர் ஆயிடும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "2",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "illaatti ponaa un potto maalaiyoda inga rijistar aayidum",
+      "english_translation": "If not, your photo will be registered here",
+      "word_count": 8,
+      "added_at": "2026-05-05T13:05:55.042456",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "38ce27c05a7de0980756dc9fff08720f9c0bafec",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "82bc2eae3a4e4b1e92ca7bee0561c1b46e6e348e",
+      "text": ">> குட் மார்னிங் இவர் நம்ம தோட்டக்காரர் இன்ஸ்பெக்டர் ஆக்கி விட்டேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> kut maarning ivar namma thottakkaarar inspektar aakki vittaen",
+      "english_translation": ">> Good morning, this is our gardener inspector",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:05:56.112596",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "63fee29b214d28b6fba78f22597e065db5fac3b5",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "f747c70b2af514370ba5525ba065c5036d9d50a4",
+      "text": "ரொம்ப நாளா ஒரு போலீஸ் ஆபீசர் என்கிட்ட தெனாவட்டா பேசிட்டே இருந்தான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "romba naalaa oru polees aabeesar engitta thenaavattaa paesittae irundhaan",
+      "english_translation": "A police officer kept talking to me for a long time",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:05:56.719288",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "2926ae8f5d3a0a9b0de52abe01af1807f5d5a861",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "15239b26f10244eecfc0b3c4dfed2c461d220fe1",
+      "text": ">> அப்படின்னா உங்க பணத்தை வச்சு எது வேணாலும் வாங்கிக்கலாம்னு நினைக்கிறீங்களா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> appadinnaa unga panaththai vachchu edhu vaenaalum vaangikkalaamnu ninaikkireengalaa",
+      "english_translation": ">> So do you think you can buy whatever you want with your money?",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:05:57.507605",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c14f9cace87f81bae7ee0420caee47dadf1b1f13",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "7fadbdbef54f42b3f026fcea2f27dc7f6e6edd9f",
+      "text": "டேய் ராமசாமி அந்த சின்ன இடத்தை கொடுத்தா குடியா முழுகி போயிடும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "taei raamasaami andha sinna idaththai koduththaa kudiyaa muzhugi poyidum",
+      "english_translation": "If Dei Ramasamy gives that small space, the house will be full",
+      "word_count": 9,
+      "added_at": "2026-05-05T13:05:58.275783",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "0651c754470ca229fa50a9733d4bcd3f3acc53c5",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "14a5f925d0dd3a144b0e0c6df5b27bbccc3a8ef3",
+      "text": "பங்காளி சண்டை போட்ட ரெண்டு பைல வெட்டி இந்த பப்பாளி மரத்துக்கு போட்டேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "pangaali sandai potta rendu paila vetti indha pappaali maraththukku pottaen",
+      "english_translation": "I cut the two piles that my partner had quarreled with and put them on this papaya tree",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:05:59.289936",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "a620b7cdd5610c09df18b728e5bc4c36734a5fc4",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "a199f092a1ffe2bcede8b8716da067eab21269f0",
+      "text": ">> இப்ப இந்த செடியில மரம் மாதிரி பெருசு பெருசா பூ பூக்கணும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> ippa indha sediyila maram maadhiri perusu perusaa poo pookkanum",
+      "english_translation": ">> Now this plant should bloom like a tree",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:05:59.857730",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b519a5096111c9de883d3660633536147ffe78c6",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "de4b9a9bf2c2ae70ad0b29751ab5bca61b0848bb",
+      "text": ">> ஈவி இறக்கலாம இத்தனை கொலை செஞ்சுட்டு தைரியமா வேற பேசிட்டு இருக்கீங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> eevi irakkalaama iththanai kolai senjuttu thairiyamaa vaera paesittu irukkeenga",
+      "english_translation": ">> How dare you kill so many people so that Evie can't die and talk about something else",
+      "word_count": 10,
+      "added_at": "2026-05-05T13:06:00.398104",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "15ed2aa0c2a7856dad426231262c2a83b207cf8f",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "8e69b86e5acfa93e258505b3091fd94f7f66d3c1",
+      "text": "அங்க இருக்கற முள்ளு செடி எல்லாம் வெட்டிட்டு, குறைஞ்ச ரேட்டு கொடுக்கறதா சொல்லிவிட்டாரு எங்க அப்பா",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "3",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "anga irukkara mullu sedi ellaam vettittu, kurainja raettu kodukkaradhaa sollivittaaru enga appaa",
+      "english_translation": "Our father told me to cut all the thorn plants there and pay a lower rate",
+      "word_count": 12,
+      "added_at": "2026-05-05T13:06:01.273935",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "aa76b04f1fb93cd5cad5b9c195bad177ba2d1796",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "47985e9feba5f111f238cdff3b122476ae7e8f68",
+      "text": "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "adhula neenga anaadhai naan anaadhai ivanga ellaarum anaadha aakchuvali aasiramangalla irukkaradhunaaladhaan anaadhaigalae valarraanga",
+      "english_translation": "And you are an orphan, I am an orphan, and all of them are actually orphans because they are in orphanages.",
+      "word_count": 13,
+      "added_at": "2026-05-05T13:06:02.299710",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "fe5f8461d28e076bacf3adea5ba5be8c3d57d366",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "d9d9ae1dc5ce66129ac61c180a12039281840f6a",
+      "text": "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "adhukkaaga yendaa vambu panra andha kannabaran irukkaane avan saadhaarana manushan illa ooraiyae vaangiduvaan",
+      "english_translation": "Why is that Kannaparan making a fuss about it, he will buy the town where there is no common man",
+      "word_count": 13,
+      "added_at": "2026-05-05T13:06:03.238247",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "c3fbe1632368db3eb5feddddb49b6eac56dbb747",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "38561a9b66c0b13c4220f20646c1c3729950b39b",
+      "text": "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "unmai ennannu solraen indha poosanikkaai sedikku enakku edhiraa vaelai senja kalektar oruththarai saavadichchu uramaa vachchirukkaen",
+      "english_translation": "I will tell you the truth, the collector who worked against me for this pumpkin plant put one and a half booths of manure.",
+      "word_count": 15,
+      "added_at": "2026-05-05T13:06:04.043826",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "6afd96e41f571b0f21e64a40a803b028e653de20",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "47a257c0fae8066aa718974e32cf06008904cdbb",
+      "text": "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "4",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "ket laast ai set kat laast 24 mani naeraththula indha idam enga paerukku rejistar aaganum",
+      "english_translation": "Get Last I Set Cut Last Within 24 hours this place has to be registered",
+      "word_count": 15,
+      "added_at": "2026-05-05T13:06:04.711621",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b6b0805943f2d92fe3198abcf7702c30212b07fb",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "298074e2a1e83a03fdf2b75902f34779a4b93d78",
+      "text": ">> இன்ஸ்பெக்டர் கண்ண முடிக்க உங்களதான் ஏய் ஐயோ ஜர்னலிஸ்ட் நல்லா நல்லா மெதுவா தள்ளுங்கயா செத்தவனுக்கு வலிக்க போகுது அப்பா நாளைக்கு இந்த செடியில பேனா பேப்பர் பூத்தாலும் பூக்கும்",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": ">> inspektar kanna mudikka ungaladhaan yei aiyo jarnalist nallaa nallaa medhuvaa thallungayaa seththavanukku valikka pogudhu appaa naalaikku indha sediyila paenaa paeppar pooththaalum pookkum",
+      "english_translation": ">> INSPECTOR KANNA FINISHES YOU ARE YOU O OH JOURNALIST NALA NALA MEDUA TOLUNGAYA SEDTHAVAN IS GOING TO PAIN PAPA TOMORROW EVEN IF PEN AND PAPER BLOSSOM ON THIS PLANT WILL BLOOM",
+      "word_count": 23,
+      "added_at": "2026-05-05T13:06:05.079917",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "b3a1e12c2b0019622256b851b7824b6924f73925",
+        "translation_source": "machine"
+      }
+    },
+    {
+      "entry_id": "fec819e0b1ca24ec78107ab016bbc5a37bafd5f3",
+      "text": "காட் இஸ் கிரேட் ஏய் ஷெல்பி >> ஐயா கும்புறாங்க >> வேலைய செய் இந்த ஊர் மைதானத்தில என்னோட பலிங்க சிலை வைக்கணும்னு எனக்கு ஒரு சின்ன சின்ன ஆசை அதுக்குதான் செதுக்குறாங்க",
+      "source_type": "youtube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "language": "ta",
+      "difficulty_level": "6",
+      "dialogue_type": "sentence",
+      "colloquial_score": 0.32,
+      "tanglish_text": "kaat is kiraet yei shelbi >> aiyaa kumburaanga >> vaelaiya sei indha oor maidhaanaththila ennoda palinga silai vaikkanumnu enakku oru sinna sinna aasai adhukkudhaan sedhukkuraanga",
+      "english_translation": "God is great hey Shelby >> Mr. Kumpuranga >> Work I have a small wish to put a statue of me in the ground of this town.",
+      "word_count": 25,
+      "added_at": "2026-05-05T13:06:05.863648",
+      "metadata": {
+        "detected_keywords": [],
+        "source_fingerprint": "ccd7aa64e8a94d7aedcdb41d142973672add3903",
+        "translation_source": "machine"
       }
     }
   ],
   "stats": {
-    "total_entries": 63,
+    "total_entries": 213,
     "by_source_type": {
-      "youtube": 59,
+      "youtube": 209,
       "ddgs": 4
     },
     "by_difficulty": {
-      "1": 34,
-      "6": 5,
-      "2": 8,
-      "3": 9,
-      "4": 6,
-      "5": 1
+      "1": 106,
+      "6": 10,
+      "2": 41,
+      "3": 31,
+      "5": 8,
+      "4": 17
     },
     "by_dialogue_type": {
-      "sentence": 63
+      "sentence": 213
     },
     "by_language": {
-      "ta": 63
+      "ta": 213
     },
-    "avg_colloquial_score": 0.37
+    "avg_colloquial_score": 0.36
   },
-  "updated_at": "2026-05-05T12:31:29.946850"
+  "updated_at": "2026-05-05T13:06:05.864025"
 }

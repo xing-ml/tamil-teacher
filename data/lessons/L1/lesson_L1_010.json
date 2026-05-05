@@ -1,0 +1,97 @@
+{
+  "lesson_id": "lesson_L1_010",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 3,
+  "generated_at": "2026-05-05T13:06:05.935933",
+  "metadata": {
+    "entry_count": 3,
+    "avg_score": 0.35,
+    "source_types": [
+      "ddgs"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
+      "tanglish_text": "ingu thamizhil mattumae arattai adikkavum",
+      "english_translation": "Chat here only in tamil",
+      "colloquial_score": 0.35,
+      "source_type": "ddgs",
+      "source_title": "English ( India )",
+      "source_url": "https://telegramchannels.me/en-in/groups/tamil",
+      "word_count": 5
+    },
+    {
+      "text": "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
+      "tanglish_text": "nalla payanulla thagavalgalukku tag ubayogikkavum",
+      "english_translation": "Use tag for good useful information",
+      "colloquial_score": 0.35,
+      "source_type": "ddgs",
+      "source_title": "English ( India )",
+      "source_url": "https://telegramchannels.me/en-in/groups/tamil",
+      "word_count": 5
+    },
+    {
+      "text": "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு",
+      "tanglish_text": "Tamil chat idhu thamizh paesubavargalukkaana kuzhu",
+      "english_translation": "Tamil chat is a group for Tamil speaking people",
+      "colloquial_score": 0.35,
+      "source_type": "ddgs",
+      "source_title": "English ( India )",
+      "source_url": "https://telegramchannels.me/en-in/groups/tamil",
+      "word_count": 6
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
+        "tanglish_text": "ingu thamizhil mattumae arattai adikkavum"
+      },
+      "previous": [],
+      "next": [
+        "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
+        "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு"
+      ]
+    },
+    {
+      "current": {
+        "text": "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்",
+        "tanglish_text": "nalla payanulla thagavalgalukku tag ubayogikkavum"
+      },
+      "previous": [
+        "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்"
+      ],
+      "next": [
+        "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு"
+      ]
+    },
+    {
+      "current": {
+        "text": "Tamil chat இது தமிழ் பேசுபவர்களுக்கான குழு",
+        "tanglish_text": "Tamil chat idhu thamizh paesubavargalukkaana kuzhu"
+      },
+      "previous": [
+        "இங்கு தமிழில் மட்டுமே அரட்டை அடிக்கவும்",
+        "நல்ல பயனுள்ள தகவல்களுக்கு tag உபயோகிக்கவும்"
+      ],
+      "next": []
+    }
+  ]
+}

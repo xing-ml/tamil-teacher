@@ -42,6 +42,8 @@ class CleanedDialogue:
     candidate_type: str
     word_count: int
     cleaned_at: str
+    english_translation: str = ""  # English translation (from subtitles or machine translation)
+    translation_source: str = ""  # "subtitle" if from YouTube subtitles, "machine" if from Google Translate
 
 
 def now_iso() -> str:
@@ -316,6 +318,8 @@ def build_dialogue_entry(
     score: float,
     detected_keywords: list[str],
     candidate_type: str,
+    english_translation: str = "",
+    translation_source: str = "",
 ) -> CleanedDialogue:
     return CleanedDialogue(
         dialogue_id=candidate_id(source.get("url", ""), text),
@@ -329,6 +333,8 @@ def build_dialogue_entry(
         candidate_type=candidate_type,
         word_count=len(text.replace("\n", " ").split()),
         cleaned_at=now_iso(),
+        english_translation=english_translation,
+        translation_source=translation_source,
     )
 
 
@@ -364,10 +370,27 @@ def process_sources(agent_data: dict, keywords: list[str], min_colloquial_score:
             continue
         
         stats["passed_filters"] += 1
+        
+        # Check if source has dual subtitles (Tamil + English)
+        metadata = source.get("metadata", {})
+        has_dual_subtitles = metadata.get("has_dual_subtitles", False)
+        english_subtitle_text = metadata.get("english_subtitle")
+        
+        # If we have dual subtitles, extract English translation
+        english_translation = ""
+        translation_source = ""
+        if has_dual_subtitles and english_subtitle_text:
+            # Use the English subtitle as the translation
+            english_translation = clean_text(english_subtitle_text)
+            translation_source = "subtitle"
 
         for left, right in extract_dialogues(cleaned_content):
             dialogue_text = f"A: {left}\nB: {right}"
-            entry = build_dialogue_entry(source, dialogue_text, colloquial_score, detected_keywords, "dialogue_pair")
+            entry = build_dialogue_entry(
+                source, dialogue_text, colloquial_score, detected_keywords, "dialogue_pair",
+                english_translation=english_translation,
+                translation_source=translation_source,
+            )
             if entry.dialogue_id not in seen_ids:
                 seen_ids.add(entry.dialogue_id)
                 cleaned_dialogues.append(entry)
@@ -376,7 +399,11 @@ def process_sources(agent_data: dict, keywords: list[str], min_colloquial_score:
         for sentence in extract_sentence_candidates(cleaned_content):
             if len(detected_keywords) == 0 and count_tamil_chars(sentence) < 8:
                 continue
-            entry = build_dialogue_entry(source, sentence, colloquial_score, detected_keywords, "sentence")
+            entry = build_dialogue_entry(
+                source, sentence, colloquial_score, detected_keywords, "sentence",
+                english_translation=english_translation,
+                translation_source=translation_source,
+            )
             if entry.dialogue_id not in seen_ids:
                 seen_ids.add(entry.dialogue_id)
                 cleaned_dialogues.append(entry)

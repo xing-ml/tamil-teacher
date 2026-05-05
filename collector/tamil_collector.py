@@ -29,7 +29,10 @@ try:
 except ImportError:
     HAS_YOUTUBE_API = False
 
-from url_deduplicator import URLDeduplicator
+try:
+    from .url_deduplicator import URLDeduplicator
+except ImportError:
+    from url_deduplicator import URLDeduplicator
 
 HEADERS = {
     "User-Agent": (
@@ -437,34 +440,63 @@ def extract_youtube_video_id(url: str) -> str | None:
     return None
 
 
-def get_youtube_transcript(video_id: str, max_chars: int = 50000) -> str | None:
+def get_youtube_transcript(video_id: str, max_chars: int = 50000) -> dict | None:
     """Fetch YouTube transcript for a video, with generous character limit.
     
     Args:
         video_id: YouTube video ID
         max_chars: Maximum characters to return (default 50k for full movies)
+    
+    Returns:
+        dict with keys: 'tamil', 'english', 'has_dual_subtitles'
     """
     if not HAS_YOUTUBE_API:
         return None
 
     try:
-        # Try Tamil first, then English
-        transcript = YouTubeTranscriptApi().fetch(video_id, languages=["ta", "en"])
-        chunks: list[str] = []
-        for item in transcript:
-            text = item.text.strip() if hasattr(item, 'text') else str(item).strip()
-            if text:
-                chunks.append(text)
+        result = {
+            'tamil': None,
+            'english': None,
+            'has_dual_subtitles': False,
+        }
         
-        full_text = " ".join(chunks)
-        if not full_text:
+        # Try to fetch Tamil subtitles
+        try:
+            tamil_transcript = YouTubeTranscriptApi().fetch(video_id, languages=["ta"])
+            tamil_chunks = []
+            for item in tamil_transcript:
+                text = item.text.strip() if hasattr(item, 'text') else str(item).strip()
+                if text:
+                    tamil_chunks.append(text)
+            tamil_text = " ".join(tamil_chunks)
+            if tamil_text and len(tamil_text) >= 50:
+                result['tamil'] = clean_page_text(tamil_text, max_chars=max_chars)
+        except Exception:
+            pass
+        
+        # Try to fetch English subtitles
+        try:
+            english_transcript = YouTubeTranscriptApi().fetch(video_id, languages=["en"])
+            english_chunks = []
+            for item in english_transcript:
+                text = item.text.strip() if hasattr(item, 'text') else str(item).strip()
+                if text:
+                    english_chunks.append(text)
+            english_text = " ".join(english_chunks)
+            if english_text and len(english_text) >= 50:
+                result['english'] = clean_page_text(english_text, max_chars=max_chars)
+        except Exception:
+            pass
+        
+        # Check if we have both Tamil and English subtitles
+        if result['tamil'] and result['english']:
+            result['has_dual_subtitles'] = True
+        
+        # Return None if no useful content
+        if not result['tamil'] and not result['english']:
             return None
         
-        # Clean and limit
-        cleaned = clean_page_text(full_text, max_chars=max_chars)
-        if len(cleaned) < 50:
-            return None
-        return cleaned
+        return result
     except Exception as e:
         print(f"DEBUG YouTube transcript error for {video_id}: {e}", file=sys.stderr)
         return None
@@ -500,26 +532,32 @@ def collect_youtube_data(search_queries: list[str], max_per_query: int = 5) -> l
 
         print(f"INFO [PROVEN] Fetching: {title} (ID: {video_id})...", file=sys.stderr)
         try:
-            transcript = get_youtube_transcript(video_id)
-            if transcript and not should_skip_source(transcript, title):
-                results.append(
-                    DialogueSource(
-                        source_type="youtube",
-                        url=f"https://www.youtube.com/watch?v={video_id}",
-                        title=title,
-                        content=transcript,
-                        language=detect_language(transcript),
-                        fetch_status="ok",
-                        fetched_at=now_iso(),
-                        metadata={
-                            "video_id": video_id,
-                            "category": category,
-                            "content_fingerprint": fingerprint_text(transcript),
-                        },
+            transcript_data = get_youtube_transcript(video_id)
+            if transcript_data and transcript_data.get('tamil'):
+                tamil_text = transcript_data['tamil']
+                english_text = transcript_data.get('english')
+                has_dual = transcript_data.get('has_dual_subtitles', False)
+                
+                if not should_skip_source(tamil_text, title):
+                    results.append(
+                        DialogueSource(
+                            source_type="youtube",
+                            url=f"https://www.youtube.com/watch?v={video_id}",
+                            title=title,
+                            content=tamil_text,
+                            language="ta",
+                            fetch_status="ok",
+                            fetched_at=now_iso(),
+                            metadata={
+                                "video_id": video_id,
+                                "category": category,
+                                "content_fingerprint": fingerprint_text(tamil_text),
+                                "has_dual_subtitles": has_dual,
+                                "english_subtitle": english_text if english_text else None,
+                            },
+                        )
                     )
-                )
-                tamil_pct = sum(1 for c in transcript if '\u0b80' <= c <= '\u0bff') / len(transcript) * 100
-                print(f"INFO ✓ {title} ({len(transcript)} chars, {tamil_pct:.0f}% Tamil)", file=sys.stderr)
+                print(f"INFO ✓ {title} ({len(tamil_text)} chars, dual={'Y' if has_dual else 'N'})", file=sys.stderr)
             else:
                 print(f"INFO ✗ Skipped: {title}", file=sys.stderr)
         except Exception as exc:
@@ -530,12 +568,15 @@ def collect_youtube_data(search_queries: list[str], max_per_query: int = 5) -> l
     # Only search for Tamil movies that have subtitles (English or Tamil)
     # ================================================================
     ddgs_search_queries = [
-        "tamil full movie with english subtitles",
-        "tamil full movie with subtitles",
-        "tamil movie english subtitle youtube",
-        "kollywood movie english subtitles youtube",
+        "tamil english subtitles youtube",
+        "tamil movie english subtitles youtube",
+        "tamil kollywood movie english subtitles youtube",
         "tamil dubbed movie english subtitles youtube",
+        "tamil full movie with english subtitles",
+        "tamil movie with english subtitles youtube",
         "tamil full movie hd youtube",
+        "tamil movie with english subs youtube",
+        "tamil dubbed movie english subs youtube",
     ]
     ddgs_search_queries.extend(search_queries)
 
@@ -555,12 +596,19 @@ def collect_youtube_data(search_queries: list[str], max_per_query: int = 5) -> l
                     continue
                 seen_youtube_ids.add(video_id)
 
-                transcript = get_youtube_transcript(video_id)
-                if not transcript or should_skip_source(transcript, item.title):
+                transcript_data = get_youtube_transcript(video_id)
+                if not transcript_data or not transcript_data.get('tamil'):
+                    continue
+                
+                tamil_text = transcript_data['tamil']
+                english_text = transcript_data.get('english')
+                has_dual = transcript_data.get('has_dual_subtitles', False)
+                
+                if should_skip_source(tamil_text, item.title):
                     continue
 
-                tamil_chars = sum(1 for c in transcript if '\u0b80' <= c <= '\u0bff')
-                tamil_pct = tamil_chars / len(transcript) * 100
+                tamil_chars = sum(1 for c in tamil_text if '\u0b80' <= c <= '\u0bff')
+                tamil_pct = tamil_chars / len(tamil_text) * 100 if len(tamil_text) > 0 else 0
 
                 # Accept if it has significant Tamil content (>30% Tamil chars)
                 # OR if it's a Tamil movie with English subtitles (we can still use it)
@@ -570,7 +618,7 @@ def collect_youtube_data(search_queries: list[str], max_per_query: int = 5) -> l
                             source_type="youtube",
                             url=item.normalized_url,
                             title=item.title,
-                            content=transcript,
+                            content=tamil_text,
                             language="ta",
                             fetch_status="ok",
                             fetched_at=now_iso(),
@@ -578,33 +626,38 @@ def collect_youtube_data(search_queries: list[str], max_per_query: int = 5) -> l
                                 "video_id": video_id,
                                 "query": query,
                                 "tamil_pct": round(tamil_pct, 1),
-                                "content_fingerprint": fingerprint_text(transcript),
+                                "content_fingerprint": fingerprint_text(tamil_text),
+                                "has_dual_subtitles": has_dual,
+                                "english_subtitle": english_text if english_text else None,
                             },
                         )
                     )
                     tamil_videos_found += 1
-                    print(f"INFO ✓ Tamil-subs: {item.title[:60]} ({len(transcript)} chars, {tamil_pct:.0f}% Tamil)", file=sys.stderr)
+                    print(f"INFO ✓ Tamil-subs: {item.title[:60]} ({len(tamil_text)} chars, {tamil_pct:.0f}% Tamil, dual={'Y' if has_dual else 'N'})", file=sys.stderr)
                 elif "tamil" in item.title.lower() or "kollywood" in item.title.lower():
                     # Accept Tamil movies with English subtitles too (useful for comparison)
-                    results.append(
-                        DialogueSource(
-                            source_type="youtube",
-                            url=item.normalized_url,
-                            title=item.title,
-                            content=transcript,
-                            language="en",  # Mark as English subs
-                            fetch_status="ok",
-                            fetched_at=now_iso(),
-                            metadata={
-                                "video_id": video_id,
-                                "query": query,
-                                "tamil_pct": round(tamil_pct, 1),
-                                "content_fingerprint": fingerprint_text(transcript),
-                            },
+                    if english_text:
+                        results.append(
+                            DialogueSource(
+                                source_type="youtube",
+                                url=item.normalized_url,
+                                title=item.title,
+                                content=english_text,
+                                language="en",  # Mark as English subs
+                                fetch_status="ok",
+                                fetched_at=now_iso(),
+                                metadata={
+                                    "video_id": video_id,
+                                    "query": query,
+                                    "tamil_pct": round(tamil_pct, 1),
+                                    "content_fingerprint": fingerprint_text(english_text),
+                                    "has_dual_subtitles": has_dual,
+                                    "english_subtitle": english_text,
+                                },
+                            )
                         )
-                    )
-                    english_only_videos += 1
-                    print(f"INFO ✓ Eng-subs (Tamil movie): {item.title[:60]} ({len(transcript)} chars, {tamil_pct:.0f}% Tamil)", file=sys.stderr)
+                        english_only_videos += 1
+                        print(f"INFO ✓ Eng-subs (Tamil movie): {item.title[:60]} ({len(english_text)} chars, {tamil_pct:.0f}% Tamil)", file=sys.stderr)
         except Exception as exc:
             print(f"DEBUG DDGS search failed for '{query}': {exc}", file=sys.stderr)
 

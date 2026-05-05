@@ -1,0 +1,265 @@
+{
+  "lesson_id": "lesson_L2_004",
+  "title": "Tamil Colloquial Level 2 - 基础 (sentence)",
+  "difficulty_level": "2",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 10,
+  "generated_at": "2026-05-05T13:06:05.904880",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "基础",
+      "sentence_words": [
+        2,
+        8
+      ],
+      "features": [
+        "short_sentences",
+        "basic_verbs",
+        "simple_responses"
+      ],
+      "description": "短句子、基础动词、简单回应"
+    }
+  },
+  "entries": [
+    {
+      "text": "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்",
+      "tanglish_text": "udane chennaikku poi andha thambiya siem aakkuraen",
+      "english_translation": "I will immediately go to Chennai and make that brother CM",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 7
+    },
+    {
+      "text": "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+      "tanglish_text": "[isai] kashtamaa irundhaalum konjam seekkiramaa pannittaa nalladhu",
+      "english_translation": "[Music] Even if it's difficult, it's better to do it a little faster",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 7
+    },
+    {
+      "text": "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+      "tanglish_text": "niraiya thadavai ungalai meet pannumnu ninaichchaen saar",
+      "english_translation": "I thought I would meet you many times sir",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 7
+    },
+    {
+      "text": "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+      "tanglish_text": "avara traes panna naanga niraiya trai pannom",
+      "english_translation": "We tried a lot to trace him",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 7
+    },
+    {
+      "text": "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+      "tanglish_text": "yaarukko bayanthudhaan avar indha oorai vittu poyirukkaaru",
+      "english_translation": "He left this town because he was afraid of someone",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 7
+    },
+    {
+      "text": "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+      "tanglish_text": "aanaa avarai elakt panra adhigaaram mattum engalukku illa",
+      "english_translation": "But we do not have the power to elect him",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 8
+    },
+    {
+      "text": "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+      "tanglish_text": "ungaloda uyir nanbar katchi thalaivar andha varadharaajan thaan",
+      "english_translation": "Your best friend is the party leader Varadarajan",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 8
+    },
+    {
+      "text": "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+      "tanglish_text": "enakku indha vishayam theriya vandhappa kooda naan nambala",
+      "english_translation": "I couldn't believe it even when I came to know about this",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 8
+    },
+    {
+      "text": "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு",
+      "tanglish_text": "andha manogar seiyara aththanai paavangalukkum varadharaajan thunaiyaa irukkaaru",
+      "english_translation": "Varadarajan will help all the sins that Manohar commits",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 8
+    },
+    {
+      "text": "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப",
+      "tanglish_text": "enna paarkka vandhurukkeengannu therinjaa kandippaa ungalaiyum akbaalo pa",
+      "english_translation": "If you know what you have come to see, then follow you too",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 8
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்",
+        "tanglish_text": "udane chennaikku poi andha thambiya siem aakkuraen"
+      },
+      "previous": [],
+      "next": [
+        "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+        "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்"
+      ]
+    },
+    {
+      "current": {
+        "text": "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+        "tanglish_text": "[isai] kashtamaa irundhaalum konjam seekkiramaa pannittaa nalladhu"
+      },
+      "previous": [
+        "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்"
+      ],
+      "next": [
+        "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+        "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்"
+      ]
+    },
+    {
+      "current": {
+        "text": "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+        "tanglish_text": "niraiya thadavai ungalai meet pannumnu ninaichchaen saar"
+      },
+      "previous": [
+        "உடனே சென்னைக்கு போய் அந்த தம்பிய சிஎம் ஆக்குறேன்",
+        "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது"
+      ],
+      "next": [
+        "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+        "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு"
+      ]
+    },
+    {
+      "current": {
+        "text": "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+        "tanglish_text": "avara traes panna naanga niraiya trai pannom"
+      },
+      "previous": [
+        "[இசை] கஷ்டமா இருந்தாலும் கொஞ்சம் சீக்கிரமா பண்ணிட்டா நல்லது",
+        "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்"
+      ],
+      "next": [
+        "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+        "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல"
+      ]
+    },
+    {
+      "current": {
+        "text": "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+        "tanglish_text": "yaarukko bayanthudhaan avar indha oorai vittu poyirukkaaru"
+      },
+      "previous": [
+        "நிறைய தடவை உங்களை மீட் பண்ணும்னு நினைச்சேன் சார்",
+        "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்"
+      ],
+      "next": [
+        "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+        "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+        "tanglish_text": "aanaa avarai elakt panra adhigaaram mattum engalukku illa"
+      },
+      "previous": [
+        "அவர ட்ரேஸ் பண்ண நாங்க நிறைய ட்ரை பண்ணோம்",
+        "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு"
+      ],
+      "next": [
+        "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+        "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல"
+      ]
+    },
+    {
+      "current": {
+        "text": "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+        "tanglish_text": "ungaloda uyir nanbar katchi thalaivar andha varadharaajan thaan"
+      },
+      "previous": [
+        "யாருக்கோ பயந்துதான் அவர் இந்த ஊரை விட்டு போயிருக்காரு",
+        "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல"
+      ],
+      "next": [
+        "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+        "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு"
+      ]
+    },
+    {
+      "current": {
+        "text": "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+        "tanglish_text": "enakku indha vishayam theriya vandhappa kooda naan nambala"
+      },
+      "previous": [
+        "ஆனா அவரை எலக்ட் பண்ற அதிகாரம் மட்டும் எங்களுக்கு இல்ல",
+        "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்"
+      ],
+      "next": [
+        "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு",
+        "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப"
+      ]
+    },
+    {
+      "current": {
+        "text": "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு",
+        "tanglish_text": "andha manogar seiyara aththanai paavangalukkum varadharaajan thunaiyaa irukkaaru"
+      },
+      "previous": [
+        "உங்களோட உயிர் நண்பர் கட்சி தலைவர் அந்த வரதராஜன் தான்",
+        "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல"
+      ],
+      "next": [
+        "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப"
+      ]
+    },
+    {
+      "current": {
+        "text": "என்ன பார்க்க வந்துருக்கீங்கன்னு தெரிஞ்சா கண்டிப்பா உங்களையும் ஃபாலோ ப",
+        "tanglish_text": "enna paarkka vandhurukkeengannu therinjaa kandippaa ungalaiyum akbaalo pa"
+      },
+      "previous": [
+        "எனக்கு இந்த விஷயம் தெரிய வந்தப்ப கூட நான் நம்பல",
+        "அந்த மனோகர் செய்யற அத்தனை பாவங்களுக்கும் வரதராஜன் துணையா இருக்காரு"
+      ],
+      "next": []
+    }
+  ]
+}

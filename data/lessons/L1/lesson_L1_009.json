@@ -1,0 +1,51 @@
+{
+  "lesson_id": "lesson_L1_009",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 1,
+  "generated_at": "2026-05-05T13:06:05.894240",
+  "metadata": {
+    "entry_count": 1,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "[இசை] இனிமே நீங்கதான் சார் நடவடிக்கை எடுக்கணும்",
+      "tanglish_text": "[isai] inimae neengadhaan saar nadavadikkai edukkanum",
+      "english_translation": "[Music] Now you have to take action, sir",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "[இசை] இனிமே நீங்கதான் சார் நடவடிக்கை எடுக்கணும்",
+        "tanglish_text": "[isai] inimae neengadhaan saar nadavadikkai edukkanum"
+      },
+      "previous": [],
+      "next": []
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "lesson_id": "lesson_L1_008",
+  "title": "Tamil Colloquial Level 1 - 入门 (sentence)",
+  "difficulty_level": "1",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 10,
+  "generated_at": "2026-05-05T13:06:05.891909",
+  "metadata": {
+    "entry_count": 10,
+    "avg_score": 0.37,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "入门",
+      "sentence_words": [
+        1,
+        6
+      ],
+      "features": [
+        "single_words",
+        "basic_questions",
+        "high_repetition"
+      ],
+      "description": "单个词汇、简单疑问句、高频重复"
+    }
+  },
+  "entries": [
+    {
+      "text": "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+      "tanglish_text": "adhukkaana kaes kooda pabail pannala",
+      "english_translation": "The case for that is not even made public",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 5
+    },
+    {
+      "text": "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+      "tanglish_text": "pat ai staart pikking teeppar",
+      "english_translation": "But I start picking deeper",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 5
+    },
+    {
+      "text": "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+      "tanglish_text": "idhu ellaamae enakku sandhaegamaa irundhadhu",
+      "english_translation": "I doubted all of this",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 5
+    },
+    {
+      "text": "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+      "tanglish_text": "neenga vandhu engalukku endha pirayojanamum illai",
+      "english_translation": "You are of no use to us",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    },
+    {
+      "text": "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+      "tanglish_text": "ungalai kattuppaduththura adhigaaram siem kitta irukku",
+      "english_translation": "The CM has the authority to control you",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    },
+    {
+      "text": "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+      "tanglish_text": "yekkuraen >> mudhalamaichcharai thaerndhedukkaradhu engaloda poruppu",
+      "english_translation": "Ekkuren >> It is our responsibility to elect the Chief Minister",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    },
+    {
+      "text": ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+      "tanglish_text": ">> nee enna seiviyo engalukku theriyaadhu",
+      "english_translation": ">> we don't know what you do",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    },
+    {
+      "text": "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+      "tanglish_text": "aanaa ennaala ungalai paes panna mudiyala",
+      "english_translation": "But I can't pace you",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    },
+    {
+      "text": "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+      "tanglish_text": "ekchi em raagavan avardhaan enga appaa",
+      "english_translation": "XM Raghavan is our father",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    },
+    {
+      "text": "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல",
+      "tanglish_text": "aanaa idhuvaraikkum adhukkaana nadavadikkai yaarumae edukkala",
+      "english_translation": "But till now no one is taking action for it",
+      "colloquial_score": 0.37,
+      "source_type": "youtube",
+      "source_title": "இப்போதைக்கு நீங்க ஒதுங்கிட்டு அவனை CM ஆக்குனா கொஞ்சம் Problem கொறையும் ...",
+      "source_url": "https://www.youtube.com/watch?v=fYZLpbv_DYM",
+      "word_count": 6
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+        "tanglish_text": "adhukkaana kaes kooda pabail pannala"
+      },
+      "previous": [],
+      "next": [
+        "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+        "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது"
+      ]
+    },
+    {
+      "current": {
+        "text": "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+        "tanglish_text": "pat ai staart pikking teeppar"
+      },
+      "previous": [
+        "அதுக்கான கேஸ் கூட பபைல் பண்ணல"
+      ],
+      "next": [
+        "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+        "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை"
+      ]
+    },
+    {
+      "current": {
+        "text": "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+        "tanglish_text": "idhu ellaamae enakku sandhaegamaa irundhadhu"
+      },
+      "previous": [
+        "அதுக்கான கேஸ் கூட பபைல் பண்ணல",
+        "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்"
+      ],
+      "next": [
+        "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+        "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு"
+      ]
+    },
+    {
+      "current": {
+        "text": "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+        "tanglish_text": "neenga vandhu engalukku endha pirayojanamum illai"
+      },
+      "previous": [
+        "பட் ஐ ஸ்டார்ட் பிக்கிங் டீப்பர்",
+        "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது"
+      ],
+      "next": [
+        "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+        "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு"
+      ]
+    },
+    {
+      "current": {
+        "text": "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+        "tanglish_text": "ungalai kattuppaduththura adhigaaram siem kitta irukku"
+      },
+      "previous": [
+        "இது எல்லாமே எனக்கு சந்தேகமா இருந்தது",
+        "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை"
+      ],
+      "next": [
+        "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+        ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+        "tanglish_text": "yekkuraen >> mudhalamaichcharai thaerndhedukkaradhu engaloda poruppu"
+      },
+      "previous": [
+        "நீங்க வந்து எங்களுக்கு எந்த பிரயோஜனமும் இல்லை",
+        "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு"
+      ],
+      "next": [
+        ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+        "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல"
+      ]
+    },
+    {
+      "current": {
+        "text": ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+        "tanglish_text": ">> nee enna seiviyo engalukku theriyaadhu"
+      },
+      "previous": [
+        "உங்களை கட்டுப்படுத்துற அதிகாரம் சிஎம் கிட்ட இருக்கு",
+        "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு"
+      ],
+      "next": [
+        "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+        "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+        "tanglish_text": "aanaa ennaala ungalai paes panna mudiyala"
+      },
+      "previous": [
+        "ஏக்குறேன் >> முதலமைச்சரை தேர்ந்தெடுக்கறது எங்களோட பொறுப்பு",
+        ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது"
+      ],
+      "next": [
+        "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+        "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல"
+      ]
+    },
+    {
+      "current": {
+        "text": "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா",
+        "tanglish_text": "ekchi em raagavan avardhaan enga appaa"
+      },
+      "previous": [
+        ">> நீ என்ன செய்வியோ எங்களுக்கு தெரியாது",
+        "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல"
+      ],
+      "next": [
+        "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல"
+      ]
+    },
+    {
+      "current": {
+        "text": "ஆனா இதுவரைக்கும் அதுக்கான நடவடிக்கை யாருமே எடுக்கல",
+        "tanglish_text": "aanaa idhuvaraikkum adhukkaana nadavadikkai yaarumae edukkala"
+      },
+      "previous": [
+        "ஆனா என்னால உங்களை பேஸ் பண்ண முடியல",
+        "எக்சி எம் ராகவன் அவர்தான் எங்க அப்பா"
+      ],
+      "next": []
+    }
+  ]
+}

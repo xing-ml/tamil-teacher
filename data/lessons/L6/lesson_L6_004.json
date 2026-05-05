@@ -1,0 +1,73 @@
+{
+  "lesson_id": "lesson_L6_004",
+  "title": "Tamil Colloquial Level 6 - 高级 (sentence)",
+  "difficulty_level": "6",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 2,
+  "generated_at": "2026-05-05T13:06:05.958918",
+  "metadata": {
+    "entry_count": 2,
+    "avg_score": 0.32,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "高级",
+      "sentence_words": [
+        8,
+        30
+      ],
+      "features": [
+        "context_heavy",
+        "sarcasm",
+        "regional_variation"
+      ],
+      "description": "上下文依赖、讽刺、地方变体"
+    }
+  },
+  "entries": [
+    {
+      "text": ">> இன்ஸ்பெக்டர் கண்ண முடிக்க உங்களதான் ஏய் ஐயோ ஜர்னலிஸ்ட் நல்லா நல்லா மெதுவா தள்ளுங்கயா செத்தவனுக்கு வலிக்க போகுது அப்பா நாளைக்கு இந்த செடியில பேனா பேப்பர் பூத்தாலும் பூக்கும்",
+      "tanglish_text": ">> inspektar kanna mudikka ungaladhaan yei aiyo jarnalist nallaa nallaa medhuvaa thallungayaa seththavanukku valikka pogudhu appaa naalaikku indha sediyila paenaa paeppar pooththaalum pookkum",
+      "english_translation": ">> INSPECTOR KANNA FINISHES YOU ARE YOU O OH JOURNALIST NALA NALA MEDUA TOLUNGAYA SEDTHAVAN IS GOING TO PAIN PAPA TOMORROW EVEN IF PEN AND PAPER BLOSSOM ON THIS PLANT WILL BLOOM",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 23
+    },
+    {
+      "text": "காட் இஸ் கிரேட் ஏய் ஷெல்பி >> ஐயா கும்புறாங்க >> வேலைய செய் இந்த ஊர் மைதானத்தில என்னோட பலிங்க சிலை வைக்கணும்னு எனக்கு ஒரு சின்ன சின்ன ஆசை அதுக்குதான் செதுக்குறாங்க",
+      "tanglish_text": "kaat is kiraet yei shelbi >> aiyaa kumburaanga >> vaelaiya sei indha oor maidhaanaththila ennoda palinga silai vaikkanumnu enakku oru sinna sinna aasai adhukkudhaan sedhukkuraanga",
+      "english_translation": "God is great hey Shelby >> Mr. Kumpuranga >> Work I have a small wish to put a statue of me in the ground of this town.",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 25
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": ">> இன்ஸ்பெக்டர் கண்ண முடிக்க உங்களதான் ஏய் ஐயோ ஜர்னலிஸ்ட் நல்லா நல்லா மெதுவா தள்ளுங்கயா செத்தவனுக்கு வலிக்க போகுது அப்பா நாளைக்கு இந்த செடியில பேனா பேப்பர் பூத்தாலும் பூக்கும்",
+        "tanglish_text": ">> inspektar kanna mudikka ungaladhaan yei aiyo jarnalist nallaa nallaa medhuvaa thallungayaa seththavanukku valikka pogudhu appaa naalaikku indha sediyila paenaa paeppar pooththaalum pookkum"
+      },
+      "previous": [],
+      "next": [
+        "காட் இஸ் கிரேட் ஏய் ஷெல்பி >> ஐயா கும்புறாங்க >> வேலைய செய் இந்த ஊர் மைதானத்தில என்னோட பலிங்க சிலை வைக்கணும்னு எனக்கு ஒரு சின்ன சின்ன ஆசை அதுக்குதான் செதுக்குறாங்க"
+      ]
+    },
+    {
+      "current": {
+        "text": "காட் இஸ் கிரேட் ஏய் ஷெல்பி >> ஐயா கும்புறாங்க >> வேலைய செய் இந்த ஊர் மைதானத்தில என்னோட பலிங்க சிலை வைக்கணும்னு எனக்கு ஒரு சின்ன சின்ன ஆசை அதுக்குதான் செதுக்குறாங்க",
+        "tanglish_text": "kaat is kiraet yei shelbi >> aiyaa kumburaanga >> vaelaiya sei indha oor maidhaanaththila ennoda palinga silai vaikkanumnu enakku oru sinna sinna aasai adhukkudhaan sedhukkuraanga"
+      },
+      "previous": [
+        ">> இன்ஸ்பெக்டர் கண்ண முடிக்க உங்களதான் ஏய் ஐயோ ஜர்னலிஸ்ட் நல்லா நல்லா மெதுவா தள்ளுங்கயா செத்தவனுக்கு வலிக்க போகுது அப்பா நாளைக்கு இந்த செடியில பேனா பேப்பர் பூத்தாலும் பூக்கும்"
+      ],
+      "next": []
+    }
+  ]
+}

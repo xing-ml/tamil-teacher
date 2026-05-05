@@ -1,0 +1,121 @@
+{
+  "lesson_id": "lesson_L4_004",
+  "title": "Tamil Colloquial Level 4 - 中级 (sentence)",
+  "difficulty_level": "4",
+  "dialogue_type": "sentence",
+  "rating": "D",
+  "entry_count": 4,
+  "generated_at": "2026-05-05T13:06:05.956203",
+  "metadata": {
+    "entry_count": 4,
+    "avg_score": 0.32,
+    "source_types": [
+      "youtube"
+    ],
+    "level_definition": {
+      "name": "中级",
+      "sentence_words": [
+        4,
+        16
+      ],
+      "features": [
+        "longer_sentences",
+        "emotion_expression",
+        "code_switching"
+      ],
+      "description": "长句子、情感表达、代码转换"
+    }
+  },
+  "entries": [
+    {
+      "text": "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க",
+      "tanglish_text": "adhula neenga anaadhai naan anaadhai ivanga ellaarum anaadha aakchuvali aasiramangalla irukkaradhunaaladhaan anaadhaigalae valarraanga",
+      "english_translation": "And you are an orphan, I am an orphan, and all of them are actually orphans because they are in orphanages.",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 13
+    },
+    {
+      "text": "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+      "tanglish_text": "adhukkaaga yendaa vambu panra andha kannabaran irukkaane avan saadhaarana manushan illa ooraiyae vaangiduvaan",
+      "english_translation": "Why is that Kannaparan making a fuss about it, he will buy the town where there is no common man",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 13
+    },
+    {
+      "text": "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்",
+      "tanglish_text": "unmai ennannu solraen indha poosanikkaai sedikku enakku edhiraa vaelai senja kalektar oruththarai saavadichchu uramaa vachchirukkaen",
+      "english_translation": "I will tell you the truth, the collector who worked against me for this pumpkin plant put one and a half booths of manure.",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 15
+    },
+    {
+      "text": "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்",
+      "tanglish_text": "ket laast ai set kat laast 24 mani naeraththula indha idam enga paerukku rejistar aaganum",
+      "english_translation": "Get Last I Set Cut Last Within 24 hours this place has to be registered",
+      "colloquial_score": 0.32,
+      "source_type": "youtube",
+      "source_title": "Tamil Full Action Thriller Movie Captain - YouTube",
+      "source_url": "https://www.youtube.com/watch?v=_10HYKtoZiU",
+      "word_count": 15
+    }
+  ],
+  "dialogue": [
+    {
+      "current": {
+        "text": "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க",
+        "tanglish_text": "adhula neenga anaadhai naan anaadhai ivanga ellaarum anaadha aakchuvali aasiramangalla irukkaradhunaaladhaan anaadhaigalae valarraanga"
+      },
+      "previous": [],
+      "next": [
+        "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+        "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்"
+      ]
+    },
+    {
+      "current": {
+        "text": "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+        "tanglish_text": "adhukkaaga yendaa vambu panra andha kannabaran irukkaane avan saadhaarana manushan illa ooraiyae vaangiduvaan"
+      },
+      "previous": [
+        "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க"
+      ],
+      "next": [
+        "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்",
+        "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்"
+      ]
+    },
+    {
+      "current": {
+        "text": "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்",
+        "tanglish_text": "unmai ennannu solraen indha poosanikkaai sedikku enakku edhiraa vaelai senja kalektar oruththarai saavadichchu uramaa vachchirukkaen"
+      },
+      "previous": [
+        "அதுல நீங்க அனாதை நான் அனாதை இவங்க எல்லாரும் அனாத ஆக்சுவலி ஆசிரமங்கள்ல இருக்கறதுனாலதான் அனாதைகளே வளர்றாங்க",
+        "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்"
+      ],
+      "next": [
+        "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்"
+      ]
+    },
+    {
+      "current": {
+        "text": "கெட் லாஸ்ட் ஐ செட் கட் லாஸ்ட் 24 மணி நேரத்துல இந்த இடம் எங்க பேருக்கு ரெஜிஸ்டர் ஆகணும்",
+        "tanglish_text": "ket laast ai set kat laast 24 mani naeraththula indha idam enga paerukku rejistar aaganum"
+      },
+      "previous": [
+        "அதுக்காக ஏன்டா வம்பு பண்ற அந்த கண்ணபரன் இருக்கானே அவன் சாதாரண மனுஷன் இல்ல ஊரையே வாங்கிடுவான்",
+        "உண்மை என்னன்னு சொல்றேன் இந்த பூசனிக்காய் செடிக்கு எனக்கு எதிரா வேலை செஞ்ச கலெக்டர் ஒருத்தரை சாவடிச்சு உரமா வச்சிருக்கேன்"
+      ],
+      "next": []
+    }
+  ]
+}
