@@ -1,0 +1,13 @@
+{
+  "description": "Disney+ Tamil/English subtitle mapping",
+  "subtitles": [
+    {
+      "title": "Animal (2023) Tamil",
+      "disney_url": "https://www.disneyplus.com/movies/animal/72f4sMHt18kp",
+      "tamil_subtitle_file": "data/corpus/disney/animal_ta.vtt",
+      "english_subtitle_file": "data/corpus/disney/animal_en.vtt",
+      "language": "ta",
+      "has_dual_subtitles": true
+    }
+  ]
+}
