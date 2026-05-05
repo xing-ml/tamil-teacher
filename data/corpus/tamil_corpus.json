@@ -11,8 +11,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.43,
       "tanglish_text": "irandhadhil oruvar vanaththurai amaichchar maariyappanin ilaiya",
+      "english_translation": "One of the deceased is Forest Minister Mariappan's junior",
       "word_count": 6,
-      "added_at": "2026-05-04T22:41:39.952960",
+      "added_at": "2026-05-05T12:31:15.623368",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "7249ebce04da53b9efc7fc97b4ad334b146d0b54"
@@ -29,8 +30,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.43,
       "tanglish_text": "veetla mudangi kidakkaan nee enga purappatteenga naal muzhudhum unnaiyae innaikku en parthtae enga en saaklaet oorukkulla thaan",
+      "english_translation": "Paralyzed at home, where did you go? All day long, today is my birthday. Where is my chocolate?",
       "word_count": 17,
-      "added_at": "2026-05-04T22:41:39.953157",
+      "added_at": "2026-05-05T12:31:15.859969",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "4b557e0105e57ced54da586a46f7a34fe20a2b2a"
@@ -47,8 +49,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.43,
       "tanglish_text": "oru adhisaya piragu avvalavudhaan ippa varuvaan paarunga velila yedho vaerlt vaarnaala maadhiri ungalukkae oru akbeeling irukkum oru kosu ee vizhuna udane kaep irukkaadhu veettaiyae kampleettaa seri panni vaikkiraan appadiyae ennaikkaavadhu",
+      "english_translation": "After a miracle, that's all he comes. Look, something is happening outside. You have a feeling like a mosquito fly falls. Immediately there is no cap. He repairs the house completely, just like that for me.",
       "word_count": 30,
-      "added_at": "2026-05-04T22:41:39.953457",
+      "added_at": "2026-05-05T12:31:16.076951",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "e50d5873824fcd3d9c6850b4aa703054d611a5ed"
@@ -65,8 +68,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "irandhuruvaangammaa",
+      "english_translation": "Will you die?",
       "word_count": 1,
-      "added_at": "2026-05-04T22:41:39.953696",
+      "added_at": "2026-05-05T12:31:16.325617",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "b205a885a69117ddb6d570392f8a2801d58f8fe4"
@@ -83,8 +87,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "paerla usuru",
+      "english_translation": "Pearl Usuru",
       "word_count": 2,
-      "added_at": "2026-05-04T22:41:39.953730",
+      "added_at": "2026-05-05T12:31:16.532168",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "d527ebb865f45256397e77be5760e6679b62b99f"
@@ -101,8 +106,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "neengalaachchu sollungamaa",
+      "english_translation": "Tell me about you",
       "word_count": 2,
-      "added_at": "2026-05-04T22:41:39.953777",
+      "added_at": "2026-05-05T12:31:16.773069",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "4eb075a0d95b44c46bf194a4d7f077c0fe7e6c34"
@@ -119,8 +125,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "adhu thaevarai kaaththa",
+      "english_translation": "It is to protect God",
       "word_count": 3,
-      "added_at": "2026-05-04T22:41:39.953806",
+      "added_at": "2026-05-05T12:31:16.978969",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "51d25a6564c92c0f3b4ff7847a65c9ea63122b6c"
@@ -137,8 +144,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "paakka thaane oorae",
+      "english_translation": "Paka Thane Ure",
       "word_count": 3,
-      "added_at": "2026-05-04T22:41:39.953838",
+      "added_at": "2026-05-05T12:31:17.187068",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "be3e9abb115b44654bff5405d8d69a72196e695b"
@@ -155,8 +163,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "konja thooramdhaan pakkaththuladhaan",
+      "english_translation": "It's just a short distance away",
       "word_count": 3,
-      "added_at": "2026-05-04T22:41:39.953883",
+      "added_at": "2026-05-05T12:31:17.615599",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "e20a01b24925304d1a84d8857c85782658eeefcf"
@@ -173,8 +182,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "oru romaans lukku",
+      "english_translation": "For a romance",
       "word_count": 3,
-      "added_at": "2026-05-04T22:41:39.953915",
+      "added_at": "2026-05-05T12:31:17.824923",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "92905ecb8cec61cee19c4ac210095b21e46ef440"
@@ -191,8 +201,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "ennappaa ippadi panreenga",
+      "english_translation": "Why do you do this?",
       "word_count": 3,
-      "added_at": "2026-05-04T22:41:39.953959",
+      "added_at": "2026-05-05T12:31:18.047060",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "f2e780de4d087cfd16702836bf5e624d39c631f4"
@@ -209,8 +220,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "adhellaam onnum illa",
+      "english_translation": "All that is nothing",
       "word_count": 3,
-      "added_at": "2026-05-04T22:41:39.953994",
+      "added_at": "2026-05-05T12:31:18.254080",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "35ae5bf0220024286cc0d59f328bd1bd019db7df"
@@ -227,8 +239,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "summaa kattukkadhai idhellaam",
+      "english_translation": "This is just a myth",
       "word_count": 3,
-      "added_at": "2026-05-04T22:41:39.954029",
+      "added_at": "2026-05-05T12:31:18.426548",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "24278b1b9896eea527dbfe74a264039a3de1ac11"
@@ -245,8 +258,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "yeppaa ingittu enga poraanga",
+      "english_translation": "Hey, where are you going?",
       "word_count": 4,
-      "added_at": "2026-05-04T22:41:39.954082",
+      "added_at": "2026-05-05T12:31:18.608778",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "d5203c20ab41d9b2da17bb1cb3a7b71861d6f452"
@@ -263,8 +277,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "appadi nambi vandha pon",
+      "english_translation": "A girl who believed like that",
       "word_count": 4,
-      "added_at": "2026-05-04T22:41:39.954120",
+      "added_at": "2026-05-05T12:31:18.890826",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "f4c02f83ede5fdd97112f28979dd8c20c21c6ec9"
@@ -281,8 +296,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "pallikkoodaththai kattunen neenga yaarum padikka",
+      "english_translation": "I built the school so that none of you can study",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954177",
+      "added_at": "2026-05-05T12:31:19.095391",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "107103ee70dd914b70f0de109b03809ea3f80fc7"
@@ -299,8 +315,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "kulaththai vettuna neenga yaarum kulikkavae",
+      "english_translation": "No one should bathe after cutting the pool",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954227",
+      "added_at": "2026-05-05T12:31:19.261698",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "b2a7aa4d82b9bb78f554eaf8a6783be83430e603"
@@ -317,8 +334,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "kilambunadhula irundhu idhaedhaan sollittu irukkaen",
+      "english_translation": "I have been saying the same since I left",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954284",
+      "added_at": "2026-05-05T12:31:19.437962",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "d3bf24b5c391ca994401ad9f4c6cab5c3d0af0a5"
@@ -335,8 +353,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "indha paekkaiyum neeyae thookkittu vaa",
+      "english_translation": "Carry this bag yourself",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954328",
+      "added_at": "2026-05-05T12:31:19.630352",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "2b33207800a2471a66cae0ae243093bf16b67bca"
@@ -353,8 +372,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "appadi enna periya kadhai irukku",
+      "english_translation": "What a great story",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954371",
+      "added_at": "2026-05-05T12:31:19.819359",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "876fb4716a67c8752c30a2c55f721992cf62dcbf"
@@ -371,8 +391,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "seri namma vandhu vaelaiya aarambippom",
+      "english_translation": "Well, let's come and start working",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954417",
+      "added_at": "2026-05-05T12:31:20.324387",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "a7fbb4eedc02c477718e2f452d5e5288fea3e027"
@@ -389,8 +410,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "ennadaa kaalailayae kunda thookki podura",
+      "english_translation": "Why don't you throw it away in the morning?",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954460",
+      "added_at": "2026-05-05T12:31:20.504844",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "4e0f13940f492947ed88c50984ca8c646603f4f4"
@@ -407,8 +429,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "adhu unga appana poi kaeludaa",
+      "english_translation": "Don't go and ask your uncle",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954502",
+      "added_at": "2026-05-05T12:31:20.726343",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "55706bc2b773c18eebad45c07e91b923c531e818"
@@ -425,8 +448,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "namma periyasaami 55 vayasu aayiduchchu",
+      "english_translation": "Our Periaswamy has turned 55 years old",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954545",
+      "added_at": "2026-05-05T12:31:21.013035",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "45d9ded9bbd48d8f9ed3d91600905ca3075c78ac"
@@ -443,8 +467,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "ennadhaan kalyaanam pannaa pirachchanai aagum",
+      "english_translation": "What is the problem of marriage?",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954596",
+      "added_at": "2026-05-05T12:31:21.225577",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "1e1e571689902fd138f0380558707e2d2b9099cc"
@@ -461,8 +486,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "illammaa idhu 200 varusha saabam",
+      "english_translation": "No, this is a 200 year curse",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954634",
+      "added_at": "2026-05-05T12:31:21.466605",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "ae3d753eb824da5b7bd7b13b9f566b287995f932"
@@ -479,8 +505,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "idhu innaikku naeththu nadandhadhu illa",
+      "english_translation": "This did not happen recently",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954682",
+      "added_at": "2026-05-05T12:31:21.655904",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "c6fc0e04aeafcf8062f5b6d762d5e21c0a2bf448"
@@ -497,8 +524,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "adhae maari niraiya kalyaanam nadandhurukku",
+      "english_translation": "A lot of marriages have happened with the same change",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.954727",
+      "added_at": "2026-05-05T12:31:21.838454",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "9445dc36208b122d530df1182f779cd059357bb1"
@@ -515,8 +543,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "[isai] om [isai] yaaru paerukku aduth",
+      "english_translation": "[Music] Om [Music] Adut to whom",
       "word_count": 6,
-      "added_at": "2026-05-04T22:41:39.954771",
+      "added_at": "2026-05-05T12:31:22.063723",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "f9c5f6a896a3be1dc3a8ddb2357c6390e50ed0b4"
@@ -533,8 +562,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "ennaalallaam idhukku maelallaam thookkittu vara mudiyaadhu",
+      "english_translation": "I can't take any more than that",
       "word_count": 6,
-      "added_at": "2026-05-04T22:41:39.954833",
+      "added_at": "2026-05-05T12:31:22.261875",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "5cc7baa267fb213d3ae7557fd9293b65499cf121"
@@ -551,8 +581,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "aamaamaa indha ponnaidhaan kalyaanam pannikka poraen",
+      "english_translation": "I am going to marry this girl",
       "word_count": 6,
-      "added_at": "2026-05-04T22:41:39.954889",
+      "added_at": "2026-05-05T12:31:22.440234",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "20e1556740786b42e82c85327de3f1c6dd3cb8d8"
@@ -569,8 +600,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "neenga veettukku mooththa pillai ungalukku theriyaadhaa",
+      "english_translation": "Don't you know that you are the eldest child in the family?",
       "word_count": 6,
-      "added_at": "2026-05-04T22:41:39.954953",
+      "added_at": "2026-05-05T12:31:22.623790",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "0665ed9664b879d6ae222442ffbe5444948865d1"
@@ -587,8 +619,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "idhu indha ooroda paala pona saabam",
+      "english_translation": "This is the curse of this town",
       "word_count": 6,
-      "added_at": "2026-05-04T22:41:39.954996",
+      "added_at": "2026-05-05T12:31:22.817996",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "b8fb2664efd1b2442c2203e3310a46a43b0e0a24"
@@ -605,8 +638,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "paerla oru thoosu kooda pada vidamaattaan sin",
+      "english_translation": "Sin will not let a single dust fall on the pearl",
       "word_count": 7,
-      "added_at": "2026-05-04T22:41:39.955044",
+      "added_at": "2026-05-05T12:31:22.997714",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "adf6591c98385049cbac51cc42fb728614cc77af"
@@ -623,8 +657,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "innum evvalavu thooram thaandaa poganum unga oorukku",
+      "english_translation": "How far do you have to go to your town?",
       "word_count": 7,
-      "added_at": "2026-05-04T22:41:39.955122",
+      "added_at": "2026-05-05T12:31:23.208671",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "efe881ad6ce387a093122ec1c8cd419e38f3e92a"
@@ -641,8 +676,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "veettukku mudha pillaiyaa pirandhu innum kashtappattuிttudhaan irukkaappala",
+      "english_translation": "The first child of the family was born and she was still struggling",
       "word_count": 7,
-      "added_at": "2026-05-04T22:41:39.955205",
+      "added_at": "2026-05-05T12:31:23.420227",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "0d5d93a5891ddd71782b0a485e07310fc318e461"
@@ -659,8 +695,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "indha oorgaaranga panna thappunaala innum anubavichchittu irukkaanga",
+      "english_translation": "They are still experiencing the mistake of making this home",
       "word_count": 7,
-      "added_at": "2026-05-04T22:41:39.955286",
+      "added_at": "2026-05-05T12:31:23.593810",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "d5363eb6c273c233b610ba1e9226618b2f2dfb26"
@@ -677,8 +714,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "aavani maasaiyilum varum aimbadi thingalilum anbar thirunaal kaanum",
+      "english_translation": "Anbar Thirunal will also be seen in Avani Masai and in Imbadi Dimdu",
       "word_count": 8,
-      "added_at": "2026-05-04T22:41:39.955362",
+      "added_at": "2026-05-05T12:31:23.783472",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "3ed42f0ca13ded5cd20c21ec305ae344b04ca4ec"
@@ -695,8 +733,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "anbar thirunaal yen thambi raamasaami enga neenga vaera",
+      "english_translation": "Dear Thirunal, where are you, brother Ramaswami?",
       "word_count": 8,
-      "added_at": "2026-05-04T22:41:39.955430",
+      "added_at": "2026-05-05T12:31:23.979555",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "58881ec632475ef42de7afa7380f36fe2967a763"
@@ -713,8 +752,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "maadhiri oththumaikku ilakkanamae en paiyanunga thaan periyavanukku sin",
+      "english_translation": "For model agreement, grammar is my son's son's sin",
       "word_count": 8,
-      "added_at": "2026-05-04T22:41:39.955506",
+      "added_at": "2026-05-05T12:31:24.296603",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "9611d260073b9280e69b07d8205b56854c1a762e"
@@ -731,8 +771,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "mooththa pillaikku kalyaanam aanaa enna aagumnu ungalukku theriyumlla",
+      "english_translation": "You never know what will happen if the eldest child gets married",
       "word_count": 8,
-      "added_at": "2026-05-04T22:41:39.955583",
+      "added_at": "2026-05-05T12:31:24.545297",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "39279989ce191093a95ec66f9180462dc915c08b"
@@ -749,8 +790,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "yov avanga rendu paerum kalyaanam pannikka poradhaa oorukkulla paesitturaanga",
+      "english_translation": "Yo, they are both going to get married",
       "word_count": 9,
-      "added_at": "2026-05-04T22:41:39.955671",
+      "added_at": "2026-05-05T12:31:24.828725",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "fa2f16693507a506f154857b6c98c5c273a4ac2e"
@@ -767,8 +809,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "ada aamaayaa nee vaera naanllaam veetுla rendaavadhu pillaiyaa pirandhurukkalaam",
+      "english_translation": "You may be the second child born in a house of four",
       "word_count": 9,
-      "added_at": "2026-05-04T22:41:39.955748",
+      "added_at": "2026-05-05T12:31:25.039747",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "364d8dab29dafa024b2c64520751c904852c2e13"
@@ -785,8 +828,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "indhaa indha aaloda thambi rendu pondaatti kattittu suththittu thiraraanappaa",
+      "english_translation": "Inda, this man's younger brother is a father of two",
       "word_count": 9,
-      "added_at": "2026-05-04T22:41:39.955822",
+      "added_at": "2026-05-05T12:31:25.247609",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "894dd9d76843c3d0310f400768b7ffd7f0cbb100"
@@ -803,8 +847,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "mudhal pondaattikku pirandha pulla vayasula innoru ponnai kalyaanam pannirukkaanappaa",
+      "english_translation": "Did he marry another girl when he was old enough to give birth to his first son?",
       "word_count": 9,
-      "added_at": "2026-05-04T22:41:39.955907",
+      "added_at": "2026-05-05T12:31:25.485591",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "f7cfb1f1bb0469e38bfc6dcc4a1a9c3249a7d60a"
@@ -821,8 +866,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "aanaal indha ooraar vasol ennaal kaadhaal kaetka mudiyavillai panjaayi kaetka mudiyavillai",
+      "english_translation": "But I could not hear the words of this villager, I could not hear panchayi",
       "word_count": 11,
-      "added_at": "2026-05-04T22:41:39.955994",
+      "added_at": "2026-05-05T12:31:25.727140",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "978bbe57a6ac54051c9a81f3a1f7214997a52e2c"
@@ -839,8 +885,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "o o [garagosham] o o o oge [isai] idhaan un veedaa",
+      "english_translation": "Oh oh [applause] oh oh oh okay [music] This is your home",
       "word_count": 11,
-      "added_at": "2026-05-04T22:41:39.956052",
+      "added_at": "2026-05-05T12:31:25.912823",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "350f08631429fea2f7192f7bcebec009abc5b2bd"
@@ -857,8 +904,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "yen indha naasamaa pona oorla mudhal pillaiyaa vandhu pirandhu tholainjaennu theriyala",
+      "english_translation": "I don't know why the first child came to this ruined town and got lost",
       "word_count": 11,
-      "added_at": "2026-05-04T22:41:39.956136",
+      "added_at": "2026-05-05T12:31:26.129021",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "ab1354c5d38ef89e828716ee5183c1f898bc1022"
@@ -875,8 +923,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "seri azhaadheengammaa adhellaam saranan sonna maadhiri yaaraavadhu kilappi vitta kadhaiyaadhaan irukkum",
+      "english_translation": "Well, don't cry, it's just a story made up by someone like Saranan told",
       "word_count": 11,
-      "added_at": "2026-05-04T22:41:39.956229",
+      "added_at": "2026-05-05T12:31:26.327180",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "d8fd35c85ded0791c04d287e1cb9eadf8595bfe6"
@@ -893,8 +942,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "yei adha periya anga paarudaa saravana oru pombalai pillaiya koottittu poraan kavanichcheengalaa",
+      "english_translation": "Hey, did you notice that in that big place Baruda Saravana was going to collect a doll for the children?",
       "word_count": 12,
-      "added_at": "2026-05-04T22:41:39.956322",
+      "added_at": "2026-05-05T12:31:26.498694",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "3d011710b6b2ebcb9a9b722573e6d41137d22d4e"
@@ -911,8 +961,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "irukkaane aamaa adhaanga sinna paandiyan aamaa avanga annanukku onnunnaa padhariduvaan paanjiduvaan surukkamaa sonnaa",
+      "english_translation": "Yes, yes, that little Pandian, yes, did you say anything to his brother, Panchiduan, Panchiduan, in short?",
       "word_count": 13,
-      "added_at": "2026-05-04T22:41:39.956442",
+      "added_at": "2026-05-05T12:31:26.767375",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "45224171d255d05f2080440e897457602c01efc9"
@@ -929,8 +980,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "indha oorla porandha mudhal paiyanukku kalyaanam aachchunnaa avan pondaatti konja naalla amangali aayiduvaa",
+      "english_translation": "If the first boy who goes to this town gets married, he will become pregnant in a few days.",
       "word_count": 13,
-      "added_at": "2026-05-04T22:41:39.956549",
+      "added_at": "2026-05-05T12:31:26.937338",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "36a8ae4b199406bd76f73899c4781e9f8f04a3aa"
@@ -947,8 +999,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "[isai] om smokking kaasas kaensar smokking kils pugaippidiththal putru noyai undaakkum matrum uyirai kollum",
+      "english_translation": "[Music] Om Smoking Causes Cancer Smoking Kills Smoking causes cancer and kills.",
       "word_count": 14,
-      "added_at": "2026-05-04T22:41:39.956651",
+      "added_at": "2026-05-05T12:31:27.174233",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "cd925652939d44f6b088813cab2160a5041f62a9"
@@ -965,8 +1018,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "raamasaami thaarasaami raamasaami raamasaami raamasaami thaan yennae oorellaam kottai adichchu koodiradha paarththu yedho namma poodhaththaan",
+      "english_translation": "Ramaswami Taraswami Ramaswami Ramaswami Ramaswami is the reason why the whole town is beating nuts.",
       "word_count": 15,
-      "added_at": "2026-05-04T22:41:39.956756",
+      "added_at": "2026-05-05T12:31:27.347358",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "4481aca4a9e4afb08332fd978aaba56a781dcfc3"
@@ -983,8 +1037,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "veettu poyirukku [isai] [garagosham] [isai] ellaarukkum vanakkam naan oru koyilai kattunen neenga yaarum saami kumbida",
+      "english_translation": "[Music] [Applause] [Music] Hello everyone, I built a temple, no one should bow to Sami.",
       "word_count": 15,
-      "added_at": "2026-05-04T22:41:39.956860",
+      "added_at": "2026-05-05T12:31:27.489819",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "ae88860896412f70a70ecbcc58efc73601388846"
@@ -1001,8 +1056,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "[isai] [isai] [isai] [isai] [isai] [garagosham] seekkiram vaa akkaa [isai] [garagosham] aaththaa en marumagalukku ponnudhaan porakkanum",
+      "english_translation": "[MUSIC] [MUSIC] [MUSIC] [MUSIC] [MUSIC] [CLAPPING] Come quickly sister [MUSIC] [CLAPPING] Father, my daughter-in-law needs a daughter.",
       "word_count": 16,
-      "added_at": "2026-05-04T22:41:39.956965",
+      "added_at": "2026-05-05T12:31:27.685791",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "9e0cc6381098b435e7e3d1d93b210ceec272aecb"
@@ -1019,8 +1075,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "kansamshan aap aalgahaal is inseris tuhelth madhu arundhudhal udal nalaththirku kaedu pee saep tont tiringk ant tiraiv paadhugaappaaga iruppeer madha irundhuvittu vaaganam ottaadheer",
+      "english_translation": "Consumption of Alcohol is Injurious to Health Drinking Alcohol is Harmful to Health Be Safe Don't Drink and Drive Be Safe Be Religious Don't Drive",
       "word_count": 23,
-      "added_at": "2026-05-04T22:41:39.957144",
+      "added_at": "2026-05-05T12:31:27.911482",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "f23e21373dc1ff14b628c19cf9645fd02c085278"
@@ -1037,8 +1094,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "appadi ennamaa aayirum naanga kalyaanam pannaa yei adhellaam onnu saravanaa romba thappu panra indha pillaigitta onnumae sollalaiyaa neeyae nee enna engitta irundhu maraichcha",
+      "english_translation": "So what is it, we are not getting married, hey, it's all one thing, Saravana, it's a big mistake, don't you say anything to this child, what are you hiding from me?",
       "word_count": 23,
-      "added_at": "2026-05-04T22:41:39.957311",
+      "added_at": "2026-05-05T12:31:28.063296",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "3a5d5d774a98f257cc6fff00bdbcae2c5050f6f1"
@@ -1055,8 +1113,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.37,
       "tanglish_text": "muraikkiraalappaa ennadaa ippadi irukkaanga unga oorukkaaranga pinnaadiyae varaanunga naandhaan ungagitta munnaadiyae solli irukkaenla enga oorukkaaranga eppadinnu enna azhagaa irukka poyittu mudhalla kulichchittu vaa namma kovila oge",
+      "english_translation": "Why are you like this? Your villagers are coming behind.",
       "word_count": 26,
-      "added_at": "2026-05-04T22:41:39.957566",
+      "added_at": "2026-05-05T12:31:28.337966",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "3e835050d513fdb917d51978c0c2e19b3e287196"
@@ -1073,8 +1132,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.35,
       "tanglish_text": "ingu thamizhil mattumae arattai adikkavum",
+      "english_translation": "Chat here only in tamil",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.957811",
+      "added_at": "2026-05-05T12:31:29.089929",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "aa53d93cb488d8407fbeb4fd7d49ce74e14b2169"
@@ -1091,8 +1151,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.35,
       "tanglish_text": "nalla payanulla thagavalgalukku tag ubayogikkavum",
+      "english_translation": "Use tag for good useful information",
       "word_count": 5,
-      "added_at": "2026-05-04T22:41:39.957865",
+      "added_at": "2026-05-05T12:31:29.283814",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "2ca4cd82113ef7a6016f97af29765a2d3c1e9e45"
@@ -1109,8 +1170,9 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.35,
       "tanglish_text": "Tamil chat idhu thamizh paesubavargalukkaana kuzhu",
+      "english_translation": "Tamil chat is a group for Tamil speaking people",
       "word_count": 6,
-      "added_at": "2026-05-04T22:41:39.957909",
+      "added_at": "2026-05-05T12:31:29.466377",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "47247e1157cec9d3e29f57e826ee8d4fa99f48b4"
@@ -1127,37 +1189,20 @@
       "dialogue_type": "sentence",
       "colloquial_score": 0.35,
       "tanglish_text": "idhara saenal,kuzhu lingk vilambaram seivadharku ingu anumadhi illai",
+      "english_translation": "Advertising other channel, group link is not allowed here",
       "word_count": 8,
-      "added_at": "2026-05-04T22:41:39.957994",
+      "added_at": "2026-05-05T12:31:29.946650",
       "metadata": {
         "detected_keywords": [],
         "source_fingerprint": "45b65c471b112b7fa436d93f60ce4e65378d28cd"
       }
-    },
-    {
-      "entry_id": "bf242d2f6eff0cb186f2acc4cafe5dd75e052fe9",
-      "text": "அனைவருக்கும் வணக்கம் என் பெயர் ரவி… இந்த கதையின் முதல் பாகத்தை படித்துவிட்டு இரண்டாம் பாகத்தை படிக்கவும்… உணவகத்தில் சாப்பிட்டு விட்டு நானும் ப்ரீத்தியும் யஷ்வந்த்தும் ஊட்டியை […]",
-      "source_type": "ddgs",
-      "source_url": "https://tamilsexkathaigal.com/",
-      "source_title": "Tamil Sex Stories Tamil Sex Kathaigal",
-      "language": "ta",
-      "difficulty_level": "5",
-      "dialogue_type": "sentence",
-      "colloquial_score": 0.35,
-      "tanglish_text": "anaivarukkum vanakkam en peyar ravi… indha kadhaiyin mudhal paagaththai padiththuvittu irandaam paagaththai padikkavum… unavagaththil saappittu vittu naanum preeththiyum yashvanththum oottiyai […]",
-      "word_count": 21,
-      "added_at": "2026-05-04T22:41:39.958164",
-      "metadata": {
-        "detected_keywords": [],
-        "source_fingerprint": "5edc6ea0fa25025d6a534e3b45155246374552ed"
-      }
     }
   ],
   "stats": {
-    "total_entries": 64,
+    "total_entries": 63,
     "by_source_type": {
       "youtube": 59,
-      "ddgs": 5
+      "ddgs": 4
     },
     "by_difficulty": {
       "1": 34,
@@ -1165,15 +1210,15 @@
       "2": 8,
       "3": 9,
       "4": 6,
-      "5": 2
+      "5": 1
     },
     "by_dialogue_type": {
-      "sentence": 64
+      "sentence": 63
     },
     "by_language": {
-      "ta": 64
+      "ta": 63
     },
     "avg_colloquial_score": 0.37
   },
-  "updated_at": "2026-05-04T22:41:39.958195"
+  "updated_at": "2026-05-05T12:31:29.946850"
 }

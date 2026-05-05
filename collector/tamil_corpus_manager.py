@@ -36,6 +36,7 @@ class CorpusEntry:
     dialogue_type: str  # "sentence", "dialogue_pair", "conversation_chunk"
     colloquial_score: float
     tanglish_text: str  # Tamil converted to Tanglish
+    english_translation: str  # English translation of the text
     word_count: int
     added_at: str
     metadata: dict
@@ -64,6 +65,7 @@ class TamilCorpusManager:
         self.lessons_dir = self.corpus_dir.parent / "lessons"
         self.lessons_dir.mkdir(parents=True, exist_ok=True)
         self.lessons_data = []
+        self._translation_cache = {}  # Cache for English translations
         self.difficulty_levels = self._load_difficulty_levels()
         self._load_corpus()
         self._load_lessons()
@@ -146,12 +148,22 @@ class TamilCorpusManager:
             return tamil_text
 
     def _translate_to_english(self, tamil_text: str) -> str:
-        """Translate Tamil text into English using deep-translator."""
+        """Translate Tamil text into English using deep-translator with caching."""
         if not GoogleTranslator:
             return ""
+        
+        # Check cache first
+        text_hash = hashlib.md5(tamil_text.encode()).hexdigest()
+        if text_hash in self._translation_cache:
+            return self._translation_cache[text_hash]
+        
         try:
             translator = GoogleTranslator(source='ta', target='en')
-            return translator.translate(tamil_text)
+            translation = translator.translate(tamil_text)
+            
+            # Cache the result
+            self._translation_cache[text_hash] = translation
+            return translation
         except Exception as e:
             print(f"WARNING Failed to translate to English: {e}")
             return ""
@@ -335,6 +347,7 @@ class TamilCorpusManager:
                 continue
 
             tanglish_text = self._tamil_to_tanglish(dialogue["text"])
+            english_translation = self._translate_to_english(dialogue["text"])
 
             entry = CorpusEntry(
                 entry_id=entry_id,
@@ -347,6 +360,7 @@ class TamilCorpusManager:
                 dialogue_type=dialogue["candidate_type"],
                 colloquial_score=dialogue["colloquial_score"],
                 tanglish_text=tanglish_text,
+                english_translation=english_translation,
                 word_count=dialogue["word_count"],
                 added_at=datetime.now().isoformat(),
                 metadata={
@@ -486,7 +500,7 @@ class TamilCorpusManager:
                         {
                             "text": e.text,
                             "tanglish_text": e.tanglish_text,
-                            "english_translation": self._translate_to_english(e.text),
+                            "english_translation": e.english_translation,
                             "colloquial_score": e.colloquial_score,
                             "source_type": e.source_type,
                             "source_title": e.source_title,
