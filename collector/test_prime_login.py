@@ -85,26 +85,15 @@ def login_prime_video(email: str, password: str, headless: bool = False) -> dict
             browser.close()
 
 
-def extract_category_tree(cookies: list, headless: bool = False) -> list:
-    """Navigate to Prime Video and extract full category → section → example movie tree.
+def extract_categories_only(cookies: list, headless: bool = False) -> list:
+    """Navigate to Prime Video homepage and extract only category names and hrefs.
     
-    Returns a list of categories, each containing:
-    {
-        'name': 'Best of India',
-        'sections': [
-            {
-                'name': 'Movies in Tamil',
-                'example_movies': [  # 3-5 example movies for display only
-                    {'title': 'Bigil', 'url': 'https://www.primevideo.com/detail/...'},
-                    ...
-                ],
-                'see_more_href': 'https://www.primevideo.com/browse/...'
-            },
-            ...
-        ]
-    }
+    This is FAST - only extracts from homepage, no navigation to category pages.
+    
+    Returns:
+        List of category dicts: [{'name': '...', 'href': '...'}, ...]
     """
-    tree = []
+    categories = []
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
@@ -117,21 +106,15 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
             page.goto("https://www.primevideo.com", timeout=30000)
             time.sleep(5)
             
-            # Step 1: Find ALL category links on the homepage
-            # This includes both genres (/genre/...) and featured collections (/collection/...)
-            print("INFO Extracting all categories from homepage...", file=sys.stderr)
+            print("INFO Extracting categories from homepage...", file=sys.stderr)
             
             category_links_js = page.evaluate('''() => {
                 const categories = [];
                 const seen = new Set();
-                
-                // Find all links that lead to genre or collection pages
                 const allLinks = document.querySelectorAll('a');
                 for (const link of allLinks) {
                     const href = link.getAttribute('href');
                     if (!href) continue;
-                    
-                    // Match /genre/... or /collection/... or /kids URLs
                     if (href.includes('/genre/') || href.includes('/collection/') || href.includes('/kids')) {
                         const text = link.textContent.trim();
                         if (text && text.length > 2 && text.length < 100 && !seen.has(text)) {
@@ -150,175 +133,122 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
             for i, cat in enumerate(category_links_js):
                 print(f"  {i+1}. {cat['name']}", file=sys.stderr)
             
-            if not category_links_js:
-                print("ERROR No categories found", file=sys.stderr)
-                return tree
+        finally:
+            browser.close()
+    
+    return category_links_js
+
+
+def extract_sections_from_category(category_url: str, cookies: list, headless: bool = False) -> list:
+    """Navigate to a category page and extract all sections with their URLs.
+    
+    Uses the EXACT same JS logic as extract_category_tree (proven working).
+    Single-browser pattern (same context for cookies).
+    
+    Returns:
+        List of section dicts: [{'name': '...', 'href': '...'}, ...]
+    """
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        context = browser.new_context()
+        context.add_cookies(cookies)
+        page = context.new_page()
+        
+        try:
+            print(f"INFO Navigating to category: {category_url[:80]}...", file=sys.stderr)
+            page.goto(category_url, timeout=30000)
+            time.sleep(8)
             
-            # Step 2: For each category, extract sections with example movies
-            for cat_idx, category in enumerate(category_links_js):
-                print(f"\nINFO [{cat_idx+1}/{len(category_links_js)}] Extracting: {category['name']}", file=sys.stderr)
+            print("INFO   Scrolling to load all sections...", file=sys.stderr)
+            for _scroll in range(3):
+                page.evaluate('window.scrollBy(0, window.innerHeight)')
+                time.sleep(2)
+            
+            # Use the EXACT same JS as extract_category_tree (proven working)
+            # Split into two evaluate calls to debug
+            container_count = page.evaluate('''() => {
+                const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
+                let count = 0;
+                for (const c of allContainers) {
+                    if (c.querySelectorAll("a[href*='/detail/']").length > 0) count++;
+                }
+                return count;
+            }''')
+            print(f"INFO   Debug: {container_count} containers with movie links", file=sys.stderr)
+            
+            sections_js = page.evaluate('''() => {
+                const sections = [];
+                const seen = new Set();
+                const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
                 
-                cat_data = {'name': category['name'], 'sections': []}
+                for (const container of allContainers) {
+                    const movieLinks = container.querySelectorAll("a[href*='/detail/']");
+                    if (movieLinks.length === 0) continue;
+                    
+                    let title = "";
+                    let parent = container.parentElement;
+                    while (parent && !title) {
+                        const titleEl = parent.querySelector('h2.headerComponents-qwttco');
+                        if (titleEl) { title = titleEl.textContent.trim(); break; }
+                        parent = parent.parentElement;
+                        if (parent && parent.tagName === 'BODY') break;
+                    }
+                    if (!title || title.length < 2) continue;
+                    if (seen.has(title)) continue;
+                    seen.add(title);
+                    
+                    let seeMoreHref = null;
+                    for (const link of container.querySelectorAll("a")) {
+                        if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
+                            seeMoreHref = link.getAttribute("href");
+                            break;
+                        }
+                    }
+                    
+                    let sectionHref = seeMoreHref;
+                    if (!sectionHref) {
+                        const par = container.parentElement;
+                        if (par) {
+                            for (const link of par.querySelectorAll("a")) {
+                                const href = link.getAttribute("href");
+                                if (href && href.includes("/browse/")) {
+                                    sectionHref = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    sections.push({ title: title, href: sectionHref });
+                }
                 
+                // Return as JSON string to avoid serialization issues
+                return JSON.stringify(sections);
+            }''')
+            
+            # Parse JSON string back to Python list
+            import json
+            if isinstance(sections_js, str):
                 try:
-                    page.goto(category['href'], timeout=30000)
-                    time.sleep(8)
-                    
-                    # Scroll to bottom to trigger lazy loading of all sections
-                    print(f"INFO   Scrolling to load all sections...", file=sys.stderr)
-                    for _scroll in range(3):
-                        page.evaluate('window.scrollBy(0, window.innerHeight)')
-                        time.sleep(2)
-                except Exception as e:
-                    print(f"WARNING Failed to navigate to {category['name']}: {e}", file=sys.stderr)
-                    continue
-                
-                # Extract sections with 3-5 example movies each
-                sections_js = page.evaluate('''() => {
-                    const sections = [];
-                    const seen = new Set();
-                    
-                    // Find all carousel/cards containers with movies
-                    const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
-                    
-                    for (const container of allContainers) {
-                        // Check if this container has movie links
-                        const movieLinks = container.querySelectorAll("a[href*='/detail/']");
-                        if (movieLinks.length === 0) continue;
-                        
-                        // Find section title by traversing up the DOM tree
-                        let title = "";
-                        
-                        // First, try to find h2 with carousel-title in the same parent section
-                        let parent = container.parentElement;
-                        while (parent && !title) {
-                            const titleEl = parent.querySelector('h2.headerComponents-qwttco');
-                            if (titleEl) {
-                                title = titleEl.textContent.trim();
-                                break;
-                            }
-                            parent = parent.parentElement;
-                            // Stop at a reasonable depth
-                            if (parent && parent.tagName === 'BODY') break;
-                        }
-                        
-                        // Fallback: check previous siblings
-                        if (!title) {
-                            let prev = container.previousElementSibling;
-                            while (prev && !title) {
-                                if (prev.tagName === 'H2' || prev.tagName === 'H3') {
-                                    title = prev.textContent.trim();
-                                }
-                                const titleEl = prev.querySelector('h2.headerComponents-qwttco');
-                                if (titleEl && !title) {
-                                    title = titleEl.textContent.trim();
-                                }
-                                prev = prev.previousElementSibling;
-                            }
-                        }
-                        
-                        // Fallback: check inside container
-                        if (!title) {
-                            const innerTitle = container.querySelector("[class*='title'], [class*='heading']");
-                            if (innerTitle) {
-                                title = innerTitle.textContent.trim();
-                            }
-                        }
-                        
-                        if (!title || title.length < 2) continue;
-                        if (seen.has(title)) continue;
-                        seen.add(title);
-                        
-                        // Find "See more" link
-                        let seeMoreHref = null;
-                        for (const link of container.querySelectorAll("a")) {
-                            if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
-                                seeMoreHref = link.getAttribute("href");
-                                break;
-                            }
-                        }
-                        
-                        // Extract 3-5 example movies
-                        const exampleMovies = [];
-                        const maxExamples = Math.min(5, movieLinks.length);
-                        for (let i = 0; i < maxExamples; i++) {
-                            const link = movieLinks[i];
-                            const href = link.getAttribute("href");
-                            let movieTitle = "";
-                            // Try to get title from data attributes or surrounding elements
-                            const titleAttr = link.getAttribute("aria-label") || link.getAttribute("data-tracker-title");
-                            if (titleAttr) {
-                                movieTitle = titleAttr.trim();
-                            } else {
-                                // Get text from the link itself or child elements
-                                for (const node of link.childNodes) {
-                                    if (node.nodeType === Node.TEXT_NODE) movieTitle += node.textContent;
-                                }
-                                movieTitle = movieTitle.trim();
-                            }
-                            
-                            if (movieTitle && movieTitle.length > 2 && movieTitle.length < 100) {
-                                exampleMovies.push({
-                                    title: movieTitle,
-                                    url: href.startsWith('http') ? href : 'https://www.primevideo.com' + href
-                                });
-                            }
-                        }
-                        
-                        if (exampleMovies.length > 0) {
-                            // Build section URL: prefer seeMoreHref (data-testid="see-more")
-                            let sectionHref = seeMoreHref;
-                            
-                            // If no "See more" link, try to find /browse/ link in parent container
-                            if (!sectionHref) {
-                                const parent = container.parentElement;
-                                if (parent) {
-                                    const allParentLinks = parent.querySelectorAll("a");
-                                    for (const link of allParentLinks) {
-                                        const href = link.getAttribute("href");
-                                        if (href && href.includes("/browse/")) {
-                                            sectionHref = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            
-                            sections.push({
-                                title: title,
-                                seeMoreHref: seeMoreHref,
-                                sectionHref: sectionHref,
-                                exampleMovies: exampleMovies
-                            });
-                        }
-                    }
-                    
-                    return sections;
-                }''')
-                
-                print(f"INFO   Found {len(sections_js)} sections", file=sys.stderr)
-                
-                for sec in sections_js:
-                    sec_data = {
-                        'name': sec['title'],
-                        'example_movies': sec.get('exampleMovies', []),
-                        'see_more_href': sec.get('seeMoreHref'),
-                        'section_href': sec.get('sectionHref'),  # Full section page URL
-                        'category_href': category['href']  # Store category URL for re-navigation
-                    }
-                    cat_data['sections'].append(sec_data)
-                    
-                    example_str = ", ".join(m['title'] for m in sec_data['example_movies'][:3])
-                    print(f"    - {sec_data['name']} (examples: {example_str})", file=sys.stderr)
-                
-                tree.append(cat_data)
-                print(f"INFO   Done: {len(cat_data['sections'])} sections", file=sys.stderr)
+                    sections_js = json.loads(sections_js)
+                    if not isinstance(sections_js, list):
+                        sections_js = []
+                except (json.JSONDecodeError, TypeError):
+                    print(f"WARNING JSON parse failed: {sections_js[:100]}", file=sys.stderr)
+                    sections_js = []
+            else:
+                print(f"WARNING sections_js is not a string: {type(sections_js)} = {sections_js}", file=sys.stderr)
+                sections_js = []
+            
+            print(f"INFO   Found {len(sections_js)} sections", file=sys.stderr)
+            for i, sec in enumerate(sections_js):
+                has_url = sec.get('href') and sec['href'].startswith('http')
+                print(f"    {i+1}. {sec.get('title', '?')} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
         
         finally:
             browser.close()
     
-    print(f"INFO Total categories extracted: {len(tree)}", file=sys.stderr)
-    return tree
+    return sections_js
 
 
 def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = False, movie_title: str = '', category: str = '', section: str = '') -> dict:
@@ -1527,7 +1457,7 @@ def _fetch_category_movies(cat: dict, cookies: list) -> list:
 
 
 def main():
-    """Main function with interactive selection and confirmation flow."""
+    """Main function with hierarchical selection and caching."""
     email = "xing.c@hotmail.com"
     password = "789qweasd"
     
@@ -1539,161 +1469,358 @@ def main():
         sys.exit(1)
     cookies = login_result['cookies']
     
-    # Extract category tree
-    print("\nINFO Extracting category tree from Prime Video...", file=sys.stderr)
-    tree = extract_category_tree(cookies)
+    # Extract categories only (FAST - no navigation to category pages)
+    print("\nINFO Extracting categories from homepage...", file=sys.stderr)
+    categories = extract_categories_only(cookies)
     
-    if not tree:
+    if not categories:
         print("ERROR No categories found", file=sys.stderr)
         sys.exit(1)
     
-    # Main loop with selection stack
-    selection_stack = []  # [(type, cat_idx, sec_idx), ...]
+    # State machine variables
+    cache = {
+        'sections': {},  # key: cat_idx -> [{'name': ..., 'href': ...}, ...]
+        'movies': {}     # key: (cat_idx, sec_idx) -> [{'title': ..., 'url': ...}, ...]
+    }
+    
+    # State: 'root' | 'sections' | 'movies'
+    state = 'root'
+    current_cat_idx = None  # Selected category index
+    current_sec_idx = None  # Selected section index
+    
+    def go_to_root():
+        """Reset state to root (category selector)."""
+        nonlocal state, current_cat_idx, current_sec_idx
+        state = 'root'
+        current_cat_idx = None
+        current_sec_idx = None
+    
+    def get_cat_name(idx):
+        return categories[idx]['name'] if 0 <= idx < len(categories) else 'Unknown'
     
     while True:
-        # Prompt for selection
-        selection = _prompt_selection(tree, "root", selection_stack)
+        # ============================================================
+        # STATE: root - Category selector
+        # ============================================================
+        if state == 'root':
+            print(f"\n{'='*60}", file=sys.stderr)
+            print("Prime Video 字幕下载器", file=sys.stderr)
+            print(f"{'='*60}", file=sys.stderr)
+            print("可用类目:", file=sys.stderr)
+            for i, cat in enumerate(categories):
+                print(f"  {i+1}. {cat['name']}", file=sys.stderr)
+            print(f"\n选择方式:", file=sys.stderr)
+            print("  - a/all: 下载所有类目下的所有电影", file=sys.stderr)
+            print("  - 数字 (如 1): 进入该类目", file=sys.stderr)
+            print("  - b/back: 退出", file=sys.stderr)
+            
+            selection = read_with_esc("\n请输入选择: ")
+            if selection == 'ESC':
+                print("INFO 退出程序", file=sys.stderr)
+                break
+            if not selection:
+                continue
+            
+            sel_lower = selection.lower().strip()
+            
+            if sel_lower in ('b', 'back'):
+                print("INFO 退出程序", file=sys.stderr)
+                break
+            
+            if sel_lower in ('a', 'all'):
+                # Download ALL categories
+                print("\nINFO 获取全部电影列表...", file=sys.stderr)
+                all_movies = []
+                for cat_idx, cat in enumerate(categories):
+                    print(f"  INFO 获取类目: {cat['name']}", file=sys.stderr)
+                    sections = extract_sections_from_category(cat['href'], cookies)
+                    for sec_idx, sec in enumerate(sections):
+                        if sec.get('href'):
+                            movies = fetch_section_movies(sec['href'], cookies)
+                            for m in movies:
+                                m['_category'] = cat['name']
+                                m['_section'] = sec['title']
+                            all_movies.extend(movies)
+                
+                if not all_movies:
+                    print("WARNING 没有找到电影", file=sys.stderr)
+                    continue
+                
+                if not _confirm_download(all_movies, "all", "all"):
+                    print("INFO 已取消下载", file=sys.stderr)
+                    continue
+                
+                download_movies(all_movies, cookies, "all", category="all", section="all")
+                go_to_root()
+                continue
+            
+            # Try numeric selection
+            try:
+                cat_idx = int(selection) - 1
+                if cat_idx < 0 or cat_idx >= len(categories):
+                    print(f"WARNING 无效类目: {selection}", file=sys.stderr)
+                    continue
+                
+                current_cat_idx = cat_idx
+                cat_name = categories[cat_idx]['name']
+                cat_href = categories[cat_idx]['href']
+                
+                print(f"\nINFO 进入类目: {cat_name}", file=sys.stderr)
+                
+                # Extract sections for this category
+                if cat_idx not in cache['sections']:
+                    sections = extract_sections_from_category(cat_href, cookies)
+                    cache['sections'][cat_idx] = sections
+                else:
+                    sections = cache['sections'][cat_idx]
+                
+                if not sections:
+                    print("WARNING 没有找到 sections", file=sys.stderr)
+                    continue
+                
+                # Transition to sections state
+                state = 'sections'
+            except ValueError:
+                print(f"WARNING 无效输入: {selection}", file=sys.stderr)
+                continue
         
-        if selection == 'BACK':
-            if selection_stack:
-                selection_stack.pop()
-            continue
+        # ============================================================
+        # STATE: sections - Section selector within a category
+        # ============================================================
+        elif state == 'sections':
+            if current_cat_idx is None:
+                print("ERROR 状态错误", file=sys.stderr)
+                go_to_root()
+                continue
+            
+            sections = cache['sections'].get(current_cat_idx, [])
+            cat_name = get_cat_name(current_cat_idx)
+            
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"类目: {cat_name}", file=sys.stderr)
+            print(f"{'='*60}", file=sys.stderr)
+            print("Sections:", file=sys.stderr)
+            for i, sec in enumerate(sections):
+                has_url = sec.get('href') and sec['href'].startswith('http')
+                print(f"  {i+1}. {sec['title']} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
+            
+            print(f"\n选择方式:", file=sys.stderr)
+            print("  - a/all: 下载此类目下所有 sections 的所有电影", file=sys.stderr)
+            print("  - s/sec/section/sections: 查看 sections 列表", file=sys.stderr)
+            print("  - 数字 (如 1): 进入该 section", file=sys.stderr)
+            print("  - b/back: 返回类目选择", file=sys.stderr)
+            
+            selection = read_with_esc("\n请输入选择: ")
+            if selection == 'ESC':
+                print("INFO 退出程序", file=sys.stderr)
+                break
+            if not selection:
+                continue
+            
+            sel_lower = selection.lower().strip()
+            
+            if sel_lower in ('b', 'back'):
+                go_to_root()
+                continue
+            
+            if sel_lower in ('a', 'all'):
+                # Download all sections in this category
+                print("\nINFO 获取此类目下所有电影...", file=sys.stderr)
+                all_movies = []
+                for sec_idx, sec in enumerate(sections):
+                    if sec.get('href'):
+                        print(f"  INFO 获取 section: {sec['title']}", file=sys.stderr)
+                        movies = fetch_section_movies(sec['href'], cookies)
+                        for m in movies:
+                            m['_category'] = cat_name
+                            m['_section'] = sec['title']
+                        all_movies.extend(movies)
+                
+                if not all_movies:
+                    print("WARNING 没有找到电影", file=sys.stderr)
+                    continue
+                
+                if not _confirm_download(all_movies, cat_name, ""):
+                    print("INFO 已取消下载", file=sys.stderr)
+                    continue
+                
+                download_movies(all_movies, cookies, "category", category=cat_name, section="")
+                go_to_root()
+                continue
+            
+            if sel_lower in ('s', 'sec', 'section', 'sections'):
+                # Show sections (already shown above, just re-prompt)
+                continue
+            
+            # Try numeric selection
+            try:
+                sec_idx = int(selection) - 1
+                if sec_idx < 0 or sec_idx >= len(sections):
+                    print(f"WARNING 无效 section: {selection}", file=sys.stderr)
+                    continue
+                
+                current_sec_idx = sec_idx
+                sec = sections[sec_idx]
+                sec_name = sec['title']
+                sec_href = sec.get('href')
+                
+                if not sec_href:
+                    print(f"WARNING Section '{sec_name}' 没有 URL，无法进入", file=sys.stderr)
+                    continue
+                
+                # Fetch movies for this section (with caching)
+                cache_key = (current_cat_idx, sec_idx)
+                if cache_key not in cache['movies']:
+                    print(f"\nINFO 导航到 Section 页面: {sec_href[:80]}...", file=sys.stderr)
+                    movies = fetch_section_movies(sec_href, cookies)
+                    for m in movies:
+                        m['_category'] = cat_name
+                        m['_section'] = sec_name
+                    cache['movies'][cache_key] = movies
+                else:
+                    movies = cache['movies'][cache_key]
+                
+                if not movies:
+                    print("WARNING 没有找到电影", file=sys.stderr)
+                    continue
+                
+                # Transition to movies state
+                state = 'movies'
+            except ValueError:
+                print(f"WARNING 无效输入: {selection}", file=sys.stderr)
+                continue
         
-        if not selection:
-            continue
-        
-        # Handle 'all'
-        if selection.lower().strip() == 'all':
-            print("\nINFO 获取全部电影列表...", file=sys.stderr)
-            all_movies = []
-            for cat in tree:
-                print(f"  INFO 获取类目: {cat['name']}", file=sys.stderr)
-                cat_movies = _fetch_category_movies(cat, cookies)
-                for m in cat_movies:
-                    m['_category'] = cat['name']
-                all_movies.extend(cat_movies)
-            
-            if not all_movies:
-                print("WARNING 没有找到电影", file=sys.stderr)
+        # ============================================================
+        # STATE: movies - Movie selector within a section
+        # ============================================================
+        elif state == 'movies':
+            if current_cat_idx is None or current_sec_idx is None:
+                print("ERROR 状态错误", file=sys.stderr)
+                go_to_root()
                 continue
             
-            if not _confirm_download(all_movies, "all", "all"):
-                print("INFO 已取消下载", file=sys.stderr)
+            cache_key = (current_cat_idx, current_sec_idx)
+            movies = cache['movies'].get(cache_key, [])
+            cat_name = get_cat_name(current_cat_idx)
+            sec_name = sections[current_sec_idx]['title'] if current_sec_idx < len(sections) else 'Unknown'
+            
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"Section: {sec_name}", file=sys.stderr)
+            print(f"{'='*60}", file=sys.stderr)
+            print(f"电影列表 (共 {len(movies)} 部):", file=sys.stderr)
+            for i, movie in enumerate(movies):
+                print(f"  {i+1}. {movie['title']}", file=sys.stderr)
+            
+            print(f"\n选择方式:", file=sys.stderr)
+            print("  - a/all: 下载此 section 下所有电影", file=sys.stderr)
+            print("  - m/movie/movies: 选择具体电影", file=sys.stderr)
+            print("  - 数字 (如 1): 下载该电影", file=sys.stderr)
+            print("  - b/back: 返回 section 选择", file=sys.stderr)
+            
+            selection = read_with_esc("\n请输入选择: ")
+            if selection == 'ESC':
+                print("INFO 退出程序", file=sys.stderr)
+                break
+            if not selection:
                 continue
             
-            download_movies(all_movies, cookies, "all", category="all", section="all")
-            continue
-        
-        # Try numeric parsing
-        result = parse_selection(selection, tree)
-        
-        if 'error' in result:
-            # Try name-based search
-            name_result = find_items_by_name(tree, selection)
-            if 'error' in name_result:
-                print(f"\nWARNING 未找到匹配项: {selection}", file=sys.stderr)
+            sel_lower = selection.lower().strip()
+            
+            if sel_lower in ('b', 'back'):
+                go_to_root()
                 continue
             
-            # Resolve to selection
-            if name_result['type'] == 'movie':
-                selection_num = f"{name_result['cat_idx']+1}.{name_result['sec_idx']+1}.{name_result['mov_idx']+1}"
-                result = parse_selection(selection_num, tree)
-            elif name_result['type'] == 'section':
-                selection_num = f"{name_result['cat_idx']+1}.{name_result['sec_idx']+1}"
-                result = parse_selection(selection_num, tree)
-            else:
-                selection_num = f"{name_result['cat_idx']+1}"
-                result = parse_selection(selection_num, tree)
-            
-            if 'error' in result:
-                print(f"\nWARNING 选择解析失败", file=sys.stderr)
-                continue
-        
-        # Handle based on selection type
-        sel_type = result.get('type')
-        cat_idx = result.get('cat_idx', -1)
-        sec_idx = result.get('sec_idx')
-        
-        if sel_type == 'movie':
-            # Single movie - show confirmation
-            movies = result.get('movies', [])
-            if not movies:
-                print("WARNING 没有找到电影", file=sys.stderr)
+            if sel_lower in ('a', 'all'):
+                # Download all movies in this section
+                if not _confirm_download(movies, cat_name, sec_name):
+                    print("INFO 已取消下载", file=sys.stderr)
+                    continue
+                
+                download_movies(movies, cookies, "section", category=cat_name, section=sec_name)
+                go_to_root()
                 continue
             
-            cat_name = tree[cat_idx]['name'] if cat_idx >= 0 else ''
-            sec_name = tree[cat_idx]['sections'][sec_idx].get('title', tree[cat_idx]['sections'][sec_idx].get('name', '')) if cat_idx >= 0 and sec_idx is not None else ''
-            
-            for m in movies:
-                m['_category'] = cat_name
-                m['_section'] = sec_name
-            
-            if not _confirm_download(movies, cat_name, sec_name):
-                print("INFO 已取消下载", file=sys.stderr)
+            if sel_lower in ('m', 'movie', 'movies'):
+                # Select specific movies
+                print(f"\n{'='*60}", file=sys.stderr)
+                print("请选择电影 (编号, 如 1, 1.3, 1.5-10, all):", file=sys.stderr)
+                print("  - b/back: 返回上一级", file=sys.stderr)
+                
+                while True:
+                    movie_selection = read_with_esc("\n请输入选择: ")
+                    if movie_selection == 'ESC':
+                        print("INFO 退出程序", file=sys.stderr)
+                        go_to_root()
+                        break
+                    if not movie_selection:
+                        continue
+                    
+                    ms_lower = movie_selection.lower().strip()
+                    
+                    if ms_lower in ('b', 'back'):
+                        break
+                    
+                    if ms_lower in ('a', 'all'):
+                        if not _confirm_download(movies, cat_name, sec_name):
+                            print("INFO 已取消下载", file=sys.stderr)
+                            break
+                        download_movies(movies, cookies, "section", category=cat_name, section=sec_name)
+                        go_to_root()
+                        break
+                    
+                    # Parse movie indices
+                    selected_movies = []
+                    for part in movie_selection.split(','):
+                        part = part.strip()
+                        if '-' in part:
+                            start, end = part.split('-', 1)
+                            for i in range(int(start), int(end) + 1):
+                                if 0 < i <= len(movies):
+                                    selected_movies.append(movies[i - 1])
+                        else:
+                            try:
+                                idx = int(part)
+                                if 0 < idx <= len(movies):
+                                    selected_movies.append(movies[idx - 1])
+                            except ValueError:
+                                pass
+                    
+                    if selected_movies:
+                        if not _confirm_download(selected_movies, cat_name, sec_name):
+                            print("INFO 已取消下载", file=sys.stderr)
+                            break
+                        download_movies(selected_movies, cookies, "movie", category=cat_name, section=sec_name)
+                        go_to_root()
+                        break
+                    else:
+                        print("WARNING 未选择任何电影", file=sys.stderr)
+                
+                if state == 'movies':  # Still in movies state (didn't exit)
+                    continue
                 continue
             
-            download_movies(movies, cookies, "movie", category=cat_name, section=sec_name)
-        
-        elif sel_type == 'section':
-            # Section - fetch full movie list, show confirmation
-            cat = tree[cat_idx]
-            sec = cat['sections'][sec_idx]
-            sec_name = sec.get('title', sec.get('name', 'Unknown'))
-            
-            # Push to selection stack
-            selection_stack.append(('section', cat_idx, sec_idx))
-            
-            # Fetch full movie list by navigating to section page
-            section_url = sec.get('section_href')
-            if section_url:
-                print("\nINFO 导航到 Section 页面: " + section_url[:80] + "...", file=sys.stderr)
-                full_movies = fetch_section_movies(section_url, cookies)
-            else:
-                print("WARNING 没有 section URL，使用示例电影", file=sys.stderr)
-                full_movies = sec.get('example_movies', [])
-            
-            if not full_movies:
-                print("WARNING 没有找到电影", file=sys.stderr)
-                selection_stack.pop()
+            # Try numeric selection - download single movie
+            try:
+                mov_idx = int(selection) - 1
+                if mov_idx < 0 or mov_idx >= len(movies):
+                    print(f"WARNING 无效电影: {selection}", file=sys.stderr)
+                    continue
+                
+                selected_movies = [movies[mov_idx]]
+                
+                if not _confirm_download(selected_movies, cat_name, sec_name):
+                    print("INFO 已取消下载", file=sys.stderr)
+                    continue
+                
+                download_movies(selected_movies, cookies, "movie", category=cat_name, section=sec_name)
+                go_to_root()
+            except ValueError:
+                print(f"WARNING 无效输入: {selection}", file=sys.stderr)
                 continue
-            
-            # Add category/section info
-            for m in full_movies:
-                m['_category'] = cat['name']
-                m['_section'] = sec_name
-            
-            # Confirm download
-            if not _confirm_download(full_movies, cat['name'], sec_name):
-                print("INFO 已取消下载", file=sys.stderr)
-                selection_stack.pop()
-                continue
-            
-            download_movies(full_movies, cookies, "section", category=cat['name'], section=sec_name)
-            selection_stack.pop()
-        
-        elif sel_type == 'category':
-            # Category - fetch all movies from all sections
-            cat = tree[cat_idx]
-            print(f"\nINFO 获取类目: {cat['name']} 下所有电影...", file=sys.stderr)
-            
-            all_movies = _fetch_category_movies(cat, cookies)
-            
-            if not all_movies:
-                print("WARNING 没有找到电影", file=sys.stderr)
-                continue
-            
-            # Add category info
-            for m in all_movies:
-                m['_category'] = cat['name']
-            
-            if not _confirm_download(all_movies, cat['name'], ""):
-                print("INFO 已取消下载", file=sys.stderr)
-                continue
-            
-            download_movies(all_movies, cookies, "category", category=cat['name'], section="")
         
         else:
-            print(f"\nWARNING 未知选择类型: {sel_type}", file=sys.stderr)
+            print(f"WARNING 未知状态: {state}", file=sys.stderr)
+            go_to_root()
 
 
 def download_movies(movies: list, cookies: list, context: str = "", category: str = "", section: str = "") -> list:
