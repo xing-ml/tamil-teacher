@@ -945,34 +945,45 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
             
             # Scroll to bottom and wait for infinite loading
             print("INFO Scrolling to bottom and waiting for infinite loading...", file=sys.stderr)
-            prev_count = 0
+            
+            # Get initial movie count (page may already have some loaded)
+            initial_count = page.evaluate('''() => {
+                return document.querySelectorAll("a[href*='/detail/']").length;
+            }''')
+            print(f"INFO Initial page load: {initial_count} movies", file=sys.stderr)
+            
             scroll_count = 0
+            prev_count = initial_count  # Start from initial count
             max_scrolls = 12  # Safety limit
+            min_scrolls = 8   # Minimum scrolls before we even consider stopping
+            consecutive_no_change = 0  # Track consecutive scrolls with no new content
             
             while scroll_count < max_scrolls:
-                # Scroll down by viewport height
-                page.evaluate('window.scrollBy(0, window.innerHeight)')
-                time.sleep(2)  # Wait for content to load
+                # Scroll down by 500px (smaller step to reliably trigger lazy loading)
+                page.evaluate('window.scrollBy(0, 500)')
+                time.sleep(1)  # Wait for content to load
                 
                 # Count current movies
-                current_movies = page.evaluate('''() => {
-                    const links = document.querySelectorAll("a[href*='/detail/']");
-                    return links.length;
+                current_count = page.evaluate('''() => {
+                    return document.querySelectorAll("a[href*='/detail/']").length;
                 }''')
                 
-                if current_movies == prev_count:
-                    # No new movies loaded, try one more time
-                    time.sleep(2)
-                    after_wait = page.evaluate('''() => {
-                        const links = document.querySelectorAll("a[href*='/detail/']");
-                        return links.length;
-                    }''')
-                    if after_wait == current_movies:
-                        print(f"INFO Infinite loading complete: {current_movies} movies found", file=sys.stderr)
-                        break
+                new_movies = current_count - (initial_count if scroll_count == 0 else prev_count)
                 
-                prev_count = current_movies
+                if current_count > prev_count:
+                    print(f"INFO Scroll #{scroll_count + 1}: {current_count} movies (found {current_count - prev_count} new)", file=sys.stderr)
+                    consecutive_no_change = 0  # Reset counter - new content loaded
+                else:
+                    consecutive_no_change += 1
+                    print(f"INFO Scroll #{scroll_count + 1}: {current_count} movies (no change, streak: {consecutive_no_change})", file=sys.stderr)
+                
+                prev_count = current_count
                 scroll_count += 1
+                
+                # Only consider stopping after min_scrolls AND 3 consecutive scrolls with no new content
+                if scroll_count >= min_scrolls and consecutive_no_change >= 3:
+                    print(f"INFO Stable for 3 scrolls at {current_count} movies - stopping", file=sys.stderr)
+                    break
             
             # Extract all movies
             print("INFO Extracting all movies...", file=sys.stderr)
@@ -1430,6 +1441,59 @@ def _confirm_download(movies: list, category: str, section: str) -> bool:
         print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
 
 
+def parse_selection_range(items: list, selection: str) -> list:
+    """Parse user selection string into a list of matched items.
+    
+    Supports:
+        - Single number: '1'
+        - Range: '7-8' (inclusive)
+        - Comma-separated: '1,4,6,7,10'
+        - Mixed: '1,3-5,8'
+    
+    Args:
+        items: List of items to select from
+        selection: User's selection string
+    
+    Returns:
+        List of matched items
+    """
+    if not items:
+        return []
+    
+    selected = []
+    seen_indices = set()
+    
+    for part in selection.split(','):
+        part = part.strip()
+        if not part:
+            continue
+        
+        if '-' in part:
+            # Range: '7-8'
+            parts = part.split('-', 1)
+            try:
+                start = int(parts[0])
+                end = int(parts[1])
+                for i in range(start, end + 1):
+                    idx = i - 1  # Convert 1-indexed to 0-indexed
+                    if 0 <= idx < len(items) and idx not in seen_indices:
+                        selected.append(items[idx])
+                        seen_indices.add(idx)
+            except ValueError:
+                pass
+        else:
+            # Single number: '1'
+            try:
+                idx = int(part) - 1  # Convert 1-indexed to 0-indexed
+                if 0 <= idx < len(items) and idx not in seen_indices:
+                    selected.append(items[idx])
+                    seen_indices.add(idx)
+            except ValueError:
+                pass
+    
+    return selected
+
+
 def _fetch_category_movies(cat: dict, cookies: list) -> list:
     """Fetch ALL movies from a category by fetching each section.
     
@@ -1511,7 +1575,7 @@ def main():
                 print(f"  {i+1}. {cat['name']}", file=sys.stderr)
             print(f"\n选择方式:", file=sys.stderr)
             print("  - a/all: 下载所有类目下的所有电影", file=sys.stderr)
-            print("  - 数字 (如 1): 进入该类目", file=sys.stderr)
+            print("  - 数字 (如 1, 1-3, 1,3,5): 进入该类目 / 选择多个类目", file=sys.stderr)
             print("  - b/back: 退出", file=sys.stderr)
             
             selection = read_with_esc("\n请输入选择: ")
@@ -1554,16 +1618,20 @@ def main():
                 go_to_root()
                 continue
             
-            # Try numeric selection
-            try:
-                cat_idx = int(selection) - 1
-                if cat_idx < 0 or cat_idx >= len(categories):
-                    print(f"WARNING 无效类目: {selection}", file=sys.stderr)
-                    continue
-                
+            # Try multi-selection (supports single, range, comma-separated)
+            selected_cats = parse_selection_range(categories, selection)
+            
+            if not selected_cats:
+                print(f"WARNING 未选择任何类目: {selection}", file=sys.stderr)
+                continue
+            
+            if len(selected_cats) == 1:
+                # Single category → enter sections state
+                cat = selected_cats[0]
+                cat_idx = categories.index(cat)
                 current_cat_idx = cat_idx
-                cat_name = categories[cat_idx]['name']
-                cat_href = categories[cat_idx]['href']
+                cat_name = cat['name']
+                cat_href = cat['href']
                 
                 print(f"\nINFO 进入类目: {cat_name}", file=sys.stderr)
                 
@@ -1578,11 +1646,35 @@ def main():
                     print("WARNING 没有找到 sections", file=sys.stderr)
                     continue
                 
-                # Transition to sections state
                 state = 'sections'
-            except ValueError:
-                print(f"WARNING 无效输入: {selection}", file=sys.stderr)
-                continue
+            else:
+                # Multiple categories → fetch all movies and download
+                print(f"\nINFO 选择 {len(selected_cats)} 个类目: {[c['name'] for c in selected_cats]}", file=sys.stderr)
+                all_movies = []
+                for cat in selected_cats:
+                    cat_name = cat['name']
+                    cat_href = cat['href']
+                    print(f"  INFO 获取类目: {cat_name}", file=sys.stderr)
+                    secs = extract_sections_from_category(cat_href, cookies)
+                    for sec in secs:
+                        if sec.get('href'):
+                            movies = fetch_section_movies(sec['href'], cookies)
+                            for m in movies:
+                                m['_category'] = cat_name
+                                m['_section'] = sec['title']
+                            all_movies.extend(movies)
+                
+                if not all_movies:
+                    print("WARNING 没有找到电影", file=sys.stderr)
+                    continue
+                
+                cat_names = ', '.join(c['name'] for c in selected_cats)
+                if not _confirm_download(all_movies, cat_names, "multiple categories"):
+                    print("INFO 已取消下载", file=sys.stderr)
+                    continue
+                
+                download_movies(all_movies, cookies, "multi-cat", category=cat_names, section="")
+                go_to_root()
         
         # ============================================================
         # STATE: sections - Section selector within a category
@@ -1607,7 +1699,7 @@ def main():
             print(f"\n选择方式:", file=sys.stderr)
             print("  - a/all: 下载此类目下所有 sections 的所有电影", file=sys.stderr)
             print("  - s/sec/section/sections: 查看 sections 列表", file=sys.stderr)
-            print("  - 数字 (如 1): 进入该 section", file=sys.stderr)
+            print("  - 数字 (如 1, 1-3, 1,3,5): 进入该 section / 选择多个 section", file=sys.stderr)
             print("  - b/back: 返回类目选择", file=sys.stderr)
             
             selection = read_with_esc("\n请输入选择: ")
@@ -1652,15 +1744,18 @@ def main():
                 # Show sections (already shown above, just re-prompt)
                 continue
             
-            # Try numeric selection
-            try:
-                sec_idx = int(selection) - 1
-                if sec_idx < 0 or sec_idx >= len(sections):
-                    print(f"WARNING 无效 section: {selection}", file=sys.stderr)
-                    continue
-                
+            # Try multi-selection (supports single, range, comma-separated)
+            selected_secs = parse_selection_range(sections, selection)
+            
+            if not selected_secs:
+                print(f"WARNING 未选择任何 section: {selection}", file=sys.stderr)
+                continue
+            
+            if len(selected_secs) == 1:
+                # Single section → enter movies state
+                sec = selected_secs[0]
+                sec_idx = sections.index(sec)
                 current_sec_idx = sec_idx
-                sec = sections[sec_idx]
                 sec_name = sec['title']
                 sec_href = sec.get('href')
                 
@@ -1686,9 +1781,31 @@ def main():
                 
                 # Transition to movies state
                 state = 'movies'
-            except ValueError:
-                print(f"WARNING 无效输入: {selection}", file=sys.stderr)
-                continue
+            else:
+                # Multiple sections → fetch all movies and download
+                print(f"\nINFO 选择 {len(selected_secs)} 个 section: {[s['title'] for s in selected_secs]}", file=sys.stderr)
+                all_movies = []
+                for sec in selected_secs:
+                    sec_name = sec['title']
+                    sec_href = sec.get('href')
+                    if sec_href:
+                        movies = fetch_section_movies(sec_href, cookies)
+                        for m in movies:
+                            m['_category'] = cat_name
+                            m['_section'] = sec_name
+                        all_movies.extend(movies)
+                
+                if not all_movies:
+                    print("WARNING 没有找到电影", file=sys.stderr)
+                    continue
+                
+                sec_names = ', '.join(s['title'] for s in selected_secs)
+                if not _confirm_download(all_movies, cat_name, sec_names):
+                    print("INFO 已取消下载", file=sys.stderr)
+                    continue
+                
+                download_movies(all_movies, cookies, "multi-sec", category=cat_name, section=sec_names)
+                go_to_root()
         
         # ============================================================
         # STATE: movies - Movie selector within a section
@@ -1714,7 +1831,7 @@ def main():
             print(f"\n选择方式:", file=sys.stderr)
             print("  - a/all: 下载此 section 下所有电影", file=sys.stderr)
             print("  - m/movie/movies: 选择具体电影", file=sys.stderr)
-            print("  - 数字 (如 1): 下载该电影", file=sys.stderr)
+            print("  - 数字 (如 1, 1-5, 1,3,5): 下载该电影 / 选择多个电影", file=sys.stderr)
             print("  - b/back: 返回 section 选择", file=sys.stderr)
             
             selection = read_with_esc("\n请输入选择: ")
@@ -1727,7 +1844,8 @@ def main():
             sel_lower = selection.lower().strip()
             
             if sel_lower in ('b', 'back'):
-                go_to_root()
+                # Go back to sections state (not root), preserving current_cat_idx
+                state = 'sections'
                 continue
             
             if sel_lower in ('a', 'all'):
@@ -1743,7 +1861,7 @@ def main():
             if sel_lower in ('m', 'movie', 'movies'):
                 # Select specific movies
                 print(f"\n{'='*60}", file=sys.stderr)
-                print("请选择电影 (编号, 如 1, 1.3, 1.5-10, all):", file=sys.stderr)
+                print("请选择电影 (编号, 如 1, 1-5, 1,3,5, all):", file=sys.stderr)
                 print("  - b/back: 返回上一级", file=sys.stderr)
                 
                 while True:
@@ -1768,22 +1886,8 @@ def main():
                         go_to_root()
                         break
                     
-                    # Parse movie indices
-                    selected_movies = []
-                    for part in movie_selection.split(','):
-                        part = part.strip()
-                        if '-' in part:
-                            start, end = part.split('-', 1)
-                            for i in range(int(start), int(end) + 1):
-                                if 0 < i <= len(movies):
-                                    selected_movies.append(movies[i - 1])
-                        else:
-                            try:
-                                idx = int(part)
-                                if 0 < idx <= len(movies):
-                                    selected_movies.append(movies[idx - 1])
-                            except ValueError:
-                                pass
+                    # Parse movie indices using parse_selection_range
+                    selected_movies = parse_selection_range(movies, movie_selection)
                     
                     if selected_movies:
                         if not _confirm_download(selected_movies, cat_name, sec_name):
@@ -1799,24 +1903,19 @@ def main():
                     continue
                 continue
             
-            # Try numeric selection - download single movie
-            try:
-                mov_idx = int(selection) - 1
-                if mov_idx < 0 or mov_idx >= len(movies):
-                    print(f"WARNING 无效电影: {selection}", file=sys.stderr)
-                    continue
-                
-                selected_movies = [movies[mov_idx]]
-                
-                if not _confirm_download(selected_movies, cat_name, sec_name):
-                    print("INFO 已取消下载", file=sys.stderr)
-                    continue
-                
-                download_movies(selected_movies, cookies, "movie", category=cat_name, section=sec_name)
-                go_to_root()
-            except ValueError:
-                print(f"WARNING 无效输入: {selection}", file=sys.stderr)
+            # Try multi-selection (supports single, range, comma-separated)
+            selected_movies = parse_selection_range(movies, selection)
+            
+            if not selected_movies:
+                print(f"WARNING 未选择任何电影: {selection}", file=sys.stderr)
                 continue
+            
+            if not _confirm_download(selected_movies, cat_name, sec_name):
+                print("INFO 已取消下载", file=sys.stderr)
+                continue
+            
+            download_movies(selected_movies, cookies, "movie", category=cat_name, section=sec_name)
+            go_to_root()
         
         else:
             print(f"WARNING 未知状态: {state}", file=sys.stderr)
