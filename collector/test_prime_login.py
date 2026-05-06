@@ -131,8 +131,8 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                     const href = link.getAttribute('href');
                     if (!href) continue;
                     
-                    // Match /genre/... or /collection/... or /kids/ URLs
-                    if (href.includes('/genre/') || href.includes('/collection/') || href.includes('/kids/')) {
+                    // Match /genre/... or /collection/... or /kids URLs
+                    if (href.includes('/genre/') || href.includes('/collection/') || href.includes('/kids')) {
                         const text = link.textContent.trim();
                         if (text && text.length > 2 && text.length < 100 && !seen.has(text)) {
                             seen.add(text);
@@ -834,11 +834,14 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             # Update result with actual download status
             result['subtitles_saved'] = saved_count
             result['subtitle_dir'] = output_dir
-            result['tamil'] = 'ta' in downloaded_langs
-            result['english'] = 'en' in downloaded_langs
-            result['has_dual_subtitles'] = ('ta' in downloaded_langs and 'en' in downloaded_langs)
+            # Language codes are like 'ta-in', 'en-us', 'kn-in', etc.
+            has_tamil = any(lang.startswith('ta') for lang in downloaded_langs)
+            has_english = any(lang.startswith('en') for lang in downloaded_langs)
+            result['tamil'] = has_tamil
+            result['english'] = has_english
+            result['has_dual_subtitles'] = has_tamil and has_english
             print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
-            print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}", file=sys.stderr)
+            print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}, langs={downloaded_langs}", file=sys.stderr)
         
         finally:
             browser.close()
