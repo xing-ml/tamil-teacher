@@ -838,8 +838,16 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
         page = context.new_page()
         
         try:
-            print(f"INFO Navigating to section: {section_url[:100]}...", file=sys.stderr)
-            page.goto(section_url, timeout=30000)
+            # Handle relative URLs
+            if section_url.startswith('/'):
+                full_url = 'https://www.primevideo.com' + section_url
+            elif section_url.startswith('http'):
+                full_url = section_url
+            else:
+                full_url = 'https://www.primevideo.com' + '/' + section_url
+            
+            print(f"INFO Navigating to section: {full_url[:100]}...", file=sys.stderr)
+            page.goto(full_url, timeout=30000)
             time.sleep(5)
             
             # Scroll to bottom and wait for infinite loading
@@ -1049,7 +1057,7 @@ def parse_selection(selection_str: str, tree: list) -> dict:
         # Collect all movies in this category
         movies = []
         for section in tree[cat_idx]['sections']:
-            movies.extend(section['movies'])
+            movies.extend(section.get('example_movies', []))
         
         return {
             'type': 'category',
@@ -1068,7 +1076,8 @@ def parse_selection(selection_str: str, tree: list) -> dict:
         if sec_idx < 0 or sec_idx >= len(tree[cat_idx]['sections']):
             return {'error': f'Invalid section index: {parts[1]}'}
         
-        movies = tree[cat_idx]['sections'][sec_idx]['movies']
+        section = tree[cat_idx]['sections'][sec_idx]
+        movies = section.get('example_movies', [])
         
         return {
             'type': 'section',
@@ -1087,10 +1096,12 @@ def parse_selection(selection_str: str, tree: list) -> dict:
             return {'error': f'Invalid category index: {parts[0]}'}
         if sec_idx < 0 or sec_idx >= len(tree[cat_idx]['sections']):
             return {'error': f'Invalid section index: {parts[1]}'}
-        if mov_idx < 0 or mov_idx >= len(tree[cat_idx]['sections'][sec_idx]['movies']):
+        section = tree[cat_idx]['sections'][sec_idx]
+        example_movies = section.get('example_movies', [])
+        if mov_idx < 0 or mov_idx >= len(example_movies):
             return {'error': f'Invalid movie index: {parts[2]}'}
         
-        movie = tree[cat_idx]['sections'][sec_idx]['movies'][mov_idx]
+        movie = example_movies[mov_idx]
         
         return {
             'type': 'movie',
@@ -1124,19 +1135,20 @@ def find_items_by_name(tree: list, name: str) -> dict:
     # Search for section
     for cat_idx, category in enumerate(tree):
         for sec_idx, section in enumerate(category['sections']):
-            if name_lower in section['name'].lower():
+            sec_name = section.get('title', section.get('name', ''))
+            if name_lower in sec_name.lower():
                 return {
                     'type': 'section',
                     'cat_idx': cat_idx,
                     'sec_idx': sec_idx,
                     'mov_idx': None,
-                    'matched': section['name']
+                    'matched': sec_name
                 }
     
     # Search for movie
     for cat_idx, category in enumerate(tree):
         for sec_idx, section in enumerate(category['sections']):
-            for mov_idx, movie in enumerate(section['movies']):
+            for mov_idx, movie in enumerate(section.get('example_movies', [])):
                 if name_lower in movie['title'].lower():
                     return {
                         'type': 'movie',
