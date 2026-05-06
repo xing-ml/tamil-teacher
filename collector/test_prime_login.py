@@ -163,6 +163,12 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                 try:
                     page.goto(category['href'], timeout=30000)
                     time.sleep(8)
+                    
+                    # Scroll to bottom to trigger lazy loading of all sections
+                    print(f"INFO   Scrolling to load all sections...", file=sys.stderr)
+                    for _scroll in range(2):
+                        page.evaluate('window.scrollBy(0, window.innerHeight)')
+                        time.sleep(2)
                 except Exception as e:
                     print(f"WARNING Failed to navigate to {category['name']}: {e}", file=sys.stderr)
                     continue
