@@ -289,8 +289,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
         
         return '\n'.join(srt_lines) if srt_lines else None
     
-    def fetch_subtitle(url, lang='unknown'):
-        """Fetch subtitle file and parse it."""
+    def fetch_subtitle(url):
+        """Fetch subtitle file and parse TTML2 to SRT. Returns SRT string or None."""
         try:
             content = page.evaluate('''
                 async (url) => {
@@ -303,21 +303,20 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 }''', url)
             
             if not content:
-                return None, None
+                return None
             
             # Prime Video subtitles are always TTML2
             srt = ttml2_to_srt(content)
             if srt:
                 caption_count = srt.count('\n\n')
-                print(f"INFO Fetched {lang} subtitle (TTML2): {caption_count} captions from {url[:100]}", file=sys.stderr)
-                result[f'{lang}_srt'] = srt
-                return lang, [{'text': 'See SRT content in result'}]
+                print(f"INFO Fetched subtitle (TTML2): {caption_count} captions from {url[:100]}", file=sys.stderr)
+                return srt
             else:
                 print(f"WARNING Failed to parse TTML2 content", file=sys.stderr)
-                return lang, []
+                return None
         except Exception as e:
             print(f"WARNING Error fetching subtitle: {e}", file=sys.stderr)
-        return None, None
+        return None
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
@@ -611,11 +610,6 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                         url = sub.get('url', 'no url')
                         sub_type = sub.get('type', 'Subtitle')
                         print(f"  - {lang} ({sub_type}): {url[:100]}...", file=sys.stderr)
-                        # Store subtitle URLs in result
-                        if lang.startswith('ta'):
-                            result['tamil_url'] = url
-                        elif lang.startswith('en'):
-                            result['english_url'] = url
                 elif parsed.get('globalError'):
                     print(f"WARNING Global error: {parsed['globalError']}", file=sys.stderr)
                 else:
@@ -623,42 +617,96 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             else:
                 print(f"INFO Body preview: {sub_info_result.get('bodyPreview', '')[:500]}", file=sys.stderr)
                 result['error'] = "No valid subtitle data returned"
+                return result
             
-            # Download subtitles if URLs are available
-            if 'tamil_url' in result:
-                print(f"INFO Downloading Tamil subtitle...", file=sys.stderr)
-                fetch_subtitle(result['tamil_url'], 'ta')
-            if 'english_url' in result:
-                print(f"INFO Downloading English subtitle...", file=sys.stderr)
-                fetch_subtitle(result['english_url'], 'en')
+            # ========================
+            # Filter and collect subtitles per Tampermonkey naming convention
+            # ========================
+            # Allowed types: only Subtitle (non-CC) and Sdh (CC)
+            # Exclude: SubtitleMachineGenerated, ForcedNarrative, etc.
+            ALLOWED_TYPES = {'Subtitle', 'Sdh'}
             
-            # Check if we have dual subtitles
-            has_tamil = 'ta_srt' in result
-            has_english = 'en_srt' in result
-            if has_tamil and has_english:
-                result['has_dual_subtitles'] = True
-                print(f"INFO SUCCESS: Found both Tamil and English subtitles!", file=sys.stderr)
-                # Save SRT files
-                import os
-                safe_title = result.get('title', 'movie').replace('/', '_').replace('\\', '_')
-                output_dir = 'temp/subtitles'
-                os.makedirs(output_dir, exist_ok=True)
+            # Target language codes (English, Tamil, Chinese Simplified)
+            TARGET_LANGUAGES = {
+                'en-us', 'en-gb', 'en-au', 'en-ca',  # English variants
+                'ta-in', 'ta-sg', 'ta-mt',  # Tamil variants
+                'zh-cn', 'zh-sg',  # Chinese Simplified variants
+            }
+            
+            def is_target_language(lang_code):
+                """Check if language code is a target language."""
+                # Match any language code that starts with a target base
+                for target in TARGET_LANGUAGES:
+                    if lang_code == target or lang_code.startswith(target.split('-')[0]):
+                        return True
+                return False
+            
+            def build_filename(movie_name, lang_code, subtitle_type):
+                """Build filename following Tampermonkey naming convention.
                 
-                tamil_file = os.path.join(output_dir, f"{safe_title}_ta.srt")
-                with open(tamil_file, 'w', encoding='utf-8') as f:
-                    f.write(result.get('ta_srt', ''))
-                print(f"INFO Saved Tamil subtitle to {tamil_file}", file=sys.stderr)
+                Convention:
+                  filename.languageCode          -> Subtitle (non-CC)
+                  filename.languageCode[cc]     -> Sdh (CC)
+                """
+                safe_name = movie_name.replace('/', '_').replace('\\', '_').replace(':', '.')
+                name = f"{safe_name}.{lang_code}"
                 
-                english_file = os.path.join(output_dir, f"{safe_title}_en.srt")
-                with open(english_file, 'w', encoding='utf-8') as f:
-                    f.write(result.get('en_srt', ''))
-                print(f"INFO Saved English subtitle to {english_file}", file=sys.stderr)
-            elif has_tamil:
-                result['has_dual_subtitles'] = False
-                print(f"INFO Found Tamil subtitle only", file=sys.stderr)
-            elif has_english:
-                result['has_dual_subtitles'] = False
-                print(f"INFO Found English subtitle only", file=sys.stderr)
+                if subtitle_type == 'Sdh':
+                    name += '[cc]'
+                
+                return name
+            
+            # Filter subtitles: allowed types AND target languages
+            filtered_subtitles = []
+            for sub in subtitle_urls:
+                sub_type = sub.get('type', 'Subtitle')
+                lang_code = sub.get('languageCode', 'unknown')
+                url = sub.get('url', '')
+                
+                if sub_type not in ALLOWED_TYPES:
+                    continue
+                
+                if not is_target_language(lang_code):
+                    continue
+                
+                filtered_subtitles.append({
+                    'lang_code': lang_code,
+                    'type': sub_type,
+                    'url': url,
+                })
+            
+            print(f"INFO Filtered to {len(filtered_subtitles)} target subtitles (types={ALLOWED_TYPES}, langs={TARGET_LANGUAGES})", file=sys.stderr)
+            
+            if not filtered_subtitles:
+                print(f"WARNING No target subtitles found for {result.get('title', 'unknown movie')}", file=sys.stderr)
+                return result
+            
+            # Download and save each subtitle
+            import os
+            movie_name = result.get('title', 'movie').replace('/', '_').replace('\\', '_').replace(':', '.')
+            output_dir = os.path.join('data', 'subtitles', movie_name)
+            os.makedirs(output_dir, exist_ok=True)
+            
+            saved_count = 0
+            for sub in filtered_subtitles:
+                srt_content = fetch_subtitle(sub['url'])
+                if not srt_content:
+                    print(f"WARNING Failed to fetch subtitle: {sub['lang_code']} ({sub['type']})", file=sys.stderr)
+                    continue
+                
+                filename = build_filename(movie_name, sub['lang_code'], sub['type'])
+                filepath = os.path.join(output_dir, f"{filename}.srt")
+                
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(srt_content)
+                
+                caption_count = srt_content.count('\n\n')
+                print(f"INFO Saved: {filepath} ({caption_count} captions, type={sub['type']})", file=sys.stderr)
+                saved_count += 1
+            
+            result['subtitles_saved'] = saved_count
+            result['subtitle_dir'] = output_dir
+            print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
         
         finally:
             browser.close()
