@@ -1112,7 +1112,10 @@ def build_tree_display(tree: list) -> str:
     
     Format:
     1. Best of India
-       1.1. Movies in Tamil        ← 示例: Bigil, Coolie, Varisu
+       1.1. Movies in Tamil
+         1.1.1 Bigil
+         1.1.2 Coolie
+         1.1.3 Varisu
        1.2. Movies in Telugu
     2. Other Category
        2.1. Section A
@@ -1125,11 +1128,13 @@ def build_tree_display(tree: list) -> str:
         for sec_idx, section in enumerate(category['sections']):
             sec_num = sec_idx + 1
             sec_name = section.get('title', section.get('name', 'Unknown'))
-            examples = section.get('example_movies', [])
-            example_str = ""
-            if examples:
-                example_str = "  ← 示例: " + ", ".join(m['title'] for m in examples[:3])
-            lines.append(f"  {cat_num}.{sec_num}. {sec_name}{example_str}")
+            lines.append(f"  {cat_num}.{sec_num}. {sec_name}")
+            
+            # Show numbered movies under each section
+            movies = section.get('example_movies', [])
+            for mov_idx, movie in enumerate(movies):
+                mov_num = mov_idx + 1
+                lines.append(f"    {cat_num}.{sec_num}.{mov_num}. {movie['title']}")
     
     return '\n'.join(lines)
 
@@ -1365,8 +1370,145 @@ def get_movies_for_selection(tree: list, selection: str) -> tuple:
     return result.get('movies', []), None
 
 
+def _prompt_selection(tree: list, level: str = "root", selection_stack: list = None) -> str:
+    """Prompt user for selection at the given level.
+    
+    Args:
+        tree: Category tree
+        level: Current level ('root', 'section', 'movie')
+        selection_stack: Stack of previous selections for navigation
+    
+    Returns:
+        Selection string or 'BACK' to go to previous level
+    """
+    if selection_stack is None:
+        selection_stack = []
+    
+    while True:
+        if level == "root":
+            print(f"\n{'='*60}", file=sys.stderr)
+            print("发现以下类目:", file=sys.stderr)
+            print(build_tree_display(tree), file=sys.stderr)
+            print(f"\n选择方式:", file=sys.stderr)
+            print("  - 单个电影: 1.1.1", file=sys.stderr)
+            print("  - 单个 Section: 1.1", file=sys.stderr)
+            print("  - 单个类目: 1", file=sys.stderr)
+            print("  - 全部: all", file=sys.stderr)
+            print("  - 名称搜索: 输入类目/Section/电影名称", file=sys.stderr)
+            print("\n按 ESC 可重新输入 (连续3次ESC退出)", file=sys.stderr)
+        elif level == "section":
+            cat_idx, sec_idx = selection_stack[-1]
+            cat = tree[cat_idx]
+            sec = cat['sections'][sec_idx]
+            sec_name = sec.get('title', sec.get('name', 'Unknown'))
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"已选择 Section: {cat['name']} → {sec_name}", file=sys.stderr)
+            print(f"\n请选择电影编号 (如 1, 1.3, 1.5-10, all, r返回上级, n取消):", file=sys.stderr)
+        elif level == "movie":
+            print(f"\n{'='*60}", file=sys.stderr)
+            print("请选择操作:", file=sys.stderr)
+            print("  - y: 确认开始下载", file=sys.stderr)
+            print("  - n: 取消返回上级", file=sys.stderr)
+            print("  - r: 返回上一级重新选择", file=sys.stderr)
+        
+        if level == "root":
+            prompt = "\n请输入选择: "
+        elif level == "section":
+            prompt = "\n请输入选择: "
+        elif level == "movie":
+            prompt = "\n请选择 (y/n/r): "
+        
+        selection = read_with_esc(prompt)
+        
+        if selection == 'ESC':
+            esc_count = 0
+            while True:
+                confirm = read_with_esc("\n确认退出? (y/n): ")
+                if confirm.lower() in ('y', 'yes', '确认', '是', '好', '下载'):
+                    print("INFO 退出程序", file=sys.stderr)
+                    sys.exit(0)
+                elif confirm.lower() in ('n', '不', '不需要', '不用'):
+                    break
+                print("WARNING 无效输入", file=sys.stderr)
+            continue
+        
+        if not selection:
+            print("\nWARNING 空输入，请重新输入", file=sys.stderr)
+            continue
+        
+        # Handle 'r' (return to previous level)
+        if selection.lower().strip() == 'r':
+            if len(selection_stack) > 0:
+                return 'BACK'
+            else:
+                print("WARNING 已在最顶层，无法返回", file=sys.stderr)
+                continue
+        
+        return selection
+
+
+def _confirm_download(movies: list, category: str, section: str) -> bool:
+    """Show movie list and confirm download.
+    
+    Returns True if user confirms (y), False if cancels (n).
+    """
+    print(f"\n{'='*60}", file=sys.stderr)
+    print(f"完整电影列表 (共 {len(movies)} 部):", file=sys.stderr)
+    for i, movie in enumerate(movies):
+        print(f"  {i+1}. {movie['title']}", file=sys.stderr)
+    
+    print(f"\n{'='*60}", file=sys.stderr)
+    print("请确认下载:", file=sys.stderr)
+    print("  - y: 确认开始下载", file=sys.stderr)
+    print("  - n: 取消返回上级", file=sys.stderr)
+    
+    while True:
+        answer = read_with_esc("\n请选择 (y/n): ")
+        
+        if answer == 'ESC':
+            print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
+            continue
+        
+        if not answer:
+            continue
+        
+        if answer.lower().strip() == 'y':
+            return True
+        elif answer.lower().strip() == 'n':
+            return False
+        
+        print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
+
+
+def _fetch_category_movies(cat: dict, cookies: list) -> list:
+    """Fetch ALL movies from a category by fetching each section.
+    
+    Always uses fetch_section_movies(), never falls back to example_movies.
+    """
+    all_movies = []
+    
+    for sec in cat['sections']:
+        sec_name = sec.get('title', sec.get('name', 'Unknown'))
+        
+        if sec.get('see_more_href'):
+            print(f"  INFO 爬取 section: {sec_name}", file=sys.stderr)
+            section_movies = fetch_section_movies(sec['see_more_href'], cookies)
+        else:
+            print(f"  INFO 爬取 section (无链接): {sec_name}", file=sys.stderr)
+            section_movies = _extract_section_movies_from_category(
+                sec['category_href'], sec_name, cookies
+            )
+        
+        # Add section info to each movie
+        for m in section_movies:
+            m['_section'] = sec_name
+        all_movies.extend(section_movies)
+    
+    return all_movies
+
+
 def main():
-    """Main function with interactive selection."""
+    """Main function with interactive selection and confirmation flow."""
     email = "xing.c@hotmail.com"
     password = "789qweasd"
     
@@ -1386,56 +1528,41 @@ def main():
         print("ERROR No categories found", file=sys.stderr)
         sys.exit(1)
     
-    # Display tree
-    print(f"\n{'='*60}", file=sys.stderr)
-    print("发现以下类目:", file=sys.stderr)
-    print(build_tree_display(tree), file=sys.stderr)
-    print(f"\n选择方式:", file=sys.stderr)
-    print("  - 单个电影: 1.1.1", file=sys.stderr)
-    print("  - 单个 Section: 1.1", file=sys.stderr)
-    print("  - 单个类目: 1", file=sys.stderr)
-    print("  - 全部: all", file=sys.stderr)
-    print("  - 名称搜索: 输入类目/Section/电影名称", file=sys.stderr)
-    print("\n按 ESC 可重新输入 (连续3次ESC退出)", file=sys.stderr)
+    # Main loop with selection stack
+    selection_stack = []  # [(type, cat_idx, sec_idx), ...]
     
-    # Interactive selection loop
-    esc_count = 0
     while True:
-        selection = read_with_esc("\n请输入选择: ")
+        # Prompt for selection
+        selection = _prompt_selection(tree, "root", selection_stack)
         
-        if selection == 'ESC':
-            esc_count += 1
-            print(f"\nWARNING ESC 检测到 (第{esc_count}次) - 请重新输入", file=sys.stderr)
-            if esc_count >= 3:
-                print("\nERROR 连续3次ESC，退出程序", file=sys.stderr)
-                sys.exit(0)
+        if selection == 'BACK':
+            if selection_stack:
+                selection_stack.pop()
             continue
         
         if not selection:
-            print("\nWARNING 空输入，请重新输入", file=sys.stderr)
             continue
         
         # Handle 'all'
         if selection.lower().strip() == 'all':
-            print("\nINFO 下载全部 category 下的所有电影字幕...", file=sys.stderr)
+            print("\nINFO 获取全部电影列表...", file=sys.stderr)
             all_movies = []
             for cat in tree:
-                for sec in cat['sections']:
-                    sec_name = sec.get('title', sec.get('name', 'Unknown'))
-                    if sec.get('see_more_href'):
-                        section_movies = fetch_section_movies(sec['see_more_href'], cookies)
-                        for m in section_movies:
-                            m['_section'] = sec_name
-                        all_movies.extend(section_movies)
-                    else:
-                        for m in sec.get('example_movies', []):
-                            m['_section'] = sec_name
-                        all_movies.extend(sec.get('example_movies', []))
+                print(f"  INFO 获取类目: {cat['name']}", file=sys.stderr)
+                cat_movies = _fetch_category_movies(cat, cookies)
+                for m in cat_movies:
+                    m['_category'] = cat['name']
+                all_movies.extend(cat_movies)
             
-            if all_movies:
-                download_movies(all_movies, cookies, "all", category="all", section="all")
-            else:
+            if not all_movies:
                 print("WARNING 没有找到电影", file=sys.stderr)
+                continue
+            
+            if not _confirm_download(all_movies, "all", "all"):
+                print("INFO 已取消下载", file=sys.stderr)
+                continue
+            
+            download_movies(all_movies, cookies, "all", category="all", section="all")
             continue
         
         # Try numeric parsing
@@ -1469,144 +1596,89 @@ def main():
         sec_idx = result.get('sec_idx')
         
         if sel_type == 'movie':
-            # Single movie - download directly
+            # Single movie - show confirmation
             movies = result.get('movies', [])
-            if movies:
-                cat_name = tree[cat_idx]['name'] if cat_idx >= 0 else ''
-                sec_name = tree[cat_idx]['sections'][sec_idx].get('title', tree[cat_idx]['sections'][sec_idx].get('name', '')) if cat_idx >= 0 and sec_idx is not None else ''
-                download_movies(movies, cookies, "movie", category=cat_name, section=sec_name)
+            if not movies:
+                print("WARNING 没有找到电影", file=sys.stderr)
+                continue
+            
+            cat_name = tree[cat_idx]['name'] if cat_idx >= 0 else ''
+            sec_name = tree[cat_idx]['sections'][sec_idx].get('title', tree[cat_idx]['sections'][sec_idx].get('name', '')) if cat_idx >= 0 and sec_idx is not None else ''
+            
+            for m in movies:
+                m['_category'] = cat_name
+                m['_section'] = sec_name
+            
+            if not _confirm_download(movies, cat_name, sec_name):
+                print("INFO 已取消下载", file=sys.stderr)
+                continue
+            
+            download_movies(movies, cookies, "movie", category=cat_name, section=sec_name)
         
         elif sel_type == 'section':
-            # Section - extract movie list first, then let user choose
+            # Section - fetch full movie list, show confirmation
             cat = tree[cat_idx]
             sec = cat['sections'][sec_idx]
             sec_name = sec.get('title', sec.get('name', 'Unknown'))
-            print(f"\nINFO 已选择 Section: {cat['name']} → {sec_name}", file=sys.stderr)
             
-            # Fetch full movie list first (with scroll)
+            # Push to selection stack
+            selection_stack.append(('section', cat_idx, sec_idx))
+            
+            # Fetch full movie list
             if sec.get('see_more_href'):
                 print("\nINFO 正在爬取完整电影列表 (scroll 到底部)...", file=sys.stderr)
                 full_movies = fetch_section_movies(sec['see_more_href'], cookies)
             else:
-                # Navigate to category page, scroll to load all sections,
-                # then find target section and extract ALL its movies
                 print("\nINFO 导航到类目页面并滚动加载完整列表...", file=sys.stderr)
                 full_movies = _extract_section_movies_from_category(
                     sec['category_href'], sec_name, cookies
                 )
-                if not full_movies:
-                    print("WARNING 没有找到电影，使用示例电影", file=sys.stderr)
-                    full_movies = sec.get('example_movies', [])
             
             if not full_movies:
                 print("WARNING 没有找到电影", file=sys.stderr)
+                selection_stack.pop()
                 continue
             
-            # Show full movie list
-            print(f"\n{'='*60}", file=sys.stderr)
-            print(f"完整电影列表 (共 {len(full_movies)} 部):", file=sys.stderr)
-            for i, movie in enumerate(full_movies):
-                print(f"  {i+1}. {movie['title']}", file=sys.stderr)
+            # Add category/section info
+            for m in full_movies:
+                m['_category'] = cat['name']
+                m['_section'] = sec_name
             
-            # Ask user to select movies or download all
-            esc_count_sec = 0
-            while True:
-                answer = read_with_esc("\n请选择电影编号 (如 1, 1.3, 1.5-10, all, r重新输入): ")
-                
-                if answer == 'ESC':
-                    esc_count_sec += 1
-                    print(f"\nWARNING ESC 检测到 (第{esc_count_sec}次) - 请重新输入", file=sys.stderr)
-                    if esc_count_sec >= 3:
-                        print("\nERROR 连续3次ESC，退出程序", file=sys.stderr)
-                        sys.exit(0)
-                    continue
-                
-                if not answer:
-                    # Empty = download all
-                    download_movies(full_movies, cookies, "section", category=cat['name'], section=sec_name)
-                    break
-                
-                answer_lower = answer.lower().strip()
-                
-                if answer_lower == 'r':
-                    # Re-input: re-fetch movie list and prompt again
-                    print("\nINFO 重新获取电影列表...", file=sys.stderr)
-                    if sec.get('see_more_href'):
-                        full_movies = fetch_section_movies(sec['see_more_href'], cookies)
-                        if not full_movies:
-                            print("WARNING 没有找到电影", file=sys.stderr)
-                            break
-                    print(f"\n{'='*60}", file=sys.stderr)
-                    print(f"完整电影列表 (共 {len(full_movies)} 部):", file=sys.stderr)
-                    for i, movie in enumerate(full_movies):
-                        print(f"  {i+1}. {movie['title']}", file=sys.stderr)
-                    continue
-                
-                if answer_lower == 'all':
-                    download_movies(full_movies, cookies, "section", category=cat['name'], section=sec_name)
-                    break
-                
-                # Parse individual movie indices
-                selected_movies = []
-                for part in answer.split(','):
-                    part = part.strip()
-                    if '-' in part:
-                        start, end = part.split('-', 1)
-                        for i in range(int(start), int(end) + 1):
-                            if 0 < i <= len(full_movies):
-                                selected_movies.append(full_movies[i - 1])
-                    else:
-                        try:
-                            idx = int(part)
-                            if 0 < idx <= len(full_movies):
-                                selected_movies.append(full_movies[idx - 1])
-                        except ValueError:
-                            pass
-                
-                if selected_movies:
-                    download_movies(selected_movies, cookies, "section", category=cat['name'], section=sec_name)
-                else:
-                    print("WARNING 未选择任何电影，请重新输入", file=sys.stderr)
-            continue
+            # Confirm download
+            if not _confirm_download(full_movies, cat['name'], sec_name):
+                print("INFO 已取消下载", file=sys.stderr)
+                selection_stack.pop()
+                continue
+            
+            download_movies(full_movies, cookies, "section", category=cat['name'], section=sec_name)
+            selection_stack.pop()
         
         elif sel_type == 'category':
-            # Category - download all movies in all sections
+            # Category - fetch all movies from all sections
             cat = tree[cat_idx]
-            print(f"\nINFO 下载类目: {cat['name']} 下所有电影字幕...", file=sys.stderr)
+            print(f"\nINFO 获取类目: {cat['name']} 下所有电影...", file=sys.stderr)
             
-            all_movies = []
-            for sec in cat['sections']:
-                sec_name = sec.get('title', sec.get('name', 'Unknown'))
-                if sec.get('see_more_href'):
-                    print(f"  INFO 爬取 section: {sec_name}", file=sys.stderr)
-                    section_movies = fetch_section_movies(sec['see_more_href'], cookies)
-                    # Add section info to each movie dict
-                    for m in section_movies:
-                        m['_section'] = sec_name
-                    all_movies.extend(section_movies)
-                else:
-                    # Use example movies
-                    for m in sec.get('example_movies', []):
-                        m['_section'] = sec_name
-                    all_movies.extend(sec.get('example_movies', []))
+            all_movies = _fetch_category_movies(cat, cookies)
             
-            if all_movies:
-                download_movies(all_movies, cookies, "category", category=cat['name'], section="")
-            else:
+            if not all_movies:
                 print("WARNING 没有找到电影", file=sys.stderr)
+                continue
+            
+            # Add category info
+            for m in all_movies:
+                m['_category'] = cat['name']
+            
+            if not _confirm_download(all_movies, cat['name'], ""):
+                print("INFO 已取消下载", file=sys.stderr)
+                continue
+            
+            download_movies(all_movies, cookies, "category", category=cat['name'], section="")
         
         else:
             print(f"\nWARNING 未知选择类型: {sel_type}", file=sys.stderr)
-        
-        # Ask if user wants to download more
-        print("\n是否继续下载更多? (y/n)", file=sys.stderr)
-        more = read_with_esc("")
-        if more.lower() not in ('y', 'yes', '确认', '是', '好', '下载'):
-            print("INFO 退出", file=sys.stderr)
-            break
 
 
-def download_movies(movies: list, cookies: list, context: str = "", category: str = "", section: str = "") -> None:
+def download_movies(movies: list, cookies: list, context: str = "", category: str = "", section: str = "") -> list:
     """Download subtitles for a list of movies.
     
     Args:
@@ -1615,13 +1687,16 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
         context: Context string for logging (category/section/movie)
         category: Category name for directory structure
         section: Section name for directory structure
+    
+    Returns:
+        List of download result dicts: [{'title', 'category', 'section', 'success', ...}, ...]
     """
     if not movies:
         print("WARNING 没有电影可下载", file=sys.stderr)
-        return
+        return []
     
     print(f"\nINFO 开始下载 {len(movies)} 个电影的字幕...", file=sys.stderr)
-    success_count = 0
+    results = []
     
     for i, movie in enumerate(movies):
         print(f"\n{'='*60}", file=sys.stderr)
@@ -1636,11 +1711,63 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
             section=movie_section
         )
         print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
-        if result.get('subtitles_saved', 0) > 0:
-            success_count += 1
+        results.append({
+            'title': movie_title,
+            'category': category,
+            'section': movie_section,
+            'success': result.get('subtitles_saved', 0) > 0,
+            'subtitles_saved': result.get('subtitles_saved', 0)
+        })
     
+    success_count = sum(1 for r in results if r['success'])
     print(f"\n{'='*60}", file=sys.stderr)
     print(f"INFO 下载完成: {success_count}/{len(movies)} 个电影成功", file=sys.stderr)
+    
+    # Print summary
+    if results:
+        _print_download_summary(results)
+    
+    return results
+
+
+def _print_download_summary(results: list) -> None:
+    """Print a formatted summary of downloaded subtitles.
+    
+    Groups by category -> section, showing only successful downloads.
+    """
+    # Group by category -> section
+    grouped = {}
+    for r in results:
+        if not r['success']:
+            continue
+        cat = r.get('category', 'Unknown')
+        sec = r.get('section', 'Unknown')
+        if cat not in grouped:
+            grouped[cat] = {}
+        if sec not in grouped[cat]:
+            grouped[cat][sec] = []
+        grouped[cat][sec].append(r['title'])
+    
+    if not grouped:
+        print("\nINFO 没有成功下载任何字幕", file=sys.stderr)
+        return
+    
+    total = sum(len(movies) for cats in grouped.values() for movies in cats.values())
+    
+    print(f"\n{'='*60}", file=sys.stderr)
+    print("下载完成总结", file=sys.stderr)
+    print(f"{'='*60}", file=sys.stderr)
+    print(f"总电影数: {total}", file=sys.stderr)
+    
+    for cat in sorted(grouped.keys()):
+        print(f"\n[{cat}]", file=sys.stderr)
+        for sec in sorted(grouped[cat].keys()):
+            movies = grouped[cat][sec]
+            print(f"  [{sec}]", file=sys.stderr)
+            for movie in movies:
+                print(f"    - {movie} ✓", file=sys.stderr)
+    
+    print(f"\n{'='*60}", file=sys.stderr)
 
 
 if __name__ == "__main__":
