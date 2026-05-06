@@ -166,7 +166,7 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                     
                     # Scroll to bottom to trigger lazy loading of all sections
                     print(f"INFO   Scrolling to load all sections...", file=sys.stderr)
-                    for _scroll in range(2):
+                    for _scroll in range(4):
                         page.evaluate('window.scrollBy(0, window.innerHeight)')
                         time.sleep(2)
                 except Exception as e:
@@ -266,9 +266,20 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                         }
                         
                         if (exampleMovies.length > 0) {
+                            // Build section URL: prefer seeMoreHref, fallback to first movie's parent URL
+                            let sectionHref = seeMoreHref;
+                            if (!sectionHref && movieLinks.length > 0) {
+                                // Get the href of the first movie link and use it as section URL
+                                const firstHref = movieLinks[0].getAttribute("href");
+                                if (firstHref) {
+                                    sectionHref = firstHref.startsWith('http') ? firstHref : 'https://www.primevideo.com' + firstHref;
+                                }
+                            }
+                            
                             sections.push({
                                 title: title,
                                 seeMoreHref: seeMoreHref,
+                                sectionHref: sectionHref,
                                 exampleMovies: exampleMovies
                             });
                         }
@@ -284,6 +295,7 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                         'name': sec['title'],
                         'example_movies': sec.get('exampleMovies', []),
                         'see_more_href': sec.get('seeMoreHref'),
+                        'section_href': sec.get('sectionHref'),  # Full section page URL
                         'category_href': category['href']  # Store category URL for re-navigation
                     }
                     cat_data['sections'].append(sec_data)
@@ -1490,14 +1502,13 @@ def _fetch_category_movies(cat: dict, cookies: list) -> list:
     for sec in cat['sections']:
         sec_name = sec.get('title', sec.get('name', 'Unknown'))
         
-        if sec.get('see_more_href'):
+        # Navigate to section page and scroll to get all movies
+        section_url = sec.get('section_href')
+        if section_url:
             print(f"  INFO 爬取 section: {sec_name}", file=sys.stderr)
-            section_movies = fetch_section_movies(sec['see_more_href'], cookies)
+            section_movies = fetch_section_movies(section_url, cookies)
         else:
-            print(f"  INFO 爬取 section (无链接): {sec_name}", file=sys.stderr)
-            section_movies = _extract_section_movies_from_category(
-                sec['category_href'], sec_name, cookies
-            )
+            print(f"  WARNING 没有 section URL，跳过: {sec_name}", file=sys.stderr)
         
         # Add section info to each movie
         for m in section_movies:
@@ -1624,15 +1635,14 @@ def main():
             # Push to selection stack
             selection_stack.append(('section', cat_idx, sec_idx))
             
-            # Fetch full movie list
-            if sec.get('see_more_href'):
-                print("\nINFO 正在爬取完整电影列表 (scroll 到底部)...", file=sys.stderr)
-                full_movies = fetch_section_movies(sec['see_more_href'], cookies)
+            # Fetch full movie list by navigating to section page
+            section_url = sec.get('section_href')
+            if section_url:
+                print("\nINFO 导航到 Section 页面: " + section_url[:80] + "...", file=sys.stderr)
+                full_movies = fetch_section_movies(section_url, cookies)
             else:
-                print("\nINFO 导航到类目页面并滚动加载完整列表...", file=sys.stderr)
-                full_movies = _extract_section_movies_from_category(
-                    sec['category_href'], sec_name, cookies
-                )
+                print("WARNING 没有 section URL，使用示例电影", file=sys.stderr)
+                full_movies = sec.get('example_movies', [])
             
             if not full_movies:
                 print("WARNING 没有找到电影", file=sys.stderr)
