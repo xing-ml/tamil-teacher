@@ -125,14 +125,6 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                 const categories = [];
                 const seen = new Set();
                 
-                function getDirectText(el) {
-                    let text = "";
-                    for (const node of el.childNodes) {
-                        if (node.nodeType === Node.TEXT_NODE) text += node.textContent;
-                    }
-                    return text.trim();
-                }
-                
                 // Find all links that lead to genre or collection pages
                 const allLinks = document.querySelectorAll('a');
                 for (const link of allLinks) {
@@ -141,7 +133,7 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                     
                     // Match /genre/... or /collection/... URLs
                     if (href.includes('/genre/') || href.includes('/collection/')) {
-                        const text = getDirectText(link).trim();
+                        const text = link.textContent.trim();
                         if (text && text.length > 2 && text.length < 100 && !seen.has(text)) {
                             seen.add(text);
                             categories.push({
@@ -178,36 +170,52 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                 # Extract sections with 3-5 example movies each
                 sections_js = page.evaluate('''() => {
                     const sections = [];
-                    const rawContainers = document.querySelectorAll('[class*="row"], [class*="carousel"]');
                     const seen = new Set();
                     
-                    for (const container of rawContainers) {
+                    // Find all carousel/cards containers with movies
+                    const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
+                    
+                    for (const container of allContainers) {
                         // Check if this container has movie links
                         const movieLinks = container.querySelectorAll("a[href*='/detail/']");
                         if (movieLinks.length === 0) continue;
                         
-                        // Find section title from nearest h2/h3
+                        // Find section title by traversing up the DOM tree
                         let title = "";
-                        let prev = container.previousElementSibling;
-                        while (prev && !title) {
-                            const titleEl = prev.querySelector("h2, h3");
+                        
+                        // First, try to find h2 with carousel-title in the same parent section
+                        let parent = container.parentElement;
+                        while (parent && !title) {
+                            const titleEl = parent.querySelector('h2.headerComponents-qwttco');
                             if (titleEl) {
-                                for (const node of titleEl.childNodes) {
-                                    if (node.nodeType === Node.TEXT_NODE) title += node.textContent;
-                                }
-                                title = title.trim();
+                                title = titleEl.textContent.trim();
+                                break;
                             }
-                            prev = prev.previousElementSibling;
+                            parent = parent.parentElement;
+                            // Stop at a reasonable depth
+                            if (parent && parent.tagName === 'BODY') break;
+                        }
+                        
+                        // Fallback: check previous siblings
+                        if (!title) {
+                            let prev = container.previousElementSibling;
+                            while (prev && !title) {
+                                if (prev.tagName === 'H2' || prev.tagName === 'H3') {
+                                    title = prev.textContent.trim();
+                                }
+                                const titleEl = prev.querySelector('h2.headerComponents-qwttco');
+                                if (titleEl && !title) {
+                                    title = titleEl.textContent.trim();
+                                }
+                                prev = prev.previousElementSibling;
+                            }
                         }
                         
                         // Fallback: check inside container
                         if (!title) {
                             const innerTitle = container.querySelector("[class*='title'], [class*='heading']");
                             if (innerTitle) {
-                                for (const node of innerTitle.childNodes) {
-                                    if (node.nodeType === Node.TEXT_NODE) title += node.textContent;
-                                }
-                                title = title.trim();
+                                title = innerTitle.textContent.trim();
                             }
                         }
                         
