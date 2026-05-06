@@ -131,8 +131,8 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                     const href = link.getAttribute('href');
                     if (!href) continue;
                     
-                    // Match /genre/... or /collection/... URLs
-                    if (href.includes('/genre/') || href.includes('/collection/')) {
+                    // Match /genre/... or /collection/... or /kids/ URLs
+                    if (href.includes('/genre/') || href.includes('/collection/') || href.includes('/kids/')) {
                         const text = link.textContent.trim();
                         if (text && text.length > 2 && text.length < 100 && !seen.has(text)) {
                             seen.add(text);
@@ -294,17 +294,20 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
     return tree
 
 
-def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = False) -> dict:
+def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = False, movie_title: str = '', category: str = '', section: str = '') -> dict:
     """Extract subtitles from a Prime Video movie using playback envelope API.
     
-    Returns dict with keys: 'title', 'tamil', 'english', 'has_dual_subtitles'
+    Returns dict with keys: 'title', 'tamil', 'english', 'has_dual_subtitles',
+        'subtitles_saved', 'subtitle_dir', 'error'
     """
     result = {
-        'title': None,
+        'title': movie_title if movie_title else None,
         'tamil': None,
         'english': None,
         'has_dual_subtitles': False,
         'error': None,
+        'subtitles_saved': 0,
+        'subtitle_dir': '',
     }
     
     def parse_vtt(content):
@@ -786,18 +789,38 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             
             # Download and save each subtitle
             import os
-            movie_name = result.get('title', 'movie').replace('/', '_').replace('\\', '_').replace(':', '.')
-            output_dir = os.path.join('data', 'subtitles', movie_name)
+            
+            # Use movie_title parameter if available, otherwise fall back to page title
+            safe_movie = (movie_title if movie_title else result.get('title') or 'movie').replace('/', '_').replace('\\', '_').replace(':', '.')
+            
+            # New directory structure: data/subtitles/{category}/{section}/{movie}/
+            safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+            safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.') if section else 'unknown'
+            output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_movie)
             os.makedirs(output_dir, exist_ok=True)
             
             saved_count = 0
+            downloaded_langs = set()
+            
             for sub in filtered_subtitles:
-                srt_content = fetch_subtitle(sub['url'])
+                lang_code = sub['lang_code']
+                srt_content = None
+                
+                # Retry mechanism: 3s wait, max 3 retries
+                max_retries = 3
+                for attempt in range(max_retries):
+                    srt_content = fetch_subtitle(sub['url'])
+                    if srt_content:
+                        break
+                    if attempt < max_retries - 1:
+                        print(f"WARNING Retry {attempt+1}/{max_retries-1} for {lang_code} subtitle...", file=sys.stderr)
+                        time.sleep(3)
+                
                 if not srt_content:
-                    print(f"WARNING Failed to fetch subtitle: {sub['lang_code']} ({sub['type']})", file=sys.stderr)
+                    print(f"WARNING Failed to fetch subtitle after {max_retries} attempts: {lang_code} ({sub['type']})", file=sys.stderr)
                     continue
                 
-                filename = build_filename(movie_name, sub['lang_code'], sub['type'])
+                filename = build_filename(safe_movie, lang_code, sub['type'])
                 filepath = os.path.join(output_dir, f"{filename}.srt")
                 
                 with open(filepath, 'w', encoding='utf-8') as f:
@@ -806,10 +829,16 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 caption_count = srt_content.count('\n\n')
                 print(f"INFO Saved: {filepath} ({caption_count} captions, type={sub['type']})", file=sys.stderr)
                 saved_count += 1
+                downloaded_langs.add(lang_code)
             
+            # Update result with actual download status
             result['subtitles_saved'] = saved_count
             result['subtitle_dir'] = output_dir
+            result['tamil'] = 'ta' in downloaded_langs
+            result['english'] = 'en' in downloaded_langs
+            result['has_dual_subtitles'] = ('ta' in downloaded_langs and 'en' in downloaded_langs)
             print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
+            print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}", file=sys.stderr)
         
         finally:
             browser.close()
@@ -854,12 +883,12 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
             print("INFO Scrolling to bottom and waiting for infinite loading...", file=sys.stderr)
             prev_count = 0
             scroll_count = 0
-            max_scrolls = 30  # Safety limit
+            max_scrolls = 12  # Safety limit
             
             while scroll_count < max_scrolls:
                 # Scroll down by viewport height
                 page.evaluate('window.scrollBy(0, window.innerHeight)')
-                time.sleep(1.5)  # Wait for content to load
+                time.sleep(2)  # Wait for content to load
                 
                 # Count current movies
                 current_movies = page.evaluate('''() => {
@@ -1278,12 +1307,19 @@ def main():
             all_movies = []
             for cat in tree:
                 for sec in cat['sections']:
+                    sec_name = sec.get('title', sec.get('name', 'Unknown'))
                     if sec.get('see_more_href'):
                         section_movies = fetch_section_movies(sec['see_more_href'], cookies)
+                        for m in section_movies:
+                            m['_section'] = sec_name
                         all_movies.extend(section_movies)
+                    else:
+                        for m in sec.get('example_movies', []):
+                            m['_section'] = sec_name
+                        all_movies.extend(sec.get('example_movies', []))
             
             if all_movies:
-                download_movies(all_movies, cookies, "all")
+                download_movies(all_movies, cookies, "all", category="all", section="all")
             else:
                 print("WARNING 没有找到电影", file=sys.stderr)
             continue
@@ -1322,21 +1358,39 @@ def main():
             # Single movie - download directly
             movies = result.get('movies', [])
             if movies:
-                download_movies(movies, cookies, "movie")
+                cat_name = tree[cat_idx]['name'] if cat_idx >= 0 else ''
+                sec_name = tree[cat_idx]['sections'][sec_idx].get('title', tree[cat_idx]['sections'][sec_idx].get('name', '')) if cat_idx >= 0 and sec_idx is not None else ''
+                download_movies(movies, cookies, "movie", category=cat_name, section=sec_name)
         
         elif sel_type == 'section':
-            # Section - ask if user wants to select specific movies
+            # Section - extract movie list first, then let user choose
             cat = tree[cat_idx]
             sec = cat['sections'][sec_idx]
-            print(f"\nINFO 已选择 Section: {cat['name']} → {sec['name']}", file=sys.stderr)
+            sec_name = sec.get('title', sec.get('name', 'Unknown'))
+            print(f"\nINFO 已选择 Section: {cat['name']} → {sec_name}", file=sys.stderr)
             
-            # Ask for secondary interaction
-            print("\n是否要单独选择某个/某些电影？", file=sys.stderr)
-            print("(输入 y/yes/确认/是/好/下载 查看列表，输入 n/no/不/不需要/空 直接下载全部)", file=sys.stderr)
+            # Fetch full movie list first (with scroll)
+            if not sec.get('see_more_href'):
+                print("WARNING 该 section 没有 'See more' 链接，使用示例电影", file=sys.stderr)
+                full_movies = sec.get('example_movies', [])
+            else:
+                print("\nINFO 正在爬取完整电影列表 (scroll 到底部)...", file=sys.stderr)
+                full_movies = fetch_section_movies(sec['see_more_href'], cookies)
             
+            if not full_movies:
+                print("WARNING 没有找到电影", file=sys.stderr)
+                continue
+            
+            # Show full movie list
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"完整电影列表 (共 {len(full_movies)} 部):", file=sys.stderr)
+            for i, movie in enumerate(full_movies):
+                print(f"  {i+1}. {movie['title']}", file=sys.stderr)
+            
+            # Ask user to select movies or download all
             esc_count_sec = 0
             while True:
-                answer = read_with_esc("\n请选择: ")
+                answer = read_with_esc("\n请选择电影编号 (如 1, 1.3, 1.5-10, all, r重新输入): ")
                 
                 if answer == 'ESC':
                     esc_count_sec += 1
@@ -1348,83 +1402,50 @@ def main():
                 
                 if not answer:
                     # Empty = download all
-                    answer = 'no'
+                    download_movies(full_movies, cookies, "section", category=cat['name'], section=sec_name)
                     break
                 
-                if answer.lower() in ('y', 'yes', '确认', '是', '好', '下载'):
-                    # Fetch full movie list
-                    if not sec.get('see_more_href'):
-                        print("WARNING 该 section 没有 'See more' 链接，直接下载示例电影", file=sys.stderr)
-                        movies = sec.get('example_movies', [])
-                        download_movies(movies, cookies, "section")
-                        break
-                    
-                    print("\nINFO 正在爬取完整电影列表 (scroll 到底部)...", file=sys.stderr)
-                    full_movies = fetch_section_movies(sec['see_more_href'], cookies)
-                    
-                    if not full_movies:
-                        print("WARNING 没有找到电影", file=sys.stderr)
-                        break
-                    
-                    # Show full list
+                answer_lower = answer.lower().strip()
+                
+                if answer_lower == 'r':
+                    # Re-input: re-fetch movie list and prompt again
+                    print("\nINFO 重新获取电影列表...", file=sys.stderr)
+                    if sec.get('see_more_href'):
+                        full_movies = fetch_section_movies(sec['see_more_href'], cookies)
+                        if not full_movies:
+                            print("WARNING 没有找到电影", file=sys.stderr)
+                            break
                     print(f"\n{'='*60}", file=sys.stderr)
                     print(f"完整电影列表 (共 {len(full_movies)} 部):", file=sys.stderr)
                     for i, movie in enumerate(full_movies):
                         print(f"  {i+1}. {movie['title']}", file=sys.stderr)
-                    
-                    print(f"\n请选择电影编号 (如 1, 1.3, 1.5-10, all):", file=sys.stderr)
-                    
-                    # Get user's movie selection
-                    movie_selection = read_with_esc("")
-                    if movie_selection == 'ESC':
-                        print("\nINFO 退出", file=sys.stderr)
-                        break
-                    
-                    if not movie_selection:
-                        # Empty = download all
-                        download_movies(full_movies, cookies, "section")
-                        break
-                    
-                    # Parse movie selection
-                    if movie_selection.lower().strip() == 'all':
-                        download_movies(full_movies, cookies, "section")
-                    else:
-                        # Parse individual movie indices
-                        selected_movies = []
-                        for part in movie_selection.split(','):
-                            part = part.strip()
-                            if '-' in part:
-                                start, end = part.split('-', 1)
-                                for i in range(int(start), int(end) + 1):
-                                    if 0 < i <= len(full_movies):
-                                        selected_movies.append(full_movies[i - 1])
-                            else:
-                                try:
-                                    idx = int(part)
-                                    if 0 < idx <= len(full_movies):
-                                        selected_movies.append(full_movies[idx - 1])
-                                except ValueError:
-                                    pass
-                        
-                        if selected_movies:
-                            download_movies(selected_movies, cookies, "section")
-                        else:
-                            print("WARNING 未选择任何电影", file=sys.stderr)
+                    continue
+                
+                if answer_lower == 'all':
+                    download_movies(full_movies, cookies, "section", category=cat['name'], section=sec_name)
                     break
                 
-                elif answer.lower() in ('n', 'no', '不', '不需要', '不用'):
-                    # Download all movies in section
-                    if sec.get('see_more_href'):
-                        print("\nINFO 正在爬取完整电影列表...", file=sys.stderr)
-                        full_movies = fetch_section_movies(sec['see_more_href'], cookies)
-                        download_movies(full_movies, cookies, "section")
+                # Parse individual movie indices
+                selected_movies = []
+                for part in answer.split(','):
+                    part = part.strip()
+                    if '-' in part:
+                        start, end = part.split('-', 1)
+                        for i in range(int(start), int(end) + 1):
+                            if 0 < i <= len(full_movies):
+                                selected_movies.append(full_movies[i - 1])
                     else:
-                        # No see_more link, use example movies
-                        movies = sec.get('example_movies', [])
-                        download_movies(movies, cookies, "section")
-                    break
+                        try:
+                            idx = int(part)
+                            if 0 < idx <= len(full_movies):
+                                selected_movies.append(full_movies[idx - 1])
+                        except ValueError:
+                            pass
+                
+                if selected_movies:
+                    download_movies(selected_movies, cookies, "section", category=cat['name'], section=sec_name)
                 else:
-                    print("\nWARNING 无效输入，请重新输入", file=sys.stderr)
+                    print("WARNING 未选择任何电影，请重新输入", file=sys.stderr)
             continue
         
         elif sel_type == 'category':
@@ -1438,13 +1459,18 @@ def main():
                 if sec.get('see_more_href'):
                     print(f"  INFO 爬取 section: {sec_name}", file=sys.stderr)
                     section_movies = fetch_section_movies(sec['see_more_href'], cookies)
+                    # Add section info to each movie dict
+                    for m in section_movies:
+                        m['_section'] = sec_name
                     all_movies.extend(section_movies)
                 else:
                     # Use example movies
+                    for m in sec.get('example_movies', []):
+                        m['_section'] = sec_name
                     all_movies.extend(sec.get('example_movies', []))
             
             if all_movies:
-                download_movies(all_movies, cookies, "category")
+                download_movies(all_movies, cookies, "category", category=cat['name'], section="")
             else:
                 print("WARNING 没有找到电影", file=sys.stderr)
         
@@ -1459,13 +1485,15 @@ def main():
             break
 
 
-def download_movies(movies: list, cookies: list, context: str = "") -> None:
+def download_movies(movies: list, cookies: list, context: str = "", category: str = "", section: str = "") -> None:
     """Download subtitles for a list of movies.
     
     Args:
-        movies: List of movie dicts
+        movies: List of movie dicts (each has 'title' and 'url')
         cookies: Playwright cookies
         context: Context string for logging (category/section/movie)
+        category: Category name for directory structure
+        section: Section name for directory structure
     """
     if not movies:
         print("WARNING 没有电影可下载", file=sys.stderr)
@@ -1476,8 +1504,16 @@ def download_movies(movies: list, cookies: list, context: str = "") -> None:
     
     for i, movie in enumerate(movies):
         print(f"\n{'='*60}", file=sys.stderr)
-        print(f"INFO 处理电影 {i+1}/{len(movies)}: {movie['title']}", file=sys.stderr)
-        result = extract_movie_subtitles(movie['url'], cookies)
+        movie_title = movie.get('title', '')
+        # Use movie's own section info if available (for category downloads)
+        movie_section = movie.get('_section', section)
+        print(f"INFO 处理电影 {i+1}/{len(movies)}: {movie_title}", file=sys.stderr)
+        result = extract_movie_subtitles(
+            movie['url'], cookies,
+            movie_title=movie_title,
+            category=category,
+            section=movie_section
+        )
         print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
         if result.get('subtitles_saved', 0) > 0:
             success_count += 1
