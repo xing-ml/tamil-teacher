@@ -166,7 +166,7 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                     
                     # Scroll to bottom to trigger lazy loading of all sections
                     print(f"INFO   Scrolling to load all sections...", file=sys.stderr)
-                    for _scroll in range(4):
+                    for _scroll in range(3):
                         page.evaluate('window.scrollBy(0, window.innerHeight)')
                         time.sleep(2)
                 except Exception as e:
@@ -266,13 +266,21 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                         }
                         
                         if (exampleMovies.length > 0) {
-                            // Build section URL: prefer seeMoreHref, fallback to first movie's parent URL
+                            // Build section URL: prefer seeMoreHref (data-testid="see-more")
                             let sectionHref = seeMoreHref;
-                            if (!sectionHref && movieLinks.length > 0) {
-                                // Get the href of the first movie link and use it as section URL
-                                const firstHref = movieLinks[0].getAttribute("href");
-                                if (firstHref) {
-                                    sectionHref = firstHref.startsWith('http') ? firstHref : 'https://www.primevideo.com' + firstHref;
+                            
+                            // If no "See more" link, try to find /browse/ link in parent container
+                            if (!sectionHref) {
+                                const parent = container.parentElement;
+                                if (parent) {
+                                    const allParentLinks = parent.querySelectorAll("a");
+                                    for (const link of allParentLinks) {
+                                        const href = link.getAttribute("href");
+                                        if (href && href.includes("/browse/")) {
+                                            sectionHref = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                                            break;
+                                        }
+                                    }
                                 }
                             }
                             
