@@ -981,11 +981,12 @@ def build_tree_display(tree: list) -> str:
         
         for sec_idx, section in enumerate(category['sections']):
             sec_num = sec_idx + 1
+            sec_name = section.get('title', section.get('name', 'Unknown'))
             examples = section.get('example_movies', [])
             example_str = ""
             if examples:
                 example_str = "  ← 示例: " + ", ".join(m['title'] for m in examples[:3])
-            lines.append(f"  {cat_num}.{sec_num}. {section['name']}{example_str}")
+            lines.append(f"  {cat_num}.{sec_num}. {sec_name}{example_str}")
     
     return '\n'.join(lines)
 
@@ -1010,25 +1011,28 @@ def build_partial_tree_display(tree: list, match_info: dict) -> str:
         lines.append(f"{cat_num}. {cat['name']}")
         for sec_idx, section in enumerate(cat['sections']):
             sec_num = sec_idx + 1
-            lines.append(f"  {cat_num}.{sec_num}. {section['name']}")
+            sec_name = section.get('title', section.get('name', 'Unknown'))
+            lines.append(f"  {cat_num}.{sec_num}. {sec_name}")
     
     elif match_info['type'] == 'section':
         cat = tree[match_info['cat_idx']]
         cat_num = match_info['cat_idx'] + 1
         sec = cat['sections'][match_info['sec_idx']]
         sec_num = match_info['sec_idx'] + 1
+        sec_name = sec.get('title', sec.get('name', 'Unknown'))
         lines.append(f"{cat_num}. {cat['name']}")
-        lines.append(f"  {cat_num}.{sec_num}. {sec['name']}")
+        lines.append(f"  {cat_num}.{sec_num}. {sec_name}")
     
     elif match_info['type'] == 'movie':
         cat = tree[match_info['cat_idx']]
         cat_num = match_info['cat_idx'] + 1
         sec = cat['sections'][match_info['sec_idx']]
         sec_num = match_info['sec_idx'] + 1
-        mov = sec['example_movies'][match_info['mov_idx']]
+        sec_name = sec.get('title', sec.get('name', 'Unknown'))
+        mov = sec.get('example_movies', [])[match_info['mov_idx']]
         mov_num = match_info['mov_idx'] + 1
         lines.append(f"{cat_num}. {cat['name']}")
-        lines.append(f"  {cat_num}.{sec_num}. {sec['name']}")
+        lines.append(f"  {cat_num}.{sec_num}. {sec_name}")
         lines.append(f"    {cat_num}.{sec_num}.{mov_num}. {mov['title']}")
     
     return '\n'.join(lines)
@@ -1207,7 +1211,7 @@ def get_movies_for_selection(tree: list, selection: str) -> tuple:
         movies = []
         for category in tree:
             for section in category['sections']:
-                movies.extend(section['movies'])
+                movies.extend(section.get('example_movies', []))
         return movies, None
     
     # Try numeric parsing
@@ -1430,8 +1434,9 @@ def main():
             
             all_movies = []
             for sec in cat['sections']:
+                sec_name = sec.get('title', sec.get('name', 'Unknown'))
                 if sec.get('see_more_href'):
-                    print(f"  INFO 爬取 section: {sec['name']}", file=sys.stderr)
+                    print(f"  INFO 爬取 section: {sec_name}", file=sys.stderr)
                     section_movies = fetch_section_movies(sec['see_more_href'], cookies)
                     all_movies.extend(section_movies)
                 else:
