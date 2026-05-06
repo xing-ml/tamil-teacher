@@ -283,7 +283,8 @@ def extract_category_tree(cookies: list, headless: bool = False) -> list:
                     sec_data = {
                         'name': sec['title'],
                         'example_movies': sec.get('exampleMovies', []),
-                        'see_more_href': sec.get('seeMoreHref')
+                        'see_more_href': sec.get('seeMoreHref'),
+                        'category_href': category['href']  # Store category URL for re-navigation
                     }
                     cat_data['sections'].append(sec_data)
                     
@@ -855,6 +856,110 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
     return result
 
 
+def _extract_section_movies_from_category(category_url: str, section_title: str, cookies: list) -> list:
+    """Navigate to category page, scroll to load all sections, then extract all movies from a specific section.
+    
+    Args:
+        category_url: The category page URL
+        section_title: The title of the target section to extract movies from
+        cookies: Playwright cookies
+    
+    Returns:
+        List of all movie dicts from the target section
+    """
+    all_movies = []
+    seen_urls = set()
+    
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context()
+        context.add_cookies(cookies)
+        page = context.new_page()
+        
+        try:
+            # Navigate to category page
+            if category_url.startswith('http'):
+                full_url = category_url
+            else:
+                full_url = 'https://www.primevideo.com' + category_url
+            
+            print(f"INFO   Navigating to: {full_url[:100]}...", file=sys.stderr)
+            page.goto(full_url, timeout=30000)
+            time.sleep(8)
+            
+            # Scroll to load all sections
+            print(f"INFO   Scrolling to load all sections...", file=sys.stderr)
+            for _scroll in range(2):
+                page.evaluate('window.scrollBy(0, window.innerHeight)')
+                time.sleep(2)
+            
+            # Find target section by title and extract ALL its movies
+            all_movies = page.evaluate('''(sectionTitle) => {
+                const movies = [];
+                const seen = new Set();
+                
+                // Find all section containers (each has a title h2 and movie links)
+                const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
+                
+                for (const container of allContainers) {
+                    // Find section title
+                    let title = "";
+                    let parent = container.parentElement;
+                    while (parent && !title) {
+                        const titleEl = parent.querySelector('h2.headerComponents-qwttco');
+                        if (titleEl) {
+                            title = titleEl.textContent.trim();
+                            break;
+                        }
+                        parent = parent.parentElement;
+                        if (parent && parent.tagName === 'BODY') break;
+                    }
+                    
+                    if (!title) continue;
+                    
+                    // Check if this is the target section
+                    if (title !== sectionTitle) continue;
+                    
+                    // Extract ALL movie links from this section
+                    const movieLinks = container.querySelectorAll("a[href*='/detail/']");
+                    for (const link of movieLinks) {
+                        const href = link.getAttribute("href");
+                        if (!href || seen.has(href)) continue;
+                        
+                        let movieTitle = "";
+                        const titleAttr = link.getAttribute("aria-label") || link.getAttribute("data-tracker-title");
+                        if (titleAttr) {
+                            movieTitle = titleAttr.trim();
+                        } else {
+                            for (const node of link.childNodes) {
+                                if (node.nodeType === Node.TEXT_NODE) movieTitle += node.textContent;
+                            }
+                            movieTitle = movieTitle.trim();
+                        }
+                        
+                        if (movieTitle && movieTitle.length > 2 && movieTitle.length < 100) {
+                            seen.add(href);
+                            movies.push({
+                                title: movieTitle,
+                                url: href.startsWith('http') ? href : 'https://www.primevideo.com' + href
+                            });
+                        }
+                    }
+                }
+                return movies;
+            }''', section_title)
+            
+            print(f"INFO   Found {len(all_movies)} movies in section '{section_title}'", file=sys.stderr)
+        
+        except Exception as e:
+            print(f"WARNING Failed to extract section movies: {e}", file=sys.stderr)
+        
+        finally:
+            browser.close()
+    
+    return all_movies
+
+
 def fetch_section_movies(section_url: str, cookies: list, headless: bool = False) -> list:
     """Navigate to section page, scroll to bottom (infinite load), and extract all movies.
     
@@ -1379,12 +1484,19 @@ def main():
             print(f"\nINFO 已选择 Section: {cat['name']} → {sec_name}", file=sys.stderr)
             
             # Fetch full movie list first (with scroll)
-            if not sec.get('see_more_href'):
-                print("WARNING 该 section 没有 'See more' 链接，使用示例电影", file=sys.stderr)
-                full_movies = sec.get('example_movies', [])
-            else:
+            if sec.get('see_more_href'):
                 print("\nINFO 正在爬取完整电影列表 (scroll 到底部)...", file=sys.stderr)
                 full_movies = fetch_section_movies(sec['see_more_href'], cookies)
+            else:
+                # Navigate to category page, scroll to load all sections,
+                # then find target section and extract ALL its movies
+                print("\nINFO 导航到类目页面并滚动加载完整列表...", file=sys.stderr)
+                full_movies = _extract_section_movies_from_category(
+                    sec['category_href'], sec_name, cookies
+                )
+                if not full_movies:
+                    print("WARNING 没有找到电影，使用示例电影", file=sys.stderr)
+                    full_movies = sec.get('example_movies', [])
             
             if not full_movies:
                 print("WARNING 没有找到电影", file=sys.stderr)
