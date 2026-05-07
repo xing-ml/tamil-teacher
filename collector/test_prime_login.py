@@ -91,168 +91,164 @@ def login_prime_video(email: str, password: str, headless: bool = False) -> dict
             browser.close()
 
 
-def extract_categories_only(cookies: list, headless: bool = False) -> list:
+def extract_categories_only(page, cookies: list) -> list:
     """Navigate to Prime Video homepage and extract only category names and hrefs.
     
-    This is FAST - only extracts from homepage, no navigation to category pages.
+    Uses shared page object. FAST - only extracts from homepage.
+    
+    Args:
+        page: Playwright page object (shared browser context)
+        cookies: Playwright cookies list
     
     Returns:
         List of category dicts: [{'name': '...', 'href': '...'}, ...]
     """
-    categories = []
-    
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
-        context = browser.new_context()
-        context.add_cookies(cookies)
-        page = context.new_page()
+    try:
+        print("INFO Navigating to Prime Video homepage...", file=sys.stderr)
+        page.goto("https://www.primevideo.com", timeout=30000)
+        time.sleep(5)
         
-        try:
-            print("INFO Navigating to Prime Video homepage...", file=sys.stderr)
-            page.goto("https://www.primevideo.com", timeout=30000)
-            time.sleep(5)
-            
-            print("INFO Extracting categories from homepage...", file=sys.stderr)
-            
-            category_links_js = page.evaluate('''() => {
-                const categories = [];
-                const seen = new Set();
-                const allLinks = document.querySelectorAll('a');
-                for (const link of allLinks) {
-                    const href = link.getAttribute('href');
-                    if (!href) continue;
-                    if (href.includes('/genre/') || href.includes('/collection/') || href.includes('/kids')) {
-                        const text = link.textContent.trim();
-                        if (text && text.length > 2 && text.length < 100 && !seen.has(text)) {
-                            seen.add(text);
-                            categories.push({
-                                name: text,
-                                href: href.startsWith('http') ? href : 'https://www.primevideo.com' + href
-                            });
-                        }
+        print("INFO Extracting categories from homepage...", file=sys.stderr)
+        
+        category_links_js = page.evaluate('''() => {
+            const categories = [];
+            const seen = new Set();
+            const allLinks = document.querySelectorAll('a');
+            for (const link of allLinks) {
+                const href = link.getAttribute('href');
+                if (!href) continue;
+                if (href.includes('/genre/') || href.includes('/collection/') || href.includes('/kids')) {
+                    const text = link.textContent.trim();
+                    if (text && text.length > 2 && text.length < 100 && !seen.has(text)) {
+                        seen.add(text);
+                        categories.push({
+                            name: text,
+                            href: href.startsWith('http') ? href : 'https://www.primevideo.com' + href
+                        });
                     }
                 }
-                return categories;
-            }''')
-            
-            print(f"INFO Found {len(category_links_js)} categories", file=sys.stderr)
-            for i, cat in enumerate(category_links_js):
-                print(f"  {i+1}. {cat['name']}", file=sys.stderr)
-            
-        finally:
-            browser.close()
+            }
+            return categories;
+        }''')
+        
+        print(f"INFO Found {len(category_links_js)} categories", file=sys.stderr)
+        for i, cat in enumerate(category_links_js):
+            print(f"  {i+1}. {cat['name']}", file=sys.stderr)
+    
+    except Exception as e:
+        print(f"WARNING extract_categories_only failed: {e}", file=sys.stderr)
+        return []
     
     return category_links_js
 
 
-def extract_sections_from_category(category_url: str, cookies: list, headless: bool = False) -> list:
+def extract_sections_from_category(page, category_url: str, cookies: list) -> list:
     """Navigate to a category page and extract all sections with their URLs.
     
-    Uses the EXACT same JS logic as extract_category_tree (proven working).
-    Single-browser pattern (same context for cookies).
+    Uses shared page object. Same JS logic as extract_category_tree.
+    
+    Args:
+        page: Playwright page object (shared browser context)
+        category_url: Category page URL
+        cookies: Playwright cookies list
     
     Returns:
         List of section dicts: [{'name': '...', 'href': '...'}, ...]
     """
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
-        context = browser.new_context()
-        context.add_cookies(cookies)
-        page = context.new_page()
+    try:
+        print(f"INFO Navigating to category: {category_url[:80]}...", file=sys.stderr)
+        page.goto(category_url, timeout=30000)
+        time.sleep(8)
         
-        try:
-            print(f"INFO Navigating to category: {category_url[:80]}...", file=sys.stderr)
-            page.goto(category_url, timeout=30000)
-            time.sleep(8)
+        print("INFO   Scrolling to load all sections...", file=sys.stderr)
+        for _scroll in range(3):
+            page.evaluate('window.scrollBy(0, window.innerHeight)')
+            time.sleep(2)
+        
+        # Use the EXACT same JS as extract_category_tree (proven working)
+        # Split into two evaluate calls to debug
+        container_count = page.evaluate('''() => {
+            const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
+            let count = 0;
+            for (const c of allContainers) {
+                if (c.querySelectorAll("a[href*='/detail/']").length > 0) count++;
+            }
+            return count;
+        }''')
+        print(f"INFO   Debug: {container_count} containers with movie links", file=sys.stderr)
+        
+        sections_js = page.evaluate('''() => {
+            const sections = [];
+            const seen = new Set();
+            const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
             
-            print("INFO   Scrolling to load all sections...", file=sys.stderr)
-            for _scroll in range(3):
-                page.evaluate('window.scrollBy(0, window.innerHeight)')
-                time.sleep(2)
-            
-            # Use the EXACT same JS as extract_category_tree (proven working)
-            # Split into two evaluate calls to debug
-            container_count = page.evaluate('''() => {
-                const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
-                let count = 0;
-                for (const c of allContainers) {
-                    if (c.querySelectorAll("a[href*='/detail/']").length > 0) count++;
-                }
-                return count;
-            }''')
-            print(f"INFO   Debug: {container_count} containers with movie links", file=sys.stderr)
-            
-            sections_js = page.evaluate('''() => {
-                const sections = [];
-                const seen = new Set();
-                const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
+            for (const container of allContainers) {
+                const movieLinks = container.querySelectorAll("a[href*='/detail/']");
+                if (movieLinks.length === 0) continue;
                 
-                for (const container of allContainers) {
-                    const movieLinks = container.querySelectorAll("a[href*='/detail/']");
-                    if (movieLinks.length === 0) continue;
-                    
-                    let title = "";
-                    let parent = container.parentElement;
-                    while (parent && !title) {
-                        const titleEl = parent.querySelector('h2.headerComponents-qwttco');
-                        if (titleEl) { title = titleEl.textContent.trim(); break; }
-                        parent = parent.parentElement;
-                        if (parent && parent.tagName === 'BODY') break;
+                let title = "";
+                let parent = container.parentElement;
+                while (parent && !title) {
+                    const titleEl = parent.querySelector('h2.headerComponents-qwttco');
+                    if (titleEl) { title = titleEl.textContent.trim(); break; }
+                    parent = parent.parentElement;
+                    if (parent && parent.tagName === 'BODY') break;
+                }
+                if (!title || title.length < 2) continue;
+                if (seen.has(title)) continue;
+                seen.add(title);
+                
+                let seeMoreHref = null;
+                for (const link of container.querySelectorAll("a")) {
+                    if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
+                        seeMoreHref = link.getAttribute("href");
+                        break;
                     }
-                    if (!title || title.length < 2) continue;
-                    if (seen.has(title)) continue;
-                    seen.add(title);
-                    
-                    let seeMoreHref = null;
-                    for (const link of container.querySelectorAll("a")) {
-                        if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
-                            seeMoreHref = link.getAttribute("href");
-                            break;
-                        }
-                    }
-                    
-                    let sectionHref = seeMoreHref;
-                    if (!sectionHref) {
-                        const par = container.parentElement;
-                        if (par) {
-                            for (const link of par.querySelectorAll("a")) {
-                                const href = link.getAttribute("href");
-                                if (href && href.includes("/browse/")) {
-                                    sectionHref = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
-                                    break;
-                                }
+                }
+                
+                let sectionHref = seeMoreHref;
+                if (!sectionHref) {
+                    const par = container.parentElement;
+                    if (par) {
+                        for (const link of par.querySelectorAll("a")) {
+                            const href = link.getAttribute("href");
+                            if (href && href.includes("/browse/")) {
+                                sectionHref = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                                break;
                             }
                         }
                     }
-                    
-                    sections.push({ title: title, href: sectionHref });
                 }
                 
-                // Return as JSON string to avoid serialization issues
-                return JSON.stringify(sections);
-            }''')
+                sections.push({ title: title, href: sectionHref });
+            }
             
-            # Parse JSON string back to Python list
-            import json
-            if isinstance(sections_js, str):
-                try:
-                    sections_js = json.loads(sections_js)
-                    if not isinstance(sections_js, list):
-                        sections_js = []
-                except (json.JSONDecodeError, TypeError):
-                    print(f"WARNING JSON parse failed: {sections_js[:100]}", file=sys.stderr)
-                    sections_js = []
-            else:
-                print(f"WARNING sections_js is not a string: {type(sections_js)} = {sections_js}", file=sys.stderr)
-                sections_js = []
-            
-            print(f"INFO   Found {len(sections_js)} sections", file=sys.stderr)
-            for i, sec in enumerate(sections_js):
-                has_url = sec.get('href') and sec['href'].startswith('http')
-                print(f"    {i+1}. {sec.get('title', '?')} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
+            // Return as JSON string to avoid serialization issues
+            return JSON.stringify(sections);
+        }''')
         
-        finally:
-            browser.close()
+        # Parse JSON string back to Python list
+        import json
+        if isinstance(sections_js, str):
+            try:
+                sections_js = json.loads(sections_js)
+                if not isinstance(sections_js, list):
+                    sections_js = []
+            except (json.JSONDecodeError, TypeError):
+                print(f"WARNING JSON parse failed: {sections_js[:100]}", file=sys.stderr)
+                sections_js = []
+        else:
+            print(f"WARNING sections_js is not a string: {type(sections_js)} = {sections_js}", file=sys.stderr)
+            sections_js = []
+        
+        print(f"INFO   Found {len(sections_js)} sections", file=sys.stderr)
+        for i, sec in enumerate(sections_js):
+            has_url = sec.get('href') and sec['href'].startswith('http')
+            print(f"    {i+1}. {sec.get('title', '?')} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
+    
+    except Exception as e:
+        print(f"WARNING extract_sections_from_category failed: {e}", file=sys.stderr)
+        return []
     
     return sections_js
 
@@ -869,155 +865,150 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
     
     return result
 
-def _extract_section_movies_from_category(category_url: str, section_title: str, cookies: list) -> list:
+def _extract_section_movies_from_category(page, category_url: str, section_title: str, cookies: list) -> list:
     """Navigate to category page, find target section, click 'See more' to go to section page,
     then use shared scroll-and-collect logic to get all movies.
     
+    Uses shared page object.
+    
     Args:
+        page: Playwright page object (shared browser context)
         category_url: The category page URL
         section_title: The title of the target section to extract movies from
-        cookies: Playwright cookies
+        cookies: Playwright cookies list
     
     Returns:
         List of all movie dicts from the target section
     """
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context()
-        context.add_cookies(cookies)
-        page = context.new_page()
+    try:
+        # Navigate to category page
+        if category_url.startswith('http'):
+            full_url = category_url
+        else:
+            full_url = 'https://www.primevideo.com' + category_url
         
-        try:
-            # Navigate to category page
-            if category_url.startswith('http'):
-                full_url = category_url
+        print(f"INFO   Navigating to: {full_url[:100]}...", file=sys.stderr)
+        page.goto(full_url, timeout=30000)
+        time.sleep(8)
+        
+        # Scroll to load all sections
+        print(f"INFO   Scrolling to load all sections...", file=sys.stderr)
+        for _scroll in range(2):
+            page.evaluate('window.scrollBy(0, window.innerHeight)')
+            time.sleep(2)
+        
+        # Find target section's "See more" link
+        section_href = page.evaluate('''(sectionTitle) => {
+            const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
+            for (const container of allContainers) {
+                let title = "";
+                let parent = container.parentElement;
+                while (parent && !title) {
+                    const titleEl = parent.querySelector('h2.headerComponents-qwttco');
+                    if (titleEl) { title = titleEl.textContent.trim(); break; }
+                    parent = parent.parentElement;
+                    if (parent && parent.tagName === 'BODY') break;
+                }
+                if (title === sectionTitle) {
+                    // Find "See more" link
+                    for (const link of container.querySelectorAll("a")) {
+                        if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
+                            const href = link.getAttribute("href");
+                            if (href) return href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                        }
+                    }
+                    // Fallback: find any /browse/ link in parent
+                    const par = container.parentElement;
+                    if (par) {
+                        for (const link of par.querySelectorAll("a")) {
+                            const href = link.getAttribute("href");
+                            if (href && href.includes("/browse/")) {
+                                return href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }''', section_title)
+        
+        if not section_href:
+            print(f"WARNING Could not find 'See more' link for section '{section_title}'", file=sys.stderr)
+            return []
+        
+        print(f"INFO   Found section URL: {section_href[:80]}...", file=sys.stderr)
+        
+        # Navigate to section page
+        page.goto(section_href, wait_until="domcontentloaded", timeout=30000)
+        time.sleep(3)
+        
+        # Reuse fetch_section_movies logic inline
+        extract_js = '''() => {
+            const movies = [];
+            for (const link of document.querySelectorAll("a[href*='/detail/']")) {
+                const href = link.getAttribute("href");
+                if (!href) continue;
+                const url = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                const title = link.textContent?.trim() || "";
+                if (title && title.length > 2 && title.length < 100) {
+                    movies.push({ url, title });
+                }
+            }
+            return movies;
+        }'''
+        
+        seen_urls = {}
+        consecutive_no_new = 0
+        scroll_count = 0
+        
+        while scroll_count < 15:
+            page.evaluate('window.scrollBy(0, 500)')
+            time.sleep(1)
+            
+            current_movies = page.evaluate(extract_js)
+            new_count = 0
+            for m in current_movies:
+                if m['url'] not in seen_urls:
+                    seen_urls[m['url']] = m['title']
+                    new_count += 1
+            
+            total = len(seen_urls)
+            if new_count > 0:
+                if INFO_MODE:
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
+                consecutive_no_new = 0
             else:
-                full_url = 'https://www.primevideo.com' + category_url
+                consecutive_no_new += 1
+                if INFO_MODE:
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
             
-            print(f"INFO   Navigating to: {full_url[:100]}...", file=sys.stderr)
-            page.goto(full_url, timeout=30000)
-            time.sleep(8)
-            
-            # Scroll to load all sections
-            print(f"INFO   Scrolling to load all sections...", file=sys.stderr)
-            for _scroll in range(2):
-                page.evaluate('window.scrollBy(0, window.innerHeight)')
-                time.sleep(2)
-            
-            # Find target section's "See more" link
-            section_href = page.evaluate('''(sectionTitle) => {
-                const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
-                for (const container of allContainers) {
-                    let title = "";
-                    let parent = container.parentElement;
-                    while (parent && !title) {
-                        const titleEl = parent.querySelector('h2.headerComponents-qwttco');
-                        if (titleEl) { title = titleEl.textContent.trim(); break; }
-                        parent = parent.parentElement;
-                        if (parent && parent.tagName === 'BODY') break;
-                    }
-                    if (title === sectionTitle) {
-                        // Find "See more" link
-                        for (const link of container.querySelectorAll("a")) {
-                            if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
-                                const href = link.getAttribute("href");
-                                if (href) return href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
-                            }
-                        }
-                        // Fallback: find any /browse/ link in parent
-                        const par = container.parentElement;
-                        if (par) {
-                            for (const link of par.querySelectorAll("a")) {
-                                const href = link.getAttribute("href");
-                                if (href && href.includes("/browse/")) {
-                                    return href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
-                                }
-                            }
-                        }
-                    }
-                }
-                return null;
-            }''', section_title)
-            
-            if not section_href:
-                print(f"WARNING Could not find 'See more' link for section '{section_title}'", file=sys.stderr)
-                return []
-            
-            print(f"INFO   Found section URL: {section_href[:80]}...", file=sys.stderr)
-            
-            # Navigate to section page and use fetch_section_movies
-            page.goto(section_href, wait_until="domcontentloaded", timeout=30000)
-            time.sleep(3)
-            
-            # Reuse fetch_section_movies logic inline
-            extract_js = '''() => {
-                const movies = [];
-                for (const link of document.querySelectorAll("a[href*='/detail/']")) {
-                    const href = link.getAttribute("href");
-                    if (!href) continue;
-                    const url = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
-                    const title = link.textContent?.trim() || "";
-                    if (title && title.length > 2 && title.length < 100) {
-                        movies.push({ url, title });
-                    }
-                }
-                return movies;
-            }'''
-            
-            seen_urls = {}
-            consecutive_no_new = 0
-            scroll_count = 0
-            
-            while scroll_count < 15:
-                page.evaluate('window.scrollBy(0, 500)')
-                time.sleep(1)
-                
-                current_movies = page.evaluate(extract_js)
-                new_count = 0
-                for m in current_movies:
-                    if m['url'] not in seen_urls:
-                        seen_urls[m['url']] = m['title']
-                        new_count += 1
-                
-                total = len(seen_urls)
-                if new_count > 0:
-                    if INFO_MODE:
-                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
-                    consecutive_no_new = 0
-                else:
-                    consecutive_no_new += 1
-                    if INFO_MODE:
-                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
-                
-                scroll_count += 1
-                if consecutive_no_new >= 3:
-                    if INFO_MODE:
-                        print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
-                    break
-            
-            all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
-            print(f"INFO   Found {len(all_movies)} movies in section '{section_title}'", file=sys.stderr)
+            scroll_count += 1
+            if consecutive_no_new >= 3:
+                if INFO_MODE:
+                    print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
+                break
         
-        except Exception as e:
-            print(f"WARNING Failed to extract section movies: {e}", file=sys.stderr)
-        
-        finally:
-            browser.close()
+        all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
+        print(f"INFO   Found {len(all_movies)} movies in section '{section_title}'", file=sys.stderr)
+    
+    except Exception as e:
+        print(f"WARNING _extract_section_movies_from_category failed: {e}", file=sys.stderr)
+        return []
     
     return all_movies
 
 
-def fetch_section_movies(section_url: str, cookies: list, headless: bool = False) -> list:
+def fetch_section_movies(page, section_url: str, cookies: list) -> list:
     """Navigate to section page, scroll to collect all movies (virtual scrolling aware), and extract all movies.
     
-    Prime Video uses virtual scrolling: movies outside viewport are removed from DOM.
+    Uses shared page object. Prime Video uses virtual scrolling: movies outside viewport are removed from DOM.
     Strategy: scroll incrementally, extract {url, title} each time, accumulate by URL.
     Stop when 3 consecutive scrolls yield no new URLs.
     
     Args:
+        page: Playwright page object (shared browser context)
         section_url: The 'See more' URL for the section
         cookies: Playwright cookies list
-        headless: Whether to run headless
     
     Returns:
         List of movie dicts: [{'title': '...', 'url': '...'}, ...]
@@ -1039,61 +1030,56 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
     all_movies = []
     seen_urls = {}
     
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
-        context = browser.new_context()
-        context.add_cookies(cookies)
-        page = context.new_page()
+    try:
+        # Handle relative URLs
+        if section_url.startswith('/'):
+            full_url = 'https://www.primevideo.com' + section_url
+        elif section_url.startswith('http'):
+            full_url = section_url
+        else:
+            full_url = 'https://www.primevideo.com' + '/' + section_url
         
-        try:
-            # Handle relative URLs
-            if section_url.startswith('/'):
-                full_url = 'https://www.primevideo.com' + section_url
-            elif section_url.startswith('http'):
-                full_url = section_url
+        print(f"INFO Navigating to section: {full_url[:100]}...", file=sys.stderr)
+        page.goto(full_url, timeout=30000)
+        time.sleep(5)
+        
+        # Scroll and accumulate movies
+        consecutive_no_new = 0
+        scroll_count = 0
+        
+        while scroll_count < 15:
+            page.evaluate('window.scrollBy(0, 500)')
+            time.sleep(1)
+            
+            current_movies = page.evaluate(extract_js)
+            new_count = 0
+            for m in current_movies:
+                if m['url'] not in seen_urls:
+                    seen_urls[m['url']] = m['title']
+                    new_count += 1
+            
+            total = len(seen_urls)
+            if new_count > 0:
+                if INFO_MODE:
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
+                consecutive_no_new = 0
             else:
-                full_url = 'https://www.primevideo.com' + '/' + section_url
+                consecutive_no_new += 1
+                if INFO_MODE:
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
             
-            print(f"INFO Navigating to section: {full_url[:100]}...", file=sys.stderr)
-            page.goto(full_url, timeout=30000)
-            time.sleep(5)
-            
-            # Scroll and accumulate movies
-            consecutive_no_new = 0
-            scroll_count = 0
-            
-            while scroll_count < 15:
-                page.evaluate('window.scrollBy(0, 500)')
-                time.sleep(1)
-                
-                current_movies = page.evaluate(extract_js)
-                new_count = 0
-                for m in current_movies:
-                    if m['url'] not in seen_urls:
-                        seen_urls[m['url']] = m['title']
-                        new_count += 1
-                
-                total = len(seen_urls)
-                if new_count > 0:
-                    if INFO_MODE:
-                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
-                    consecutive_no_new = 0
-                else:
-                    consecutive_no_new += 1
-                    if INFO_MODE:
-                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
-                
-                scroll_count += 1
-                if consecutive_no_new >= 3:
-                    if INFO_MODE:
-                        print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
-                    break
-            
-            all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
-            print(f"INFO Total movies collected: {len(all_movies)}", file=sys.stderr)
+            scroll_count += 1
+            if consecutive_no_new >= 3:
+                if INFO_MODE:
+                    print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
+                break
         
-        finally:
-            browser.close()
+        all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
+        print(f"INFO Total movies collected: {len(all_movies)}", file=sys.stderr)
+    
+    except Exception as e:
+        print(f"WARNING fetch_section_movies failed: {e}", file=sys.stderr)
+        return []
     
     return all_movies
 
@@ -1566,10 +1552,18 @@ def parse_selection_range(items: list, selection: str) -> list:
     return selected
 
 
-def _fetch_category_movies(cat: dict, cookies: list) -> list:
+def _fetch_category_movies(page, cat: dict, cookies: list) -> list:
     """Fetch ALL movies from a category by fetching each section.
     
-    Always uses fetch_section_movies(), never falls back to example_movies.
+    Uses shared page object. Always uses fetch_section_movies(), never falls back to example_movies.
+    
+    Args:
+        page: Playwright page object (shared browser context)
+        cat: Category dict with 'sections' key
+        cookies: Playwright cookies list
+    
+    Returns:
+        List of all movie dicts from the category
     """
     all_movies = []
     
@@ -1580,7 +1574,7 @@ def _fetch_category_movies(cat: dict, cookies: list) -> list:
         section_url = sec.get('section_href')
         if section_url:
             print(f"  INFO 爬取 section: {sec_name}", file=sys.stderr)
-            section_movies = fetch_section_movies(section_url, cookies)
+            section_movies = fetch_section_movies(page, section_url, cookies)
         else:
             print(f"  WARNING 没有 section URL，跳过: {sec_name}", file=sys.stderr)
         
