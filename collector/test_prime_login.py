@@ -87,10 +87,40 @@ def login_prime_video(page, email: str, password: str) -> dict:
             return {"success": False, "cookies": None}
         
         sign_in_submit.click()
-        time.sleep(5)
+        time.sleep(8)
+        
+        # Verify login succeeded by checking page URL and content
+        current_url = page.url
+        print(f"INFO Post-login URL: {current_url}", file=sys.stderr)
+        
+        # Check if we're still on a login page (failed login)
+        if 'amazon.com/ap/signin' in current_url or 'amazon.com/sign-in' in current_url:
+            print("ERROR Login failed - still on Amazon signin page", file=sys.stderr)
+            # Take screenshot for debugging
+            try:
+                page.screenshot(path='temp/login_failed.png')
+                print("INFO Screenshot saved to temp/login_failed.png", file=sys.stderr)
+            except Exception:
+                pass
+            return {"success": False, "cookies": None}
+        
+        # Check if login form still exists (login failed)
+        remaining_form = page.query_selector('input[id="ap_password"]')
+        if remaining_form:
+            print("ERROR Login failed - password field still present", file=sys.stderr)
+            try:
+                page.screenshot(path='temp/login_failed.png')
+                print("INFO Screenshot saved to temp/login_failed.png", file=sys.stderr)
+            except Exception:
+                pass
+            return {"success": False, "cookies": None}
+        
+        # Verify we're on Prime Video homepage
+        if 'primevideo.com' not in current_url:
+            print(f"WARNING Unexpected URL after login: {current_url}", file=sys.stderr)
         
         cookies = page.context.cookies()
-        print("INFO Login successful, cookies extracted", file=sys.stderr)
+        print(f"INFO Login successful, {len(cookies)} cookies extracted", file=sys.stderr)
         return {"success": True, "cookies": cookies}
     
     except Exception as e:
