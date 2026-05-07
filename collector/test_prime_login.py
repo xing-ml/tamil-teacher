@@ -946,44 +946,32 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
             # Scroll to bottom and wait for infinite loading
             print("INFO Scrolling to bottom and waiting for infinite loading...", file=sys.stderr)
             
-            # Get initial movie count (page may already have some loaded)
-            initial_count = page.evaluate('''() => {
-                return document.querySelectorAll("a[href*='/detail/']").length;
-            }''')
-            print(f"INFO Initial page load: {initial_count} movies", file=sys.stderr)
+            # Prime Video uses virtual scrolling - movies outside viewport are removed from DOM
+            # So we should NOT count movies during scroll (count will fluctuate)
+            # Instead: scroll a few times to let page render, then extract all movies from DOM
             
             scroll_count = 0
-            prev_count = initial_count  # Start from initial count
             max_scrolls = 12  # Safety limit
-            min_scrolls = 8   # Minimum scrolls before we even consider stopping
-            consecutive_no_change = 0  # Track consecutive scrolls with no new content
             
             while scroll_count < max_scrolls:
-                # Scroll down by 500px (smaller step to reliably trigger lazy loading)
+                # Scroll down by 500px (smaller step to trigger page rendering)
                 page.evaluate('window.scrollBy(0, 500)')
-                time.sleep(1)  # Wait for content to load
+                time.sleep(1)  # Wait for content to render
                 
-                # Count current movies
-                current_count = page.evaluate('''() => {
-                    return document.querySelectorAll("a[href*='/detail/']").length;
-                }''')
-                
-                new_movies = current_count - (initial_count if scroll_count == 0 else prev_count)
-                
-                if current_count > prev_count:
-                    print(f"INFO Scroll #{scroll_count + 1}: {current_count} movies (found {current_count - prev_count} new)", file=sys.stderr)
-                    consecutive_no_change = 0  # Reset counter - new content loaded
-                else:
-                    consecutive_no_change += 1
-                    print(f"INFO Scroll #{scroll_count + 1}: {current_count} movies (no change, streak: {consecutive_no_change})", file=sys.stderr)
-                
-                prev_count = current_count
                 scroll_count += 1
                 
-                # Only consider stopping after min_scrolls AND 3 consecutive scrolls with no new content
-                if scroll_count >= min_scrolls and consecutive_no_change >= 3:
-                    print(f"INFO Stable for 3 scrolls at {current_count} movies - stopping", file=sys.stderr)
-                    break
+                # Log scroll progress but don't check movie count (virtual scrolling changes DOM)
+                scroll_y = page.evaluate('window.scrollY')
+                scroll_h = page.evaluate('document.documentElement.scrollHeight')
+                print(f"INFO Scroll #{scroll_count}: scrollY={scroll_y}, scrollHeight={scroll_h}", file=sys.stderr)
+                
+                # After 8 scrolls, we've covered the page. Check if scroll position has stabilized.
+                if scroll_count >= 8:
+                    # Check if we've reached near the bottom (within 100px)
+                    remaining = scroll_h - scroll_y
+                    if remaining < 100:
+                        print(f"INFO Near bottom ({remaining}px remaining) - stopping", file=sys.stderr)
+                        break
             
             # Extract all movies
             print("INFO Extracting all movies...", file=sys.stderr)
