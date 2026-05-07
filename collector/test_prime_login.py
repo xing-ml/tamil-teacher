@@ -14,6 +14,12 @@ try:
 except ImportError:
     HAS_KEYBOARD = False
 
+# ============================================================
+# Global switches
+# ============================================================
+DEBUG_MODE = False   # Print detailed debug info (API calls, envelopes, etc.)
+INFO_MODE = True     # Print info-level progress messages
+
 
 def login_prime_video(email: str, password: str, headless: bool = False) -> dict:
     """Login to Prime Video and extract cookies."""
@@ -265,6 +271,10 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
         'error': None,
         'subtitles_saved': 0,
         'subtitle_dir': '',
+        'total_subtitle_types': 0,       # API returned count
+        'filtered_subtitle_types': 0,    # After type filter
+        'success_langs': [],             # Successful language codes
+        'failed_langs': [],              # Failed language codes
     }
     
     def parse_vtt(content):
@@ -685,6 +695,7 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 if parsed.get('timedTextUrls') and parsed['timedTextUrls'].get('result'):
                     timed_text_urls = parsed['timedTextUrls']['result']
                     subtitle_urls = timed_text_urls.get('subtitleUrls', [])
+                    result['total_subtitle_types'] = len(subtitle_urls)
                     print(f"INFO Found {len(subtitle_urls)} subtitle entries in timedTextUrls.result.subtitleUrls", file=sys.stderr)
                     for sub in subtitle_urls:
                         lang = sub.get('languageCode', 'unknown')
@@ -738,6 +749,7 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                     'url': url,
                 })
             
+            result['filtered_subtitle_types'] = len(filtered_subtitles)
             print(f"INFO Filtered to {len(filtered_subtitles)} subtitles (types={ALLOWED_TYPES})", file=sys.stderr)
             
             if not filtered_subtitles:
@@ -758,6 +770,7 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             
             saved_count = 0
             downloaded_langs = set()
+            failed_langs = []
             
             for sub in filtered_subtitles:
                 lang_code = sub['lang_code']
@@ -775,6 +788,7 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 
                 if not srt_content:
                     print(f"WARNING Failed to fetch subtitle after {max_retries} attempts: {lang_code} ({sub['type']})", file=sys.stderr)
+                    failed_langs.append(lang_code)
                     continue
                 
                 filename = build_filename(safe_movie, lang_code, sub['type'])
@@ -784,21 +798,25 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                     f.write(srt_content)
                 
                 caption_count = srt_content.count('\n\n')
-                print(f"INFO Saved: {filepath} ({caption_count} captions, type={sub['type']})", file=sys.stderr)
+                if DEBUG_MODE:
+                    print(f"INFO Saved: {filepath} ({caption_count} captions, type={sub['type']})", file=sys.stderr)
                 saved_count += 1
                 downloaded_langs.add(lang_code)
             
             # Update result with actual download status
             result['subtitles_saved'] = saved_count
             result['subtitle_dir'] = output_dir
+            result['success_langs'] = sorted(downloaded_langs)
+            result['failed_langs'] = failed_langs
             # Language codes are like 'ta-in', 'en-us', 'kn-in', etc.
             has_tamil = any(lang.startswith('ta') for lang in downloaded_langs)
             has_english = any(lang.startswith('en') for lang in downloaded_langs)
             result['tamil'] = has_tamil
             result['english'] = has_english
             result['has_dual_subtitles'] = has_tamil and has_english
-            print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
-            print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}, langs={downloaded_langs}", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
+                print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}, langs={downloaded_langs}", file=sys.stderr)
         
         finally:
             browser.close()
@@ -807,7 +825,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
 
 
 def _extract_section_movies_from_category(category_url: str, section_title: str, cookies: list) -> list:
-    """Navigate to category page, scroll to load all sections, then extract all movies from a specific section.
+    """Navigate to category page, find target section, click 'See more' to go to section page,
+    then use shared scroll-and-collect logic to get all movies.
     
     Args:
         category_url: The category page URL
@@ -817,9 +836,6 @@ def _extract_section_movies_from_category(category_url: str, section_title: str,
     Returns:
         List of all movie dicts from the target section
     """
-    all_movies = []
-    seen_urls = set()
-    
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context()
@@ -843,62 +859,98 @@ def _extract_section_movies_from_category(category_url: str, section_title: str,
                 page.evaluate('window.scrollBy(0, window.innerHeight)')
                 time.sleep(2)
             
-            # Find target section by title and extract ALL its movies
-            all_movies = page.evaluate('''(sectionTitle) => {
-                const movies = [];
-                const seen = new Set();
-                
-                // Find all section containers (each has a title h2 and movie links)
+            # Find target section's "See more" link
+            section_href = page.evaluate('''(sectionTitle) => {
                 const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
-                
                 for (const container of allContainers) {
-                    // Find section title
                     let title = "";
                     let parent = container.parentElement;
                     while (parent && !title) {
                         const titleEl = parent.querySelector('h2.headerComponents-qwttco');
-                        if (titleEl) {
-                            title = titleEl.textContent.trim();
-                            break;
-                        }
+                        if (titleEl) { title = titleEl.textContent.trim(); break; }
                         parent = parent.parentElement;
                         if (parent && parent.tagName === 'BODY') break;
                     }
-                    
-                    if (!title) continue;
-                    
-                    // Check if this is the target section
-                    if (title !== sectionTitle) continue;
-                    
-                    // Extract ALL movie links from this section
-                    const movieLinks = container.querySelectorAll("a[href*='/detail/']");
-                    for (const link of movieLinks) {
-                        const href = link.getAttribute("href");
-                        if (!href || seen.has(href)) continue;
-                        
-                        let movieTitle = "";
-                        const titleAttr = link.getAttribute("aria-label") || link.getAttribute("data-tracker-title");
-                        if (titleAttr) {
-                            movieTitle = titleAttr.trim();
-                        } else {
-                            for (const node of link.childNodes) {
-                                if (node.nodeType === Node.TEXT_NODE) movieTitle += node.textContent;
+                    if (title === sectionTitle) {
+                        // Find "See more" link
+                        for (const link of container.querySelectorAll("a")) {
+                            if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
+                                const href = link.getAttribute("href");
+                                if (href) return href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
                             }
-                            movieTitle = movieTitle.trim();
                         }
-                        
-                        if (movieTitle && movieTitle.length > 2 && movieTitle.length < 100) {
-                            seen.add(href);
-                            movies.push({
-                                title: movieTitle,
-                                url: href.startsWith('http') ? href : 'https://www.primevideo.com' + href
-                            });
+                        // Fallback: find any /browse/ link in parent
+                        const par = container.parentElement;
+                        if (par) {
+                            for (const link of par.querySelectorAll("a")) {
+                                const href = link.getAttribute("href");
+                                if (href && href.includes("/browse/")) {
+                                    return href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                                }
+                            }
                         }
                     }
                 }
-                return movies;
+                return null;
             }''', section_title)
             
+            if not section_href:
+                print(f"WARNING Could not find 'See more' link for section '{section_title}'", file=sys.stderr)
+                return []
+            
+            print(f"INFO   Found section URL: {section_href[:80]}...", file=sys.stderr)
+            
+            # Navigate to section page and use fetch_section_movies
+            page.goto(section_href, wait_until="domcontentloaded", timeout=30000)
+            time.sleep(3)
+            
+            # Reuse fetch_section_movies logic inline
+            extract_js = '''() => {
+                const movies = [];
+                for (const link of document.querySelectorAll("a[href*='/detail/']")) {
+                    const href = link.getAttribute("href");
+                    if (!href) continue;
+                    const url = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                    const title = link.textContent?.trim() || "";
+                    if (title && title.length > 2 && title.length < 100) {
+                        movies.push({ url, title });
+                    }
+                }
+                return movies;
+            }'''
+            
+            seen_urls = {}
+            consecutive_no_new = 0
+            scroll_count = 0
+            
+            while scroll_count < 15:
+                page.evaluate('window.scrollBy(0, 500)')
+                time.sleep(1)
+                
+                current_movies = page.evaluate(extract_js)
+                new_count = 0
+                for m in current_movies:
+                    if m['url'] not in seen_urls:
+                        seen_urls[m['url']] = m['title']
+                        new_count += 1
+                
+                total = len(seen_urls)
+                if new_count > 0:
+                    if INFO_MODE:
+                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
+                    consecutive_no_new = 0
+                else:
+                    consecutive_no_new += 1
+                    if INFO_MODE:
+                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
+                
+                scroll_count += 1
+                if consecutive_no_new >= 3:
+                    if INFO_MODE:
+                        print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
+                    break
+            
+            all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
             print(f"INFO   Found {len(all_movies)} movies in section '{section_title}'", file=sys.stderr)
         
         except Exception as e:
@@ -925,14 +977,12 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
     Returns:
         List of movie dicts: [{'title': '...', 'url': '...'}, ...]
     """
-    # JS function to extract all movie {url, title} from current DOM
-    extract_movies_js = '''() => {
+    extract_js = '''() => {
         const movies = [];
         for (const link of document.querySelectorAll("a[href*='/detail/']")) {
             const href = link.getAttribute("href");
             if (!href) continue;
             const url = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
-            // Title is in textContent (aria-label and data-tracker-title are both null)
             const title = link.textContent?.trim() || "";
             if (title && title.length > 2 && title.length < 100) {
                 movies.push({ url, title });
@@ -942,7 +992,7 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
     }'''
     
     all_movies = []
-    seen_urls = {}  # url -> title (dedup by URL, keep first title seen)
+    seen_urls = {}
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
@@ -963,20 +1013,15 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
             page.goto(full_url, timeout=30000)
             time.sleep(5)
             
-            # Scroll to bottom and wait for infinite loading
-            print("INFO Scrolling to collect all movies (virtual scrolling aware)...", file=sys.stderr)
-            
-            max_scrolls = 15  # Safety limit
+            # Scroll and accumulate movies
             consecutive_no_new = 0
             scroll_count = 0
             
-            while scroll_count < max_scrolls:
-                # Scroll down by 500px
+            while scroll_count < 15:
                 page.evaluate('window.scrollBy(0, 500)')
-                time.sleep(1)  # Wait for content to render
+                time.sleep(1)
                 
-                # Extract movies from current DOM
-                current_movies = page.evaluate(extract_movies_js)
+                current_movies = page.evaluate(extract_js)
                 new_count = 0
                 for m in current_movies:
                     if m['url'] not in seen_urls:
@@ -985,20 +1030,20 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
                 
                 total = len(seen_urls)
                 if new_count > 0:
-                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
-                    consecutive_no_new = 0  # Reset - new content found
+                    if INFO_MODE:
+                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
+                    consecutive_no_new = 0
                 else:
                     consecutive_no_new += 1
-                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
+                    if INFO_MODE:
+                        print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
                 
                 scroll_count += 1
-                
-                # Stop if 3 consecutive scrolls with no new content
                 if consecutive_no_new >= 3:
-                    print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
+                    if INFO_MODE:
+                        print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
                     break
             
-            # Build final list from accumulated URLs
             all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
             print(f"INFO Total movies collected: {len(all_movies)}", file=sys.stderr)
         
@@ -1509,7 +1554,7 @@ def main():
     
     # Login
     print("INFO Logging in...", file=sys.stderr)
-    login_result = login_prime_video(email, password)
+    login_result = login_prime_video(email, password, headless=True)
     if not login_result['success']:
         print("ERROR Login failed", file=sys.stderr)
         sys.exit(1)
@@ -1936,20 +1981,55 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
             category=category,
             section=movie_section
         )
-        print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
         results.append({
             'title': movie_title,
             'category': category,
             'section': movie_section,
             'success': result.get('subtitles_saved', 0) > 0,
-            'subtitles_saved': result.get('subtitles_saved', 0)
+            'subtitles_saved': result.get('subtitles_saved', 0),
+            'total_subtitle_types': result.get('total_subtitle_types', 0),
+            'filtered_subtitle_types': result.get('filtered_subtitle_types', 0),
+            'success_langs': result.get('success_langs', []),
+            'failed_langs': result.get('failed_langs', []),
         })
     
     success_count = sum(1 for r in results if r['success'])
-    print(f"\n{'='*60}", file=sys.stderr)
-    print(f"INFO 下载完成: {success_count}/{len(movies)} 个电影成功", file=sys.stderr)
     
-    # Print summary
+    # Print detailed INFO summary
+    print(f"\n{'='*60}", file=sys.stderr)
+    print("下载汇总", file=sys.stderr)
+    print(f"{'='*60}", file=sys.stderr)
+    
+    # Group by category -> section
+    grouped = {}
+    for r in results:
+        cat = r.get('category', 'Unknown') or 'Unknown'
+        sec = r.get('section', 'Unknown') or 'Unknown'
+        key = (cat, sec)
+        if key not in grouped:
+            grouped[key] = []
+        grouped[key].append(r)
+    
+    for (cat, sec), movie_results in sorted(grouped.items()):
+        print(f"\n[{cat} / {sec}]", file=sys.stderr)
+        for r in movie_results:
+            title = r['title']
+            total = r.get('total_subtitle_types', 0)
+            filtered = r.get('filtered_subtitle_types', 0)
+            success_langs = r.get('success_langs', [])
+            failed_langs = r.get('failed_langs', [])
+            success_count_movie = len(success_langs)
+            failed_count_movie = len(failed_langs)
+            
+            success_str = f"成功{success_count_movie}个({', '.join(success_langs)})" if success_langs else "成功0个"
+            failed_str = f"失败{failed_count_movie}个({', '.join(failed_langs)})" if failed_langs else "失败0个"
+            
+            print(f"  {title}: {total}种字幕 → 筛选后{filtered}种 → {success_str}, {failed_str}", file=sys.stderr)
+    
+    print(f"\n{'='*60}", file=sys.stderr)
+    
+    # Print old summary
+    print(f"INFO 下载完成: {success_count}/{len(movies)} 个电影成功", file=sys.stderr)
     if results:
         _print_download_summary(results)
     
