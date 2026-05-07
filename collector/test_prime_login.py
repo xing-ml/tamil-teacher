@@ -1987,7 +1987,7 @@ def main():
             go_to_root()
 
 
-def download_movies(movies: list, cookies: list, context: str = "", category: str = "", section: str = "") -> list:
+def download_movies(movies: list, cookies: list, context: str = "", category: str = "", section: str = "", failed_movies: list = None) -> list:
     """Download subtitles for a list of movies.
     
     Args:
@@ -1996,6 +1996,7 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
         context: Context string for logging (category/section/movie)
         category: Category name for directory structure
         section: Section name for directory structure
+        failed_movies: List to collect failed movie entries (for retry)
     
     Returns:
         List of download result dicts: [{'title', 'category', 'section', 'success', ...}, ...]
@@ -2003,6 +2004,9 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
     if not movies:
         print("WARNING 没有电影可下载", file=sys.stderr)
         return []
+    
+    if failed_movies is None:
+        failed_movies = []
     
     print(f"\nINFO 开始下载 {len(movies)} 个电影的字幕...", file=sys.stderr)
     results = []
@@ -2032,6 +2036,111 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
             'success_langs': result.get('success_langs', []),
             'failed_langs': result.get('failed_langs', []),
         })
+        
+        # Collect failed movies for retry
+        if not result.get('subtitles_saved', 0) > 0:
+            failed_movies.append({
+                'url': movie['url'],
+                'title': movie_title,
+                'category': category,
+                'section': movie_section,
+                'error': result.get('error', 'unknown'),
+            })
+    
+    # Retry failed movies: 3 attempts each
+    if failed_movies:
+        print(f"\n{'='*60}", file=sys.stderr)
+        print(f"INFO 第一轮有 {len(failed_movies)} 个电影失败，开始重试（最多3次）...", file=sys.stderr)
+        
+        retry_remaining = []
+        for fm in failed_movies:
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"INFO 重试: {fm['title']} (attempt 1/3)", file=sys.stderr)
+            
+            for attempt in range(3):
+                result = extract_movie_subtitles(
+                    fm['url'], cookies,
+                    movie_title=fm['title'],
+                    category=fm['category'],
+                    section=fm['section']
+                )
+                if result.get('subtitles_saved', 0) > 0:
+                    print(f"INFO 重试成功: {fm['title']} (attempt {attempt+1}/3)", file=sys.stderr)
+                    results.append({
+                        'title': fm['title'],
+                        'category': fm['category'],
+                        'section': fm['section'],
+                        'success': True,
+                        'subtitles_saved': result.get('subtitles_saved', 0),
+                        'total_subtitle_types': result.get('total_subtitle_types', 0),
+                        'filtered_subtitle_types': result.get('filtered_subtitle_types', 0),
+                        'success_langs': result.get('success_langs', []),
+                        'failed_langs': result.get('failed_langs', []),
+                    })
+                    break
+                else:
+                    remaining = 2 - attempt
+                    if remaining > 0:
+                        print(f"INFO 重试失败，还有 {remaining} 次机会: {fm['title']}", file=sys.stderr)
+            else:
+                # All 3 attempts failed
+                retry_remaining.append({
+                    'url': fm['url'],
+                    'title': fm['title'],
+                    'category': fm['category'],
+                    'section': fm['section'],
+                    'error': result.get('error', 'unknown'),
+                })
+                print(f"INFO 重试3次全部失败: {fm['title']}", file=sys.stderr)
+        
+        # Final retry round: 3 more attempts for remaining failures
+        if retry_remaining:
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"INFO 最终重试: {len(retry_remaining)} 个电影仍失败，再试3次...", file=sys.stderr)
+            
+            final_remaining = []
+            for fm in retry_remaining:
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"INFO 最终重试: {fm['title']} (attempt 1/3)", file=sys.stderr)
+                
+                for attempt in range(3):
+                    result = extract_movie_subtitles(
+                        fm['url'], cookies,
+                        movie_title=fm['title'],
+                        category=fm['category'],
+                        section=fm['section']
+                    )
+                    if result.get('subtitles_saved', 0) > 0:
+                        print(f"INFO 最终重试成功: {fm['title']} (attempt {attempt+1}/3)", file=sys.stderr)
+                        results.append({
+                            'title': fm['title'],
+                            'category': fm['category'],
+                            'section': fm['section'],
+                            'success': True,
+                            'subtitles_saved': result.get('subtitles_saved', 0),
+                            'total_subtitle_types': result.get('total_subtitle_types', 0),
+                            'filtered_subtitle_types': result.get('filtered_subtitle_types', 0),
+                            'success_langs': result.get('success_langs', []),
+                            'failed_langs': result.get('failed_langs', []),
+                        })
+                        break
+                    else:
+                        remaining = 2 - attempt
+                        if remaining > 0:
+                            print(f"INFO 重试失败，还有 {remaining} 次机会: {fm['title']}", file=sys.stderr)
+                else:
+                    final_remaining.append(fm)
+                    print(f"INFO 最终重试3次全部失败: {fm['title']}", file=sys.stderr)
+            
+            # Report final failures
+            if final_remaining:
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"INFO 最终仍有 {len(final_remaining)} 个电影失败:", file=sys.stderr)
+                for fm in final_remaining:
+                    print(f"  - {fm['title']}: {fm['error']}", file=sys.stderr)
+            else:
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"INFO 所有失败电影最终重试成功!", file=sys.stderr)
     
     success_count = sum(1 for r in results if r['success'])
     print(f"\n{'='*60}", file=sys.stderr)
