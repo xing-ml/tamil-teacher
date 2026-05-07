@@ -613,6 +613,22 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         
         if init_result.get('error'):
             print(f"WARNING {init_result['error']}", file=sys.stderr)
+            # Debug: print actions structure
+            if 'actions' in init_result and init_result['actions']:
+                print(f"DEBUG Actions found: {len(init_result['actions'])}", file=sys.stderr)
+                for i, action in enumerate(init_result['actions']):
+                    print(f"  Action {i}: id={action.get('id')}, source={action.get('source')}, "
+                          f"primaryActions={action.get('hasPrimaryActions')}, "
+                          f"playbackActions={action.get('hasPlaybackActions')}", file=sys.stderr)
+            # Debug: print current page URL and title
+            print(f"DEBUG Current page URL: {page.url}", file=sys.stderr)
+            print(f"DEBUG Current page title: {page.title()}", file=sys.stderr)
+            # Take screenshot for debugging
+            try:
+                page.screenshot(path='temp/movie_page_failed.png')
+                print(f"INFO Screenshot saved to temp/movie_page_failed.png", file=sys.stderr)
+            except Exception as ss_err:
+                print(f"WARNING Screenshot failed: {ss_err}", file=sys.stderr)
             result['error'] = init_result['error']
             return result
         
