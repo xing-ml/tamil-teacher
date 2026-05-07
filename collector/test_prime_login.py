@@ -728,6 +728,10 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             else:
                 print(f"INFO Body preview: {sub_info_result.get('bodyPreview', '')[:500]}", file=sys.stderr)
                 result['error'] = "No valid subtitle data returned"
+                result['total_subtitle_types'] = 0
+                result['filtered_subtitle_types'] = 0
+                result['success_langs'] = []
+                result['failed_langs'] = []
                 return result
             
             # ========================
@@ -774,6 +778,9 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             
             if not filtered_subtitles:
                 print(f"WARNING No target subtitles found for {result.get('title', 'unknown movie')}", file=sys.stderr)
+                result['error'] = "No matching subtitles found (all filtered out by type)"
+                result['success_langs'] = []
+                result['failed_langs'] = []
                 return result
             
             # Download and save each subtitle
@@ -839,11 +846,15 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}, langs={downloaded_langs}", file=sys.stderr)
             
             # Per-movie summary (always printed)
-            success_count_movie = len(downloaded_langs)
-            failed_count_movie = len(failed_langs)
-            success_str = f"成功{success_count_movie}个" if downloaded_langs else "成功0个"
-            failed_str = f"失败{failed_count_movie}个({', '.join(sorted(failed_langs))})" if failed_langs else "失败0个"
-            print(f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}", file=sys.stderr)
+            error = result.get('error')
+            if error:
+                print(f"{result.get('title', 'unknown')}: 失败 - {error}", file=sys.stderr)
+            else:
+                success_count_movie = len(downloaded_langs)
+                failed_count_movie = len(failed_langs)
+                success_str = f"成功{success_count_movie}个" if downloaded_langs else "成功0个"
+                failed_str = f"失败{failed_count_movie}个({', '.join(sorted(failed_langs))})" if failed_langs else "失败0个"
+                print(f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}", file=sys.stderr)
         
         finally:
             browser.close()
