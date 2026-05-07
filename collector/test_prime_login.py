@@ -15,10 +15,10 @@ except ImportError:
     HAS_KEYBOARD = False
 
 # ============================================================
-# Global switches
+# Log level switches
 # ============================================================
-DEBUG_MODE = False   # Print detailed debug info (API calls, envelopes, etc.)
-INFO_MODE = True     # Print info-level progress messages
+DEBUG_MODE = False  # Set to True to see detailed debug output
+INFO_MODE = True    # Set to False to suppress INFO messages
 
 
 def login_prime_video(email: str, password: str, headless: bool = False) -> dict:
@@ -400,7 +400,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             srt = ttml2_to_srt(content)
             if srt:
                 caption_count = srt.count('\n\n')
-                print(f"INFO Fetched subtitle (TTML2): {caption_count} captions from {url[:100]}", file=sys.stderr)
+                if DEBUG_MODE:
+                    print(f"INFO Fetched subtitle (TTML2): {caption_count} captions from {url[:100]}", file=sys.stderr)
                 return srt
             else:
                 print(f"WARNING Failed to parse TTML2 content", file=sys.stderr)
@@ -429,12 +430,13 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 url = response.url
                 # Capture enrichItemMetadata response body
                 if 'enrichItemMetadata' in url and response.status == 200:
-                    try:
-                        body = response.text()
-                        if body and len(body) > 10:
-                            print(f"INFO enrichItemMetadata body (first 2000): {body[:2000]}", file=sys.stderr)
-                    except Exception as e:
-                        print(f"INFO Failed to get enrichItemMetadata body: {e}", file=sys.stderr)
+                    if DEBUG_MODE:
+                        try:
+                            body = response.text()
+                            if body and len(body) > 10:
+                                print(f"INFO enrichItemMetadata body (first 2000): {body[:2000]}", file=sys.stderr)
+                        except Exception as e:
+                            print(f"INFO Failed to get enrichItemMetadata body: {e}", file=sys.stderr)
             page.on('response', on_response)
             
             print(f"INFO Navigating to: {movie_url}", file=sys.stderr)
@@ -469,7 +471,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 time.sleep(5)
             
             # Extract props and envelope from page JSON, matching userscript's init() function
-            print("INFO Extracting props and envelope (matching userscript flow)...", file=sys.stderr)
+            if DEBUG_MODE:
+                print("INFO Extracting props and envelope (matching userscript flow)...", file=sys.stderr)
             init_result = page.evaluate('''() => {
                 const result = {error: null, envelope: null, actions: null};
                 
@@ -581,13 +584,15 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             envelope_source = init_result['envelopeSource']
             movie_url = init_result['movieUrl']
             
-            print(f"INFO Found playbackEnvelope from {envelope_source}", file=sys.stderr)
-            print(f"INFO Envelope preview: {envelope[:100] if isinstance(envelope, str) else 'not a string'}...", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Found playbackEnvelope from {envelope_source}", file=sys.stderr)
+                print(f"INFO Envelope preview: {envelope[:100] if isinstance(envelope, str) else 'not a string'}...", file=sys.stderr)
             print(f"INFO Movie URL: {movie_url}", file=sys.stderr)
             
             # Step 5: POST to GetVodPlaybackResources with timedTextUrlsRequest
             # Use hardcoded device params (same as the page uses)
-            print("INFO Trying GetVodPlaybackResources with timedTextUrlsRequest...", file=sys.stderr)
+            if DEBUG_MODE:
+                print("INFO Trying GetVodPlaybackResources with timedTextUrlsRequest...", file=sys.stderr)
             
             # Get deviceID from the page's own GetVodPlaybackResources requests
             # We'll extract it from the URL by looking at the page's state
@@ -615,7 +620,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 'marketplaceID': 'A15PK738MTQHSO',
                 'uxLocale': 'en_US'
             }
-            print(f"INFO Device params: {device_params}", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Device params: {device_params}", file=sys.stderr)
             
             sub_info_result = page.evaluate(
                 '''async ({ envelope, deviceParams, movieUrl }) => {
@@ -686,7 +692,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 {'envelope': envelope, 'deviceParams': device_params, 'movieUrl': movie_url}
             )
             
-            print(f"INFO Subtitle API result: status={sub_info_result.get('status')}, contentType={sub_info_result.get('contentType')}", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Subtitle API result: status={sub_info_result.get('status')}, contentType={sub_info_result.get('contentType')}", file=sys.stderr)
             
             if sub_info_result.get('parsed'):
                 parsed = sub_info_result['parsed']
@@ -696,7 +703,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                     timed_text_urls = parsed['timedTextUrls']['result']
                     subtitle_urls = timed_text_urls.get('subtitleUrls', [])
                     result['total_subtitle_types'] = len(subtitle_urls)
-                    print(f"INFO Found {len(subtitle_urls)} subtitle entries in timedTextUrls.result.subtitleUrls", file=sys.stderr)
+                    if DEBUG_MODE:
+                        print(f"INFO Found {len(subtitle_urls)} subtitle entries in timedTextUrls.result.subtitleUrls", file=sys.stderr)
                     for sub in subtitle_urls:
                         lang = sub.get('languageCode', 'unknown')
                         url = sub.get('url', 'no url')
@@ -750,7 +758,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 })
             
             result['filtered_subtitle_types'] = len(filtered_subtitles)
-            print(f"INFO Filtered to {len(filtered_subtitles)} subtitles (types={ALLOWED_TYPES})", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Filtered to {len(filtered_subtitles)} subtitles (types={ALLOWED_TYPES})", file=sys.stderr)
             
             if not filtered_subtitles:
                 print(f"WARNING No target subtitles found for {result.get('title', 'unknown movie')}", file=sys.stderr)
@@ -1981,6 +1990,8 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
             category=category,
             section=movie_section
         )
+        if DEBUG_MODE:
+            print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
         results.append({
             'title': movie_title,
             'category': category,
@@ -1995,7 +2006,7 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
     
     success_count = sum(1 for r in results if r['success'])
     
-    # Print detailed INFO summary
+    # Print detailed per-movie summary
     print(f"\n{'='*60}", file=sys.stderr)
     print("下载汇总", file=sys.stderr)
     print(f"{'='*60}", file=sys.stderr)
@@ -2024,12 +2035,12 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
             success_str = f"成功{success_count_movie}个({', '.join(success_langs)})" if success_langs else "成功0个"
             failed_str = f"失败{failed_count_movie}个({', '.join(failed_langs)})" if failed_langs else "失败0个"
             
-            print(f"  {title}: {total}种字幕 → 筛选后{filtered}种 → {success_str}, {failed_str}", file=sys.stderr)
+            print(f"  {title}: {total}种字幕 → 筛选后{filtered}种 ({', '.join(success_langs)}) → {success_str}, {failed_str}", file=sys.stderr)
     
     print(f"\n{'='*60}", file=sys.stderr)
+    print(f"INFO 下载完成: {success_count}/{len(movies)} 个电影成功", file=sys.stderr)
     
     # Print old summary
-    print(f"INFO 下载完成: {success_count}/{len(movies)} 个电影成功", file=sys.stderr)
     if results:
         _print_download_summary(results)
     
