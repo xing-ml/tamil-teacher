@@ -257,11 +257,19 @@ def extract_sections_from_category(category_url: str, cookies: list, headless: b
     return sections_js
 
 
-def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = False, movie_title: str = '', category: str = '', section: str = '') -> dict:
+def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', category: str = '', section: str = '') -> dict:
     """Extract subtitles from a Prime Video movie using playback envelope API.
     
-    Returns dict with keys: 'title', 'tamil', 'english', 'has_dual_subtitles',
-        'subtitles_saved', 'subtitle_dir', 'error'
+    Args:
+        page: Playwright page object (shared browser context)
+        movie_url: Movie page URL
+        movie_title: Movie title for display and filename
+        category: Category name for directory structure
+        section: Section name for directory structure
+    
+    Returns:
+        Dict with keys: 'title', 'tamil', 'english', 'has_dual_subtitles',
+            'subtitles_saved', 'subtitle_dir', 'error'
     """
     result = {
         'title': movie_title if movie_title else None,
@@ -410,128 +418,138 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             print(f"WARNING Error fetching subtitle: {e}", file=sys.stderr)
         return None
     
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
-        context = browser.new_context()
-        context.add_cookies(cookies)
-        page = context.new_page()
+    try:
+        # Set up console logging AND response interception
+        console_msgs = []
+        webspa_responses = []  # Store responses from x-requested-with: WebSPA requests
         
-        try:
-            # Set up console logging AND response interception
-            console_msgs = []
-            webspa_responses = []  # Store responses from x-requested-with: WebSPA requests
-            
-            def on_console(msg):
-                console_msgs.append(msg.text)
-                if DEBUG_MODE:
-                    print(f"DEBUG Console: {msg.text}", file=sys.stderr)
-            page.on('console', on_console)
-            
-            def on_response(response):
-                url = response.url
-                # Capture enrichItemMetadata response body
-                if 'enrichItemMetadata' in url and response.status == 200:
-                    if DEBUG_MODE:
-                        try:
-                            body = response.text()
-                            if body and len(body) > 10:
-                                print(f"INFO enrichItemMetadata body (first 2000): {body[:2000]}", file=sys.stderr)
-                        except Exception as e:
-                            print(f"INFO Failed to get enrichItemMetadata body: {e}", file=sys.stderr)
-            page.on('response', on_response)
-            
-            print(f"INFO Navigating to: {movie_url}", file=sys.stderr)
-            page.goto(movie_url, timeout=30000)
-            
-            # Get movie title
-            title_elem = page.query_selector('h1, [data-test="title"]')
-            if title_elem:
-                result['title'] = title_elem.text_content().strip()
-                print(f"INFO Movie title: {result['title']}", file=sys.stderr)
-            
-            # Wait for video player to fully initialize (at least 15 seconds)
-            print("INFO Waiting for video player to fully load (15s minimum)...", file=sys.stderr)
-            for i in range(45):
-                player_ready = page.evaluate('''() => {
-                    const video = document.querySelector('video');
-                    const playerContainer = document.querySelector('[data-testid="player-container"], [class*="player"]');
-                    return !!(video || playerContainer);
-                }''')
-                if player_ready:
-                    print(f"INFO Video player detected after {i+1}s, waiting for full initialization...", file=sys.stderr)
-                    break
-                time.sleep(1)
-            
-            # Ensure we wait at least 15 seconds total
-            elapsed = i + 1
-            if elapsed < 15:
-                print(f"INFO Waiting additional {15 - elapsed}s for player initialization...", file=sys.stderr)
-                time.sleep(15 - elapsed)
-            else:
-                print(f"INFO Player already loaded, waiting extra 5s for network requests...", file=sys.stderr)
-                time.sleep(5)
-            
-            # Extract props and envelope from page JSON, matching userscript's init() function
+        def on_console(msg):
+            console_msgs.append(msg.text)
             if DEBUG_MODE:
-                print("INFO Extracting props and envelope (matching userscript flow)...", file=sys.stderr)
-            init_result = page.evaluate('''() => {
-                const result = {error: null, envelope: null, actions: null};
-                
-                // Step 1: Extract props from page JSON (matching extractProps function)
-                let props = undefined;
-                for(const script of document.querySelectorAll('script[type="application/json"]')) {
-                    try {
-                        const data = JSON.parse(script.innerHTML);
-                        // New structure: data.init.preparations.body has atf/btf directly
-                        if(data && data.init && data.init.preparations && data.init.preparations.body) {
-                            const body = data.init.preparations.body;
-                            if(body.atf && body.btf) {
-                                props = body;
-                                break;
-                            }
-                        }
-                    } catch(e) {}
-                }
-                
-                if(!props) {
-                    result.error = "Could not extract props from page JSON";
-                    return result;
-                }
-                
-                // Step 2: Extract actions from atf and btf (matching parseActions function)
-                const actions = [];
-                
-                // Process atf actions
-                const atfActions = props.atf.state.action.atf;
-                if(atfActions) {
-                    for(const [id, action] of Object.entries(atfActions)) {
-                        const extracted = action.primaryActions || action.playbackActions;
-                        if(extracted) {
-                            actions.push({id, source: 'atf', extracted});
+                print(f"DEBUG Console: {msg.text}", file=sys.stderr)
+        page.on('console', on_console)
+        
+        def on_response(response):
+            url = response.url
+            # Capture enrichItemMetadata response body
+            if 'enrichItemMetadata' in url and response.status == 200:
+                if DEBUG_MODE:
+                    try:
+                        body = response.text()
+                        if body and len(body) > 10:
+                            print(f"INFO enrichItemMetadata body (first 2000): {body[:2000]}", file=sys.stderr)
+                    except Exception as e:
+                        print(f"INFO Failed to get enrichItemMetadata body: {e}", file=sys.stderr)
+        page.on('response', on_response)
+        
+        print(f"INFO Navigating to: {movie_url}", file=sys.stderr)
+        page.goto(movie_url, timeout=30000)
+        
+        # Get movie title
+        title_elem = page.query_selector('h1, [data-test="title"]')
+        if title_elem:
+            result['title'] = title_elem.text_content().strip()
+            print(f"INFO Movie title: {result['title']}", file=sys.stderr)
+        
+        # Wait for video player to fully initialize (at least 15 seconds)
+        print("INFO Waiting for video player to fully load (15s minimum)...", file=sys.stderr)
+        for i in range(45):
+            player_ready = page.evaluate('''() => {
+                const video = document.querySelector('video');
+                const playerContainer = document.querySelector('[data-testid="player-container"], [class*="player"]');
+                return !!(video || playerContainer);
+            }''')
+            if player_ready:
+                print(f"INFO Video player detected after {i+1}s, waiting for full initialization...", file=sys.stderr)
+                break
+            time.sleep(1)
+        
+        # Ensure we wait at least 15 seconds total
+        elapsed = i + 1
+        if elapsed < 15:
+            print(f"INFO Waiting additional {15 - elapsed}s for player initialization...", file=sys.stderr)
+            time.sleep(15 - elapsed)
+        else:
+            print(f"INFO Player already loaded, waiting extra 5s for network requests...", file=sys.stderr)
+            time.sleep(5)
+        
+        # Extract props and envelope from page JSON, matching userscript's init() function
+        if DEBUG_MODE:
+            print("INFO Extracting props and envelope (matching userscript flow)...", file=sys.stderr)
+        init_result = page.evaluate('''() => {
+            const result = {error: null, envelope: null, actions: null};
+            
+            // Step 1: Extract props from page JSON (matching extractProps function)
+            let props = undefined;
+            for(const script of document.querySelectorAll('script[type="application/json"]')) {
+                try {
+                    const data = JSON.parse(script.innerHTML);
+                    // New structure: data.init.preparations.body has atf/btf directly
+                    if(data && data.init && data.init.preparations && data.init.preparations.body) {
+                        const body = data.init.preparations.body;
+                        if(body.atf && body.btf) {
+                            props = body;
+                            break;
                         }
                     }
-                }
-                
-                // Process btf actions
-                const btfActions = props.btf.state.action.btf;
-                if(btfActions) {
-                    for(const [id, action] of Object.entries(btfActions)) {
-                        const extracted = action.primaryActions || action.playbackActions;
-                        if(extracted) {
-                            actions.push({id, source: 'btf', extracted});
-                        }
+                } catch(e) {}
+            }
+            
+            if(!props) {
+                result.error = "Could not extract props from page JSON";
+                return result;
+            }
+            
+            // Step 2: Extract actions from atf and btf (matching parseActions function)
+            const actions = [];
+            
+            // Process atf actions
+            const atfActions = props.atf.state.action.atf;
+            if(atfActions) {
+                for(const [id, action] of Object.entries(atfActions)) {
+                    const extracted = action.primaryActions || action.playbackActions;
+                    if(extracted) {
+                        actions.push({id, source: 'atf', extracted});
                     }
                 }
+            }
+            
+            // Process btf actions
+            const btfActions = props.btf.state.action.btf;
+            if(btfActions) {
+                for(const [id, action] of Object.entries(btfActions)) {
+                    const extracted = action.primaryActions || action.playbackActions;
+                    if(extracted) {
+                        actions.push({id, source: 'btf', extracted});
+                    }
+                }
+            }
+            
+            // Step 3: Find playbackEnvelope in primaryActions (matching parseActions function)
+            for(const {id, source, extracted} of actions) {
+                if(typeof extracted !== 'object' || !Array.isArray(extracted)) continue;
                 
-                // Step 3: Find playbackEnvelope in primaryActions (matching parseActions function)
+                for(const action of extracted) {
+                    // New structure: primaryActions[].payload.playback.playbackEnvelope
+                    if(action.payload && action.payload.playback && action.payload.playback.playbackEnvelope) {
+                        result.envelope = action.payload.playback.playbackEnvelope;
+                        result.expiry = action.payload.playback.expiryTime;
+                        result.envelopeId = id;
+                        result.envelopeSource = `${source}.${id}`;
+                        break;
+                    }
+                }
+                if(result.envelope) break;
+            }
+            
+            // If envelope not found in actions, try old structure
+            if(!result.envelope) {
                 for(const {id, source, extracted} of actions) {
-                    if(typeof extracted !== 'object' || !Array.isArray(extracted)) continue;
-                    
-                    for(const action of extracted) {
-                        // New structure: primaryActions[].payload.playback.playbackEnvelope
-                        if(action.payload && action.payload.playback && action.payload.playback.playbackEnvelope) {
-                            result.envelope = action.payload.playback.playbackEnvelope;
-                            result.expiry = action.payload.playback.expiryTime;
+                    if(typeof extracted !== 'object' || !extracted.main || !extracted.main.children) continue;
+                    for(const child of extracted.main.children) {
+                        if(typeof child.playbackEnvelope !== 'undefined') {
+                            result.envelope = child.playbackEnvelope;
+                            result.expiry = child.expiryTime;
                             result.envelopeId = id;
                             result.envelopeSource = `${source}.${id}`;
                             break;
@@ -539,328 +557,317 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                     }
                     if(result.envelope) break;
                 }
-                
-                // If envelope not found in actions, try old structure
-                if(!result.envelope) {
-                    for(const {id, source, extracted} of actions) {
-                        if(typeof extracted !== 'object' || !extracted.main || !extracted.main.children) continue;
-                        for(const child of extracted.main.children) {
-                            if(typeof child.playbackEnvelope !== 'undefined') {
-                                result.envelope = child.playbackEnvelope;
-                                result.expiry = child.expiryTime;
-                                result.envelopeId = id;
-                                result.envelopeSource = `${source}.${id}`;
-                                break;
-                            }
-                        }
-                        if(result.envelope) break;
-                    }
-                }
-                
-                if(!result.envelope) {
-                    result.error = "Could not find playbackEnvelope in actions";
-                    result.actions = actions.map(a => ({
-                        id: a.id,
-                        source: a.source,
-                        hasPrimaryActions: !!a.extracted.primaryActions,
-                        hasPlaybackActions: !!a.extracted.playbackActions,
-                        primaryActionsCount: a.extracted.primaryActions?.length || 0
-                    }));
-                    return result;
-                }
-                
-                // Step 4: Return envelope info for POST request
-                result.movieUrl = window.location.href;
-                result.pageTitleId = props.btf.state.pageTitleId;
-                
-                return result;
-            }''')
-            
-            if init_result.get('error'):
-                print(f"WARNING {init_result['error']}", file=sys.stderr)
-                result['error'] = init_result['error']
-                return result
-            
-            envelope = init_result['envelope']
-            envelope_source = init_result['envelopeSource']
-            movie_url = init_result['movieUrl']
-            
-            if DEBUG_MODE:
-                print(f"INFO Found playbackEnvelope from {envelope_source}", file=sys.stderr)
-                print(f"INFO Envelope preview: {envelope[:100] if isinstance(envelope, str) else 'not a string'}...", file=sys.stderr)
-            print(f"INFO Movie URL: {movie_url}", file=sys.stderr)
-            
-            # Step 5: POST to GetVodPlaybackResources with timedTextUrlsRequest
-            # Use hardcoded device params (same as the page uses)
-            if DEBUG_MODE:
-                print("INFO Trying GetVodPlaybackResources with timedTextUrlsRequest...", file=sys.stderr)
-            
-            # Get deviceID from the page's own GetVodPlaybackResources requests
-            # We'll extract it from the URL by looking at the page's state
-            device_id = page.evaluate('''() => {
-                // Try to find deviceID from the page's state
-                const body = document.querySelector('script[type="application/json"]');
-                if(!body) return 'default-device-id';
-                try {
-                    const data = JSON.parse(body.innerHTML);
-                    // Check atf.state.globalParameters
-                    const gp = data?.init?.preparations?.body?.atf?.state?.globalParameters;
-                    if(gp && gp.deviceID) return gp.deviceID;
-                    // Check btf.state
-                    const btf = data?.init?.preparations?.body?.btf?.state;
-                    if(btf && btf.deviceID) return btf.deviceID;
-                    return 'default-device-id';
-                } catch(e) {
-                    return 'default-device-id';
-                }
-            }''')
-            
-            device_params = {
-                'deviceID': device_id,
-                'deviceTypeID': 'AOAGZA014O5RE',
-                'marketplaceID': 'A15PK738MTQHSO',
-                'uxLocale': 'en_US'
             }
-            if DEBUG_MODE:
-                print(f"INFO Device params: {device_params}", file=sys.stderr)
             
-            sub_info_result = page.evaluate(
-                '''async ({ envelope, deviceParams, movieUrl, debugMode }) => {
-                    try {
-                        // Try POST to GetVodPlaybackResources endpoint with timedTextUrlsRequest
-                        const baseUrl = 'https://atv-ps-fe.primevideo.com/playback/prs/GetVodPlaybackResources';
-                        const url = baseUrl + '?' + new URLSearchParams({
-                            deviceID: deviceParams.deviceID,
-                            deviceTypeID: deviceParams.deviceTypeID,
-                            gascEnabled: 'true',
-                            marketplaceID: deviceParams.marketplaceID,
-                            uxLocale: deviceParams.uxLocale,
-                            firmware: '1',
-                            titleId: ''
-                        });
-                        
-                        if (debugMode) {
-                            console.log('DEBUG GVod URL:', url);
-                        }
-                        
-                        const response = await fetch(url, {
-                            credentials: 'include',
-                            method: 'POST',
-                            mode: 'cors',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'x-requested-with': 'WebSPA',
-                                'Referer': movieUrl
+            if(!result.envelope) {
+                result.error = "Could not find playbackEnvelope in actions";
+                result.actions = actions.map(a => ({
+                    id: a.id,
+                    source: a.source,
+                    hasPrimaryActions: !!a.extracted.primaryActions,
+                    hasPlaybackActions: !!a.extracted.playbackActions,
+                    primaryActionsCount: a.extracted.primaryActions?.length || 0
+                }));
+                return result;
+            }
+            
+            // Step 4: Return envelope info for POST request
+            result.movieUrl = window.location.href;
+            result.pageTitleId = props.btf.state.pageTitleId;
+            
+            return result;
+        }''')
+        
+        if init_result.get('error'):
+            print(f"WARNING {init_result['error']}", file=sys.stderr)
+            result['error'] = init_result['error']
+            return result
+        
+        envelope = init_result['envelope']
+        envelope_source = init_result['envelopeSource']
+        movie_url = init_result['movieUrl']
+        
+        if DEBUG_MODE:
+            print(f"INFO Found playbackEnvelope from {envelope_source}", file=sys.stderr)
+            print(f"INFO Envelope preview: {envelope[:100] if isinstance(envelope, str) else 'not a string'}...", file=sys.stderr)
+        print(f"INFO Movie URL: {movie_url}", file=sys.stderr)
+        
+        # Step 5: POST to GetVodPlaybackResources with timedTextUrlsRequest
+        # Use hardcoded device params (same as the page uses)
+        if DEBUG_MODE:
+            print("INFO Trying GetVodPlaybackResources with timedTextUrlsRequest...", file=sys.stderr)
+        
+        # Get deviceID from the page's own GetVodPlaybackResources requests
+        # We'll extract it from the URL by looking at the page's state
+        device_id = page.evaluate('''() => {
+            // Try to find deviceID from the page's state
+            const body = document.querySelector('script[type="application/json"]');
+            if(!body) return 'default-device-id';
+            try {
+                const data = JSON.parse(body.innerHTML);
+                // Check atf.state.globalParameters
+                const gp = data?.init?.preparations?.body?.atf?.state?.globalParameters;
+                if(gp && gp.deviceID) return gp.deviceID;
+                // Check btf.state
+                const btf = data?.init?.preparations?.body?.btf?.state;
+                if(btf && btf.deviceID) return btf.deviceID;
+                return 'default-device-id';
+            } catch(e) {
+                return 'default-device-id';
+            }
+        }''')
+        
+        device_params = {
+            'deviceID': device_id,
+            'deviceTypeID': 'AOAGZA014O5RE',
+            'marketplaceID': 'A15PK738MTQHSO',
+            'uxLocale': 'en_US'
+        }
+        if DEBUG_MODE:
+            print(f"INFO Device params: {device_params}", file=sys.stderr)
+        
+        sub_info_result = page.evaluate(
+            '''async ({ envelope, deviceParams, movieUrl, debugMode }) => {
+                try {
+                    // Try POST to GetVodPlaybackResources endpoint with timedTextUrlsRequest
+                    const baseUrl = 'https://atv-ps-fe.primevideo.com/playback/prs/GetVodPlaybackResources';
+                    const url = baseUrl + '?' + new URLSearchParams({
+                        deviceID: deviceParams.deviceID,
+                        deviceTypeID: deviceParams.deviceTypeID,
+                        gascEnabled: 'true',
+                        marketplaceID: deviceParams.marketplaceID,
+                        uxLocale: deviceParams.uxLocale,
+                        firmware: '1',
+                        titleId: ''
+                    });
+                    
+                    if (debugMode) {
+                        console.log('DEBUG GVod URL:', url);
+                    }
+                    
+                    const response = await fetch(url, {
+                        credentials: 'include',
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-requested-with': 'WebSPA',
+                            'Referer': movieUrl
+                        },
+                        body: JSON.stringify({
+                            globalParameters: {
+                                deviceCapabilityFamily: 'WebPlayer',
+                                playbackEnvelope: envelope
                             },
-                            body: JSON.stringify({
-                                globalParameters: {
-                                    deviceCapabilityFamily: 'WebPlayer',
-                                    playbackEnvelope: envelope
-                                },
-                                timedTextUrlsRequest: {
-                                    supportedTimedTextFormats: ['TTMLv2', 'DFXP']
-                                }
-                            })
-                        });
-                        
-                        const contentType = response.headers.get('content-type') || '';
-                        const text = await response.text();
-                        
-                        if (debugMode) {
-                            console.log('DEBUG GVod status:', response.status);
-                            console.log('DEBUG GVod contentType:', contentType);
-                            console.log('DEBUG GVod body (first 2000):', text.substring(0, 2000));
-                        }
-                        
-                        let parsed = null;
-                        if(contentType.includes('application/json')) {
-                            try {
-                                parsed = JSON.parse(text);
-                                if (debugMode) {
-                                    console.log('DEBUG GVod parsed timedTextUrls:', JSON.stringify(parsed.timedTextUrls, null, 2).substring(0, 2000));
-                                }
-                            } catch(e) {
-                                if (debugMode) {
-                                    console.log('DEBUG GVod JSON parse error:', e.message);
-                                }
+                            timedTextUrlsRequest: {
+                                supportedTimedTextFormats: ['TTMLv2', 'DFXP']
+                            }
+                        })
+                    });
+                    
+                    const contentType = response.headers.get('content-type') || '';
+                    const text = await response.text();
+                    
+                    if (debugMode) {
+                        console.log('DEBUG GVod status:', response.status);
+                        console.log('DEBUG GVod contentType:', contentType);
+                        console.log('DEBUG GVod body (first 2000):', text.substring(0, 2000));
+                    }
+                    
+                    let parsed = null;
+                    if(contentType.includes('application/json')) {
+                        try {
+                            parsed = JSON.parse(text);
+                            if (debugMode) {
+                                console.log('DEBUG GVod parsed timedTextUrls:', JSON.stringify(parsed.timedTextUrls, null, 2).substring(0, 2000));
+                            }
+                        } catch(e) {
+                            if (debugMode) {
+                                console.log('DEBUG GVod JSON parse error:', e.message);
                             }
                         }
-                        
-                        return {
-                            status: response.status,
-                            contentType: contentType,
-                            bodyPreview: text.substring(0, 3000),
-                            parsed: parsed
-                        };
-                    } catch(e) {
-                        if (debugMode) {
-                            console.log('DEBUG GVod error:', e.message);
-                            console.log('DEBUG GVod error stack:', e.stack);
-                        }
-                        return { error: e.message || String(e) };
                     }
-                }''',
-                {'envelope': envelope, 'deviceParams': device_params, 'movieUrl': movie_url, 'debugMode': DEBUG_MODE}
-            )
-            
-            if DEBUG_MODE:
-                print(f"INFO Subtitle API result: status={sub_info_result.get('status')}, contentType={sub_info_result.get('contentType')}", file=sys.stderr)
-            
-            if sub_info_result.get('parsed'):
-                parsed = sub_info_result['parsed']
-                # Check for timedTextUrls.result (matching userscript's getSubInfo return)
-                timed_text_urls = None
-                if parsed.get('timedTextUrls') and parsed['timedTextUrls'].get('result'):
-                    timed_text_urls = parsed['timedTextUrls']['result']
-                    subtitle_urls = timed_text_urls.get('subtitleUrls', [])
-                    result['total_subtitle_types'] = len(subtitle_urls)
-                    if DEBUG_MODE:
-                        print(f"INFO Found {len(subtitle_urls)} subtitle entries in timedTextUrls.result.subtitleUrls", file=sys.stderr)
-                    for sub in subtitle_urls:
-                        lang = sub.get('languageCode', 'unknown')
-                        url = sub.get('url', 'no url')
-                        sub_type = sub.get('type', 'Subtitle')
-                        print(f"  - {lang} ({sub_type}): {url[:100]}...", file=sys.stderr)
-                elif parsed.get('globalError'):
-                    print(f"WARNING Global error: {parsed['globalError']}", file=sys.stderr)
-                else:
-                    print(f"INFO Parsed response (first 500): {json.dumps(parsed, ensure_ascii=False)[:500]}", file=sys.stderr)
-            else:
-                print(f"INFO Body preview: {sub_info_result.get('bodyPreview', '')[:500]}", file=sys.stderr)
-                result['error'] = "No valid subtitle data returned"
-                result['total_subtitle_types'] = 0
-                result['filtered_subtitle_types'] = 0
-                result['success_langs'] = []
-                result['failed_langs'] = []
-                return result
-            
-            # ========================
-            # Collect ALL subtitles per Tampermonkey naming convention
-            # ========================
-            # Allowed types: only Subtitle (non-CC) and Sdh (CC)
-            # Exclude: SubtitleMachineGenerated, ForcedNarrative, etc.
-            ALLOWED_TYPES = {'Subtitle', 'Sdh'}
-            
-            def build_filename(movie_name, lang_code, subtitle_type):
-                """Build filename following Tampermonkey naming convention.
-                
-                Convention:
-                  filename.languageCode          -> Subtitle (non-CC)
-                  filename.languageCode[cc]     -> Sdh (CC)
-                """
-                safe_name = movie_name.replace('/', '_').replace('\\', '_').replace(':', '.')
-                name = f"{safe_name}.{lang_code}"
-                
-                if subtitle_type == 'Sdh':
-                    name += '[cc]'
-                
-                return name
-            
-            # Filter subtitles: only allowed types (NO language filter - download ALL)
-            filtered_subtitles = []
-            for sub in subtitle_urls:
-                sub_type = sub.get('type', 'Subtitle')
-                lang_code = sub.get('languageCode', 'unknown')
-                url = sub.get('url', '')
-                
-                if sub_type not in ALLOWED_TYPES:
-                    continue
-                
-                filtered_subtitles.append({
-                    'lang_code': lang_code,
-                    'type': sub_type,
-                    'url': url,
-                })
-            
-            result['filtered_subtitle_types'] = len(filtered_subtitles)
-            if DEBUG_MODE:
-                print(f"INFO Filtered to {len(filtered_subtitles)} subtitles (types={ALLOWED_TYPES})", file=sys.stderr)
-            
-            if not filtered_subtitles:
-                print(f"WARNING No target subtitles found for {result.get('title', 'unknown movie')}", file=sys.stderr)
-                result['error'] = "No matching subtitles found (all filtered out by type)"
-                result['success_langs'] = []
-                result['failed_langs'] = []
-                return result
-            
-            # Download and save each subtitle
-            import os
-            
-            # Use movie_title parameter if available, otherwise fall back to page title
-            safe_movie = (movie_title if movie_title else result.get('title') or 'movie').replace('/', '_').replace('\\', '_').replace(':', '.')
-            
-            # New directory structure: data/subtitles/{category}/{section}/{movie}/
-            safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
-            safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.') if section else 'unknown'
-            output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_movie)
-            os.makedirs(output_dir, exist_ok=True)
-            
-            saved_count = 0
-            downloaded_langs = set()
-            failed_langs = []
-            
-            for sub in filtered_subtitles:
-                lang_code = sub['lang_code']
-                srt_content = None
-                
-                # Retry mechanism: 3s wait, max 3 retries
-                max_retries = 3
-                for attempt in range(max_retries):
-                    srt_content = fetch_subtitle(sub['url'])
-                    if srt_content:
-                        break
-                    if attempt < max_retries - 1:
-                        print(f"WARNING Retry {attempt+1}/{max_retries-1} for {lang_code} subtitle...", file=sys.stderr)
-                        time.sleep(3)
-                
-                if not srt_content:
-                    print(f"WARNING Failed to fetch subtitle after {max_retries} attempts: {lang_code} ({sub['type']})", file=sys.stderr)
-                    failed_langs.append(lang_code)
-                    continue
-                
-                filename = build_filename(safe_movie, lang_code, sub['type'])
-                filepath = os.path.join(output_dir, f"{filename}.srt")
-                
-                with open(filepath, 'w', encoding='utf-8') as f:
-                    f.write(srt_content)
-                
-                caption_count = srt_content.count('\n\n')
-                if DEBUG_MODE:
-                    print(f"INFO Saved: {filepath} ({caption_count} captions, type={sub['type']})", file=sys.stderr)
-                saved_count += 1
-                downloaded_langs.add(lang_code)
-            
-            # Update result with actual download status
-            result['subtitles_saved'] = saved_count
-            result['subtitle_dir'] = output_dir
-            result['success_langs'] = sorted(downloaded_langs)
-            result['failed_langs'] = failed_langs
-            # Language codes are like 'ta-in', 'en-us', 'kn-in', etc.
-            has_tamil = any(lang.startswith('ta') for lang in downloaded_langs)
-            has_english = any(lang.startswith('en') for lang in downloaded_langs)
-            result['tamil'] = has_tamil
-            result['english'] = has_english
-            result['has_dual_subtitles'] = has_tamil and has_english
-            if DEBUG_MODE:
-                print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
-                print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}, langs={downloaded_langs}", file=sys.stderr)
-            
-            # Per-movie summary (always printed)
-            error = result.get('error')
-            if error:
-                print(f"{result.get('title', 'unknown')}: 失败 - {error}", file=sys.stderr)
-            else:
-                success_count_movie = len(downloaded_langs)
-                failed_count_movie = len(failed_langs)
-                success_str = f"成功{success_count_movie}个" if downloaded_langs else "成功0个"
-                failed_str = f"失败{failed_count_movie}个({', '.join(sorted(failed_langs))})" if failed_langs else "失败0个"
-                print(f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}", file=sys.stderr)
+                    
+                    return {
+                        status: response.status,
+                        contentType: contentType,
+                        bodyPreview: text.substring(0, 3000),
+                        parsed: parsed
+                    };
+                } catch(e) {
+                    if (debugMode) {
+                        console.log('DEBUG GVod error:', e.message);
+                        console.log('DEBUG GVod error stack:', e.stack);
+                    }
+                    return { error: e.message || String(e) };
+                }
+            }''',
+            {'envelope': envelope, 'deviceParams': device_params, 'movieUrl': movie_url, 'debugMode': DEBUG_MODE}
+        )
         
-        finally:
-            browser.close()
+        if DEBUG_MODE:
+            print(f"INFO Subtitle API result: status={sub_info_result.get('status')}, contentType={sub_info_result.get('contentType')}", file=sys.stderr)
+        
+        if sub_info_result.get('parsed'):
+            parsed = sub_info_result['parsed']
+            # Check for timedTextUrls.result (matching userscript's getSubInfo return)
+            timed_text_urls = None
+            if parsed.get('timedTextUrls') and parsed['timedTextUrls'].get('result'):
+                timed_text_urls = parsed['timedTextUrls']['result']
+                subtitle_urls = timed_text_urls.get('subtitleUrls', [])
+                result['total_subtitle_types'] = len(subtitle_urls)
+                if DEBUG_MODE:
+                    print(f"INFO Found {len(subtitle_urls)} subtitle entries in timedTextUrls.result.subtitleUrls", file=sys.stderr)
+                for sub in subtitle_urls:
+                    lang = sub.get('languageCode', 'unknown')
+                    url = sub.get('url', 'no url')
+                    sub_type = sub.get('type', 'Subtitle')
+                    print(f"  - {lang} ({sub_type}): {url[:100]}...", file=sys.stderr)
+            elif parsed.get('globalError'):
+                print(f"WARNING Global error: {parsed['globalError']}", file=sys.stderr)
+            else:
+                print(f"INFO Parsed response (first 500): {json.dumps(parsed, ensure_ascii=False)[:500]}", file=sys.stderr)
+        else:
+            print(f"INFO Body preview: {sub_info_result.get('bodyPreview', '')[:500]}", file=sys.stderr)
+            result['error'] = "No valid subtitle data returned"
+            result['total_subtitle_types'] = 0
+            result['filtered_subtitle_types'] = 0
+            result['success_langs'] = []
+            result['failed_langs'] = []
+            return result
+        
+        # ========================
+        # Collect ALL subtitles per Tampermonkey naming convention
+        # ========================
+        # Allowed types: only Subtitle (non-CC) and Sdh (CC)
+        # Exclude: SubtitleMachineGenerated, ForcedNarrative, etc.
+        ALLOWED_TYPES = {'Subtitle', 'Sdh'}
+        
+        def build_filename(movie_name, lang_code, subtitle_type):
+            """Build filename following Tampermonkey naming convention.
+            
+            Convention:
+              filename.languageCode          -> Subtitle (non-CC)
+              filename.languageCode[cc]     -> Sdh (CC)
+            """
+            safe_name = movie_name.replace('/', '_').replace('\\', '_').replace(':', '.')
+            name = f"{safe_name}.{lang_code}"
+            
+            if subtitle_type == 'Sdh':
+                name += '[cc]'
+            
+            return name
+        
+        # Filter subtitles: only allowed types (NO language filter - download ALL)
+        filtered_subtitles = []
+        for sub in subtitle_urls:
+            sub_type = sub.get('type', 'Subtitle')
+            lang_code = sub.get('languageCode', 'unknown')
+            url = sub.get('url', '')
+            
+            if sub_type not in ALLOWED_TYPES:
+                continue
+            
+            filtered_subtitles.append({
+                'lang_code': lang_code,
+                'type': sub_type,
+                'url': url,
+            })
+        
+        result['filtered_subtitle_types'] = len(filtered_subtitles)
+        if DEBUG_MODE:
+            print(f"INFO Filtered to {len(filtered_subtitles)} subtitles (types={ALLOWED_TYPES})", file=sys.stderr)
+        
+        if not filtered_subtitles:
+            print(f"WARNING No target subtitles found for {result.get('title', 'unknown movie')}", file=sys.stderr)
+            result['error'] = "No matching subtitles found (all filtered out by type)"
+            result['success_langs'] = []
+            result['failed_langs'] = []
+            return result
+        
+        # Download and save each subtitle
+        import os
+        
+        # Use movie_title parameter if available, otherwise fall back to page title
+        safe_movie = (movie_title if movie_title else result.get('title') or 'movie').replace('/', '_').replace('\\', '_').replace(':', '.')
+        
+        # New directory structure: data/subtitles/{category}/{section}/{movie}/
+        safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+        safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.') if section else 'unknown'
+        output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_movie)
+        os.makedirs(output_dir, exist_ok=True)
+        
+        saved_count = 0
+        downloaded_langs = set()
+        failed_langs = []
+        
+        for sub in filtered_subtitles:
+            lang_code = sub['lang_code']
+            srt_content = None
+            
+            # Retry mechanism: 3s wait, max 3 retries
+            max_retries = 3
+            for attempt in range(max_retries):
+                srt_content = fetch_subtitle(sub['url'])
+                if srt_content:
+                    break
+                if attempt < max_retries - 1:
+                    print(f"WARNING Retry {attempt+1}/{max_retries-1} for {lang_code} subtitle...", file=sys.stderr)
+                    time.sleep(3)
+            
+            if not srt_content:
+                print(f"WARNING Failed to fetch subtitle after {max_retries} attempts: {lang_code} ({sub['type']})", file=sys.stderr)
+                failed_langs.append(lang_code)
+                continue
+            
+            filename = build_filename(safe_movie, lang_code, sub['type'])
+            filepath = os.path.join(output_dir, f"{filename}.srt")
+            
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(srt_content)
+            
+            caption_count = srt_content.count('\n\n')
+            if DEBUG_MODE:
+                print(f"INFO Saved: {filepath} ({caption_count} captions, type={sub['type']})", file=sys.stderr)
+            saved_count += 1
+            downloaded_langs.add(lang_code)
+        
+        # Update result with actual download status
+        result['subtitles_saved'] = saved_count
+        result['subtitle_dir'] = output_dir
+        result['success_langs'] = sorted(downloaded_langs)
+        result['failed_langs'] = failed_langs
+        # Language codes are like 'ta-in', 'en-us', 'kn-in', etc.
+        has_tamil = any(lang.startswith('ta') for lang in downloaded_langs)
+        has_english = any(lang.startswith('en') for lang in downloaded_langs)
+        result['tamil'] = has_tamil
+        result['english'] = has_english
+        result['has_dual_subtitles'] = has_tamil and has_english
+        if DEBUG_MODE:
+            print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
+            print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}, langs={downloaded_langs}", file=sys.stderr)
+        
+        # Per-movie summary (always printed)
+        error = result.get('error')
+        if error:
+            print(f"{result.get('title', 'unknown')}: 失败 - {error}", file=sys.stderr)
+        else:
+            success_count_movie = len(downloaded_langs)
+            failed_count_movie = len(failed_langs)
+            success_str = f"成功{success_count_movie}个" if downloaded_langs else "成功0个"
+            failed_str = f"失败{failed_count_movie}个({', '.join(sorted(failed_langs))})" if failed_langs else "失败0个"
+            print(f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}", file=sys.stderr)
+    
+    except Exception as e:
+        print(f"ERROR extract_movie_subtitles failed: {e}", file=sys.stderr)
+        result['error'] = str(e)
+        result['total_subtitle_types'] = 0
+        result['filtered_subtitle_types'] = 0
+        result['success_langs'] = []
+        result['failed_langs'] = []
+        return result
     
     return result
-
 
 def _extract_section_movies_from_category(category_url: str, section_title: str, cookies: list) -> list:
     """Navigate to category page, find target section, click 'See more' to go to section page,
@@ -1586,413 +1593,445 @@ def _fetch_category_movies(cat: dict, cookies: list) -> list:
 
 
 def main():
-    """Main function with hierarchical selection and caching."""
+    """Main function with hierarchical selection and caching.
+    
+    Uses a single shared Playwright browser/context/page instance
+    across login, category extraction, and subtitle downloads.
+    """
     email = "xing.c@hotmail.com"
     password = "789qweasd"
     
-    # Login
-    print("INFO Logging in...", file=sys.stderr)
-    login_result = login_prime_video(email, password, headless=True)
-    if not login_result['success']:
-        print("ERROR Login failed", file=sys.stderr)
-        sys.exit(1)
-    cookies = login_result['cookies']
+    # Single browser lifecycle management
+    browser = None
+    context = None
+    page = None
     
-    # Extract categories only (FAST - no navigation to category pages)
-    print("\nINFO Extracting categories from homepage...", file=sys.stderr)
-    categories = extract_categories_only(cookies)
-    
-    if not categories:
-        print("ERROR No categories found", file=sys.stderr)
-        sys.exit(1)
-    
-    # State machine variables
-    cache = {
-        'sections': {},  # key: cat_idx -> [{'name': ..., 'href': ...}, ...]
-        'movies': {}     # key: (cat_idx, sec_idx) -> [{'title': ..., 'url': ...}, ...]
-    }
-    
-    # State: 'root' | 'sections' | 'movies'
-    state = 'root'
-    current_cat_idx = None  # Selected category index
-    current_sec_idx = None  # Selected section index
-    
-    def go_to_root():
-        """Reset state to root (category selector)."""
-        nonlocal state, current_cat_idx, current_sec_idx
+    try:
+        print("INFO Launching browser...", file=sys.stderr)
+        p = sync_playwright().start()
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context()
+        page = context.new_page()
+        
+        # Login
+        print("INFO Logging in...", file=sys.stderr)
+        login_result = login_prime_video(page, email, password)
+        if not login_result['success']:
+            print("ERROR Login failed", file=sys.stderr)
+            sys.exit(1)
+        cookies = login_result['cookies']
+        
+        # Extract categories only (FAST - no navigation to category pages)
+        print("\nINFO Extracting categories from homepage...", file=sys.stderr)
+        categories = extract_categories_only(page, cookies)
+        
+        if not categories:
+            print("ERROR No categories found", file=sys.stderr)
+            sys.exit(1)
+        
+        # State machine variables
+        cache = {
+            'sections': {},  # key: cat_idx -> [{'name': ..., 'href': ...}, ...]
+            'movies': {}     # key: (cat_idx, sec_idx) -> [{'title': ..., 'url': ...}, ...]
+        }
+        
+        # State: 'root' | 'sections' | 'movies'
         state = 'root'
-        current_cat_idx = None
-        current_sec_idx = None
-    
-    def get_cat_name(idx):
-        return categories[idx]['name'] if 0 <= idx < len(categories) else 'Unknown'
-    
-    while True:
-        # ============================================================
-        # STATE: root - Category selector
-        # ============================================================
-        if state == 'root':
-            print(f"\n{'='*60}", file=sys.stderr)
-            print("Prime Video 字幕下载器", file=sys.stderr)
-            print(f"{'='*60}", file=sys.stderr)
-            print("可用类目:", file=sys.stderr)
-            for i, cat in enumerate(categories):
-                print(f"  {i+1}. {cat['name']}", file=sys.stderr)
-            print(f"\n选择方式:", file=sys.stderr)
-            print("  - a/all: 下载所有类目下的所有电影", file=sys.stderr)
-            print("  - 数字 (如 1, 1-3, 1,3,5): 进入该类目 / 选择多个类目", file=sys.stderr)
-            print("  - b/back: 退出", file=sys.stderr)
-            
-            selection = read_with_esc("\n请输入选择: ")
-            if selection == 'ESC':
-                print("INFO 退出程序", file=sys.stderr)
-                break
-            if not selection:
-                continue
-            
-            sel_lower = selection.lower().strip()
-            
-            if sel_lower in ('b', 'back'):
-                print("INFO 退出程序", file=sys.stderr)
-                break
-            
-            if sel_lower in ('a', 'all'):
-                # Download ALL categories
-                print("\nINFO 获取全部电影列表...", file=sys.stderr)
-                all_movies = []
-                for cat_idx, cat in enumerate(categories):
-                    print(f"  INFO 获取类目: {cat['name']}", file=sys.stderr)
-                    sections = extract_sections_from_category(cat['href'], cookies)
-                    for sec_idx, sec in enumerate(sections):
-                        if sec.get('href'):
-                            movies = fetch_section_movies(sec['href'], cookies)
-                            for m in movies:
-                                m['_category'] = cat['name']
-                                m['_section'] = sec['title']
-                            all_movies.extend(movies)
+        current_cat_idx = None  # Selected category index
+        current_sec_idx = None  # Selected section index
+        
+        def go_to_root():
+            """Reset state to root (category selector)."""
+            nonlocal state, current_cat_idx, current_sec_idx
+            state = 'root'
+            current_cat_idx = None
+            current_sec_idx = None
+        
+        def get_cat_name(idx):
+            return categories[idx]['name'] if 0 <= idx < len(categories) else 'Unknown'
+        
+        while True:
+            # ============================================================
+            # STATE: root - Category selector
+            # ============================================================
+            if state == 'root':
+                print(f"\n{'='*60}", file=sys.stderr)
+                print("Prime Video 字幕下载器", file=sys.stderr)
+                print(f"{'='*60}", file=sys.stderr)
+                print("可用类目:", file=sys.stderr)
+                for i, cat in enumerate(categories):
+                    print(f"  {i+1}. {cat['name']}", file=sys.stderr)
+                print(f"\n选择方式:", file=sys.stderr)
+                print("  - a/all: 下载所有类目下的所有电影", file=sys.stderr)
+                print("  - 数字 (如 1, 1-3, 1,3,5): 进入该类目 / 选择多个类目", file=sys.stderr)
+                print("  - b/back: 退出", file=sys.stderr)
                 
-                if not all_movies:
-                    print("WARNING 没有找到电影", file=sys.stderr)
+                selection = read_with_esc("\n请输入选择: ")
+                if selection == 'ESC':
+                    print("INFO 退出程序", file=sys.stderr)
+                    break
+                if not selection:
                     continue
                 
-                if not _confirm_download(all_movies, "all", "all"):
-                    print("INFO 已取消下载", file=sys.stderr)
+                sel_lower = selection.lower().strip()
+                
+                if sel_lower in ('b', 'back'):
+                    print("INFO 退出程序", file=sys.stderr)
+                    break
+                
+                if sel_lower in ('a', 'all'):
+                    # Download ALL categories
+                    print("\nINFO 获取全部电影列表...", file=sys.stderr)
+                    all_movies = []
+                    for cat_idx, cat in enumerate(categories):
+                        print(f"  INFO 获取类目: {cat['name']}", file=sys.stderr)
+                        sections = extract_sections_from_category(page, cat['href'], cookies)
+                        for sec_idx, sec in enumerate(sections):
+                            if sec.get('href'):
+                                movies = fetch_section_movies(page, sec['href'], cookies)
+                                for m in movies:
+                                    m['_category'] = cat['name']
+                                    m['_section'] = sec['title']
+                                all_movies.extend(movies)
+                    
+                    if not all_movies:
+                        print("WARNING 没有找到电影", file=sys.stderr)
+                        continue
+                    
+                    if not _confirm_download(all_movies, "all", "all"):
+                        print("INFO 已取消下载", file=sys.stderr)
+                        continue
+                    
+                    download_movies(all_movies, page, "all", category="all", section="all")
+                    go_to_root()
                     continue
                 
-                download_movies(all_movies, cookies, "all", category="all", section="all")
-                go_to_root()
-                continue
-            
-            # Try multi-selection (supports single, range, comma-separated)
-            selected_cats = parse_selection_range(categories, selection)
-            
-            if not selected_cats:
-                print(f"WARNING 未选择任何类目: {selection}", file=sys.stderr)
-                continue
-            
-            if len(selected_cats) == 1:
-                # Single category → enter sections state
-                cat = selected_cats[0]
-                cat_idx = categories.index(cat)
-                current_cat_idx = cat_idx
-                cat_name = cat['name']
-                cat_href = cat['href']
+                # Try multi-selection (supports single, range, comma-separated)
+                selected_cats = parse_selection_range(categories, selection)
                 
-                print(f"\nINFO 进入类目: {cat_name}", file=sys.stderr)
-                
-                # Extract sections for this category
-                if cat_idx not in cache['sections']:
-                    sections = extract_sections_from_category(cat_href, cookies)
-                    cache['sections'][cat_idx] = sections
-                else:
-                    sections = cache['sections'][cat_idx]
-                
-                if not sections:
-                    print("WARNING 没有找到 sections", file=sys.stderr)
+                if not selected_cats:
+                    print(f"WARNING 未选择任何类目: {selection}", file=sys.stderr)
                     continue
                 
-                state = 'sections'
-            else:
-                # Multiple categories → fetch all movies and download
-                print(f"\nINFO 选择 {len(selected_cats)} 个类目: {[c['name'] for c in selected_cats]}", file=sys.stderr)
-                all_movies = []
-                for cat in selected_cats:
+                if len(selected_cats) == 1:
+                    # Single category → enter sections state
+                    cat = selected_cats[0]
+                    cat_idx = categories.index(cat)
+                    current_cat_idx = cat_idx
                     cat_name = cat['name']
                     cat_href = cat['href']
-                    print(f"  INFO 获取类目: {cat_name}", file=sys.stderr)
-                    secs = extract_sections_from_category(cat_href, cookies)
-                    for sec in secs:
+                    
+                    print(f"\nINFO 进入类目: {cat_name}", file=sys.stderr)
+                    
+                    # Extract sections for this category
+                    if cat_idx not in cache['sections']:
+                        sections = extract_sections_from_category(page, cat_href, cookies)
+                        cache['sections'][cat_idx] = sections
+                    else:
+                        sections = cache['sections'][cat_idx]
+                    
+                    if not sections:
+                        print("WARNING 没有找到 sections", file=sys.stderr)
+                        continue
+                    
+                    state = 'sections'
+                else:
+                    # Multiple categories → fetch all movies and download
+                    print(f"\nINFO 选择 {len(selected_cats)} 个类目: {[c['name'] for c in selected_cats]}", file=sys.stderr)
+                    all_movies = []
+                    for cat in selected_cats:
+                        cat_name = cat['name']
+                        cat_href = cat['href']
+                        print(f"  INFO 获取类目: {cat_name}", file=sys.stderr)
+                        secs = extract_sections_from_category(page, cat_href, cookies)
+                        for sec in secs:
+                            if sec.get('href'):
+                                movies = fetch_section_movies(page, sec['href'], cookies)
+                                for m in movies:
+                                    m['_category'] = cat_name
+                                    m['_section'] = sec['title']
+                                all_movies.extend(movies)
+                    
+                    if not all_movies:
+                        print("WARNING 没有找到电影", file=sys.stderr)
+                        continue
+                    
+                    cat_names = ', '.join(c['name'] for c in selected_cats)
+                    if not _confirm_download(all_movies, cat_names, "multiple categories"):
+                        print("INFO 已取消下载", file=sys.stderr)
+                        continue
+                    
+                    download_movies(all_movies, page, "multi-cat", category=cat_names, section="")
+                    go_to_root()
+            
+            # ============================================================
+            # STATE: sections - Section selector within a category
+            # ============================================================
+            elif state == 'sections':
+                if current_cat_idx is None:
+                    print("ERROR 状态错误", file=sys.stderr)
+                    go_to_root()
+                    continue
+                
+                sections = cache['sections'].get(current_cat_idx, [])
+                cat_name = get_cat_name(current_cat_idx)
+                
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"类目: {cat_name}", file=sys.stderr)
+                print(f"{'='*60}", file=sys.stderr)
+                print("Sections:", file=sys.stderr)
+                for i, sec in enumerate(sections):
+                    has_url = sec.get('href') and sec['href'].startswith('http')
+                    print(f"  {i+1}. {sec['title']} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
+                
+                print(f"\n选择方式:", file=sys.stderr)
+                print("  - a/all: 下载此类目下所有 sections 的所有电影", file=sys.stderr)
+                print("  - s/sec/section/sections: 查看 sections 列表", file=sys.stderr)
+                print("  - 数字 (如 1, 1-3, 1,3,5): 进入该 section / 选择多个 section", file=sys.stderr)
+                print("  - b/back: 返回类目选择", file=sys.stderr)
+                
+                selection = read_with_esc("\n请输入选择: ")
+                if selection == 'ESC':
+                    print("INFO 退出程序", file=sys.stderr)
+                    break
+                if not selection:
+                    continue
+                
+                sel_lower = selection.lower().strip()
+                
+                if sel_lower in ('b', 'back'):
+                    go_to_root()
+                    continue
+                
+                if sel_lower in ('a', 'all'):
+                    # Download all sections in this category
+                    print("\nINFO 获取此类目下所有电影...", file=sys.stderr)
+                    all_movies = []
+                    for sec_idx, sec in enumerate(sections):
                         if sec.get('href'):
-                            movies = fetch_section_movies(sec['href'], cookies)
+                            print(f"  INFO 获取 section: {sec['title']}", file=sys.stderr)
+                            movies = fetch_section_movies(page, sec['href'], cookies)
                             for m in movies:
                                 m['_category'] = cat_name
                                 m['_section'] = sec['title']
                             all_movies.extend(movies)
-                
-                if not all_movies:
-                    print("WARNING 没有找到电影", file=sys.stderr)
+                    
+                    if not all_movies:
+                        print("WARNING 没有找到电影", file=sys.stderr)
+                        continue
+                    
+                    if not _confirm_download(all_movies, cat_name, ""):
+                        print("INFO 已取消下载", file=sys.stderr)
+                        continue
+                    
+                    download_movies(all_movies, page, "category", category=cat_name, section="")
+                    go_to_root()
                     continue
                 
-                cat_names = ', '.join(c['name'] for c in selected_cats)
-                if not _confirm_download(all_movies, cat_names, "multiple categories"):
-                    print("INFO 已取消下载", file=sys.stderr)
+                if sel_lower in ('s', 'sec', 'section', 'sections'):
+                    # Show sections (already shown above, just re-prompt)
                     continue
                 
-                download_movies(all_movies, cookies, "multi-cat", category=cat_names, section="")
-                go_to_root()
-        
-        # ============================================================
-        # STATE: sections - Section selector within a category
-        # ============================================================
-        elif state == 'sections':
-            if current_cat_idx is None:
-                print("ERROR 状态错误", file=sys.stderr)
-                go_to_root()
-                continue
-            
-            sections = cache['sections'].get(current_cat_idx, [])
-            cat_name = get_cat_name(current_cat_idx)
-            
-            print(f"\n{'='*60}", file=sys.stderr)
-            print(f"类目: {cat_name}", file=sys.stderr)
-            print(f"{'='*60}", file=sys.stderr)
-            print("Sections:", file=sys.stderr)
-            for i, sec in enumerate(sections):
-                has_url = sec.get('href') and sec['href'].startswith('http')
-                print(f"  {i+1}. {sec['title']} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
-            
-            print(f"\n选择方式:", file=sys.stderr)
-            print("  - a/all: 下载此类目下所有 sections 的所有电影", file=sys.stderr)
-            print("  - s/sec/section/sections: 查看 sections 列表", file=sys.stderr)
-            print("  - 数字 (如 1, 1-3, 1,3,5): 进入该 section / 选择多个 section", file=sys.stderr)
-            print("  - b/back: 返回类目选择", file=sys.stderr)
-            
-            selection = read_with_esc("\n请输入选择: ")
-            if selection == 'ESC':
-                print("INFO 退出程序", file=sys.stderr)
-                break
-            if not selection:
-                continue
-            
-            sel_lower = selection.lower().strip()
-            
-            if sel_lower in ('b', 'back'):
-                go_to_root()
-                continue
-            
-            if sel_lower in ('a', 'all'):
-                # Download all sections in this category
-                print("\nINFO 获取此类目下所有电影...", file=sys.stderr)
-                all_movies = []
-                for sec_idx, sec in enumerate(sections):
-                    if sec.get('href'):
-                        print(f"  INFO 获取 section: {sec['title']}", file=sys.stderr)
-                        movies = fetch_section_movies(sec['href'], cookies)
-                        for m in movies:
-                            m['_category'] = cat_name
-                            m['_section'] = sec['title']
-                        all_movies.extend(movies)
+                # Try multi-selection (supports single, range, comma-separated)
+                selected_secs = parse_selection_range(sections, selection)
                 
-                if not all_movies:
-                    print("WARNING 没有找到电影", file=sys.stderr)
+                if not selected_secs:
+                    print(f"WARNING 未选择任何 section: {selection}", file=sys.stderr)
                     continue
                 
-                if not _confirm_download(all_movies, cat_name, ""):
-                    print("INFO 已取消下载", file=sys.stderr)
-                    continue
-                
-                download_movies(all_movies, cookies, "category", category=cat_name, section="")
-                go_to_root()
-                continue
-            
-            if sel_lower in ('s', 'sec', 'section', 'sections'):
-                # Show sections (already shown above, just re-prompt)
-                continue
-            
-            # Try multi-selection (supports single, range, comma-separated)
-            selected_secs = parse_selection_range(sections, selection)
-            
-            if not selected_secs:
-                print(f"WARNING 未选择任何 section: {selection}", file=sys.stderr)
-                continue
-            
-            if len(selected_secs) == 1:
-                # Single section → enter movies state
-                sec = selected_secs[0]
-                sec_idx = sections.index(sec)
-                current_sec_idx = sec_idx
-                sec_name = sec['title']
-                sec_href = sec.get('href')
-                
-                if not sec_href:
-                    print(f"WARNING Section '{sec_name}' 没有 URL，无法进入", file=sys.stderr)
-                    continue
-                
-                # Fetch movies for this section (with caching)
-                cache_key = (current_cat_idx, sec_idx)
-                if cache_key not in cache['movies']:
-                    print(f"\nINFO 导航到 Section 页面: {sec_href[:80]}...", file=sys.stderr)
-                    movies = fetch_section_movies(sec_href, cookies)
-                    for m in movies:
-                        m['_category'] = cat_name
-                        m['_section'] = sec_name
-                    cache['movies'][cache_key] = movies
-                else:
-                    movies = cache['movies'][cache_key]
-                
-                if not movies:
-                    print("WARNING 没有找到电影", file=sys.stderr)
-                    continue
-                
-                # Transition to movies state
-                state = 'movies'
-            else:
-                # Multiple sections → fetch all movies and download
-                print(f"\nINFO 选择 {len(selected_secs)} 个 section: {[s['title'] for s in selected_secs]}", file=sys.stderr)
-                all_movies = []
-                for sec in selected_secs:
+                if len(selected_secs) == 1:
+                    # Single section → enter movies state
+                    sec = selected_secs[0]
+                    sec_idx = sections.index(sec)
+                    current_sec_idx = sec_idx
                     sec_name = sec['title']
                     sec_href = sec.get('href')
-                    if sec_href:
-                        movies = fetch_section_movies(sec_href, cookies)
+                    
+                    if not sec_href:
+                        print(f"WARNING Section '{sec_name}' 没有 URL，无法进入", file=sys.stderr)
+                        continue
+                    
+                    # Fetch movies for this section (with caching)
+                    cache_key = (current_cat_idx, sec_idx)
+                    if cache_key not in cache['movies']:
+                        print(f"\nINFO 导航到 Section 页面: {sec_href[:80]}...", file=sys.stderr)
+                        movies = fetch_section_movies(page, sec_href, cookies)
                         for m in movies:
                             m['_category'] = cat_name
                             m['_section'] = sec_name
-                        all_movies.extend(movies)
-                
-                if not all_movies:
-                    print("WARNING 没有找到电影", file=sys.stderr)
-                    continue
-                
-                sec_names = ', '.join(s['title'] for s in selected_secs)
-                if not _confirm_download(all_movies, cat_name, sec_names):
-                    print("INFO 已取消下载", file=sys.stderr)
-                    continue
-                
-                download_movies(all_movies, cookies, "multi-sec", category=cat_name, section=sec_names)
-                go_to_root()
-        
-        # ============================================================
-        # STATE: movies - Movie selector within a section
-        # ============================================================
-        elif state == 'movies':
-            if current_cat_idx is None or current_sec_idx is None:
-                print("ERROR 状态错误", file=sys.stderr)
-                go_to_root()
-                continue
-            
-            cache_key = (current_cat_idx, current_sec_idx)
-            movies = cache['movies'].get(cache_key, [])
-            cat_name = get_cat_name(current_cat_idx)
-            sec_name = sections[current_sec_idx]['title'] if current_sec_idx < len(sections) else 'Unknown'
-            
-            print(f"\n{'='*60}", file=sys.stderr)
-            print(f"Section: {sec_name}", file=sys.stderr)
-            print(f"{'='*60}", file=sys.stderr)
-            print(f"电影列表 (共 {len(movies)} 部):", file=sys.stderr)
-            for i, movie in enumerate(movies):
-                print(f"  {i+1}. {movie['title']}", file=sys.stderr)
-            
-            print(f"\n选择方式:", file=sys.stderr)
-            print("  - a/all: 下载此 section 下所有电影", file=sys.stderr)
-            print("  - m/movie/movies: 选择具体电影", file=sys.stderr)
-            print("  - 数字 (如 1, 1-5, 1,3,5): 下载该电影 / 选择多个电影", file=sys.stderr)
-            print("  - b/back: 返回 section 选择", file=sys.stderr)
-            
-            selection = read_with_esc("\n请输入选择: ")
-            if selection == 'ESC':
-                print("INFO 退出程序", file=sys.stderr)
-                break
-            if not selection:
-                continue
-            
-            sel_lower = selection.lower().strip()
-            
-            if sel_lower in ('b', 'back'):
-                # Go back to sections state (not root), preserving current_cat_idx
-                state = 'sections'
-                continue
-            
-            if sel_lower in ('a', 'all'):
-                # Download all movies in this section
-                if not _confirm_download(movies, cat_name, sec_name):
-                    print("INFO 已取消下载", file=sys.stderr)
-                    continue
-                
-                download_movies(movies, cookies, "section", category=cat_name, section=sec_name)
-                go_to_root()
-                continue
-            
-            if sel_lower in ('m', 'movie', 'movies'):
-                # Select specific movies
-                print(f"\n{'='*60}", file=sys.stderr)
-                print("请选择电影 (编号, 如 1, 1-5, 1,3,5, all):", file=sys.stderr)
-                print("  - b/back: 返回上一级", file=sys.stderr)
-                
-                while True:
-                    movie_selection = read_with_esc("\n请输入选择: ")
-                    if movie_selection == 'ESC':
-                        print("INFO 退出程序", file=sys.stderr)
-                        go_to_root()
-                        break
-                    if not movie_selection:
+                        cache['movies'][cache_key] = movies
+                    else:
+                        movies = cache['movies'][cache_key]
+                    
+                    if not movies:
+                        print("WARNING 没有找到电影", file=sys.stderr)
                         continue
                     
-                    ms_lower = movie_selection.lower().strip()
+                    # Transition to movies state
+                    state = 'movies'
+                else:
+                    # Multiple sections → fetch all movies and download
+                    print(f"\nINFO 选择 {len(selected_secs)} 个 section: {[s['title'] for s in selected_secs]}", file=sys.stderr)
+                    all_movies = []
+                    for sec in selected_secs:
+                        sec_name = sec['title']
+                        sec_href = sec.get('href')
+                        if sec_href:
+                            movies = fetch_section_movies(page, sec_href, cookies)
+                            for m in movies:
+                                m['_category'] = cat_name
+                                m['_section'] = sec_name
+                            all_movies.extend(movies)
                     
-                    if ms_lower in ('b', 'back'):
-                        break
+                    if not all_movies:
+                        print("WARNING 没有找到电影", file=sys.stderr)
+                        continue
                     
-                    if ms_lower in ('a', 'all'):
-                        if not _confirm_download(movies, cat_name, sec_name):
-                            print("INFO 已取消下载", file=sys.stderr)
-                            break
-                        download_movies(movies, cookies, "section", category=cat_name, section=sec_name)
-                        go_to_root()
-                        break
+                    sec_names = ', '.join(s['title'] for s in selected_secs)
+                    if not _confirm_download(all_movies, cat_name, sec_names):
+                        print("INFO 已取消下载", file=sys.stderr)
+                        continue
                     
-                    # Parse movie indices using parse_selection_range
-                    selected_movies = parse_selection_range(movies, movie_selection)
-                    
-                    if selected_movies:
-                        if not _confirm_download(selected_movies, cat_name, sec_name):
-                            print("INFO 已取消下载", file=sys.stderr)
-                            break
-                        download_movies(selected_movies, cookies, "movie", category=cat_name, section=sec_name)
-                        go_to_root()
-                        break
-                    else:
-                        print("WARNING 未选择任何电影", file=sys.stderr)
-                
-                if state == 'movies':  # Still in movies state (didn't exit)
+                    download_movies(all_movies, page, "multi-sec", category=cat_name, section=sec_names)
+                    go_to_root()
+            
+            # ============================================================
+            # STATE: movies - Movie selector within a section
+            # ============================================================
+            elif state == 'movies':
+                if current_cat_idx is None or current_sec_idx is None:
+                    print("ERROR 状态错误", file=sys.stderr)
+                    go_to_root()
                     continue
-                continue
+                
+                cache_key = (current_cat_idx, current_sec_idx)
+                movies = cache['movies'].get(cache_key, [])
+                cat_name = get_cat_name(current_cat_idx)
+                sec_name = sections[current_sec_idx]['title'] if current_sec_idx < len(sections) else 'Unknown'
+                
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"Section: {sec_name}", file=sys.stderr)
+                print(f"{'='*60}", file=sys.stderr)
+                print(f"电影列表 (共 {len(movies)} 部):", file=sys.stderr)
+                for i, movie in enumerate(movies):
+                    print(f"  {i+1}. {movie['title']}", file=sys.stderr)
+                
+                print(f"\n选择方式:", file=sys.stderr)
+                print("  - a/all: 下载此 section 下所有电影", file=sys.stderr)
+                print("  - m/movie/movies: 选择具体电影", file=sys.stderr)
+                print("  - 数字 (如 1, 1-5, 1,3,5): 下载该电影 / 选择多个电影", file=sys.stderr)
+                print("  - b/back: 返回 section 选择", file=sys.stderr)
+                
+                selection = read_with_esc("\n请输入选择: ")
+                if selection == 'ESC':
+                    print("INFO 退出程序", file=sys.stderr)
+                    break
+                if not selection:
+                    continue
+                
+                sel_lower = selection.lower().strip()
+                
+                if sel_lower in ('b', 'back'):
+                    # Go back to sections state (not root), preserving current_cat_idx
+                    state = 'sections'
+                    continue
+                
+                if sel_lower in ('a', 'all'):
+                    # Download all movies in this section
+                    if not _confirm_download(movies, cat_name, sec_name):
+                        print("INFO 已取消下载", file=sys.stderr)
+                        continue
+                    
+                    download_movies(movies, page, "section", category=cat_name, section=sec_name)
+                    go_to_root()
+                    continue
+                
+                if sel_lower in ('m', 'movie', 'movies'):
+                    # Select specific movies
+                    print(f"\n{'='*60}", file=sys.stderr)
+                    print("请选择电影 (编号, 如 1, 1-5, 1,3,5, all):", file=sys.stderr)
+                    print("  - b/back: 返回上一级", file=sys.stderr)
+                    
+                    while True:
+                        movie_selection = read_with_esc("\n请输入选择: ")
+                        if movie_selection == 'ESC':
+                            print("INFO 退出程序", file=sys.stderr)
+                            go_to_root()
+                            break
+                        if not movie_selection:
+                            continue
+                        
+                        ms_lower = movie_selection.lower().strip()
+                        
+                        if ms_lower in ('b', 'back'):
+                            break
+                        
+                        if ms_lower in ('a', 'all'):
+                            if not _confirm_download(movies, cat_name, sec_name):
+                                print("INFO 已取消下载", file=sys.stderr)
+                                break
+                            download_movies(movies, page, "section", category=cat_name, section=sec_name)
+                            go_to_root()
+                            break
+                        
+                        # Parse movie indices using parse_selection_range
+                        selected_movies = parse_selection_range(movies, movie_selection)
+                        
+                        if selected_movies:
+                            if not _confirm_download(selected_movies, cat_name, sec_name):
+                                print("INFO 已取消下载", file=sys.stderr)
+                                break
+                            download_movies(selected_movies, page, "movie", category=cat_name, section=sec_name)
+                            go_to_root()
+                            break
+                        else:
+                            print("WARNING 未选择任何电影", file=sys.stderr)
+                    
+                    if state == 'movies':  # Still in movies state (didn't exit)
+                        continue
+                    continue
+                
+                # Try multi-selection (supports single, range, comma-separated)
+                selected_movies = parse_selection_range(movies, selection)
+                
+                if not selected_movies:
+                    print(f"WARNING 未选择任何电影: {selection}", file=sys.stderr)
+                    continue
+                
+                if not _confirm_download(selected_movies, cat_name, sec_name):
+                    print("INFO 已取消下载", file=sys.stderr)
+                    continue
+                
+                download_movies(selected_movies, page, "movie", category=cat_name, section=sec_name)
+                go_to_root()
             
-            # Try multi-selection (supports single, range, comma-separated)
-            selected_movies = parse_selection_range(movies, selection)
-            
-            if not selected_movies:
-                print(f"WARNING 未选择任何电影: {selection}", file=sys.stderr)
-                continue
-            
-            if not _confirm_download(selected_movies, cat_name, sec_name):
-                print("INFO 已取消下载", file=sys.stderr)
-                continue
-            
-            download_movies(selected_movies, cookies, "movie", category=cat_name, section=sec_name)
-            go_to_root()
-        
-        else:
-            print(f"WARNING 未知状态: {state}", file=sys.stderr)
-            go_to_root()
+            else:
+                print(f"WARNING 未知状态: {state}", file=sys.stderr)
+                go_to_root()
+    
+    finally:
+        # Cleanup browser resources
+        if context:
+            try:
+                context.close()
+            except Exception:
+                pass
+        if browser:
+            try:
+                browser.close()
+            except Exception:
+                pass
+        try:
+            p.stop()
+        except Exception:
+            pass
 
-
-def download_movies(movies: list, cookies: list, context: str = "", category: str = "", section: str = "", failed_movies: list = None) -> list:
+def download_movies(movies: list, page, context: str = "", category: str = "", section: str = "", failed_movies: list = None) -> list:
     """Download subtitles for a list of movies.
     
     Args:
         movies: List of movie dicts (each has 'title' and 'url')
-        cookies: Playwright cookies
+        page: Playwright page object (shared browser context)
         context: Context string for logging (category/section/movie)
         category: Category name for directory structure
         section: Section name for directory structure
@@ -2018,7 +2057,7 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
         movie_section = movie.get('_section', section)
         print(f"INFO 处理电影 {i+1}/{len(movies)}: {movie_title}", file=sys.stderr)
         result = extract_movie_subtitles(
-            movie['url'], cookies,
+            page, movie['url'],
             movie_title=movie_title,
             category=category,
             section=movie_section
@@ -2059,7 +2098,7 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
             
             for attempt in range(3):
                 result = extract_movie_subtitles(
-                    fm['url'], cookies,
+                    page, fm['url'],
                     movie_title=fm['title'],
                     category=fm['category'],
                     section=fm['section']
@@ -2105,7 +2144,7 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
                 
                 for attempt in range(3):
                     result = extract_movie_subtitles(
-                        fm['url'], cookies,
+                        page, fm['url'],
                         movie_title=fm['title'],
                         category=fm['category'],
                         section=fm['section']
