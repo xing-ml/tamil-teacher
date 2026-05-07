@@ -911,7 +911,11 @@ def _extract_section_movies_from_category(category_url: str, section_title: str,
 
 
 def fetch_section_movies(section_url: str, cookies: list, headless: bool = False) -> list:
-    """Navigate to section page, scroll to bottom (infinite load), and extract all movies.
+    """Navigate to section page, scroll to collect all movies (virtual scrolling aware), and extract all movies.
+    
+    Prime Video uses virtual scrolling: movies outside viewport are removed from DOM.
+    Strategy: scroll incrementally, extract {url, title} each time, accumulate by URL.
+    Stop when 3 consecutive scrolls yield no new URLs.
     
     Args:
         section_url: The 'See more' URL for the section
@@ -921,8 +925,24 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
     Returns:
         List of movie dicts: [{'title': '...', 'url': '...'}, ...]
     """
+    # JS function to extract all movie {url, title} from current DOM
+    extract_movies_js = '''() => {
+        const movies = [];
+        for (const link of document.querySelectorAll("a[href*='/detail/']")) {
+            const href = link.getAttribute("href");
+            if (!href) continue;
+            const url = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+            // Title is in textContent (aria-label and data-tracker-title are both null)
+            const title = link.textContent?.trim() || "";
+            if (title && title.length > 2 && title.length < 100) {
+                movies.push({ url, title });
+            }
+        }
+        return movies;
+    }'''
+    
     all_movies = []
-    seen_urls = set()
+    seen_urls = {}  # url -> title (dedup by URL, keep first title seen)
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
@@ -944,69 +964,43 @@ def fetch_section_movies(section_url: str, cookies: list, headless: bool = False
             time.sleep(5)
             
             # Scroll to bottom and wait for infinite loading
-            print("INFO Scrolling to bottom and waiting for infinite loading...", file=sys.stderr)
+            print("INFO Scrolling to collect all movies (virtual scrolling aware)...", file=sys.stderr)
             
-            # Prime Video uses virtual scrolling - movies outside viewport are removed from DOM
-            # So we should NOT count movies during scroll (count will fluctuate)
-            # Instead: scroll a few times to let page render, then extract all movies from DOM
-            
+            max_scrolls = 15  # Safety limit
+            consecutive_no_new = 0
             scroll_count = 0
-            max_scrolls = 12  # Safety limit
             
             while scroll_count < max_scrolls:
-                # Scroll down by 500px (smaller step to trigger page rendering)
+                # Scroll down by 500px
                 page.evaluate('window.scrollBy(0, 500)')
                 time.sleep(1)  # Wait for content to render
                 
+                # Extract movies from current DOM
+                current_movies = page.evaluate(extract_movies_js)
+                new_count = 0
+                for m in current_movies:
+                    if m['url'] not in seen_urls:
+                        seen_urls[m['url']] = m['title']
+                        new_count += 1
+                
+                total = len(seen_urls)
+                if new_count > 0:
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
+                    consecutive_no_new = 0  # Reset - new content found
+                else:
+                    consecutive_no_new += 1
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
+                
                 scroll_count += 1
                 
-                # Log scroll progress but don't check movie count (virtual scrolling changes DOM)
-                scroll_y = page.evaluate('window.scrollY')
-                scroll_h = page.evaluate('document.documentElement.scrollHeight')
-                print(f"INFO Scroll #{scroll_count}: scrollY={scroll_y}, scrollHeight={scroll_h}", file=sys.stderr)
-                
-                # After 8 scrolls, we've covered the page. Check if scroll position has stabilized.
-                if scroll_count >= 8:
-                    # Check if we've reached near the bottom (within 100px)
-                    remaining = scroll_h - scroll_y
-                    if remaining < 100:
-                        print(f"INFO Near bottom ({remaining}px remaining) - stopping", file=sys.stderr)
-                        break
+                # Stop if 3 consecutive scrolls with no new content
+                if consecutive_no_new >= 3:
+                    print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
+                    break
             
-            # Extract all movies
-            print("INFO Extracting all movies...", file=sys.stderr)
-            all_movies = page.evaluate('''() => {
-                const movies = [];
-                const seen = new Set();
-                const links = document.querySelectorAll("a[href*='/detail/']");
-                
-                for (const link of links) {
-                    const href = link.getAttribute("href");
-                    if (!href || seen.has(href)) continue;
-                    
-                    let movieTitle = "";
-                    const titleAttr = link.getAttribute("aria-label") || link.getAttribute("data-tracker-title");
-                    if (titleAttr) {
-                        movieTitle = titleAttr.trim();
-                    } else {
-                        for (const node of link.childNodes) {
-                            if (node.nodeType === Node.TEXT_NODE) movieTitle += node.textContent;
-                        }
-                        movieTitle = movieTitle.trim();
-                    }
-                    
-                    if (movieTitle && movieTitle.length > 2 && movieTitle.length < 100) {
-                        seen.add(href);
-                        movies.push({
-                            title: movieTitle,
-                            url: href.startsWith('http') ? href : 'https://www.primevideo.com' + href
-                        });
-                    }
-                }
-                return movies;
-            }''')
-            
-            print(f"INFO Extracted {len(all_movies)} movies from section", file=sys.stderr)
+            # Build final list from accumulated URLs
+            all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
+            print(f"INFO Total movies collected: {len(all_movies)}", file=sys.stderr)
         
         finally:
             browser.close()
