@@ -154,9 +154,12 @@ def extract_categories_only(page, cookies: list) -> list:
             for (const link of allLinks) {
                 const href = link.getAttribute('href');
                 if (!href) continue;
+                // Exclude "See more" / "See More" navigation buttons
+                const text = link.textContent.trim();
+                if (!text || text.length <= 2 || text.length >= 100) continue;
+                if (text.toLowerCase().includes('see more') || text.toLowerCase().includes('see\u200bmore')) continue;
                 if (href.includes('/genre/') || href.includes('/collection/') || href.includes('/kids')) {
-                    const text = link.textContent.trim();
-                    if (text && text.length > 2 && text.length < 100 && !seen.has(text)) {
+                    if (!seen.has(text)) {
                         seen.add(text);
                         categories.push({
                             name: text,
