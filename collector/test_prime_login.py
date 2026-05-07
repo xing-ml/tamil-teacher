@@ -671,7 +671,8 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                     primaryActionsCount: a.extracted.primaryActions?.length || 0,
                     // Full extracted structure for debugging
                     extractedKeys: Object.keys(a.extracted || {}),
-                    extractedPreview: JSON.stringify(a.extracted).substring(0, 500)
+                    extractedPreview: JSON.stringify(a.extracted).substring(0, 2000),
+                    extractedFull: JSON.stringify(a.extracted)
                 }));
                 return result;
             }
@@ -1734,7 +1735,7 @@ def main():
     try:
         print("INFO Launching browser...", file=sys.stderr)
         p = sync_playwright().start()
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
         
