@@ -1656,7 +1656,7 @@ def main():
     try:
         print("INFO Launching browser...", file=sys.stderr)
         p = sync_playwright().start()
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         context = browser.new_context()
         page = context.new_page()
         
