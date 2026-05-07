@@ -21,74 +21,81 @@ DEBUG_MODE = False  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
 
-def login_prime_video(email: str, password: str, headless: bool = False) -> dict:
-    """Login to Prime Video and extract cookies."""
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
-        context = browser.new_context()
-        page = context.new_page()
+def login_prime_video(page, email: str, password: str) -> dict:
+    """Login to Prime Video and extract cookies.
+    
+    Uses shared page object. Returns cookies for use by other functions.
+    
+    Args:
+        page: Playwright page object (shared browser context)
+        email: Prime Video email
+        password: Prime Video password
+    
+    Returns:
+        Dict with 'success' and 'cookies' keys
+    """
+    try:
+        print("INFO Navigating to Prime Video...", file=sys.stderr)
+        page.goto("https://www.primevideo.com", timeout=30000)
+        time.sleep(5)
         
-        try:
-            print("INFO Navigating to Prime Video...", file=sys.stderr)
-            page.goto("https://www.primevideo.com", timeout=30000)
-            time.sleep(5)
-            
-            # Find Join Prime button
-            join_prime = page.query_selector('a:has-text("Join Prime")')
-            if not join_prime:
-                print("WARNING Could not find Join Prime button", file=sys.stderr)
-                return {"success": False, "cookies": None}
-            
-            print("INFO Found Join Prime button", file=sys.stderr)
-            join_prime.click()
-            time.sleep(3)
-            
-            # Find email input
-            email_input = page.query_selector('input[id="ap_email"]')
-            if not email_input:
-                print("WARNING Could not find email input", file=sys.stderr)
-                return {"success": False, "cookies": None}
-            
-            email_input.fill(email)
-            
-            # Find continue button
-            continue_btn = page.query_selector('input[id="continue"]')
-            if not continue_btn:
-                print("WARNING Could not find continue button", file=sys.stderr)
-                return {"success": False, "cookies": None}
-            
-            continue_btn.click()
-            time.sleep(3)
-            
-            # Find password input
-            password_input = page.query_selector('input[id="ap_password"]')
-            if not password_input:
-                print("WARNING Could not find password input", file=sys.stderr)
-                return {"success": False, "cookies": None}
-            
-            password_input.fill(password)
-            
-            # CHECK "Keep me signed in" BEFORE signing in
-            keep_signed_in = page.query_selector('input[id="rememberMe"]')
-            if keep_signed_in:
-                print("INFO Checking Keep me signed in checkbox", file=sys.stderr)
-                keep_signed_in.check()
-            
-            # Find sign in submit button
-            sign_in_submit = page.query_selector('input[id="signInSubmit"]')
-            if not sign_in_submit:
-                print("WARNING Could not find sign in submit button", file=sys.stderr)
-                return {"success": False, "cookies": None}
-            
-            sign_in_submit.click()
-            time.sleep(5)
-            
-            cookies = context.cookies()
-            print("INFO Login successful, cookies extracted", file=sys.stderr)
-            return {"success": True, "cookies": cookies}
+        # Find Join Prime button
+        join_prime = page.query_selector('a:has-text("Join Prime")')
+        if not join_prime:
+            print("WARNING Could not find Join Prime button", file=sys.stderr)
+            return {"success": False, "cookies": None}
         
-        finally:
-            browser.close()
+        print("INFO Found Join Prime button", file=sys.stderr)
+        join_prime.click()
+        time.sleep(3)
+        
+        # Find email input
+        email_input = page.query_selector('input[id="ap_email"]')
+        if not email_input:
+            print("WARNING Could not find email input", file=sys.stderr)
+            return {"success": False, "cookies": None}
+        
+        email_input.fill(email)
+        
+        # Find continue button
+        continue_btn = page.query_selector('input[id="continue"]')
+        if not continue_btn:
+            print("WARNING Could not find continue button", file=sys.stderr)
+            return {"success": False, "cookies": None}
+        
+        continue_btn.click()
+        time.sleep(3)
+        
+        # Find password input
+        password_input = page.query_selector('input[id="ap_password"]')
+        if not password_input:
+            print("WARNING Could not find password input", file=sys.stderr)
+            return {"success": False, "cookies": None}
+        
+        password_input.fill(password)
+        
+        # CHECK "Keep me signed in" BEFORE signing in
+        keep_signed_in = page.query_selector('input[id="rememberMe"]')
+        if keep_signed_in:
+            print("INFO Checking Keep me signed in checkbox", file=sys.stderr)
+            keep_signed_in.check()
+        
+        # Find sign in submit button
+        sign_in_submit = page.query_selector('input[id="signInSubmit"]')
+        if not sign_in_submit:
+            print("WARNING Could not find sign in submit button", file=sys.stderr)
+            return {"success": False, "cookies": None}
+        
+        sign_in_submit.click()
+        time.sleep(5)
+        
+        cookies = page.context.cookies()
+        print("INFO Login successful, cookies extracted", file=sys.stderr)
+        return {"success": True, "cookies": cookies}
+    
+    except Exception as e:
+        print(f"WARNING login_prime_video failed: {e}", file=sys.stderr)
+        return {"success": False, "cookies": None}
 
 
 def extract_categories_only(page, cookies: list) -> list:
