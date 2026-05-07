@@ -896,9 +896,16 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             if sub_type not in ALLOWED_TYPES:
                 continue
             
+            # Generate unique identifier: lang_code or lang_code[cc] for SDH
+            if sub_type == 'Sdh':
+                unique_id = f"{lang_code}[cc]"
+            else:
+                unique_id = lang_code
+            
             filtered_subtitles.append({
                 'lang_code': lang_code,
                 'type': sub_type,
+                'unique_id': unique_id,
                 'url': url,
             })
         
@@ -931,6 +938,7 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         
         for sub in filtered_subtitles:
             lang_code = sub['lang_code']
+            unique_id = sub['unique_id']  # e.g., 'en-us' or 'en-us[cc]'
             srt_content = None
             
             # Retry mechanism: 3s wait, max 3 retries
@@ -940,12 +948,12 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                 if srt_content:
                     break
                 if attempt < max_retries - 1:
-                    print(f"WARNING Retry {attempt+1}/{max_retries-1} for {lang_code} subtitle...", file=sys.stderr)
+                    print(f"WARNING Retry {attempt+1}/{max_retries-1} for {unique_id} subtitle...", file=sys.stderr)
                     time.sleep(3)
             
             if not srt_content:
-                print(f"WARNING Failed to fetch subtitle after {max_retries} attempts: {lang_code} ({sub['type']})", file=sys.stderr)
-                failed_langs.append(lang_code)
+                print(f"WARNING Failed to fetch subtitle after {max_retries} attempts: {unique_id} ({sub['type']})", file=sys.stderr)
+                failed_langs.append(unique_id)
                 continue
             
             filename = build_filename(safe_movie, lang_code, sub['type'])
@@ -958,14 +966,14 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             if DEBUG_MODE:
                 print(f"INFO Saved: {filepath} ({caption_count} captions, type={sub['type']})", file=sys.stderr)
             saved_count += 1
-            downloaded_langs.add(lang_code)
+            downloaded_langs.add(unique_id)
         
         # Update result with actual download status
         result['subtitles_saved'] = saved_count
         result['subtitle_dir'] = output_dir
         result['success_langs'] = sorted(downloaded_langs)
         result['failed_langs'] = failed_langs
-        # Language codes are like 'ta-in', 'en-us', 'kn-in', etc.
+        # Language codes are like 'ta-in', 'en-us', 'kn-in', etc. (may have [cc] suffix)
         has_tamil = any(lang.startswith('ta') for lang in downloaded_langs)
         has_english = any(lang.startswith('en') for lang in downloaded_langs)
         result['tamil'] = has_tamil
