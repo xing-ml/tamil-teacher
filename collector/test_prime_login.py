@@ -595,6 +595,72 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                 }
             }
             
+            // Fallback: recursively search all nested objects for playbackEnvelope
+            // This handles headless mode where structure is different (EXPAND_CARD_OPTION, etc.)
+            if(!result.envelope) {
+                const found = findPlaybackEnvelopeRecursive(actions);
+                if(found) {
+                    result.envelope = found.envelope;
+                    result.expiry = found.expiry;
+                    result.envelopeId = found.id;
+                    result.envelopeSource = found.source;
+                }
+            }
+            
+            // Helper: recursively search for playbackEnvelope in any nested structure
+            function findPlaybackEnvelopeRecursive(items, path = '') {
+                for(const item of items) {
+                    if(typeof item !== 'object' || item === null) continue;
+                    
+                    // Check direct property
+                    if(item.playbackEnvelope) {
+                        return { envelope: item.playbackEnvelope, expiry: item.expiryTime, id: item.id || 'unknown', source: item.source || 'unknown' };
+                    }
+                    
+                    // Check nested payload
+                    if(item.payload && typeof item.payload === 'object') {
+                        // Direct playback.playbackEnvelope
+                        if(item.payload.playback && item.payload.playback.playbackEnvelope) {
+                            return { envelope: item.payload.playback.playbackEnvelope, expiry: item.payload.playback.expiryTime, id: item.id || 'unknown', source: item.source || 'unknown' };
+                        }
+                        // expandingCard.actions
+                        if(item.payload.expandingCard && item.payload.expandingCard.actions) {
+                            const found = findPlaybackEnvelopeRecursive(item.payload.expandingCard.actions, path + '.expandingCard.actions');
+                            if(found) return found;
+                        }
+                        // Any other nested object
+                        const found = findPlaybackEnvelopeRecursive([item.payload], path + '.payload');
+                        if(found) return found;
+                    }
+                    
+                    // Check actions array
+                    if(item.actions && Array.isArray(item.actions)) {
+                        const found = findPlaybackEnvelopeRecursive(item.actions, path + '.actions');
+                        if(found) return found;
+                    }
+                    
+                    // Check children
+                    if(item.children && Array.isArray(item.children)) {
+                        const found = findPlaybackEnvelopeRecursive(item.children, path + '.children');
+                        if(found) return found;
+                    }
+                    
+                    // Recurse into any other object properties
+                    for(const key of Object.keys(item)) {
+                        if(key === 'payload' || key === 'actions' || key === 'children') continue; // already handled
+                        const val = item[key];
+                        if(typeof val === 'object' && val !== null && !Array.isArray(val)) {
+                            const found = findPlaybackEnvelopeRecursive([val], path + '.' + key);
+                            if(found) return found;
+                        } else if(Array.isArray(val)) {
+                            const found = findPlaybackEnvelopeRecursive(val, path + '.' + key);
+                            if(found) return found;
+                        }
+                    }
+                }
+                return null;
+            }
+            
             if(!result.envelope) {
                 result.error = "Could not find playbackEnvelope in actions";
                 result.actions = actions.map(a => ({
