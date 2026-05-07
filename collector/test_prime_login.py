@@ -602,7 +602,10 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                     source: a.source,
                     hasPrimaryActions: !!a.extracted.primaryActions,
                     hasPlaybackActions: !!a.extracted.playbackActions,
-                    primaryActionsCount: a.extracted.primaryActions?.length || 0
+                    primaryActionsCount: a.extracted.primaryActions?.length || 0,
+                    // Full extracted structure for debugging
+                    extractedKeys: Object.keys(a.extracted || {}),
+                    extractedPreview: JSON.stringify(a.extracted).substring(0, 500)
                 }));
                 return result;
             }
@@ -622,7 +625,13 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                 for i, action in enumerate(init_result['actions']):
                     print(f"  Action {i}: id={action.get('id')}, source={action.get('source')}, "
                           f"primaryActions={action.get('hasPrimaryActions')}, "
-                          f"playbackActions={action.get('hasPlaybackActions')}", file=sys.stderr)
+                          f"playbackActions={action.get('hasPlaybackActions')}, "
+                          f"keys={action.get('extractedKeys')}", file=sys.stderr)
+                    preview = action.get('extractedPreview', '')
+                    if preview and len(preview) > 200:
+                        preview = preview[:200] + '...'
+                    if preview:
+                        print(f"    preview: {preview}", file=sys.stderr)
             # Debug: print current page URL and title
             print(f"DEBUG Current page URL: {page.url}", file=sys.stderr)
             print(f"DEBUG Current page title: {page.title()}", file=sys.stderr)
