@@ -423,7 +423,8 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             
             def on_console(msg):
                 console_msgs.append(msg.text)
-                print(f"DEBUG Console: {msg.text}", file=sys.stderr)
+                if DEBUG_MODE:
+                    print(f"DEBUG Console: {msg.text}", file=sys.stderr)
             page.on('console', on_console)
             
             def on_response(response):
@@ -624,7 +625,7 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                 print(f"INFO Device params: {device_params}", file=sys.stderr)
             
             sub_info_result = page.evaluate(
-                '''async ({ envelope, deviceParams, movieUrl }) => {
+                '''async ({ envelope, deviceParams, movieUrl, debugMode }) => {
                     try {
                         // Try POST to GetVodPlaybackResources endpoint with timedTextUrlsRequest
                         const baseUrl = 'https://atv-ps-fe.primevideo.com/playback/prs/GetVodPlaybackResources';
@@ -638,7 +639,9 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                             titleId: ''
                         });
                         
-                        console.log('DEBUG GVod URL:', url);
+                        if (debugMode) {
+                            console.log('DEBUG GVod URL:', url);
+                        }
                         
                         const response = await fetch(url, {
                             credentials: 'include',
@@ -663,17 +666,23 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                         const contentType = response.headers.get('content-type') || '';
                         const text = await response.text();
                         
-                        console.log('DEBUG GVod status:', response.status);
-                        console.log('DEBUG GVod contentType:', contentType);
-                        console.log('DEBUG GVod body (first 2000):', text.substring(0, 2000));
+                        if (debugMode) {
+                            console.log('DEBUG GVod status:', response.status);
+                            console.log('DEBUG GVod contentType:', contentType);
+                            console.log('DEBUG GVod body (first 2000):', text.substring(0, 2000));
+                        }
                         
                         let parsed = null;
                         if(contentType.includes('application/json')) {
                             try {
                                 parsed = JSON.parse(text);
-                                console.log('DEBUG GVod parsed timedTextUrls:', JSON.stringify(parsed.timedTextUrls, null, 2).substring(0, 2000));
+                                if (debugMode) {
+                                    console.log('DEBUG GVod parsed timedTextUrls:', JSON.stringify(parsed.timedTextUrls, null, 2).substring(0, 2000));
+                                }
                             } catch(e) {
-                                console.log('DEBUG GVod JSON parse error:', e.message);
+                                if (debugMode) {
+                                    console.log('DEBUG GVod JSON parse error:', e.message);
+                                }
                             }
                         }
                         
@@ -684,12 +693,14 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
                             parsed: parsed
                         };
                     } catch(e) {
-                        console.log('DEBUG GVod error:', e.message);
-                        console.log('DEBUG GVod error stack:', e.stack);
+                        if (debugMode) {
+                            console.log('DEBUG GVod error:', e.message);
+                            console.log('DEBUG GVod error stack:', e.stack);
+                        }
                         return { error: e.message || String(e) };
                     }
                 }''',
-                {'envelope': envelope, 'deviceParams': device_params, 'movieUrl': movie_url}
+                {'envelope': envelope, 'deviceParams': device_params, 'movieUrl': movie_url, 'debugMode': DEBUG_MODE}
             )
             
             if DEBUG_MODE:
@@ -826,6 +837,13 @@ def extract_movie_subtitles(movie_url: str, cookies: list, headless: bool = Fals
             if DEBUG_MODE:
                 print(f"INFO Total subtitles saved: {saved_count} to {output_dir}", file=sys.stderr)
                 print(f"INFO Languages: tamil={result['tamil']}, english={result['english']}, dual={result['has_dual_subtitles']}, langs={downloaded_langs}", file=sys.stderr)
+            
+            # Per-movie summary (always printed)
+            success_count_movie = len(downloaded_langs)
+            failed_count_movie = len(failed_langs)
+            success_str = f"成功{success_count_movie}个" if downloaded_langs else "成功0个"
+            failed_str = f"失败{failed_count_movie}个({', '.join(sorted(failed_langs))})" if failed_langs else "失败0个"
+            print(f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}", file=sys.stderr)
         
         finally:
             browser.close()
@@ -2005,38 +2023,6 @@ def download_movies(movies: list, cookies: list, context: str = "", category: st
         })
     
     success_count = sum(1 for r in results if r['success'])
-    
-    # Print detailed per-movie summary
-    print(f"\n{'='*60}", file=sys.stderr)
-    print("下载汇总", file=sys.stderr)
-    print(f"{'='*60}", file=sys.stderr)
-    
-    # Group by category -> section
-    grouped = {}
-    for r in results:
-        cat = r.get('category', 'Unknown') or 'Unknown'
-        sec = r.get('section', 'Unknown') or 'Unknown'
-        key = (cat, sec)
-        if key not in grouped:
-            grouped[key] = []
-        grouped[key].append(r)
-    
-    for (cat, sec), movie_results in sorted(grouped.items()):
-        print(f"\n[{cat} / {sec}]", file=sys.stderr)
-        for r in movie_results:
-            title = r['title']
-            total = r.get('total_subtitle_types', 0)
-            filtered = r.get('filtered_subtitle_types', 0)
-            success_langs = r.get('success_langs', [])
-            failed_langs = r.get('failed_langs', [])
-            success_count_movie = len(success_langs)
-            failed_count_movie = len(failed_langs)
-            
-            success_str = f"成功{success_count_movie}个({', '.join(success_langs)})" if success_langs else "成功0个"
-            failed_str = f"失败{failed_count_movie}个({', '.join(failed_langs)})" if failed_langs else "失败0个"
-            
-            print(f"  {title}: {total}种字幕 → 筛选后{filtered}种 ({', '.join(success_langs)}) → {success_str}, {failed_str}", file=sys.stderr)
-    
     print(f"\n{'='*60}", file=sys.stderr)
     print(f"INFO 下载完成: {success_count}/{len(movies)} 个电影成功", file=sys.stderr)
     
