@@ -309,8 +309,7 @@ def extract_sections_from_category(page, category_url: str, cookies: list) -> li
         
         print(f"INFO   Found {len(sections_js)} sections", file=sys.stderr)
         for i, sec in enumerate(sections_js):
-            has_url = bool(sec.get('href'))
-            print(f"    {i+1}. {sec.get('title', '?')} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
+            print(f"    {i+1}. {sec.get('title', '?')} [NO URL]" if not sec.get('href') else f"    {i+1}. {sec.get('title', '?')}", file=sys.stderr)
     
     except Exception as e:
         print(f"WARNING extract_sections_from_category failed: {e}", file=sys.stderr)
@@ -1767,8 +1766,7 @@ def main():
                 print(f"{'='*60}", file=sys.stderr)
                 print("Sections:", file=sys.stderr)
                 for i, sec in enumerate(sections):
-                    has_url = bool(sec.get('href'))
-                    print(f"  {i+1}. {sec['title']} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
+                    print(f"  {i+1}. {sec['title']} [NO URL]" if not sec.get('href') else f"  {i+1}. {sec['title']}", file=sys.stderr)
                 
                 print(f"\n选择方式:", file=sys.stderr)
                 print("  - a/all: 下载此类目下所有 sections 的所有电影", file=sys.stderr)
