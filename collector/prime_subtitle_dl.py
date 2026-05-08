@@ -2412,8 +2412,9 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         else:
             # Movie: download subtitle
             movie_count += 1
+            item_index += 1
             print(f"\n{'='*60}", file=sys.stderr)
-            print(f"INFO 处理 {item_index + 1}/{len(movies)}: {movie_title}", file=sys.stderr)
+            print(f"INFO 处理 {item_index}/{len(movies)}: {movie_title}", file=sys.stderr)
             
             result = extract_movie_subtitles(
                 page, movie_url,
