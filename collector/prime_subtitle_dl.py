@@ -242,7 +242,7 @@ def extract_sections_from_category(page, category_url: str, cookies: list) -> li
         print("INFO   Scrolling to load all sections...", file=sys.stderr)
         for _scroll in range(3):
             page.evaluate('window.scrollBy(0, window.innerHeight)')
-            time.sleep(1)
+            time.sleep(2)
         
         # Use the EXACT same JS as extract_category_tree (proven working)
         # Container count debug (only when DEBUG_MODE is enabled)
@@ -1127,7 +1127,7 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
         
         while scroll_count < 15:
             page.evaluate('window.scrollBy(0, 500)')
-            time.sleep(1)
+            time.sleep(2)
             
             current_items = page.evaluate(extract_js)
             new_count = 0
