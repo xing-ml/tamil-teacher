@@ -21,6 +21,28 @@ DEBUG_MODE = False  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
 
+def _check_login_status(page) -> bool:
+    """检查是否已登录 Prime Video。
+    
+    Returns:
+        True = 已登录（无 Join Prime 文字），可跳过登录
+        False = 未登录（有 Join Prime 文字），需要登录
+    """
+    try:
+        page.goto("https://www.primevideo.com", timeout=15000)
+        page.wait_for_load_state('domcontentloaded')
+        time.sleep(2)
+        
+        # 检查是否存在 "Join Prime" 元素
+        join_prime = page.query_selector('a:has-text("Join Prime")')
+        if join_prime:
+            return False  # 需要登录
+        return True  # 已登录
+    except Exception:
+        # 网络错误或超时 → 保守起见执行登录
+        return False
+
+
 def login_prime_video(page, email: str, password: str) -> dict:
     """Login to Prime Video and extract cookies.
     
@@ -1577,18 +1599,23 @@ def main():
     
     try:
         print("INFO Launching browser...", file=sys.stderr)
+        os.makedirs('data/browser', exist_ok=True)
         p = sync_playwright().start()
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=False, user_data_dir='data/browser')
         context = browser.new_context()
         page = context.new_page()
         
-        # Login
-        print("INFO Logging in...", file=sys.stderr)
-        login_result = login_prime_video(page, email, password)
-        if not login_result['success']:
-            print("ERROR Login failed", file=sys.stderr)
-            sys.exit(1)
-        cookies = login_result['cookies']
+        # Login (skip if already logged in)
+        if _check_login_status(page):
+            print("INFO 已登录，跳过登录步骤", file=sys.stderr)
+            cookies = page.context.cookies()
+        else:
+            print("INFO 检测到未登录，执行登录...", file=sys.stderr)
+            login_result = login_prime_video(page, email, password)
+            if not login_result['success']:
+                print("ERROR Login failed", file=sys.stderr)
+                sys.exit(1)
+            cookies = login_result['cookies']
         
         # Extract categories only (FAST - no navigation to category pages)
         print("\nINFO Extracting categories from homepage...", file=sys.stderr)
