@@ -1231,8 +1231,14 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
         }''')
         
         for ep in initial_episodes:
-            if ep['title'] and ep['season'] > 0:
-                episodes.append(ep)
+            # Handle missing seasonNumber (default to 1)
+            season = ep.get('season') or 1
+            if ep['title'] and season > 0:
+                episodes.append({
+                    'title': ep['title'],
+                    'season': season,
+                    'episode': ep.get('episode', 0),
+                })
         
         if not episodes:
             return []
