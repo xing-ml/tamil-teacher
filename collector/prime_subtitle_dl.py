@@ -193,9 +193,10 @@ def extract_categories_only(page, cookies: list) -> list:
             return categories;
         }''')
         
-        print(f"INFO Found {len(category_links_js)} categories", file=sys.stderr)
-        for i, cat in enumerate(category_links_js):
-            print(f"  {i+1}. {cat['name']}", file=sys.stderr)
+        if DEBUG_MODE:
+            print(f"INFO Found {len(category_links_js)} categories", file=sys.stderr)
+            for i, cat in enumerate(category_links_js):
+                print(f"  {i+1}. {cat['name']}", file=sys.stderr)
     
     except Exception as e:
         print(f"WARNING extract_categories_only failed: {e}", file=sys.stderr)
