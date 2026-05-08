@@ -206,16 +206,17 @@ def extract_sections_from_category(page, category_url: str, cookies: list) -> li
             time.sleep(2)
         
         # Use the EXACT same JS as extract_category_tree (proven working)
-        # Split into two evaluate calls to debug
-        container_count = page.evaluate('''() => {
-            const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
-            let count = 0;
-            for (const c of allContainers) {
-                if (c.querySelectorAll("a[href*='/detail/']").length > 0) count++;
-            }
-            return count;
-        }''')
-        print(f"INFO   Debug: {container_count} containers with movie links", file=sys.stderr)
+        # Container count debug (only when DEBUG_MODE is enabled)
+        if DEBUG_MODE:
+            container_count = page.evaluate('''() => {
+                const allContainers = document.querySelectorAll("[class*='carousel'], [class*='cards'], [class*='card']");
+                let count = 0;
+                for (const c of allContainers) {
+                    if (c.querySelectorAll("a[href*='/detail/']").length > 0) count++;
+                }
+                return count;
+            }''')
+            print(f"INFO   Debug: {container_count} containers with movie links", file=sys.stderr)
         
         sections_js = page.evaluate('''() => {
             const sections = [];
@@ -1220,6 +1221,158 @@ def parse_selection_range(items: list, selection: str) -> list:
     return selected
 
 
+def collect_movies_from_items(page, items: list, category_name: str, cookies: list) -> list:
+    """Collect movies from a list of items (categories or sections).
+    
+    For categories: extracts sections first, then fetches movies from each section.
+    For sections: directly fetches movies from each section.
+    
+    Args:
+        page: Playwright page object (shared browser context)
+        items: List of items, each with 'href' and 'title' or 'name' keys
+        category_name: Default category name for metadata (used for sections)
+        cookies: Playwright cookies list
+    
+    Returns:
+        List of movie dicts with '_category' and '_section' metadata
+    """
+    all_movies = []
+    for item in items:
+        item_name = item.get('title', item.get('name', ''))
+        item_href = item.get('href', '')
+        if not item_href:
+            continue
+        
+        # Use item's own name if it's a category, otherwise use category_name
+        if 'name' in item:
+            effective_category = item['name']
+        else:
+            effective_category = category_name
+        
+        # Check if this item is a category (needs section extraction) or a section
+        if '/genre/' in item_href or '/collection/' in item_href:
+            # Category: extract sections first
+            sections = extract_sections_from_category(page, item_href, cookies)
+            for sec in sections:
+                if sec.get('href'):
+                    movies = fetch_section_movies(page, sec['href'], cookies)
+                    for m in movies:
+                        m['_category'] = effective_category
+                        m['_section'] = sec['title']
+                    all_movies.extend(movies)
+        else:
+            # Section: fetch movies directly
+            movies = fetch_section_movies(page, item_href, cookies)
+            for m in movies:
+                m['_category'] = effective_category
+                m['_section'] = item_name
+            all_movies.extend(movies)
+    
+    return all_movies
+
+
+def _retry_movies(page, failed_list: list, round_label: str) -> tuple:
+    """Retry failed movie downloads.
+    
+    Args:
+        page: Playwright page object
+        failed_list: List of failed movie dicts with 'url', 'title', 'category', 'section'
+        round_label: Label for log messages (e.g., '第一轮', '最终')
+    
+    Returns:
+        (success_results, remaining_failures) where:
+        - success_results: List of result dicts for movies that succeeded on retry
+        - remaining_failures: List of failed movie dicts that still failed after retries
+    """
+    remaining = []
+    success_results = []
+    for fm in failed_list:
+        print(f"\n{'='*60}", file=sys.stderr)
+        print(f"INFO {round_label}: {fm['title']} (attempt 1/3)", file=sys.stderr)
+        
+        for attempt in range(3):
+            result = extract_movie_subtitles(
+                page, fm['url'],
+                movie_title=fm['title'],
+                category=fm['category'],
+                section=fm['section']
+            )
+            if result.get('subtitles_saved', 0) > 0:
+                print(f"INFO 重试成功: {fm['title']} (attempt {attempt+1}/3)", file=sys.stderr)
+                success_results.append({
+                    'title': fm['title'],
+                    'category': fm['category'],
+                    'section': fm['section'],
+                    'success': True,
+                    'subtitles_saved': result.get('subtitles_saved', 0),
+                    'total_subtitle_types': result.get('total_subtitle_types', 0),
+                    'filtered_subtitle_types': result.get('filtered_subtitle_types', 0),
+                    'success_langs': result.get('success_langs', []),
+                    'failed_langs': result.get('failed_langs', []),
+                })
+                break
+            else:
+                remaining_attempts = 2 - attempt
+                if remaining_attempts > 0:
+                    print(f"INFO 重试失败，还有 {remaining_attempts} 次机会: {fm['title']}", file=sys.stderr)
+        else:
+            # All 3 attempts failed
+            remaining.append({
+                'url': fm['url'],
+                'title': fm['title'],
+                'category': fm['category'],
+                'section': fm['section'],
+                'error': result.get('error', 'unknown'),
+            })
+            print(f"INFO 重试3次全部失败: {fm['title']}", file=sys.stderr)
+    
+    return success_results, remaining
+
+
+def _build_download_result(result_dict: dict, movie_title: str, category: str, section: str) -> dict:
+    """Build a standardized download result dict from extract_movie_subtitles output.
+    
+    Args:
+        result_dict: Raw result from extract_movie_subtitles
+        movie_title: Movie title
+        category: Category name
+        section: Section name
+    
+    Returns:
+        Standardized result dict
+    """
+    return {
+        'title': movie_title,
+        'category': category,
+        'section': section,
+        'success': result_dict.get('subtitles_saved', 0) > 0,
+        'subtitles_saved': result_dict.get('subtitles_saved', 0),
+        'total_subtitle_types': result_dict.get('total_subtitle_types', 0),
+        'filtered_subtitle_types': result_dict.get('filtered_subtitle_types', 0),
+        'success_langs': result_dict.get('success_langs', []),
+        'failed_langs': result_dict.get('failed_langs', []),
+    }
+
+
+def _get_user_input(prompt: str) -> tuple:
+    """Get user input with ESC detection.
+    
+    Args:
+        prompt: Input prompt string
+    
+    Returns:
+        (selection, should_exit) where:
+        - selection: User input string, or 'ESC' if escape pressed
+        - should_exit: True if user pressed ESC at exit level
+    """
+    selection = read_with_esc(prompt)
+    if selection == 'ESC':
+        return 'ESC', True
+    if not selection:
+        return '', False
+    return selection, False
+
+
 def main():
     """Main function with hierarchical selection and caching.
     
@@ -1294,8 +1447,8 @@ def main():
                 print("  - 数字 (如 1, 1-3, 1,3,5): 进入该类目 / 选择多个类目", file=sys.stderr)
                 print("  - b/back: 退出", file=sys.stderr)
                 
-                selection = read_with_esc("\n请输入选择: ")
-                if selection == 'ESC':
+                selection, should_exit = _get_user_input("\n请输入选择: ")
+                if should_exit:
                     print("INFO 退出程序", file=sys.stderr)
                     break
                 if not selection:
@@ -1310,17 +1463,7 @@ def main():
                 if sel_lower in ('a', 'all'):
                     # Download ALL categories
                     print("\nINFO 获取全部电影列表...", file=sys.stderr)
-                    all_movies = []
-                    for cat_idx, cat in enumerate(categories):
-                        print(f"  INFO 获取类目: {cat['name']}", file=sys.stderr)
-                        sections = extract_sections_from_category(page, cat['href'], cookies)
-                        for sec_idx, sec in enumerate(sections):
-                            if sec.get('href'):
-                                movies = fetch_section_movies(page, sec['href'], cookies)
-                                for m in movies:
-                                    m['_category'] = cat['name']
-                                    m['_section'] = sec['title']
-                                all_movies.extend(movies)
+                    all_movies = collect_movies_from_items(page, categories, "all", cookies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
@@ -1366,19 +1509,7 @@ def main():
                 else:
                     # Multiple categories → fetch all movies and download
                     print(f"\nINFO 选择 {len(selected_cats)} 个类目: {[c['name'] for c in selected_cats]}", file=sys.stderr)
-                    all_movies = []
-                    for cat in selected_cats:
-                        cat_name = cat['name']
-                        cat_href = cat['href']
-                        print(f"  INFO 获取类目: {cat_name}", file=sys.stderr)
-                        secs = extract_sections_from_category(page, cat_href, cookies)
-                        for sec in secs:
-                            if sec.get('href'):
-                                movies = fetch_section_movies(page, sec['href'], cookies)
-                                for m in movies:
-                                    m['_category'] = cat_name
-                                    m['_section'] = sec['title']
-                                all_movies.extend(movies)
+                    all_movies = collect_movies_from_items(page, selected_cats, "", cookies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
@@ -1418,8 +1549,8 @@ def main():
                 print("  - 数字 (如 1, 1-3, 1,3,5): 进入该 section / 选择多个 section", file=sys.stderr)
                 print("  - b/back: 返回类目选择", file=sys.stderr)
                 
-                selection = read_with_esc("\n请输入选择: ")
-                if selection == 'ESC':
+                selection, should_exit = _get_user_input("\n请输入选择: ")
+                if should_exit:
                     print("INFO 退出程序", file=sys.stderr)
                     break
                 if not selection:
@@ -1434,15 +1565,7 @@ def main():
                 if sel_lower in ('a', 'all'):
                     # Download all sections in this category
                     print("\nINFO 获取此类目下所有电影...", file=sys.stderr)
-                    all_movies = []
-                    for sec_idx, sec in enumerate(sections):
-                        if sec.get('href'):
-                            print(f"  INFO 获取 section: {sec['title']}", file=sys.stderr)
-                            movies = fetch_section_movies(page, sec['href'], cookies)
-                            for m in movies:
-                                m['_category'] = cat_name
-                                m['_section'] = sec['title']
-                            all_movies.extend(movies)
+                    all_movies = collect_movies_from_items(page, sections, cat_name, cookies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
@@ -1500,16 +1623,7 @@ def main():
                 else:
                     # Multiple sections → fetch all movies and download
                     print(f"\nINFO 选择 {len(selected_secs)} 个 section: {[s['title'] for s in selected_secs]}", file=sys.stderr)
-                    all_movies = []
-                    for sec in selected_secs:
-                        sec_name = sec['title']
-                        sec_href = sec.get('href')
-                        if sec_href:
-                            movies = fetch_section_movies(page, sec_href, cookies)
-                            for m in movies:
-                                m['_category'] = cat_name
-                                m['_section'] = sec_name
-                            all_movies.extend(movies)
+                    all_movies = collect_movies_from_items(page, selected_secs, cat_name, cookies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
@@ -1550,8 +1664,8 @@ def main():
                 print("  - 数字 (如 1, 1-5, 1,3,5): 下载该电影 / 选择多个电影", file=sys.stderr)
                 print("  - b/back: 返回 section 选择", file=sys.stderr)
                 
-                selection = read_with_esc("\n请输入选择: ")
-                if selection == 'ESC':
+                selection, should_exit = _get_user_input("\n请输入选择: ")
+                if should_exit:
                     print("INFO 退出程序", file=sys.stderr)
                     break
                 if not selection:
@@ -1692,17 +1806,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         )
         if DEBUG_MODE:
             print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
-        results.append({
-            'title': movie_title,
-            'category': category,
-            'section': movie_section,
-            'success': result.get('subtitles_saved', 0) > 0,
-            'subtitles_saved': result.get('subtitles_saved', 0),
-            'total_subtitle_types': result.get('total_subtitle_types', 0),
-            'filtered_subtitle_types': result.get('filtered_subtitle_types', 0),
-            'success_langs': result.get('success_langs', []),
-            'failed_langs': result.get('failed_langs', []),
-        })
+        results.append(_build_download_result(result, movie_title, category, movie_section))
         
         # Collect failed movies for retry
         if not result.get('subtitles_saved', 0) > 0:
@@ -1719,85 +1823,16 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         print(f"\n{'='*60}", file=sys.stderr)
         print(f"INFO 第一轮有 {len(failed_movies)} 个电影失败，开始重试（最多3次）...", file=sys.stderr)
         
-        retry_remaining = []
-        for fm in failed_movies:
-            print(f"\n{'='*60}", file=sys.stderr)
-            print(f"INFO 重试: {fm['title']} (attempt 1/3)", file=sys.stderr)
-            
-            for attempt in range(3):
-                result = extract_movie_subtitles(
-                    page, fm['url'],
-                    movie_title=fm['title'],
-                    category=fm['category'],
-                    section=fm['section']
-                )
-                if result.get('subtitles_saved', 0) > 0:
-                    print(f"INFO 重试成功: {fm['title']} (attempt {attempt+1}/3)", file=sys.stderr)
-                    results.append({
-                        'title': fm['title'],
-                        'category': fm['category'],
-                        'section': fm['section'],
-                        'success': True,
-                        'subtitles_saved': result.get('subtitles_saved', 0),
-                        'total_subtitle_types': result.get('total_subtitle_types', 0),
-                        'filtered_subtitle_types': result.get('filtered_subtitle_types', 0),
-                        'success_langs': result.get('success_langs', []),
-                        'failed_langs': result.get('failed_langs', []),
-                    })
-                    break
-                else:
-                    remaining = 2 - attempt
-                    if remaining > 0:
-                        print(f"INFO 重试失败，还有 {remaining} 次机会: {fm['title']}", file=sys.stderr)
-            else:
-                # All 3 attempts failed
-                retry_remaining.append({
-                    'url': fm['url'],
-                    'title': fm['title'],
-                    'category': fm['category'],
-                    'section': fm['section'],
-                    'error': result.get('error', 'unknown'),
-                })
-                print(f"INFO 重试3次全部失败: {fm['title']}", file=sys.stderr)
+        retry_results, retry_remaining = _retry_movies(page, failed_movies, "第一轮")
+        results.extend(retry_results)
         
         # Final retry round: 3 more attempts for remaining failures
         if retry_remaining:
             print(f"\n{'='*60}", file=sys.stderr)
             print(f"INFO 最终重试: {len(retry_remaining)} 个电影仍失败，再试3次...", file=sys.stderr)
             
-            final_remaining = []
-            for fm in retry_remaining:
-                print(f"\n{'='*60}", file=sys.stderr)
-                print(f"INFO 最终重试: {fm['title']} (attempt 1/3)", file=sys.stderr)
-                
-                for attempt in range(3):
-                    result = extract_movie_subtitles(
-                        page, fm['url'],
-                        movie_title=fm['title'],
-                        category=fm['category'],
-                        section=fm['section']
-                    )
-                    if result.get('subtitles_saved', 0) > 0:
-                        print(f"INFO 最终重试成功: {fm['title']} (attempt {attempt+1}/3)", file=sys.stderr)
-                        results.append({
-                            'title': fm['title'],
-                            'category': fm['category'],
-                            'section': fm['section'],
-                            'success': True,
-                            'subtitles_saved': result.get('subtitles_saved', 0),
-                            'total_subtitle_types': result.get('total_subtitle_types', 0),
-                            'filtered_subtitle_types': result.get('filtered_subtitle_types', 0),
-                            'success_langs': result.get('success_langs', []),
-                            'failed_langs': result.get('failed_langs', []),
-                        })
-                        break
-                    else:
-                        remaining = 2 - attempt
-                        if remaining > 0:
-                            print(f"INFO 重试失败，还有 {remaining} 次机会: {fm['title']}", file=sys.stderr)
-                else:
-                    final_remaining.append(fm)
-                    print(f"INFO 最终重试3次全部失败: {fm['title']}", file=sys.stderr)
+            final_results, final_remaining = _retry_movies(page, retry_remaining, "最终")
+            results.extend(final_results)
             
             # Report final failures
             if final_remaining:
