@@ -163,10 +163,7 @@ def extract_categories_only(page, cookies: list) -> list:
         List of category dicts: [{'name': '...', 'href': '...'}, ...]
     """
     try:
-        print("INFO Navigating to Prime Video homepage...", file=sys.stderr)
-        page.goto("https://www.primevideo.com", timeout=30000)
-        time.sleep(5)
-        
+        # Already on Prime Video homepage after login / login check
         print("INFO Extracting categories from homepage...", file=sys.stderr)
         
         category_links_js = page.evaluate('''() => {
