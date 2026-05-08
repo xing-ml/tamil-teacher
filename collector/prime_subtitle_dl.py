@@ -1239,6 +1239,121 @@ def parse_selection_range(items: list, selection: str) -> list:
     return selected
 
 
+# ============================================================
+# Category & Section Priority Helpers
+# ============================================================
+
+_SPECIAL_CATEGORIES = ['Best of India', 'Made in South East Asia']
+
+
+def category_rank(cat_name: str) -> int:
+    """Return priority rank for a category. Lower = higher priority."""
+    if cat_name == 'Best of India':
+        return 0
+    elif cat_name == 'Made in South East Asia':
+        return 1
+    return 2
+
+
+def section_rank(sec_name: str) -> int:
+    """Return priority rank for a section. Lower = higher priority."""
+    name_lower = sec_name.lower()
+    if 'top' in name_lower or 'popular' in name_lower:
+        return 0
+    elif 'latest' in name_lower:
+        return 2
+    return 1
+
+
+def compare_priority(cat_a: str, sec_a: str, cat_b: str, sec_b: str) -> int:
+    """Compare two (category, section) pairs.
+    
+    Returns >0 if a has higher priority, <0 if b has higher priority, 0 if equal.
+    """
+    rank_a = category_rank(cat_a)
+    rank_b = category_rank(cat_b)
+    if rank_a != rank_b:
+        return rank_b - rank_a
+    return section_rank(sec_b) - section_rank(sec_a)
+
+
+def parse_refer_filename(middle_str: str) -> dict:
+    """Parse category and section from refer_to_{middle}.txt filename.
+    
+    Strategy: match known special categories first, remainder is section.
+    """
+    middle_decoded = middle_str.replace('_', ' ')
+    for cat in _SPECIAL_CATEGORIES:
+        if middle_decoded.startswith(cat):
+            remainder = middle_decoded[len(cat):].lstrip()
+            return {'category': cat, 'section': remainder}
+    # Not a special category → first word is category, rest is section
+    parts = middle_decoded.split(' ', 1)
+    return {'category': parts[0], 'section': parts[1] if len(parts) > 1 else ''}
+
+
+def resolve_duplicate_folders(movies: list) -> None:
+    """Check existing movie folders for duplicates and add/fix .refer_to markers.
+    
+    Only checks folders of movies that already have '_refer_to' in their dict.
+    Uses filename scanning (not file content) to detect existing markers.
+    
+    Args:
+        movies: List of movie dicts (mutated in-place to update category/section)
+    """
+    import glob
+    base = os.path.join('data', 'subtitles')
+    
+    for movie in movies:
+        if '_refer_to' not in movie:
+            continue
+        
+        cat = movie.get('_category', 'unknown')
+        sec = movie.get('_section', 'unknown')
+        movie_title = movie.get('title', '')
+        safe_movie = movie_title.replace('/', '_').replace('\\', '_').replace(':', '.')
+        
+        folder_path = os.path.join(base, cat, sec, safe_movie)
+        if not os.path.isdir(folder_path):
+            continue
+        
+        # Scan for refer_to_*.txt files (no need to read content)
+        refer_files = glob.glob(os.path.join(folder_path, 'refer_to_*.txt'))
+        current_refer = movie['_refer_to']  # {'category': ..., 'section': ...}
+        
+        if refer_files:
+            # Folder already has a refer marker → parse and compare priority
+            filename = os.path.basename(refer_files[0])
+            middle = filename[len('refer_to_'):-len('.txt')]
+            folder_refer = parse_refer_filename(middle)
+            
+            if compare_priority(
+                folder_refer['category'], folder_refer['section'],
+                current_refer['category'], current_refer['section']
+            ) > 0:
+                # Folder's refer has higher priority → update cached movie dict
+                movie['_category'] = folder_refer['category']
+                movie['_section'] = folder_refer['section']
+                movie['_refer_to'] = folder_refer['category']
+        else:
+            # Folder exists but no refer marker → check if one is needed
+            current_cat_rank = category_rank(current_refer['category'])
+            current_sec_rank = section_rank(current_refer['section'])
+            
+            # Need a refer marker if current is NOT the highest priority
+            # (i.e., there exists a higher-priority category/section for this movie)
+            if current_cat_rank >= 2 or (current_cat_rank == 1):
+                # Create the refer marker file
+                ref_cat = current_refer['category'].replace(' ', '_')
+                ref_sec = current_refer['section'].replace(' ', '_')
+                refer_filename = f'refer_to_{ref_cat}_{ref_sec}.txt'
+                refer_filepath = os.path.join(folder_path, refer_filename)
+                open(refer_filepath, 'w').close()
+                # Delete all .srt files in this folder (already in refer folder)
+                for srt in glob.glob(os.path.join(folder_path, '*.srt')):
+                    os.remove(srt)
+
+
 def normalize_movie_id(url: str) -> str:
     """Extract the unique movie ID from a Prime Video URL.
 
@@ -1285,6 +1400,13 @@ def collect_movies_from_items(page, items: list, category_name: str, cookies: li
             seen_ids.add(movie_id)
         all_movies.append(movie)
     
+    def sort_categories_by_priority(items):
+        """Sort category items: Best of India → Made in South East Asia → others."""
+        def cat_priority(item):
+            name = item.get('title', item.get('name', ''))
+            return category_rank(name)
+        return sorted(items, key=lambda it: (cat_priority(it), it.get('title', '')))
+    
     def sort_sections_by_priority(sections):
         """Sort sections: top/popular first, latest last, others in between."""
         def section_priority(sec_name):
@@ -1297,7 +1419,10 @@ def collect_movies_from_items(page, items: list, category_name: str, cookies: li
         
         return sorted(sections, key=lambda s: section_priority(s.get('title', '')))
     
-    for item in items:
+    # Sort categories by priority (Best of India → Made in South East Asia → others)
+    sorted_items = sort_categories_by_priority(items)
+    
+    for item in sorted_items:
         item_name = item.get('title', item.get('name', ''))
         item_href = item.get('href', '')
         if not item_href:
@@ -1527,6 +1652,7 @@ def main():
                     # Download ALL categories
                     print("\nINFO 获取全部电影列表...", file=sys.stderr)
                     all_movies = collect_movies_from_items(page, categories, "all", cookies)
+                    resolve_duplicate_folders(all_movies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
@@ -1573,6 +1699,7 @@ def main():
                     # Multiple categories → fetch all movies and download
                     print(f"\nINFO 选择 {len(selected_cats)} 个类目: {[c['name'] for c in selected_cats]}", file=sys.stderr)
                     all_movies = collect_movies_from_items(page, selected_cats, "", cookies)
+                    resolve_duplicate_folders(all_movies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
@@ -1629,6 +1756,7 @@ def main():
                     # Download all sections in this category
                     print("\nINFO 获取此类目下所有电影...", file=sys.stderr)
                     all_movies = collect_movies_from_items(page, sections, cat_name, cookies)
+                    resolve_duplicate_folders(all_movies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
@@ -1687,6 +1815,7 @@ def main():
                     # Multiple sections → fetch all movies and download
                     print(f"\nINFO 选择 {len(selected_secs)} 个 section: {[s['title'] for s in selected_secs]}", file=sys.stderr)
                     all_movies = collect_movies_from_items(page, selected_secs, cat_name, cookies)
+                    resolve_duplicate_folders(all_movies)
                     
                     if not all_movies:
                         print("WARNING 没有找到电影", file=sys.stderr)
