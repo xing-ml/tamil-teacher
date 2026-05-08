@@ -320,6 +320,8 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         'filtered_subtitle_types': 0,    # After type filter
         'success_langs': [],             # Successful language codes
         'failed_langs': [],              # Failed language codes
+        'ignored_subtitles': 0,          # Skipped because file already exists
+        'ignored_reason': '',            # 'local_files_exist' or empty
     }
     
     def parse_vtt(content):
@@ -940,6 +942,20 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         for sub in filtered_subtitles:
             lang_code = sub['lang_code']
             unique_id = sub['unique_id']  # e.g., 'en-us' or 'en-us[cc]'
+            
+            # Build filepath and check if file already exists
+            filename = build_filename(safe_movie, lang_code, sub['type'])
+            filepath = os.path.join(output_dir, f"{filename}.srt")
+            
+            if os.path.exists(filepath):
+                # File already exists, skip download
+                if DEBUG_MODE:
+                    print(f"INFO Skipped (exists): {filepath}", file=sys.stderr)
+                saved_count += 1
+                downloaded_langs.add(unique_id)
+                result['ignored_subtitles'] += 1
+                continue
+            
             srt_content = None
             
             # Retry mechanism: 3s wait, max 3 retries
@@ -956,9 +972,6 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                 print(f"WARNING Failed to fetch subtitle after {max_retries} attempts: {unique_id} ({sub['type']})", file=sys.stderr)
                 failed_langs.append(unique_id)
                 continue
-            
-            filename = build_filename(safe_movie, lang_code, sub['type'])
-            filepath = os.path.join(output_dir, f"{filename}.srt")
             
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(srt_content)
@@ -986,6 +999,7 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         
         # Per-movie summary (always printed)
         error = result.get('error')
+        ignored = result.get('ignored_subtitles', 0)
         if error:
             print(f"{result.get('title', 'unknown')}: 失败 - {error}", file=sys.stderr)
         else:
@@ -993,7 +1007,11 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             failed_count_movie = len(failed_langs)
             success_str = f"成功{success_count_movie}个" if downloaded_langs else "成功0个"
             failed_str = f"失败{failed_count_movie}个({', '.join(sorted(failed_langs))})" if failed_langs else "失败0个"
-            print(f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}", file=sys.stderr)
+            ignored_str = f"忽略{ignored}个（已存在）" if ignored > 0 else ""
+            parts = [f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}"]
+            if ignored_str:
+                parts.append(ignored_str)
+            print(" → ".join(parts), file=sys.stderr)
     
     except Exception as e:
         print(f"ERROR extract_movie_subtitles failed: {e}", file=sys.stderr)
@@ -1221,11 +1239,29 @@ def parse_selection_range(items: list, selection: str) -> list:
     return selected
 
 
+def normalize_movie_id(url: str) -> str:
+    """Extract the unique movie ID from a Prime Video URL.
+
+    e.g., 'https://www.primevideo.com/detail/0TRR1D6Q5DYLIKHVXNBM0EV0PY/ref=atv_...'
+    → '0TRR1D6Q5DYLIKHVXNBM0EV0PY'
+
+    Args:
+        url: Prime Video movie URL (may be relative or full, with or without ref params)
+
+    Returns:
+        The movie ID string, or the original URL if no ID found
+    """
+    import re
+    match = re.search(r'/detail/([A-Z0-9]+)/', url)
+    return match.group(1) if match else url
+
+
 def collect_movies_from_items(page, items: list, category_name: str, cookies: list) -> list:
     """Collect movies from a list of items (categories or sections).
     
-    For categories: extracts sections first, then fetches movies from each section.
+    For categories: extracts sections first (sorted by priority), then fetches movies.
     For sections: directly fetches movies from each section.
+    Deduplicates movies by extracting the movie ID from URLs.
     
     Args:
         page: Playwright page object (shared browser context)
@@ -1234,9 +1270,33 @@ def collect_movies_from_items(page, items: list, category_name: str, cookies: li
         cookies: Playwright cookies list
     
     Returns:
-        List of movie dicts with '_category' and '_section' metadata
+        List of movie dicts with '_category', '_section', and optionally '_refer_to' metadata
     """
     all_movies = []
+    seen_ids = set()
+    
+    def add_movie(movie, category, section):
+        """Add a movie to the list, deduplicating by movie ID."""
+        movie_id = normalize_movie_id(movie['url'])
+        if movie_id in seen_ids:
+            # Duplicate: mark with reference to the original
+            movie['_refer_to'] = {'category': category, 'section': section}
+        else:
+            seen_ids.add(movie_id)
+        all_movies.append(movie)
+    
+    def sort_sections_by_priority(sections):
+        """Sort sections: top/popular first, latest last, others in between."""
+        def section_priority(sec_name):
+            name_lower = sec_name.lower()
+            if 'top' in name_lower or 'popular' in name_lower:
+                return 0  # Highest priority
+            elif 'latest' in name_lower:
+                return 2  # Lowest priority
+            return 1  # Normal
+        
+        return sorted(sections, key=lambda s: section_priority(s.get('title', '')))
+    
     for item in items:
         item_name = item.get('title', item.get('name', ''))
         item_href = item.get('href', '')
@@ -1251,22 +1311,23 @@ def collect_movies_from_items(page, items: list, category_name: str, cookies: li
         
         # Check if this item is a category (needs section extraction) or a section
         if '/genre/' in item_href or '/collection/' in item_href:
-            # Category: extract sections first
+            # Category: extract sections, sort by priority, then fetch movies
             sections = extract_sections_from_category(page, item_href, cookies)
-            for sec in sections:
+            sorted_sections = sort_sections_by_priority(sections)
+            for sec in sorted_sections:
                 if sec.get('href'):
                     movies = fetch_section_movies(page, sec['href'], cookies)
                     for m in movies:
                         m['_category'] = effective_category
                         m['_section'] = sec['title']
-                    all_movies.extend(movies)
+                        add_movie(m, effective_category, sec['title'])
         else:
             # Section: fetch movies directly
             movies = fetch_section_movies(page, item_href, cookies)
             for m in movies:
                 m['_category'] = effective_category
                 m['_section'] = item_name
-            all_movies.extend(movies)
+                add_movie(m, effective_category, item_name)
     
     return all_movies
 
@@ -1351,6 +1412,8 @@ def _build_download_result(result_dict: dict, movie_title: str, category: str, s
         'filtered_subtitle_types': result_dict.get('filtered_subtitle_types', 0),
         'success_langs': result_dict.get('success_langs', []),
         'failed_langs': result_dict.get('failed_langs', []),
+        'ignored_subtitles': result_dict.get('ignored_subtitles', 0),
+        'ignored_reason': result_dict.get('ignored_reason', ''),
     }
 
 
@@ -1797,6 +1860,26 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         movie_title = movie.get('title', '')
         # Use movie's own section info if available (for category downloads)
         movie_section = movie.get('_section', section)
+        
+        # Skip referenced movies (already downloaded in another section)
+        if '_refer_to' in movie:
+            ref = movie['_refer_to']
+            print(f"INFO 跳过重复电影 {i+1}/{len(movies)}: {movie_title} (refer to {ref['category']} -> {ref['section']})", file=sys.stderr)
+            results.append({
+                'title': movie_title,
+                'category': category,
+                'section': movie_section,
+                'success': True,
+                'subtitles_saved': 0,
+                'total_subtitle_types': 0,
+                'filtered_subtitle_types': 0,
+                'success_langs': [],
+                'failed_langs': [],
+                'ignored_subtitles': 0,
+                'ignored_reason': f"referenced to {ref['category']} -> {ref['section']}",
+            })
+            continue
+        
         print(f"INFO 处理电影 {i+1}/{len(movies)}: {movie_title}", file=sys.stderr)
         result = extract_movie_subtitles(
             page, movie['url'],
@@ -1858,7 +1941,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
 def _print_download_summary(results: list) -> None:
     """Print a formatted summary of downloaded subtitles.
     
-    Groups by category -> section, showing only successful downloads.
+    Groups by category -> section, showing successful downloads and ignored movies.
     """
     # Group by category -> section
     grouped = {}
@@ -1871,26 +1954,61 @@ def _print_download_summary(results: list) -> None:
             grouped[cat] = {}
         if sec not in grouped[cat]:
             grouped[cat][sec] = []
-        grouped[cat][sec].append(r['title'])
+        grouped[cat][sec].append(r)
     
-    if not grouped:
+    # Collect ignored movies
+    ignored_movies = []
+    for r in results:
+        if not r['success']:
+            continue
+        ignored = r.get('ignored_subtitles', 0)
+        reason = r.get('ignored_reason', '')
+        if ignored > 0 or reason:
+            ignored_movies.append({
+                'title': r['title'],
+                'category': r['category'],
+                'section': r['section'],
+                'ignored': ignored,
+                'reason': reason,
+            })
+    
+    if not grouped and not ignored_movies:
         print("\nINFO 没有成功下载任何字幕", file=sys.stderr)
         return
     
     total = sum(len(movies) for cats in grouped.values() for movies in cats.values())
+    total_ignored = len(ignored_movies)
     
     print(f"\n{'='*60}", file=sys.stderr)
     print("下载完成总结", file=sys.stderr)
     print(f"{'='*60}", file=sys.stderr)
     print(f"总电影数: {total}", file=sys.stderr)
+    if total_ignored > 0:
+        print(f"忽略: {total_ignored} 个（已存在/已引用）", file=sys.stderr)
     
     for cat in sorted(grouped.keys()):
         print(f"\n[{cat}]", file=sys.stderr)
         for sec in sorted(grouped[cat].keys()):
             movies = grouped[cat][sec]
             print(f"  [{sec}]", file=sys.stderr)
-            for movie in movies:
-                print(f"    - {movie} ✓", file=sys.stderr)
+            for r in movies:
+                title = r['title']
+                ignored = r.get('ignored_subtitles', 0)
+                reason = r.get('ignored_reason', '')
+                if reason:
+                    print(f"    - {title} (refer to {reason})", file=sys.stderr)
+                elif ignored > 0:
+                    print(f"    - {title} ✓ (忽略{ignored}个已存在字幕)", file=sys.stderr)
+                else:
+                    print(f"    - {title} ✓", file=sys.stderr)
+    
+    if ignored_movies:
+        print(f"\n被忽略的电影:", file=sys.stderr)
+        for im in ignored_movies:
+            if im['reason']:
+                print(f"  - {im['title']} (refer to {im['reason']})", file=sys.stderr)
+            elif im['ignored'] > 0:
+                print(f"  - {im['title']} (本地已有{im['ignored']}个字幕)", file=sys.stderr)
     
     print(f"\n{'='*60}", file=sys.stderr)
 
