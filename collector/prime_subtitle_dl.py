@@ -1268,7 +1268,8 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
             for i, ep in enumerate(episodes):
                 if i < len(episode_dom_urls):
                     ep_id = episode_dom_urls[i]
-                    ep['url'] = f"/detail/{ep_id}/"
+                    # Use full URL for page.goto()
+                    ep['url'] = f"https://www.primevideo.com/detail/{ep_id}/"
         
         # Check if there are more episodes to load
         total_ep_count = page.evaluate('''() => {
