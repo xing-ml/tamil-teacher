@@ -1238,10 +1238,37 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                     'title': ep['title'],
                     'season': season,
                     'episode': ep.get('episode', 0),
+                    'url': '',  # Will be filled from DOM below
                 })
         
         if not episodes:
             return []
+        
+        # Extract episode URLs from DOM (fallback when page JSON lacks titleID)
+        # This finds links inside [data-testid*="episode"] elements
+        episode_dom_urls = page.evaluate('''() => {
+            const links = [];
+            const sections = document.querySelectorAll('[data-testid*="episode"]');
+            for(const section of sections) {
+                const link = section.querySelector('a[href*="detail"]');
+                if(link) {
+                    const href = link.getAttribute('href');
+                    // Extract episode ID from /detail/{ID}/
+                    const match = href.match(/\/detail\/([^\/]+)/);
+                    if(match) {
+                        links.push(match[1]);
+                    }
+                }
+            }
+            return links;
+        }''')
+        
+        # Match DOM URLs to episodes by index (they should be in order)
+        if episode_dom_urls:
+            for i, ep in enumerate(episodes):
+                if i < len(episode_dom_urls):
+                    ep_id = episode_dom_urls[i]
+                    ep['url'] = f"/detail/{ep_id}/"
         
         # Check if there are more episodes to load
         total_ep_count = page.evaluate('''() => {
