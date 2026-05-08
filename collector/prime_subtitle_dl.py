@@ -764,7 +764,7 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         if DEBUG_MODE:
             print(f"INFO Found playbackEnvelope from {envelope_source}", file=sys.stderr)
             print(f"INFO Envelope preview: {envelope[:100] if isinstance(envelope, str) else 'not a string'}...", file=sys.stderr)
-        print(f"INFO Movie URL: {movie_url}", file=sys.stderr)
+            print(f"INFO Movie URL: {movie_url}", file=sys.stderr)
         
         # Step 5: POST to GetVodPlaybackResources with timedTextUrlsRequest
         # Use hardcoded device params (same as the page uses)
@@ -892,11 +892,11 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                 result['total_subtitle_types'] = len(subtitle_urls)
                 if DEBUG_MODE:
                     print(f"INFO Found {len(subtitle_urls)} subtitle entries in timedTextUrls.result.subtitleUrls", file=sys.stderr)
-                for sub in subtitle_urls:
-                    lang = sub.get('languageCode', 'unknown')
-                    url = sub.get('url', 'no url')
-                    sub_type = sub.get('type', 'Subtitle')
-                    print(f"  - {lang} ({sub_type}): {url[:100]}...", file=sys.stderr)
+                    for sub in subtitle_urls:
+                        lang = sub.get('languageCode', 'unknown')
+                        url = sub.get('url', 'no url')
+                        sub_type = sub.get('type', 'Subtitle')
+                        print(f"  - {lang} ({sub_type}): {url[:100]}...", file=sys.stderr)
             elif parsed.get('globalError'):
                 print(f"WARNING Global error: {parsed['globalError']}", file=sys.stderr)
             else:
