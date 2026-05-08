@@ -263,26 +263,28 @@ def extract_sections_from_category(page, category_url: str, cookies: list) -> li
                 seen.add(title);
                 
                 let seeMoreHref = null;
+                // Try 1: direct "See more" links in container
                 for (const link of container.querySelectorAll("a")) {
                     if (link.textContent.includes("See more") || link.textContent.includes("See More")) {
                         seeMoreHref = link.getAttribute("href");
                         break;
                     }
                 }
-                
-                let sectionHref = seeMoreHref;
-                if (!sectionHref) {
+                // Try 2: /browse/ link in parent
+                if (!seeMoreHref) {
                     const par = container.parentElement;
                     if (par) {
                         for (const link of par.querySelectorAll("a")) {
                             const href = link.getAttribute("href");
                             if (href && href.includes("/browse/")) {
-                                sectionHref = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
+                                seeMoreHref = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
                                 break;
                             }
                         }
                     }
                 }
+                
+                let sectionHref = seeMoreHref;
                 
                 sections.push({ title: title, href: sectionHref });
             }
@@ -307,7 +309,7 @@ def extract_sections_from_category(page, category_url: str, cookies: list) -> li
         
         print(f"INFO   Found {len(sections_js)} sections", file=sys.stderr)
         for i, sec in enumerate(sections_js):
-            has_url = sec.get('href') and sec['href'].startswith('http')
+            has_url = bool(sec.get('href'))
             print(f"    {i+1}. {sec.get('title', '?')} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
     
     except Exception as e:
@@ -1765,7 +1767,7 @@ def main():
                 print(f"{'='*60}", file=sys.stderr)
                 print("Sections:", file=sys.stderr)
                 for i, sec in enumerate(sections):
-                    has_url = sec.get('href') and sec['href'].startswith('http')
+                    has_url = bool(sec.get('href'))
                     print(f"  {i+1}. {sec['title']} {'[URL] ' if has_url else '[NO URL]'}", file=sys.stderr)
                 
                 print(f"\n选择方式:", file=sys.stderr)
