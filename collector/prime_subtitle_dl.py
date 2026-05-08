@@ -315,15 +315,18 @@ def extract_sections_from_category(page, category_url: str, cookies: list) -> li
     return sections_js
 
 
-def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', category: str = '', section: str = '') -> dict:
-    """Extract subtitles from a Prime Video movie using playback envelope API.
+def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', category: str = '', section: str = '',
+                            _tv_show_dir: str = '', _tv_show_filename: str = '') -> dict:
+    """Extract subtitles from a Prime Video movie or TV show episode using playback envelope API.
     
     Args:
         page: Playwright page object (shared browser context)
-        movie_url: Movie page URL
-        movie_title: Movie title for display and filename
+        movie_url: Movie/episode page URL
+        movie_title: Title for display and filename
         category: Category name for directory structure
         section: Section name for directory structure
+        _tv_show_dir: Override directory for TV show episodes (internal use)
+        _tv_show_filename: Filename prefix for TV show episodes (internal use)
     
     Returns:
         Dict with keys: 'title', 'tamil', 'english', 'has_dual_subtitles',
@@ -950,10 +953,14 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         # Use movie_title parameter if available, otherwise fall back to page title
         safe_movie = (movie_title if movie_title else result.get('title') or 'movie').replace('/', '_').replace('\\', '_').replace(':', '.')
         
-        # New directory structure: data/subtitles/{category}/{section}/{movie}/
-        safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
-        safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.') if section else 'unknown'
-        output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_movie)
+        # TV show override: use provided directory and filename prefix
+        if _tv_show_dir:
+            output_dir = _tv_show_dir
+        else:
+            # New directory structure: data/subtitles/{category}/{section}/{movie}/
+            safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+            safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.') if section else 'unknown'
+            output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_movie)
         os.makedirs(output_dir, exist_ok=True)
         
         saved_count = 0
@@ -965,7 +972,9 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             unique_id = sub['unique_id']  # e.g., 'en-us' or 'en-us[cc]'
             
             # Build filepath and check if file already exists
-            filename = build_filename(safe_movie, lang_code, sub['type'])
+            # For TV shows, use _tv_show_filename instead of safe_movie
+            name_base = _tv_show_filename if _tv_show_filename else safe_movie
+            filename = build_filename(name_base, lang_code, sub['type'])
             filepath = os.path.join(output_dir, f"{filename}.srt")
             
             if os.path.exists(filepath):
@@ -1046,11 +1055,11 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
     return result
 
 def fetch_section_movies(page, section_url: str, cookies: list) -> list:
-    """Navigate to section page, scroll to collect all movies (virtual scrolling aware), and extract all movies.
+    """Navigate to section page, scroll to collect all movies/TV shows.
     
-    Uses shared page object. Prime Video uses virtual scrolling: movies outside viewport are removed from DOM.
-    Strategy: scroll incrementally, extract {url, title} each time, accumulate by URL.
-    Stop when 3 consecutive scrolls yield no new URLs.
+    Uses shared page object. Handles both movies and TV shows:
+    - Movies: extracted from DOM cards, type='movie'
+    - TV Shows: detected via titleType in page JSON, episode list extracted and paginated
     
     Args:
         page: Playwright page object (shared browser context)
@@ -1058,23 +1067,26 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
         cookies: Playwright cookies list
     
     Returns:
-        List of movie dicts: [{'title': '...', 'url': '...'}, ...]
+        List of item dicts:
+        - Movie: {'title': '...', 'url': '...', 'type': 'movie'}
+        - TV Show: {'title': '...', 'url': '...', 'type': 'tv_show', 'episodes': [...]}
     """
+    # JS: extract movie/show cards from section page
     extract_js = '''() => {
-        const movies = [];
+        const items = [];
         for (const link of document.querySelectorAll("a[href*='/detail/']")) {
             const href = link.getAttribute("href");
             if (!href) continue;
             const url = href.startsWith('http') ? href : 'https://www.primevideo.com' + href;
             const title = link.textContent?.trim() || "";
             if (title && title.length > 2 && title.length < 100) {
-                movies.push({ url, title });
+                items.push({ url, title });
             }
         }
-        return movies;
+        return items;
     }'''
     
-    all_movies = []
+    all_items = []
     seen_urls = {}
     
     try:
@@ -1090,7 +1102,7 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
         page.goto(full_url, timeout=30000)
         page.wait_for_load_state('domcontentloaded')
         
-        # Scroll and accumulate movies
+        # Step 1: Scroll and accumulate cards from DOM
         consecutive_no_new = 0
         scroll_count = 0
         
@@ -1098,37 +1110,268 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
             page.evaluate('window.scrollBy(0, 500)')
             time.sleep(1)
             
-            current_movies = page.evaluate(extract_js)
+            current_items = page.evaluate(extract_js)
             new_count = 0
-            for m in current_movies:
-                if m['url'] not in seen_urls:
-                    seen_urls[m['url']] = m['title']
+            for it in current_items:
+                if it['url'] not in seen_urls:
+                    seen_urls[it['url']] = it['title']
                     new_count += 1
             
             total = len(seen_urls)
             if new_count > 0:
                 if INFO_MODE:
-                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, {new_count} new", file=sys.stderr)
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} items total, {new_count} new", file=sys.stderr)
                 consecutive_no_new = 0
             else:
                 consecutive_no_new += 1
                 if INFO_MODE:
-                    print(f"INFO Scroll #{scroll_count + 1}: {total} movies total, no new (streak: {consecutive_no_new})", file=sys.stderr)
+                    print(f"INFO Scroll #{scroll_count + 1}: {total} items total, no new (streak: {consecutive_no_new})", file=sys.stderr)
             
             scroll_count += 1
             if consecutive_no_new >= 3:
                 if INFO_MODE:
-                    print(f"INFO Stable for 3 scrolls at {total} movies - stopping", file=sys.stderr)
+                    print(f"INFO Stable for 3 scrolls at {total} items - stopping", file=sys.stderr)
                 break
         
-        all_movies = [{'title': title, 'url': url} for url, title in seen_urls.items()]
-        print(f"INFO Total movies collected: {len(all_movies)}", file=sys.stderr)
+        # Step 2: For each unique card, check if it's a TV show
+        tv_shows = []
+        movies = []
+        
+        for url, title in seen_urls.items():
+            # Check titleType by navigating to the detail page
+            try:
+                page.goto('https://www.primevideo.com' + url if url.startswith('/') else url, timeout=20000)
+                page.wait_for_load_state('domcontentloaded')
+                
+                title_type = page.evaluate('''() => {
+                    // Extract props from page JSON
+                    for(const script of document.querySelectorAll('script[type="application/json"]')) {
+                        try {
+                            const data = JSON.parse(script.innerHTML);
+                            const body = data?.init?.preparations?.body;
+                            if(body && body.atf && body.btf) {
+                                const detail = body.btf?.state?.detail?.detail;
+                                if(detail) {
+                                    for(const [id, det] of Object.entries(detail)) {
+                                        if(det.titleType === 'movie' || det.titleType === 'season') {
+                                            return det.titleType;
+                                        }
+                                    }
+                                }
+                            }
+                        } catch(e) {}
+                    }
+                    return null;
+                }''')
+                
+                if title_type == 'season':
+                    # TV show: extract episode list
+                    episodes = _extract_tv_show_episodes(page, url)
+                    if episodes:
+                        tv_shows.append({
+                            'title': title,
+                            'url': url,
+                            'type': 'tv_show',
+                            'episodes': episodes
+                        })
+                    else:
+                        # Fallback: treat as movie
+                        movies.append({'title': title, 'url': url, 'type': 'movie'})
+                else:
+                    movies.append({'title': title, 'url': url, 'type': 'movie'})
+            except Exception as e:
+                if DEBUG_MODE:
+                    print(f"DEBUG Check type for {title}: {e}", file=sys.stderr)
+                # On error, treat as movie
+                movies.append({'title': title, 'url': url, 'type': 'movie'})
+        
+        all_items = movies + tv_shows
+        print(f"INFO Total items collected: {len(all_items)} (movies: {len(movies)}, tv_shows: {len(tv_shows)})", file=sys.stderr)
     
     except Exception as e:
         print(f"WARNING fetch_section_movies failed: {e}", file=sys.stderr)
         return []
     
-    return all_movies
+    return all_items
+
+
+def _extract_tv_show_episodes(page, show_url: str) -> list:
+    """Extract episode list from a TV show detail page.
+    
+    Uses page JSON to get initial episodes, then scrolls to load more via API interception.
+    
+    Args:
+        page: Playwright page object
+        show_url: TV show detail page URL
+    
+    Returns:
+        List of episode dicts: [{'title': '...', 'url': '...', 'season': N, 'episode': N}, ...]
+    """
+    episodes = []
+    seen_ep_urls = set()
+    
+    try:
+        # Set up API response interception for enrichItemMetadata
+        api_episodes = []
+        
+        def on_response(response):
+            url = response.url
+            if 'enrichItemMetadata' in url and response.status == 200:
+                try:
+                    body = response.json()
+                    if body.get('entities'):
+                        for entity in body['entities']:
+                            if entity.get('titleID') and entity.get('detail'):
+                                det = entity['detail']
+                                if det.get('titleType') == 'episode':
+                                    ep_url = det.get('titleID', '')
+                                    if ep_url and ep_url not in seen_ep_urls:
+                                        seen_ep_urls.add(ep_url)
+                                        api_episodes.append({
+                                            'title': det.get('title', ''),
+                                            'url': f"/detail/{ep_url}/",
+                                            'season': det.get('seasonNumber', 0),
+                                            'episode': det.get('episodeNumber', 0),
+                                        })
+                except Exception:
+                    pass
+        
+        page.on('response', on_response)
+        
+        # Extract initial episodes from page JSON
+        initial_episodes = page.evaluate('''() => {
+            const episodes = [];
+            for(const script of document.querySelectorAll('script[type="application/json"]')) {
+                try {
+                    const data = JSON.parse(script.innerHTML);
+                    const body = data?.init?.preparations?.body;
+                    if(body && body.atf && body.btf) {
+                        const detail = body.btf?.state?.detail?.detail;
+                        if(detail) {
+                            for(const [id, det] of Object.entries(detail)) {
+                                if(det.titleType === 'episode') {
+                                    episodes.push({
+                                        title: det.title || '',
+                                        season: det.seasonNumber || 0,
+                                        episode: det.episodeNumber || 0,
+                                    });
+                                }
+                            }
+                        }
+                    }
+                } catch(e) {}
+            }
+            return episodes;
+        }''')
+        
+        for ep in initial_episodes:
+            if ep['title'] and ep['season'] > 0:
+                episodes.append(ep)
+        
+        if not episodes:
+            return []
+        
+        # Check if there are more episodes to load
+        total_ep_count = page.evaluate('''() => {
+            for(const script of document.querySelectorAll('script[type="application/json"]')) {
+                try {
+                    const data = JSON.parse(script.innerHTML);
+                    const body = data?.init?.preparations?.body;
+                    if(body && body.atf && body.btf) {
+                        const epList = body.btf?.state?.episodeList;
+                        if(epList) {
+                            return epList.totalCardSize || 0;
+                        }
+                    }
+                } catch(e) {}
+            }
+            return 0;
+        }''')
+        
+        if total_ep_count > len(episodes):
+            if INFO_MODE:
+                print(f"INFO TV show has {total_ep_count} episodes, loading more...", file=sys.stderr)
+            
+            # Scroll to load more episodes (with timeout protection)
+            max_scroll_time = 60  # seconds
+            scroll_start = time.time()
+            prev_count = len(episodes)
+            
+            while time.time() - scroll_start < max_scroll_time:
+                # Scroll to pagination marker
+                scroll_result = page.evaluate('''() => {
+                    const marker = document.querySelector('[data-testid="dp-episode-list-pagination-marker"]');
+                    if(marker) {
+                        marker.scrollIntoView({behavior: 'instant'});
+                        return true;
+                    }
+                    // Fallback: scroll to bottom
+                    window.scrollTo(0, document.body.scrollHeight);
+                    return true;
+                }''')
+                
+                if not scroll_result:
+                    break
+                
+                time.sleep(3)  # Wait for API call and DOM update
+                
+                # Check for new episodes from API interception
+                new_from_api = len(api_episodes) - prev_count
+                if new_from_api > 0:
+                    for ep in api_episodes[prev_count:]:
+                        episodes.append(ep)
+                    prev_count = len(api_episodes)
+                
+                # Also check page JSON for new episodes
+                current_ep_count = page.evaluate('''() => {
+                    let count = 0;
+                    for(const script of document.querySelectorAll('script[type="application/json"]')) {
+                        try {
+                            const data = JSON.parse(script.innerHTML);
+                            const body = data?.init?.preparations?.body;
+                            if(body && body.atf && body.btf) {
+                                const detail = body.btf?.state?.detail?.detail;
+                                if(detail) {
+                                    for(const [id, det] of Object.entries(detail)) {
+                                        if(det.titleType === 'episode') count++;
+                                    }
+                                }
+                            }
+                        } catch(e) {}
+                    }
+                    return count;
+                }''')
+                
+                if current_ep_count >= total_ep_count:
+                    if INFO_MODE:
+                        print(f"INFO Loaded all {total_ep_count} episodes", file=sys.stderr)
+                    break
+                
+                if INFO_MODE:
+                    print(f"INFO Loaded {current_ep_count}/{total_ep_count} episodes", file=sys.stderr)
+            
+            # Add any remaining API episodes
+            for ep in api_episodes[len(episodes):]:
+                episodes.append(ep)
+        
+        # Sort episodes by season, then episode number
+        episodes.sort(key=lambda e: (e['season'], e['episode']))
+        
+        # Remove page.on handler
+        page.remove_listener('response', on_response)
+        
+        if INFO_MODE:
+            print(f"INFO TV show '{page.evaluate('document.title')}' has {len(episodes)} episodes", file=sys.stderr)
+    
+    except Exception as e:
+        print(f"WARNING _extract_tv_show_episodes failed: {e}", file=sys.stderr)
+        # Try to return what we have
+        try:
+            page.remove_listener('response', on_response)
+        except Exception:
+            pass
+    
+    return episodes
 
 
 # ============================================================
@@ -1993,10 +2236,10 @@ def main():
             pass
 
 def download_movies(movies: list, page, context: str = "", category: str = "", section: str = "", failed_movies: list = None) -> list:
-    """Download subtitles for a list of movies.
+    """Download subtitles for a list of movies and TV shows.
     
     Args:
-        movies: List of movie dicts (each has 'title' and 'url')
+        movies: List of item dicts (each has 'title', 'url', and optionally 'type')
         page: Playwright page object (shared browser context)
         context: Context string for logging (category/section/movie)
         category: Category name for directory structure
@@ -2013,19 +2256,26 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
     if failed_movies is None:
         failed_movies = []
     
-    print(f"\nINFO 开始下载 {len(movies)} 个电影的字幕...", file=sys.stderr)
-    results = []
+    # Count actual download items (expand TV shows to episodes)
+    total_items = sum(
+        len(m.get('episodes', [])) if m.get('type') == 'tv_show' else 1
+        for m in movies
+    )
+    print(f"\nINFO 开始下载 {total_items} 个项目的字幕... (共 {len(movies)} 个条目，其中 {sum(1 for m in movies if m.get('type') == 'tv_show')} 部剧集)", file=sys.stderr)
     
-    for i, movie in enumerate(movies):
-        print(f"\n{'='*60}", file=sys.stderr)
+    results = []
+    item_index = 0
+    
+    for movie in movies:
         movie_title = movie.get('title', '')
-        # Use movie's own section info if available (for category downloads)
         movie_section = movie.get('_section', section)
         
-        # Skip referenced movies (already downloaded in another section)
+        # Skip referenced items (already downloaded in another section)
         if '_refer_to' in movie:
             ref = movie['_refer_to']
-            print(f"INFO 跳过重复电影 {i+1}/{len(movies)}: {movie_title} (refer to {ref['category']} -> {ref['section']})", file=sys.stderr)
+            item_count = len(movie.get('episodes', [])) if movie.get('type') == 'tv_show' else 1
+            item_index += item_count
+            print(f"INFO 跳过重复: {movie_title} (refer to {ref['category']} -> {ref['section']})", file=sys.stderr)
             results.append({
                 'title': movie_title,
                 'category': category,
@@ -2041,7 +2291,66 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             })
             continue
         
-        print(f"INFO 处理电影 {i+1}/{len(movies)}: {movie_title}", file=sys.stderr)
+        # Handle TV show: download all episodes
+        if movie.get('type') == 'tv_show':
+            episodes = movie.get('episodes', [])
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"INFO 处理剧集: {movie_title} ({len(episodes)} 集)", file=sys.stderr)
+            
+            safe_series = movie_title.replace('/', '_').replace('\\', '_').replace(':', '.')
+            
+            for ep in episodes:
+                item_index += 1
+                ep_title = ep.get('title', '')
+                ep_url = ep.get('url', '')
+                ep_season = ep.get('season', 0)
+                ep_number = ep.get('episode', 0)
+                
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"INFO 处理 {movie_title} S{ep_season:02d}E{ep_number:02d}: {ep_title}", file=sys.stderr)
+                
+                # Build filename: SeriesName.S{season}E{episode}.lang[cc].srt
+                ep_filename = f"S{ep_season:02d}E{ep_number:02d}"
+                
+                # Build directory path: data/subtitles/{category}/{series_name}/
+                safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+                output_dir = os.path.join('data', 'subtitles', safe_cat, safe_series)
+                os.makedirs(output_dir, exist_ok=True)
+                
+                # Call extract_movie_subtitles with TV show context
+                result = extract_movie_subtitles(
+                    page, ep_url,
+                    movie_title=f"{movie_title}.S{ep_season:02d}E{ep_number:02d}",
+                    category=category,
+                    section=movie_section,
+                    _tv_show_dir=output_dir,
+                    _tv_show_filename=ep_filename,
+                )
+                
+                if DEBUG_MODE:
+                    print(f"INFO 剧集结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
+                
+                ep_result = _build_download_result(
+                    result, f"{movie_title} S{ep_season:02d}E{ep_number:02d}",
+                    category, movie_section
+                )
+                results.append(ep_result)
+                
+                # Collect failed episodes for retry
+                if not result.get('subtitles_saved', 0) > 0:
+                    failed_movies.append({
+                        'url': ep_url,
+                        'title': f"{movie_title} S{ep_season:02d}E{ep_number:02d}",
+                        'category': category,
+                        'section': movie_section,
+                        'error': result.get('error', 'unknown'),
+                    })
+            continue
+        
+        # Handle movie (existing logic)
+        item_index += 1
+        print(f"\n{'='*60}", file=sys.stderr)
+        print(f"INFO 处理电影 {item_index}/{total_items}: {movie_title}", file=sys.stderr)
         result = extract_movie_subtitles(
             page, movie['url'],
             movie_title=movie_title,
