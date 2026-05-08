@@ -1076,9 +1076,8 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
 def fetch_section_movies(page, section_url: str, cookies: list) -> list:
     """Navigate to section page, scroll to collect all movies/TV shows.
     
-    Uses shared page object. Handles both movies and TV shows:
-    - Movies: extracted from DOM cards, type='movie'
-    - TV Shows: detected via titleType in page JSON, episode list extracted and paginated
+    Uses shared page object. Only collects URLs and titles - type detection
+    is deferred to download phase to avoid unnecessary navigation.
     
     Args:
         page: Playwright page object (shared browser context)
@@ -1086,9 +1085,8 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
         cookies: Playwright cookies list
     
     Returns:
-        List of item dicts:
-        - Movie: {'title': '...', 'url': '...', 'type': 'movie'}
-        - TV Show: {'title': '...', 'url': '...', 'type': 'tv_show', 'episodes': [...]}
+        List of item dicts: {'title': '...', 'url': '...', 'type': 'movie'}
+        (type is always 'movie' here; actual type detected during download)
     """
     # JS: extract movie/show cards from section page
     extract_js = '''() => {
@@ -1105,7 +1103,6 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
         return items;
     }'''
     
-    all_items = []
     seen_urls = {}
     
     try:
@@ -1121,7 +1118,7 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
         page.goto(full_url, timeout=30000)
         page.wait_for_load_state('domcontentloaded')
         
-        # Step 1: Scroll and accumulate cards from DOM
+        # Scroll and accumulate cards from DOM
         consecutive_no_new = 0
         scroll_count = 0
         
@@ -1152,60 +1149,10 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
                     print(f"INFO Stable for 3 scrolls at {total} items - stopping", file=sys.stderr)
                 break
         
-        # Step 2: For each unique card, check if it's a TV show
-        tv_shows = []
-        movies = []
-        
-        for url, title in seen_urls.items():
-            # Check titleType by navigating to the detail page
-            try:
-                page.goto('https://www.primevideo.com' + url if url.startswith('/') else url, timeout=20000)
-                page.wait_for_load_state('domcontentloaded')
-                
-                title_type = page.evaluate('''() => {
-                    // Extract props from page JSON
-                    for(const script of document.querySelectorAll('script[type="application/json"]')) {
-                        try {
-                            const data = JSON.parse(script.innerHTML);
-                            const body = data?.init?.preparations?.body;
-                            if(body && body.atf && body.btf) {
-                                const detail = body.btf?.state?.detail?.detail;
-                                if(detail) {
-                                    for(const [id, det] of Object.entries(detail)) {
-                                        if(det.titleType === 'movie' || det.titleType === 'season') {
-                                            return det.titleType;
-                                        }
-                                    }
-                                }
-                            }
-                        } catch(e) {}
-                    }
-                    return null;
-                }''')
-                
-                if title_type == 'season':
-                    # TV show: extract episode list
-                    episodes = _extract_tv_show_episodes(page, url)
-                    if episodes:
-                        tv_shows.append({
-                            'title': title,
-                            'url': url,
-                            'type': 'tv_show',
-                            'episodes': episodes
-                        })
-                    else:
-                        # Fallback: treat as movie
-                        movies.append({'title': title, 'url': url, 'type': 'movie'})
-                else:
-                    movies.append({'title': title, 'url': url, 'type': 'movie'})
-            except Exception as e:
-                if DEBUG_MODE:
-                    print(f"DEBUG Check type for {title}: {e}", file=sys.stderr)
-                # On error, treat as movie
-                movies.append({'title': title, 'url': url, 'type': 'movie'})
-        
-        all_items = movies + tv_shows
-        print(f"INFO Total items collected: {len(all_items)} (movies: {len(movies)}, tv_shows: {len(tv_shows)})", file=sys.stderr)
+        # Build result list (no type detection here - deferred to download phase)
+        all_items = [{'title': title, 'url': url, 'type': 'movie'} for url, title in seen_urls.items()]
+        if INFO_MODE:
+            print(f"INFO Total items collected: {len(all_items)}", file=sys.stderr)
     
     except Exception as e:
         print(f"WARNING fetch_section_movies failed: {e}", file=sys.stderr)
@@ -2285,120 +2232,207 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
     if failed_movies is None:
         failed_movies = []
     
-    # Count actual download items (expand TV shows to episodes)
-    total_items = sum(
-        len(m.get('episodes', [])) if m.get('type') == 'tv_show' else 1
-        for m in movies
-    )
-    print(f"\nINFO 开始下载 {total_items} 个项目的字幕... (共 {len(movies)} 个条目，其中 {sum(1 for m in movies if m.get('type') == 'tv_show')} 部剧集)", file=sys.stderr)
-    
-    results = []
-    item_index = 0
+    # First pass: detect titleType for each item and expand TV shows to episodes
+    expanded_items = []  # List of (movie/ep, total_episodes_count)
+    tv_show_count = 0
     
     for movie in movies:
         movie_title = movie.get('title', '')
-        movie_section = movie.get('_section', section)
+        movie_url = movie.get('url', '')
         
         # Skip referenced items (already downloaded in another section)
         if '_refer_to' in movie:
             ref = movie['_refer_to']
-            item_count = len(movie.get('episodes', [])) if movie.get('type') == 'tv_show' else 1
-            item_index += item_count
             print(f"INFO 跳过重复: {movie_title} (refer to {ref['category']} -> {ref['section']})", file=sys.stderr)
-            results.append({
-                'title': movie_title,
-                'category': category,
-                'section': movie_section,
-                'success': True,
-                'subtitles_saved': 0,
-                'total_subtitle_types': 0,
-                'filtered_subtitle_types': 0,
-                'success_langs': [],
-                'failed_langs': [],
-                'ignored_subtitles': 0,
-                'ignored_reason': f"referenced to {ref['category']} -> {ref['section']}",
-            })
             continue
         
-        # Handle TV show: download all episodes
-        if movie.get('type') == 'tv_show':
-            episodes = movie.get('episodes', [])
-            print(f"\n{'='*60}", file=sys.stderr)
-            print(f"INFO 处理剧集: {movie_title} ({len(episodes)} 集)", file=sys.stderr)
+        # Detect titleType by navigating to the detail page
+        is_tv_show = False
+        try:
+            page.goto(movie_url if movie_url.startswith('http') else 'https://www.primevideo.com' + movie_url, timeout=20000)
+            page.wait_for_load_state('domcontentloaded')
+            time.sleep(1)
             
-            safe_series = movie_title.replace('/', '_').replace('\\', '_').replace(':', '.')
+            # Check for season selector or episodes in page JSON
+            has_season_selector = page.evaluate('''() => {
+                const links = document.querySelectorAll('a._1NNx6V');
+                for (const link of links) {
+                    const text = link.textContent?.trim();
+                    if (text && text.match(/Season\\s*\\d+/i)) {
+                        return true;
+                    }
+                }
+                return false;
+            }''')
             
-            for ep in episodes:
-                item_index += 1
-                ep_title = ep.get('title', '')
-                ep_url = ep.get('url', '')
-                ep_season = ep.get('season', 0)
-                ep_number = ep.get('episode', 0)
+            if not has_season_selector:
+                # Method 2: Check page JSON for episodes
+                has_episodes = page.evaluate('''() => {
+                    let props = undefined;
+                    for (const script of document.querySelectorAll('script[type="application/json"]')) {
+                        try {
+                            const data = JSON.parse(script.innerHTML);
+                            if (data && data.init && data.init.preparations && data.init.preparations.body) {
+                                const body = data.init.preparations.body;
+                                if (body.atf && body.btf) {
+                                    props = body;
+                                    break;
+                                }
+                            }
+                        } catch(e) {}
+                    }
+                    if (!props) return false;
+                    
+                    const detail = props.btf.state.detail;
+                    for (const sectionKey of Object.keys(detail)) {
+                        const section = detail[sectionKey];
+                        if (typeof section !== 'object' || section === null) continue;
+                        for (const [id, d] of Object.entries(section)) {
+                            if (d && d.titleType === 'episode') {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }''')
                 
-                print(f"\n{'='*60}", file=sys.stderr)
-                print(f"INFO 处理 {movie_title} S{ep_season:02d}E{ep_number:02d}: {ep_title}", file=sys.stderr)
-                
-                # Build filename: SeriesName.S{season}E{episode}.lang[cc].srt
-                ep_filename = f"S{ep_season:02d}E{ep_number:02d}"
-                
-                # Build directory path: data/subtitles/{category}/{series_name}/
-                safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
-                output_dir = os.path.join('data', 'subtitles', safe_cat, safe_series)
-                os.makedirs(output_dir, exist_ok=True)
-                
-                # Call extract_movie_subtitles with TV show context
-                result = extract_movie_subtitles(
-                    page, ep_url,
-                    movie_title=f"{movie_title}.S{ep_season:02d}E{ep_number:02d}",
-                    category=category,
-                    section=movie_section,
-                    _tv_show_dir=output_dir,
-                    _tv_show_filename=ep_filename,
-                )
-                
-                if DEBUG_MODE:
-                    print(f"INFO 剧集结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
-                
-                ep_result = _build_download_result(
-                    result, f"{movie_title} S{ep_season:02d}E{ep_number:02d}",
-                    category, movie_section
-                )
-                results.append(ep_result)
-                
-                # Collect failed episodes for retry
-                if not result.get('subtitles_saved', 0) > 0:
-                    failed_movies.append({
-                        'url': ep_url,
-                        'title': f"{movie_title} S{ep_season:02d}E{ep_number:02d}",
-                        'category': category,
-                        'section': movie_section,
-                        'error': result.get('error', 'unknown'),
+                if has_episodes:
+                    has_season_selector = True  # Reuse the flag
+            
+            is_tv_show = has_season_selector
+        except Exception as e:
+            if DEBUG_MODE:
+                print(f"DEBUG Title type detection failed for {movie_title}: {e}", file=sys.stderr)
+        
+        if is_tv_show:
+            # TV show: expand to episodes
+            tv_show_count += 1
+            try:
+                episodes = _extract_tv_show_episodes(page, movie_url)
+                if episodes:
+                    for ep in episodes:
+                        expanded_items.append({
+                            'title': f"{movie_title} S{ep['season']:02d}E{ep['episode']:02d}: {ep['title']}",
+                            'url': ep['url'],
+                            'season': ep['season'],
+                            'episode': ep['episode'],
+                            'is_tv_show': True,
+                            'series_name': movie_title,
+                            '_section': movie.get('_section', section),
+                            '_category': category,
+                        })
+                else:
+                    # Fallback: treat as movie
+                    expanded_items.append({
+                        'title': movie_title,
+                        'url': movie_url,
+                        'is_tv_show': False,
+                        '_section': movie.get('_section', section),
+                        '_category': category,
                     })
-            continue
-        
-        # Handle movie (existing logic)
-        item_index += 1
-        print(f"\n{'='*60}", file=sys.stderr)
-        print(f"INFO 处理电影 {item_index}/{total_items}: {movie_title}", file=sys.stderr)
-        result = extract_movie_subtitles(
-            page, movie['url'],
-            movie_title=movie_title,
-            category=category,
-            section=movie_section
-        )
-        if DEBUG_MODE:
-            print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
-        results.append(_build_download_result(result, movie_title, category, movie_section))
-        
-        # Collect failed movies for retry
-        if not result.get('subtitles_saved', 0) > 0:
-            failed_movies.append({
-                'url': movie['url'],
+            except Exception as e:
+                if DEBUG_MODE:
+                    print(f"DEBUG TV show episode extraction failed for {movie_title}: {e}", file=sys.stderr)
+                # Fallback: treat as movie
+                expanded_items.append({
+                    'title': movie_title,
+                    'url': movie_url,
+                    'is_tv_show': False,
+                    '_section': movie.get('_section', section),
+                    '_category': category,
+                })
+        else:
+            # Movie: add as-is
+            expanded_items.append({
                 'title': movie_title,
-                'category': category,
-                'section': movie_section,
-                'error': result.get('error', 'unknown'),
+                'url': movie_url,
+                'is_tv_show': False,
+                '_section': movie.get('_section', section),
+                '_category': category,
             })
+    
+    # Count actual download items
+    total_items = len(expanded_items)
+    print(f"\nINFO 开始下载 {total_items} 个项目的字幕... (共 {len(movies)} 个条目，其中 {tv_show_count} 部剧集)", file=sys.stderr)
+    
+    results = []
+    item_index = 0
+    
+    for item in expanded_items:
+        item_index += 1
+        movie_title = item['title']
+        movie_url = item['url']
+        movie_section = item.get('_section', section)
+        
+        if item.get('is_tv_show'):
+            # TV show episode
+            ep_season = item.get('season', 0)
+            ep_number = item.get('episode', 0)
+            series_name = item.get('series_name', movie_title)
+            
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"INFO 处理 {item_index}/{total_items}: {movie_title}", file=sys.stderr)
+            
+            # Build filename: SeriesName.S{season}E{episode}.lang[cc].srt
+            ep_filename = f"S{ep_season:02d}E{ep_number:02d}"
+            
+            # Build directory path: data/subtitles/{category}/{series_name}/
+            safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+            safe_series = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
+            output_dir = os.path.join('data', 'subtitles', safe_cat, safe_series)
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Call extract_movie_subtitles with TV show context
+            result = extract_movie_subtitles(
+                page, movie_url,
+                movie_title=f"{series_name}.S{ep_season:02d}E{ep_number:02d}",
+                category=category,
+                section=movie_section,
+                _tv_show_dir=output_dir,
+                _tv_show_filename=ep_filename,
+            )
+            
+            if DEBUG_MODE:
+                print(f"INFO 剧集结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
+            
+            ep_result = _build_download_result(
+                result, f"{series_name} S{ep_season:02d}E{ep_number:02d}",
+                category, movie_section
+            )
+            results.append(ep_result)
+            
+            # Collect failed episodes for retry
+            if not result.get('subtitles_saved', 0) > 0:
+                failed_movies.append({
+                    'url': movie_url,
+                    'title': f"{series_name} S{ep_season:02d}E{ep_number:02d}",
+                    'category': category,
+                    'section': movie_section,
+                    'error': result.get('error', 'unknown'),
+                })
+        else:
+            # Movie (existing logic)
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"INFO 处理 {item_index}/{total_items}: {movie_title}", file=sys.stderr)
+            result = extract_movie_subtitles(
+                page, movie_url,
+                movie_title=movie_title,
+                category=category,
+                section=movie_section
+            )
+            if DEBUG_MODE:
+                print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
+            results.append(_build_download_result(result, movie_title, category, movie_section))
+            
+            # Collect failed movies for retry
+            if not result.get('subtitles_saved', 0) > 0:
+                failed_movies.append({
+                    'url': movie_url,
+                    'title': movie_title,
+                    'category': category,
+                    'section': movie_section,
+                    'error': result.get('error', 'unknown'),
+                })
     
     # Retry failed movies: 3 attempts each
     if failed_movies:
