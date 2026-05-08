@@ -28,6 +28,7 @@ def _check_login_status(page) -> tuple:
         (is_logged_in: bool, has_join_prime: bool)
         is_logged_in = True → 已登录，可跳过登录
         has_join_prime = True → 页面可见有 Join Prime 按钮，需要登录
+        (False, False) → 页面加载失败，不确定状态
     """
     try:
         page.goto("https://www.primevideo.com", timeout=15000)
@@ -52,8 +53,9 @@ def _check_login_status(page) -> tuple:
             return false;
         }''')
         return (not has_join_prime, has_join_prime)
-    except Exception:
-        return (False, True)
+    except Exception as e:
+        print(f"WARNING _check_login_status failed: {e}", file=sys.stderr)
+        return (False, False)  # 不确定状态，由 main() 决定
 
 
 def login_prime_video(page, email: str, password: str) -> dict:
@@ -1877,11 +1879,37 @@ def main():
             print("INFO 已登录，跳过登录步骤", file=sys.stderr)
             cookies = page.context.cookies()
         elif has_join_prime:
-            # Page already has Join Prime button - login directly (no redundant navigation)
+            # Page has visible Join Prime button - login directly
             print("INFO 检测到未登录，执行登录...", file=sys.stderr)
             login_result = login_prime_video(page, email, password)
             if not login_result['success']:
                 print("ERROR Login failed", file=sys.stderr)
+                sys.exit(1)
+            cookies = login_result['cookies']
+        else:
+            # Navigation failed or uncertain - try login, clean browser data if it fails
+            print("INFO 页面加载异常，尝试登录...", file=sys.stderr)
+            try:
+                login_result = login_prime_video(page, email, password)
+                if not login_result['success']:
+                    # Browser data might be corrupted, clean and retry
+                    print("INFO 登录失败，清理浏览器数据后重试...", file=sys.stderr)
+                    import shutil
+                    import glob
+                    for f in glob.glob('data/browser/*'):
+                        if os.path.isfile(f):
+                            os.remove(f)
+                        else:
+                            shutil.rmtree(f)
+                    # Reload with fresh context
+                    context = browser.new_context()
+                    page = context.new_page()
+                    login_result = login_prime_video(page, email, password)
+                    if not login_result['success']:
+                        print("ERROR 重试登录仍然失败", file=sys.stderr)
+                        sys.exit(1)
+            except Exception as e:
+                print(f"ERROR 登录异常: {e}", file=sys.stderr)
                 sys.exit(1)
             cookies = login_result['cookies']
         
