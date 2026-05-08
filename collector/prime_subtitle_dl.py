@@ -1602,8 +1602,12 @@ def main():
         print("INFO Launching browser...", file=sys.stderr)
         os.makedirs('data/browser', exist_ok=True)
         p = sync_playwright().start()
-        browser = p.chromium.launch(headless=False, user_data_dir='data/browser')
-        context = browser.new_context()
+        browser = p.chromium.launch(headless=False)
+        state_file = 'data/browser/state.json'
+        storage_state = None
+        if os.path.exists(state_file):
+            storage_state = state_file
+        context = browser.new_context(storage_state=storage_state)
         page = context.new_page()
         
         # Login (skip if already logged in)
@@ -1617,6 +1621,9 @@ def main():
                 print("ERROR Login failed", file=sys.stderr)
                 sys.exit(1)
             cookies = login_result['cookies']
+        
+        # Save storage state for next session
+        context.storage_state(path=state_file)
         
         # Extract categories only (FAST - no navigation to category pages)
         print("\nINFO Extracting categories from homepage...", file=sys.stderr)
