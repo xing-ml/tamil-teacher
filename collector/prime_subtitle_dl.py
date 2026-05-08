@@ -21,26 +21,39 @@ DEBUG_MODE = False  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
 
-def _check_login_status(page) -> bool:
+def _check_login_status(page) -> tuple:
     """检查是否已登录 Prime Video。
     
     Returns:
-        True = 已登录（无 Join Prime 文字），可跳过登录
-        False = 未登录（有 Join Prime 文字），需要登录
+        (is_logged_in: bool, has_join_prime: bool)
+        is_logged_in = True → 已登录，可跳过登录
+        has_join_prime = True → 页面可见有 Join Prime 按钮，需要登录
     """
     try:
         page.goto("https://www.primevideo.com", timeout=15000)
         page.wait_for_load_state('networkidle')
         time.sleep(3)
         
-        # 检查是否存在 "Join Prime" 元素
-        join_prime = page.query_selector('a:has-text("Join Prime")')
-        if join_prime:
-            return False  # 需要登录
-        return True  # 已登录
+        # 检查是否存在**可见的** "Join Prime" 按钮
+        # 排除隐藏元素（footer链接、脚本文本等）
+        has_join_prime = page.evaluate('''() => {
+            const links = document.querySelectorAll('a');
+            for (const link of links) {
+                if (link.textContent.includes('Join Prime')) {
+                    const style = window.getComputedStyle(link);
+                    if (style.display !== 'none' && 
+                        style.visibility !== 'hidden' && 
+                        style.opacity !== '0' &&
+                        link.offsetParent !== null) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }''')
+        return (not has_join_prime, has_join_prime)
     except Exception:
-        # 网络错误或超时 → 保守起见执行登录
-        return False
+        return (False, True)
 
 
 def login_prime_video(page, email: str, password: str) -> dict:
@@ -61,17 +74,20 @@ def login_prime_video(page, email: str, password: str) -> dict:
         if 'primevideo.com' not in page.url:
             print("INFO Navigating to Prime Video...", file=sys.stderr)
             page.goto("https://www.primevideo.com", timeout=30000)
+            time.sleep(5)
         else:
             print("INFO Already on Prime Video, skipping navigation", file=sys.stderr)
-        time.sleep(3)
+            time.sleep(2)
         
-        # Find Join Prime button
-        join_prime = page.query_selector('a:has-text("Join Prime")')
-        if not join_prime:
-            print("WARNING Could not find Join Prime button", file=sys.stderr)
-            return {"success": False, "cookies": None}
-        
-        print("INFO Found Join Prime button", file=sys.stderr)
+        # Find Join Prime button (skip detection if already found by _check_login_status)
+        if not has_join_prime:
+            join_prime = page.query_selector('a:has-text("Join Prime")')
+            if not join_prime:
+                print("WARNING Could not find Join Prime button", file=sys.stderr)
+                return {"success": False, "cookies": None}
+            print("INFO Found Join Prime button", file=sys.stderr)
+        else:
+            print("INFO Join Prime button already detected, clicking...", file=sys.stderr)
         join_prime.click()
         time.sleep(3)
         
@@ -1856,10 +1872,12 @@ def main():
         page = context.new_page()
         
         # Login (skip if already logged in)
-        if _check_login_status(page):
+        is_logged_in, has_join_prime = _check_login_status(page)
+        if is_logged_in:
             print("INFO 已登录，跳过登录步骤", file=sys.stderr)
             cookies = page.context.cookies()
-        else:
+        elif has_join_prime:
+            # Page already has Join Prime button - login directly (no redundant navigation)
             print("INFO 检测到未登录，执行登录...", file=sys.stderr)
             login_result = login_prime_video(page, email, password)
             if not login_result['success']:
