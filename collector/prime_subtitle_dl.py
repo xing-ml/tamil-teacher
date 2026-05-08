@@ -30,8 +30,8 @@ def _check_login_status(page) -> bool:
     """
     try:
         page.goto("https://www.primevideo.com", timeout=15000)
-        page.wait_for_load_state('domcontentloaded')
-        time.sleep(2)
+        page.wait_for_load_state('networkidle')
+        time.sleep(3)
         
         # 检查是否存在 "Join Prime" 元素
         join_prime = page.query_selector('a:has-text("Join Prime")')
@@ -57,9 +57,13 @@ def login_prime_video(page, email: str, password: str) -> dict:
         Dict with 'success' and 'cookies' keys
     """
     try:
-        print("INFO Navigating to Prime Video...", file=sys.stderr)
-        page.goto("https://www.primevideo.com", timeout=30000)
-        time.sleep(5)
+        # Skip navigation if already on Prime Video (from _check_login_status)
+        if 'primevideo.com' not in page.url:
+            print("INFO Navigating to Prime Video...", file=sys.stderr)
+            page.goto("https://www.primevideo.com", timeout=30000)
+        else:
+            print("INFO Already on Prime Video, skipping navigation", file=sys.stderr)
+        time.sleep(3)
         
         # Find Join Prime button
         join_prime = page.query_selector('a:has-text("Join Prime")')
