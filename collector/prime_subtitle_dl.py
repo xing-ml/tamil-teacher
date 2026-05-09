@@ -2300,7 +2300,8 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             series_name = movie_title
             safe_series = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
             safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
-            output_dir = os.path.join('data', 'subtitles', safe_cat, safe_series)
+            safe_sec = movie_section.replace('/', '_').replace('\\', '_').replace(':', '.') if movie_section else 'unknown'
+            output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_series)
             os.makedirs(output_dir, exist_ok=True)
             
             # 统计总季数和每季集数
