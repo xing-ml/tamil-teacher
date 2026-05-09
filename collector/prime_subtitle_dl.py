@@ -2302,6 +2302,14 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             output_dir = os.path.join('data', 'subtitles', safe_cat, safe_series)
             os.makedirs(output_dir, exist_ok=True)
             
+            # 统计总季数和每季集数
+            all_seasons = sorted(set(ep.get('seasonNumber', 1) for ep in episodes))
+            total_seasons = len(all_seasons)
+            episodes_per_season = {}
+            for ep in episodes:
+                sn = ep.get('seasonNumber', 1)
+                episodes_per_season[sn] = episodes_per_season.get(sn, 0) + 1
+            
             for ep in episodes:
                 ep_season = ep.get('seasonNumber', 0)
                 ep_number = ep.get('episodeNumber', 0)
@@ -2309,7 +2317,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                 ep_url = ep.get('url', '')
                 
                 print(f"\n{'='*60}", file=sys.stderr)
-                print(f"INFO 处理 {item_index}/{len(movies)}: {series_name} S{ep_season:02d}E{ep_number:02d}: {ep_title}", file=sys.stderr)
+                print(f"INFO 处理: {item_index}/{len(movies)}, Season: {ep_season}/{total_seasons}, Episode: {ep_number}/{episodes_per_season.get(ep_season, '?')}", file=sys.stderr)
                 
                 # Build filename: SeriesName.S{season}E{episode}.lang[cc].srt
                 ep_filename = f"S{ep_season:02d}E{ep_number:02d}"
