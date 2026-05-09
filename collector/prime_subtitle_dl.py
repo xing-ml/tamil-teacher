@@ -1122,8 +1122,9 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
         # Scroll and accumulate cards from DOM
         consecutive_no_new = 0
         scroll_count = 0
+        max_scroll = 200  # Safety cap to prevent infinite scroll
         
-        while scroll_count < 15:
+        while scroll_count < max_scroll:
             page.evaluate('window.scrollBy(0, 500)')
             time.sleep(2)
             
