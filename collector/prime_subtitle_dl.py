@@ -2317,18 +2317,22 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                 ep_title = ep.get('title', '')
                 ep_url = ep.get('url', '')
                 
+                # Build per-episode directory: data/subtitles/{category}/{series}/S{season}/E{episode}/
+                ep_dir = os.path.join(output_dir, f'S{ep_season:02d}', f'E{ep_number:02d}')
+                os.makedirs(ep_dir, exist_ok=True)
+                
                 print(f"\n{'='*60}", file=sys.stderr)
                 print(f"INFO 处理: {item_index}/{len(movies)}, Season: {ep_season}/{total_seasons}, Episode: {ep_number}/{episodes_per_season.get(ep_season, '?')}, {series_name} S{ep_season:02d}E{ep_number:02d}: {ep_title}", file=sys.stderr)
                 
                 # Build filename: SeriesName.S{season}E{episode}.lang[cc].srt
-                ep_filename = f"S{ep_season:02d}E{ep_number:02d}"
+                ep_filename = f"{series_name}.S{ep_season:02d}E{ep_number:02d}"
                 
                 result = extract_movie_subtitles(
                     page, ep_url,
                     movie_title=f"{series_name}.S{ep_season:02d}E{ep_number:02d}",
                     category=category,
                     section=movie_section,
-                    _tv_show_dir=output_dir,
+                    _tv_show_dir=ep_dir,
                     _tv_show_filename=ep_filename,
                 )
                 
