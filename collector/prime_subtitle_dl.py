@@ -524,17 +524,20 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                         print(f"INFO Failed to get enrichItemMetadata body: {e}", file=sys.stderr)
         page.on('response', on_response)
         
-        print(f"INFO Navigating to: {movie_url}", file=sys.stderr)
+        if DEBUG_MODE:
+            print(f"INFO Navigating to: {movie_url}", file=sys.stderr)
         page.goto(movie_url, timeout=30000)
         
         # Get movie title
         title_elem = page.query_selector('h1, [data-test="title"]')
         if title_elem:
             result['title'] = title_elem.text_content().strip()
-            print(f"INFO Movie title: {result['title']}", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Movie title: {result['title']}", file=sys.stderr)
         
         # Wait for video player to fully initialize (at least 15 seconds)
-        print("INFO Waiting for video player to fully load (15s minimum)...", file=sys.stderr)
+        if DEBUG_MODE:
+            print("INFO Waiting for video player to fully load (15s minimum)...", file=sys.stderr)
         for i in range(45):
             player_ready = page.evaluate('''() => {
                 const video = document.querySelector('video');
@@ -542,17 +545,20 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
                 return !!(video || playerContainer);
             }''')
             if player_ready:
-                print(f"INFO Video player detected after {i+1}s, waiting for full initialization...", file=sys.stderr)
+                if DEBUG_MODE:
+                    print(f"INFO Video player detected after {i+1}s, waiting for full initialization...", file=sys.stderr)
                 break
             time.sleep(1)
         
         # Ensure we wait at least 15 seconds total
         elapsed = i + 1
         if elapsed < 15:
-            print(f"INFO Waiting additional {15 - elapsed}s for player initialization...", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Waiting additional {15 - elapsed}s for player initialization...", file=sys.stderr)
             time.sleep(15 - elapsed)
         else:
-            print(f"INFO Player already loaded, waiting extra 5s for network requests...", file=sys.stderr)
+            if DEBUG_MODE:
+                print(f"INFO Player already loaded, waiting extra 5s for network requests...", file=sys.stderr)
             time.sleep(5)
         
         # Extract props and envelope from page JSON, matching userscript's init() function
@@ -1060,6 +1066,7 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             parts = [f"{result.get('title', 'unknown')}: {result['total_subtitle_types']}种字幕 → 筛选后{result['filtered_subtitle_types']}种 ({', '.join(sorted(downloaded_langs))}) → {success_str}, {failed_str}"]
             if ignored_str:
                 parts.append(ignored_str)
+            parts.append(f"保存: {output_dir}")
             print(" → ".join(parts), file=sys.stderr)
     
     except Exception as e:
