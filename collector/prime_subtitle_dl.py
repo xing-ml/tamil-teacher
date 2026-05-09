@@ -2317,8 +2317,8 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                 ep_title = ep.get('title', '')
                 ep_url = ep.get('url', '')
                 
-                # Build per-episode directory: data/subtitles/{category}/{series}/S{season}/E{episode}/
-                ep_dir = os.path.join(output_dir, f'S{ep_season:02d}', f'E{ep_number:02d}')
+                # Build season directory: data/subtitles/{category}/{series}/S{season}/
+                ep_dir = os.path.join(output_dir, f'S{ep_season:02d}')
                 os.makedirs(ep_dir, exist_ok=True)
                 
                 print(f"\n{'='*60}", file=sys.stderr)

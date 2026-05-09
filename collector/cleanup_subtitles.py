@@ -26,9 +26,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.parent / "data" / "subtitles"
 TRASH_DIR = Path(__file__).parent.parent / "data" / "subtitles" / "_cleanup_trash"
 
-# 标准季/集目录名正则
+# 标准季目录名正则
 SEASON_DIR_RE = re.compile(r"^S(\d{2})$")      # S01, S02, ...
-EPISODE_DIR_RE = re.compile(r"^E(\d{2})$")     # E01, E02, ...
 
 # 电影字幕文件名正则: {movie_name}.{lang}[cc].srt
 # lang 格式: xx-xx, xx-xx[cc], xx-001, xx-419 等
@@ -154,11 +153,6 @@ def is_standard_season(dirname: str) -> tuple:
     m = SEASON_DIR_RE.match(dirname)
     return (True, m.group(1)) if m else (False, None)
 
-def is_standard_episode(dirname: str) -> tuple:
-    """检查是否为标准集目录名 E{2位数字}，返回 (is_match, episode_num)"""
-    m = EPISODE_DIR_RE.match(dirname)
-    return (True, m.group(1)) if m else (False, None)
-
 def validate_movie_file(filepath: Path, movie_dir: Path) -> bool:
     """验证电影字幕文件名是否符合 {movie_name}.{lang}.srt"""
     basename = filepath.name
@@ -170,18 +164,19 @@ def validate_movie_file(filepath: Path, movie_dir: Path) -> bool:
     file_prefix = m.group(1)
     return file_prefix == dir_name
 
-def validate_tv_file(filepath: Path, tv_dir: Path, season_dir: Path, episode_dir: Path) -> bool:
+def validate_tv_file(filepath: Path, tv_dir: Path, season_dir: Path) -> bool:
     """验证剧集字幕文件名是否符合 {series}.S{season}E{episode}.{lang}.srt"""
     basename = filepath.name
     series_name = tv_dir.name
     season_num = season_dir.name[1:]  # S01 -> 01
-    episode_num = episode_dir.name[1:]  # E01 -> 01
-    expected_se = f"S{season_num}E{episode_num}"
     
     m = TV_FILE_RE.match(basename)
     if not m:
         return False
-    return m.group(1) == series_name and m.group(2) == expected_se
+    # 检查系列名和 S{season}E{episode} 部分
+    file_prefix = m.group(1)
+    file_se = m.group(2)
+    return file_prefix == series_name and file_se.startswith(f"S{season_num}")
 
 # ============================================================
 # 主清理逻辑
@@ -254,32 +249,20 @@ def cleanup_series(series_dir: Path, cat_name: str):
             remove_item(season_dir, f"{cat_name}/{series_name}/{season_dir.name}")
             continue
         
-        # 清理季目录下的内容
-        for episode_dir in season_dir.iterdir():
-            if episode_dir.is_file():
-                print(f"  [季目录中的文件] 删除: {episode_dir.name}")
-                remove_item(episode_dir, f"{cat_name}/{series_name}/{season_dir.name}/{episode_dir.name}")
-            elif episode_dir.is_dir():
-                is_ep, ep_num = is_standard_episode(episode_dir.name)
-                if not is_ep:
-                    print(f"  [非标准集目录] 删除: {episode_dir.name}")
-                    remove_item(episode_dir, f"{cat_name}/{series_name}/{season_dir.name}/{episode_dir.name}")
-                    continue
-                
-                # 清理集目录中的文件
-                for file in episode_dir.iterdir():
-                    if file.is_dir():
-                        print(f"  [集目录中的子目录] 删除: {file.name}")
-                        remove_item(file, f"{cat_name}/{series_name}/{season_dir.name}/{episode_dir.name}/{file.name}")
-                    elif file.is_file():
-                        if is_hidden(file.name) or is_temp_file(file.name):
-                            print(f"  [隐藏/临时文件] 移动: {file.name}")
-                            move_to_trash(file, f"{cat_name}/{series_name}/{season_dir.name}/{episode_dir.name}/{file.name}")
-                        elif not validate_tv_file(file, series_dir, season_dir, episode_dir):
-                            print(f"  [命名不符] 移动: {file.name}")
-                            move_to_trash(file, f"{cat_name}/{series_name}/{season_dir.name}/{episode_dir.name}/{file.name}")
-                        else:
-                            stats.skipped_files += 1
+        # 清理季目录下的文件（直接存放，无 E{episode} 子目录）
+        for file in season_dir.iterdir():
+            if file.is_dir():
+                print(f"  [季目录中的子目录] 删除: {file.name}")
+                remove_item(file, f"{cat_name}/{series_name}/{season_dir.name}/{file.name}")
+            elif file.is_file():
+                if is_hidden(file.name) or is_temp_file(file.name):
+                    print(f"  [隐藏/临时文件] 移动: {file.name}")
+                    move_to_trash(file, f"{cat_name}/{series_name}/{season_dir.name}/{file.name}")
+                elif not validate_tv_file(file, series_dir, season_dir):
+                    print(f"  [命名不符] 移动: {file.name}")
+                    move_to_trash(file, f"{cat_name}/{series_name}/{season_dir.name}/{file.name}")
+                else:
+                    stats.skipped_files += 1
 
 def cleanup_movie_section(section_dir: Path, cat_name: str):
     """清理 section 目录或 movie 目录"""
