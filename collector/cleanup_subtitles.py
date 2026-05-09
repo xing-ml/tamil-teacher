@@ -16,6 +16,7 @@
 import os
 import re
 import sys
+import time
 import shutil
 from pathlib import Path
 
@@ -95,7 +96,7 @@ def move_to_trash(src: Path, report_name: str = ""):
     try:
         dst = TRASH_DIR / src.name
         if dst.exists():
-            dst = TRASH_DIR / f"{src.name}_{int(os.time())}"
+            dst = TRASH_DIR / f"{src.name}_{int(time.time())}"
         if src.is_file():
             shutil.move(str(src), str(dst))
             stats.moved_files += 1
@@ -362,7 +363,7 @@ def main():
     # 第一遍：清理所有不符合规则的文件和目录
     print("\n第一遍：清理不符合规则的文件和目录...")
     for cat in BASE_DIR.iterdir():
-        if cat.is_dir():
+        if cat.is_dir() and cat.name != "_cleanup_trash":
             cleanup_category(cat)
     
     # 第二遍：递归清理空目录
