@@ -17,7 +17,7 @@ except ImportError:
 # ============================================================
 # Log level switches
 # ============================================================
-DEBUG_MODE = False  # Set to True to see detailed debug output
+DEBUG_MODE = True  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
 
@@ -1164,7 +1164,7 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
 def _extract_tv_show_episodes(page, show_url: str) -> list:
     """Extract episode list from a TV show detail page.
     
-    Uses page JSON to get initial episodes, then scrolls to load more via API interception.
+    Uses page JSON to get initial episodes, then extracts episode URLs from DOM.
     
     Args:
         page: Playwright page object
@@ -1174,35 +1174,13 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
         List of episode dicts: [{'title': '...', 'url': '...', 'season': N, 'episode': N}, ...]
     """
     episodes = []
-    seen_ep_urls = set()
     
     try:
-        # Set up API response interception for enrichItemMetadata
-        api_episodes = []
-        
-        def on_response(response):
-            url = response.url
-            if 'enrichItemMetadata' in url and response.status == 200:
-                try:
-                    body = response.json()
-                    if body.get('entities'):
-                        for entity in body['entities']:
-                            if entity.get('titleID') and entity.get('detail'):
-                                det = entity['detail']
-                                if det.get('titleType') == 'episode':
-                                    ep_url = det.get('titleID', '')
-                                    if ep_url and ep_url not in seen_ep_urls:
-                                        seen_ep_urls.add(ep_url)
-                                        api_episodes.append({
-                                            'title': det.get('title', ''),
-                                            'url': f"/detail/{ep_url}/",
-                                            'season': det.get('seasonNumber', 0),
-                                            'episode': det.get('episodeNumber', 0),
-                                        })
-                except Exception:
-                    pass
-        
-        page.on('response', on_response)
+        # Set up console logging for debug output
+        def on_console(msg):
+            if DEBUG_MODE:
+                print(f"DEBUG Console: {msg.text}", file=sys.stderr)
+        page.on('console', on_console)
         
         # Extract initial episodes from page JSON
         initial_episodes = page.evaluate('''() => {
@@ -1217,9 +1195,9 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                             for(const [id, det] of Object.entries(detail)) {
                                 if(det.titleType === 'episode') {
                                     episodes.push({
-                                        title: det.title || '',
-                                        season: det.seasonNumber || 0,
-                                        episode: det.episodeNumber || 0,
+                                        title: det.title,
+                                        seasonNumber: det.seasonNumber,
+                                        episodeNumber: det.episodeNumber,
                                     });
                                 }
                             }
@@ -1232,144 +1210,64 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
         
         for ep in initial_episodes:
             # Handle missing seasonNumber (default to 1)
-            season = ep.get('season') or 1
+            season = ep.get('seasonNumber') or 1
             if ep['title'] and season > 0:
                 episodes.append({
                     'title': ep['title'],
-                    'season': season,
-                    'episode': ep.get('episode', 0),
+                    'seasonNumber': season,
+                    'episodeNumber': ep.get('episodeNumber', 0),
                     'url': '',  # Will be filled from DOM below
                 })
         
-        if not episodes:
-            return []
-        
-        # Extract episode URLs from DOM (fallback when page JSON lacks titleID)
-        # This finds links inside [data-testid*="episode"] elements
-        episode_dom_urls = page.evaluate('''() => {
+        # Extract episode URLs from DOM
+        # Use "Play" text filter to get only episode links (excludes Trailer and recommendations)
+        episode_dom_urls = page.evaluate('''(debugParam) => {
+            const seen = new Set();
             const links = [];
-            const sections = document.querySelectorAll('[data-testid*="episode"]');
-            for(const section of sections) {
-                const link = section.querySelector('a[href*="detail"]');
-                if(link) {
+            const allLinks = document.querySelectorAll('a[href*="detail"]');
+            // Debug: log all matching links
+            if (debugParam) {
+                console.log('DEBUG_EPISODE: Found ' + allLinks.length + ' links with href containing "detail"');
+                for(const link of allLinks) {
+                    console.log('DEBUG_EPISODE: link href=' + link.getAttribute('href') + ', text=' + link.textContent?.trim());
+                }
+            }
+            for(const link of allLinks) {
+                const text = link.textContent?.trim();
+                // Only extract links with "Play" text (excludes Trailer and recommendations)
+                if (text && text.includes('Play') && !text.includes('Trailer')) {
                     const href = link.getAttribute('href');
-                    // Extract episode ID from /detail/{ID}/
-                    const match = href.match(/\/detail\/([^\/]+)/);
-                    if(match) {
+                    const match = href.match(/detail[\\\\/]([^\\\\/\\\\?]+)/);
+                    if(match && !seen.has(match[1])) {
+                        seen.add(match[1]);
                         links.push(match[1]);
                     }
                 }
             }
             return links;
-        }''')
+        }''', DEBUG_MODE)
         
-        # Match DOM URLs to episodes by index (they should be in order)
+        # Match DOM URLs to episodes by index (sorted by episodeNumber)
+        if DEBUG_MODE:
+            print(f"DEBUG _extract_tv_show_episodes: episodes count={len(episodes)}, episode_dom_urls count={len(episode_dom_urls)}", file=sys.stderr)
+            for i, ep in enumerate(episodes):
+                print(f"DEBUG _extract_tv_show_episodes: episode {i}: title={ep.get('title', '')}, url='{ep.get('url', '')}'", file=sys.stderr)
+        
         if episode_dom_urls:
             for i, ep in enumerate(episodes):
                 if i < len(episode_dom_urls):
                     ep_id = episode_dom_urls[i]
-                    # Use full URL for page.goto()
                     ep['url'] = f"https://www.primevideo.com/detail/{ep_id}/"
         
-        # Check if there are more episodes to load
-        total_ep_count = page.evaluate('''() => {
-            for(const script of document.querySelectorAll('script[type="application/json"]')) {
-                try {
-                    const data = JSON.parse(script.innerHTML);
-                    const body = data?.init?.preparations?.body;
-                    if(body && body.atf && body.btf) {
-                        const epList = body.btf?.state?.episodeList;
-                        if(epList) {
-                            return epList.totalCardSize || 0;
-                        }
-                    }
-                } catch(e) {}
-            }
-            return 0;
-        }''')
-        
-        if total_ep_count > len(episodes):
-            if INFO_MODE:
-                print(f"INFO TV show has {total_ep_count} episodes, loading more...", file=sys.stderr)
-            
-            # Scroll to load more episodes (with timeout protection)
-            max_scroll_time = 60  # seconds
-            scroll_start = time.time()
-            prev_count = len(episodes)
-            
-            while time.time() - scroll_start < max_scroll_time:
-                # Scroll to pagination marker
-                scroll_result = page.evaluate('''() => {
-                    const marker = document.querySelector('[data-testid="dp-episode-list-pagination-marker"]');
-                    if(marker) {
-                        marker.scrollIntoView({behavior: 'instant'});
-                        return true;
-                    }
-                    // Fallback: scroll to bottom
-                    window.scrollTo(0, document.body.scrollHeight);
-                    return true;
-                }''')
-                
-                if not scroll_result:
-                    break
-                
-                time.sleep(3)  # Wait for API call and DOM update
-                
-                # Check for new episodes from API interception
-                new_from_api = len(api_episodes) - prev_count
-                if new_from_api > 0:
-                    for ep in api_episodes[prev_count:]:
-                        episodes.append(ep)
-                    prev_count = len(api_episodes)
-                
-                # Also check page JSON for new episodes
-                current_ep_count = page.evaluate('''() => {
-                    let count = 0;
-                    for(const script of document.querySelectorAll('script[type="application/json"]')) {
-                        try {
-                            const data = JSON.parse(script.innerHTML);
-                            const body = data?.init?.preparations?.body;
-                            if(body && body.atf && body.btf) {
-                                const detail = body.btf?.state?.detail?.detail;
-                                if(detail) {
-                                    for(const [id, det] of Object.entries(detail)) {
-                                        if(det.titleType === 'episode') count++;
-                                    }
-                                }
-                            }
-                        } catch(e) {}
-                    }
-                    return count;
-                }''')
-                
-                if current_ep_count >= total_ep_count:
-                    if INFO_MODE:
-                        print(f"INFO Loaded all {total_ep_count} episodes", file=sys.stderr)
-                    break
-                
-                if INFO_MODE:
-                    print(f"INFO Loaded {current_ep_count}/{total_ep_count} episodes", file=sys.stderr)
-            
-            # Add any remaining API episodes
-            for ep in api_episodes[len(episodes):]:
-                episodes.append(ep)
-        
-        # Sort episodes by season, then episode number
-        episodes.sort(key=lambda e: (e['season'], e['episode']))
-        
-        # Remove page.on handler
-        page.remove_listener('response', on_response)
+        if DEBUG_MODE:
+            for i, ep in enumerate(episodes):
+                print(f"DEBUG _extract_tv_show_episodes after match: episode {i}: title={ep.get('title', '')}, url='{ep.get('url', '')}'", file=sys.stderr)
         
         if INFO_MODE:
             print(f"INFO TV show '{page.evaluate('document.title')}' has {len(episodes)} episodes", file=sys.stderr)
     
     except Exception as e:
         print(f"WARNING _extract_tv_show_episodes failed: {e}", file=sys.stderr)
-        # Try to return what we have
-        try:
-            page.remove_listener('response', on_response)
-        except Exception:
-            pass
     
     return episodes
 
@@ -2305,7 +2203,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         try:
             page.goto(movie_url if movie_url.startswith('http') else 'https://www.primevideo.com' + movie_url, timeout=20000)
             page.wait_for_load_state('domcontentloaded')
-            time.sleep(1)
+            time.sleep(5)
         except Exception as e:
             print(f"WARNING Failed to navigate to {movie_title}: {e}", file=sys.stderr)
             results.append({
@@ -2405,8 +2303,8 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             
             for ep in episodes:
                 item_index += 1
-                ep_season = ep.get('season', 0)
-                ep_number = ep.get('episode', 0)
+                ep_season = ep.get('seasonNumber', 0)
+                ep_number = ep.get('episodeNumber', 0)
                 ep_title = ep.get('title', '')
                 ep_url = ep.get('url', '')
                 
@@ -2478,23 +2376,12 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         retry_results, retry_remaining = _retry_movies(page, failed_movies, "第一轮")
         results.extend(retry_results)
         
-        # Final retry round: 3 more attempts for remaining failures
+        # Report final failures
         if retry_remaining:
             print(f"\n{'='*60}", file=sys.stderr)
-            print(f"INFO 最终重试: {len(retry_remaining)} 个电影仍失败，再试3次...", file=sys.stderr)
-            
-            final_results, final_remaining = _retry_movies(page, retry_remaining, "最终")
-            results.extend(final_results)
-            
-            # Report final failures
-            if final_remaining:
-                print(f"\n{'='*60}", file=sys.stderr)
-                print(f"INFO 最终仍有 {len(final_remaining)} 个电影失败:", file=sys.stderr)
-                for fm in final_remaining:
-                    print(f"  - {fm['title']}: {fm['error']}", file=sys.stderr)
-            else:
-                print(f"\n{'='*60}", file=sys.stderr)
-                print(f"INFO 所有失败电影最终重试成功!", file=sys.stderr)
+            print(f"INFO 最终仍有 {len(retry_remaining)} 个电影失败:", file=sys.stderr)
+            for fm in retry_remaining:
+                print(f"  - {fm['title']}: {fm['error']}", file=sys.stderr)
     
     success_count = sum(1 for r in results if r['success'])
     print(f"\n{'='*60}", file=sys.stderr)
