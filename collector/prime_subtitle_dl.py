@@ -17,7 +17,7 @@ except ImportError:
 # ============================================================
 # Log level switches
 # ============================================================
-DEBUG_MODE = True  # Set to True to see detailed debug output
+DEBUG_MODE = False  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
 
@@ -2295,6 +2295,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         
         if is_tv_show:
             # TV show: download subtitles for all episodes
+            item_index += 1  # Increment once per TV show for progress counter
             series_name = movie_title
             safe_series = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
             safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
@@ -2302,7 +2303,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             os.makedirs(output_dir, exist_ok=True)
             
             for ep in episodes:
-                item_index += 1
                 ep_season = ep.get('seasonNumber', 0)
                 ep_number = ep.get('episodeNumber', 0)
                 ep_title = ep.get('title', '')
