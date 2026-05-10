@@ -2090,7 +2090,7 @@ def main():
                     
                     if fresh_categories:
                         for cat in fresh_categories:
-                            cat_url = _resolve_prime_url(cat.get('url', ''))
+                            cat_url = _resolve_prime_url(cat.get('href', ''))
                             cat_name = cat.get('name', '')
                             
                             # Extract sections
@@ -2143,7 +2143,7 @@ def main():
             
             if fresh_categories:
                 for cat in fresh_categories:
-                    cat_url = _resolve_prime_url(cat.get('url', ''))
+                    cat_url = _resolve_prime_url(cat.get('href', ''))
                     cat_name = cat.get('name', '')
                     
                     # Extract sections
