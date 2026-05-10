@@ -2619,15 +2619,26 @@ def main():
                     sec_name = sec['title']
                     
                     # Fetch movies for this section from cache
+                    # Debug output to file
+                    with open('/tmp/debug_prime_cache.txt', 'a') as f:
+                        f.write(f"DEBUG cat_name='{cat_name}', sec_name='{sec_name}'\n")
+                        f.write(f"DEBUG _category sample: {[m.get('_category', 'MISSING') for m in prime_resources.get('movies', [])[:3]]}\n")
+                        f.write(f"DEBUG _section sample: {[m.get('_section', 'MISSING') for m in prime_resources.get('movies', [])[:3]]}\n")
+                        from collections import Counter
+                        cat_counts = Counter(m.get('_category', 'MISSING') for m in prime_resources.get('movies', []))
+                        f.write(f"DEBUG category counts: {dict(list(cat_counts.items())[:10])}\n")
                     movies = [m for m in prime_resources.get('movies', []) 
                               if _normalize_name(m.get('_category', '')) == _normalize_name(cat_name)
                               and _normalize_name(m.get('_section', '')) == _normalize_name(sec_name)]
+                    with open('/tmp/debug_prime_cache.txt', 'a') as f:
+                        f.write(f"DEBUG filtered movies count: {len(movies)}\n")
                     
                     if not movies:
                         print("WARNING 缓存中没有该分类/分节的电影", file=sys.stderr)
                         continue
                     
-                    # Transition to movies state
+                    # Store movies in cache and transition to movies state
+                    cache['movies'][cache_key] = movies
                     state = 'movies'
                 else:
                     # Multiple sections → use cached movies
