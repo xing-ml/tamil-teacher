@@ -399,53 +399,6 @@ def _expand_tv_show_in_session(session_data: dict, tv_show_title: str, episodes:
     return changed
 
 
-def _sync_tv_show_episodes(session_data: dict, tv_show_title: str, episodes: list) -> bool:
-    """Sync TV show episodes with local files.
-    
-    For each episode, check if subtitles exist in local S{season}/ directory.
-    Mark as downloaded if local files exist.
-    
-    Returns True if any changes were made.
-    """
-    import glob
-    import re
-    changed = False
-    synced_episodes = []  # Track which episodes were synced
-    
-    for entry in session_data.get('movies', []):
-        if entry.get('downloaded'):
-            continue
-        if (entry.get('is_tv_show')
-                and entry.get('season') is not None
-                and entry.get('episode') is not None
-                and entry.get('title', '').startswith(tv_show_title)):
-            
-            ep_season = entry.get('season')
-            ep_number = entry.get('episode')
-            # Extract series name from episode title (e.g., "Mechamato S01E01" -> "Mechamato")
-            ep_title_full = entry.get('title', '')
-            series_name = re.sub(r'\s+S\d{2}E\d{2}$', '', ep_title_full)
-            safe_title = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
-            safe_cat = entry.get('category', '').replace('/', '_').replace('\\', '_').replace(':', '.')
-            safe_sec = entry.get('section', '').replace('/', '_').replace('\\', '_').replace(':', '.')
-            
-            # Check for subtitles in S{season}/ directory
-            folder = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_title, f'S{ep_season:02d}')
-            srt_files = glob.glob(os.path.join(folder, '*.srt'))
-            refer_files = glob.glob(os.path.join(folder, 'refer_to_*.txt'))
-            
-            if srt_files or refer_files:
-                entry['downloaded'] = True
-                entry['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
-                changed = True
-                synced_episodes.append(f"S{ep_season:02d}E{ep_number:02d}")
-    
-    if synced_episodes:
-        print(f"INFO 本地已有字幕: {tv_show_title} 的 {', '.join(synced_episodes)}", file=sys.stderr)
-    
-    return changed
-
-
 def _sync_session_with_local_files(session_data: dict) -> bool:
     """Sync session JSON with actual local files.
     
@@ -2516,23 +2469,14 @@ def main():
                         if _expand_tv_show_in_session(session_data, tv_show['title'], episodes):
                             _save_session_json(session_data)
                             print(f"INFO 已展开剧集 '{tv_show['title']}' 为集数级别条目", file=sys.stderr)
-                        
-                        # Sync with local files to mark already-downloaded episodes
-                        if _sync_tv_show_episodes(session_data, tv_show['title'], episodes):
-                            _save_session_json(session_data)
-                            print(f"INFO 已同步剧集 '{tv_show['title']}' 本地文件状态", file=sys.stderr)
                 except Exception as e:
                     print(f"WARNING 无法获取剧集 '{tv_show['title']}' 的集数信息: {e}", file=sys.stderr)
             
-            # Sync session JSON with local files (for regular movies)
-            if _sync_session_with_local_files(session_data):
-                _save_session_json(session_data)
-                print("INFO 已同步本地文件状态到 session JSON", file=sys.stderr)
-            
-            remaining = [m for m in session_data['movies'] if not m.get('downloaded')]
+            # Use all movies from session (local file scanning will skip already downloaded)
+            remaining = list(session_data['movies'])
             
             if remaining:
-                print(f"\nINFO 开始下载剩余 {len(remaining)} 部影片...", file=sys.stderr)
+                print(f"\nINFO 开始下载 {len(remaining)} 部影片 (本地已有的会自动跳过)...", file=sys.stderr)
                 
                 # Build movie list for download
                 download_movies_list = []
@@ -2543,20 +2487,12 @@ def main():
                     }
                     download_movies_list.append(movie_entry)
                 
-                # Download all remaining movies
+                # Download all movies (local file scanning will skip already downloaded)
                 download_movies(download_movies_list, page, "resume", 
                                category="", section="", 
-                               local_cache=None, prime_resources=prime_resources)  # No pre-scan for resume mode
+                               local_cache=None, prime_resources=prime_resources)
                 
-                print("INFO 剩余影片下载完成", file=sys.stderr)
-                
-                # Reset session JSON - mark all as downloaded
-                for m in session_data['movies']:
-                    m['downloaded'] = True
-                    m['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
-                _save_session_json(session_data)
-            else:
-                print("INFO 所有影片已下载完成", file=sys.stderr)
+                print("INFO 影片下载完成", file=sys.stderr)
         
         # State machine variables
         cache = {
@@ -3008,34 +2944,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             })
             continue
         
-        # Skip already downloaded (resume mode)
-        if session_data:
-            downloaded_entry = None
-            for entry in session_data['movies']:
-                if entry.get('downloaded') and entry.get('title') == movie_title:
-                    downloaded_entry = entry
-                    break
-            if downloaded_entry:
-                ep_info = ""
-                if downloaded_entry.get('is_tv_show') and downloaded_entry.get('season'):
-                    ep_info = f", Season: {downloaded_entry['season']}/{downloaded_entry.get('total_seasons', '?')}, Episode: {downloaded_entry.get('episode', '?')}/?"
-                print(f"INFO 跳过已下载电影: {item_index + 1}/{len(movies)}{ep_info}, {movie_title}", file=sys.stderr)
-                results.append({
-                    'title': movie_title,
-                    'category': category,
-                    'section': movie_section,
-                    'success': True,
-                    'subtitles_saved': 0,
-                    'total_subtitle_types': 0,
-                    'filtered_subtitle_types': 0,
-                    'success_langs': [],
-                    'failed_langs': [],
-                    'ignored_subtitles': 0,
-                    'ignored_reason': 'already downloaded',
-                })
-                item_index += 1
-                continue
-        
         # Skip referenced items (already downloaded in another section)
         if '_refer_to' in movie:
             ref = movie['_refer_to']
@@ -3202,35 +3110,32 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                 ep_title = ep.get('title', '')
                 ep_url = ep.get('url', '')
                 
-                # Check if this episode is already downloaded (resume mode)
-                if session_data:
-                    ep_downloaded = False
-                    for entry in session_data['movies']:
-                        if (entry.get('is_tv_show') and entry.get('season') == ep_season
-                                and entry.get('episode') == ep_number
-                                and entry.get('downloaded')):
-                            ep_downloaded = True
-                            break
-                    if ep_downloaded:
-                        print(f"INFO 跳过已下载电影: {item_index + 1}/{len(movies)}, Season: {ep_season}/{total_seasons}, Episode: {ep_number}/{episodes_per_season.get(ep_season, '?')}, {series_name} S{ep_season:02d}E{ep_number:02d}: {ep_title}", file=sys.stderr)
-                        results.append({
-                            'title': f"{series_name} S{ep_season:02d}E{ep_number:02d}",
-                            'category': category,
-                            'section': movie_section,
-                            'success': True,
-                            'subtitles_saved': 0,
-                            'total_subtitle_types': 0,
-                            'filtered_subtitle_types': 0,
-                            'success_langs': [],
-                            'failed_langs': [],
-                            'ignored_subtitles': 0,
-                            'ignored_reason': 'already downloaded',
-                        })
-                        continue
-                
-                # Build season directory: data/subtitles/{category}/{series}/S{season}/
+                # Check if this episode is already downloaded (local file scanning)
                 ep_dir = os.path.join(output_dir, f'S{ep_season:02d}')
                 os.makedirs(ep_dir, exist_ok=True)
+                
+                # Pre-check local files in S{season}/ directory
+                import glob
+                srt_files = glob.glob(os.path.join(ep_dir, '*.srt'))
+                refer_files = glob.glob(os.path.join(ep_dir, 'refer_to_*.txt'))
+                
+                if srt_files or refer_files:
+                    print(f"INFO 本地已有字幕: {series_name} S{ep_season:02d}E{ep_number:02d}: {ep_title} ({len(srt_files)} 个字幕文件)", file=sys.stderr)
+                    results.append({
+                        'title': f"{series_name} S{ep_season:02d}E{ep_number:02d}",
+                        'category': category,
+                        'section': movie_section,
+                        'success': True,
+                        'subtitles_saved': 0,
+                        'total_subtitle_types': 0,
+                        'filtered_subtitle_types': 0,
+                        'success_langs': [],
+                        'failed_langs': [],
+                        'ignored_subtitles': 0,
+                        'ignored_reason': 'local files exist',
+                    })
+                    item_index += 1
+                    continue
                 
                 print(f"\n{'='*60}", file=sys.stderr)
                 print(f"INFO 处理: {item_index}/{len(movies)}, Season: {ep_season}/{total_seasons}, Episode: {ep_number}/{episodes_per_season.get(ep_season, '?')}, {series_name} S{ep_season:02d}E{ep_number:02d}: {ep_title}", file=sys.stderr)
@@ -3265,16 +3170,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                         'section': movie_section,
                         'error': result.get('error', 'unknown'),
                     })
-            
-            # Mark all episodes as downloaded in session JSON
-            if session_data:
-                for entry in session_data['movies']:
-                    if (entry.get('is_tv_show')
-                            and entry.get('title', '').startswith(series_name)
-                            and entry.get('season') is not None):
-                        entry['downloaded'] = True
-                        entry['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
-                _save_session_json(session_data)
             
             # Print TV show download summary
             total_episodes = len(episodes)
