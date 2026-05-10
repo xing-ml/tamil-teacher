@@ -2300,7 +2300,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             item_index += 1  # Increment once per TV show for progress counter
             series_name = movie_title
             safe_series = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
-            safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+            safe_cat = movie.get('_category', category).replace('/', '_').replace('\\', '_').replace(':', '.') if movie.get('_category', category) else 'unknown'
             safe_sec = movie_section.replace('/', '_').replace('\\', '_').replace(':', '.') if movie_section else 'unknown'
             output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_series)
             os.makedirs(output_dir, exist_ok=True)
@@ -2366,19 +2366,19 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             result = extract_movie_subtitles(
                 page, movie_url,
                 movie_title=movie_title,
-                category=category,
+                category=movie.get('_category', category),
                 section=movie_section
             )
             if DEBUG_MODE:
                 print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
-            results.append(_build_download_result(result, movie_title, category, movie_section))
+            results.append(_build_download_result(result, movie_title, movie.get('_category', category), movie_section))
             
             # Collect failed movies for retry
             if not result.get('subtitles_saved', 0) > 0:
                 failed_movies.append({
                     'url': movie_url,
                     'title': movie_title,
-                    'category': category,
+                    'category': movie.get('_category', category),
                     'section': movie_section,
                     'error': result.get('error', 'unknown'),
                 })
