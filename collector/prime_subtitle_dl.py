@@ -1815,36 +1815,15 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
 
 def read_with_esc(prompt: str) -> str:
     """Read user input. Returns 'ESC' if ESC key is pressed."""
-    if HAS_KEYBOARD:
-        # keyboard module can detect ESC
-        print(prompt, end='', flush=True)
-        # Wait up to 2 seconds for keyboard input
-        import threading
-        result = ['']
-        
-        def read_input():
-            try:
-                result[0] = input()
-            except:
-                pass
-        
-        t = threading.Thread(target=read_input, daemon=True)
-        t.start()
-        t.join(timeout=2)
-        
-        if not result[0]:
-            # Check for ESC key
-            if keyboard.is_pressed('esc'):
-                return 'ESC'
-            return ''
-        return result[0].strip()
-    else:
-        # Fallback: use input() without ESC detection
-        print(prompt, end='', flush=True)
-        try:
-            return input().strip()
-        except EOFError:
-            return ''
+    print(prompt, end='', flush=True)
+    try:
+        result = input().strip()
+        # Check for ESC key (if keyboard module available)
+        if result == '' and HAS_KEYBOARD and keyboard.is_pressed('esc'):
+            return 'ESC'
+        return result
+    except EOFError:
+        return ''
 
 
 CONFIRM_KEYWORDS = {'y', 'yes', '确认', '是', '好', '下载'}
