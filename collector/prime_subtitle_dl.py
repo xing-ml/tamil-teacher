@@ -57,13 +57,39 @@ def _load_prime_resources() -> dict:
 
 
 def _save_prime_resources(data: dict) -> None:
-    """Save Prime resource cache to local file (atomic write)."""
+    """Save Prime resource cache to local file (atomic write with backup)."""
     os.makedirs(os.path.dirname(PRIME_RESOURCES_JSON), exist_ok=True)
     data['last_updated'] = time.strftime('%Y-%m-%dT%H:%M:%S')
+    
+    # Backup existing file if it exists
+    if os.path.exists(PRIME_RESOURCES_JSON):
+        backup_path = PRIME_RESOURCES_JSON + '.bak'
+        import shutil
+        shutil.copy2(PRIME_RESOURCES_JSON, backup_path)
+    
+    # Write to temp file first, then atomic replace
     temp_path = PRIME_RESOURCES_JSON + '.tmp'
     with open(temp_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     os.replace(temp_path, PRIME_RESOURCES_JSON)  # Atomic replace
+
+
+def _save_session_json(data: dict) -> None:
+    """Save session JSON file (atomic write with backup)."""
+    os.makedirs(os.path.dirname(SESSION_JSON), exist_ok=True)
+    data['last_updated'] = time.strftime('%Y-%m-%dT%H:%M:%S')
+    
+    # Backup existing file if it exists
+    if os.path.exists(SESSION_JSON):
+        backup_path = SESSION_JSON + '.bak'
+        import shutil
+        shutil.copy2(SESSION_JSON, backup_path)
+    
+    # Write to temp file first, then atomic replace
+    temp_path = SESSION_JSON + '.tmp'
+    with open(temp_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    os.replace(temp_path, SESSION_JSON)  # Atomic replace
 
 
 def _merge_movies(existing_movies: list, new_movies: list) -> list:
@@ -247,16 +273,6 @@ def _load_session_json():
         return data
     except (json.JSONDecodeError, IOError):
         return None
-
-
-def _save_session_json(data: dict) -> None:
-    """Save session JSON file (atomic write)."""
-    os.makedirs(os.path.dirname(SESSION_JSON), exist_ok=True)
-    data['last_updated'] = time.strftime('%Y-%m-%dT%H:%M:%S')
-    temp_path = SESSION_JSON + '.tmp'
-    with open(temp_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    os.replace(temp_path, SESSION_JSON)  # Atomic replace
 
 
 def _build_session_movies(movies: list) -> list:
