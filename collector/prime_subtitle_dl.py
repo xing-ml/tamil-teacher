@@ -297,6 +297,50 @@ def _pre_scan_local_files(movies: list, category: str, section: str) -> dict:
     return cache
 
 
+def _pre_check_local_files(movie, category, section):
+    """Pre-check local files before navigation.
+    
+    Returns:
+        tuple: (action, info)
+            - ('skip', 'refer file exists') - Skip due to refer file
+            - ('skip', 'local files exist') - Skip due to complete local files
+            - ('tv_show', None) - TV show, needs navigation to check episodes
+            - ('download', None) - Download needed
+    """
+    import glob
+    
+    title = movie.get('title', 'unknown')
+    safe_title = title.replace('/', '_').replace('\\', '_').replace(':', '.')
+    safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+    safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.') if section else 'unknown'
+    movie_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_title)
+    
+    # Check for refer files
+    refer_files = glob.glob(os.path.join(movie_dir, 'refer_to_*.txt'))
+    if refer_files:
+        return ('skip', 'refer file exists')
+    
+    # Check for root SRT files (movie indicator)
+    srt_files = glob.glob(os.path.join(movie_dir, '*.srt'))
+    if srt_files:
+        # It's a movie - check if any SRT files exist
+        # If there are SRT files, assume complete and skip
+        return ('skip', 'local files exist')
+    
+    # Check for Sxx folders (TV show indicator)
+    try:
+        if os.path.isdir(movie_dir):
+            sxx_folders = [d for d in os.listdir(movie_dir) if d.startswith('S') and len(d) > 1 and d[1:].isdigit()]
+            if sxx_folders:
+                # It's a TV show - need to navigate to check episodes
+                return ('tv_show', None)
+    except OSError:
+        pass
+    
+    # No local files found
+    return ('download', None)
+
+
 def _load_session_json():
     """Load session JSON file. Returns None if not found or empty."""
     if not os.path.exists(SESSION_JSON):
@@ -2901,27 +2945,55 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             })
             continue
         
-        # Step 1: Navigate to URL
-        try:
-            page.goto(movie_url, timeout=20000)
-            page.wait_for_load_state('domcontentloaded')
-            time.sleep(5)
-        except Exception as e:
-            print(f"WARNING Failed to navigate to {movie_title}: {e}", file=sys.stderr)
+        # Pre-check local files before navigation
+        pre_check_action, pre_check_info = _pre_check_local_files(movie, category, movie_section)
+        
+        if pre_check_action == 'skip':
+            print(f"INFO 本地已有字幕: {movie_title}，跳过下载", file=sys.stderr)
             results.append({
                 'title': movie_title,
                 'category': category,
                 'section': movie_section,
-                'success': False,
+                'success': True,
                 'subtitles_saved': 0,
                 'total_subtitle_types': 0,
                 'filtered_subtitle_types': 0,
                 'success_langs': [],
                 'failed_langs': [],
                 'ignored_subtitles': 0,
-                'ignored_reason': f"navigation failed: {e}",
+                'ignored_reason': pre_check_info,
             })
             continue
+        
+        # Step 1: Navigate to URL (with retry)
+        navigate_success = False
+        for attempt in range(3):
+            try:
+                page.goto(movie_url, timeout=20000)
+                page.wait_for_load_state('domcontentloaded')
+                time.sleep(5)
+                navigate_success = True
+                break
+            except Exception as e:
+                if attempt < 2:
+                    print(f"WARNING Navigate failed (attempt {attempt+1}/3): {e}, retrying in 5s...", file=sys.stderr)
+                    time.sleep(5)
+                else:
+                    print(f"WARNING Failed to navigate to {movie_title} after 3 attempts: {e}", file=sys.stderr)
+                    results.append({
+                        'title': movie_title,
+                        'category': category,
+                        'section': movie_section,
+                        'success': False,
+                        'subtitles_saved': 0,
+                        'total_subtitle_types': 0,
+                        'filtered_subtitle_types': 0,
+                        'success_langs': [],
+                        'failed_langs': [],
+                        'ignored_subtitles': 0,
+                        'ignored_reason': f"navigation failed after 3 attempts: {e}",
+                    })
+                    continue
         
         # Step 2: Detect movie/tv_show
         is_tv_show = False
