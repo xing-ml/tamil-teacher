@@ -408,6 +408,7 @@ def _sync_tv_show_episodes(session_data: dict, tv_show_title: str, episodes: lis
     Returns True if any changes were made.
     """
     import glob
+    import re
     changed = False
     synced_episodes = []  # Track which episodes were synced
     
@@ -421,7 +422,10 @@ def _sync_tv_show_episodes(session_data: dict, tv_show_title: str, episodes: lis
             
             ep_season = entry.get('season')
             ep_number = entry.get('episode')
-            safe_title = entry.get('title', '').replace('/', '_').replace('\\', '_').replace(':', '.')
+            # Extract series name from episode title (e.g., "Mechamato S01E01" -> "Mechamato")
+            ep_title_full = entry.get('title', '')
+            series_name = re.sub(r'\s+S\d{2}E\d{2}$', '', ep_title_full)
+            safe_title = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
             safe_cat = entry.get('category', '').replace('/', '_').replace('\\', '_').replace(':', '.')
             safe_sec = entry.get('section', '').replace('/', '_').replace('\\', '_').replace(':', '.')
             
