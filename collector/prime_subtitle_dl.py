@@ -1489,11 +1489,11 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             
             if os.path.exists(filepath):
                 # File already exists, skip download
-                if DEBUG_MODE:
-                    print(f"INFO Skipped (exists): {filepath}", file=sys.stderr)
+                result['ignored_subtitles'] += 1
+                result['ignored_reason'] = 'local files exist'
                 saved_count += 1
                 downloaded_langs.add(unique_id)
-                result['ignored_subtitles'] += 1
+                print(f"INFO 本地已有字幕: {filepath}", file=sys.stderr)
                 continue
             
             srt_content = None
@@ -3265,6 +3265,20 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                         entry['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
                 _save_session_json(session_data)
             
+            # Print TV show download summary
+            total_episodes = len(episodes)
+            downloaded_count = sum(1 for r in results if r.get('subtitles_saved', 0) > 0)
+            ignored_count = sum(1 for r in results if r.get('ignored_reason') == 'local files exist')
+            failed_count = total_episodes - downloaded_count - ignored_count
+            
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"INFO TV show '{series_name}' 下载完成", file=sys.stderr)
+            print(f"INFO 总计: {total_episodes} 集, 下载: {downloaded_count} 集, 本地已有: {ignored_count} 集, 失败: {failed_count} 集", file=sys.stderr)
+            if ignored_count > 0:
+                print(f"INFO {ignored_count} 集本地字幕已存在，已跳过下载", file=sys.stderr)
+            if failed_count > 0:
+                print(f"WARNING {failed_count} 集下载失败，请检查网络或手动重试", file=sys.stderr)
+            
             # Update prime resource cache with latest episode info
             if prime_resources and episodes:
                 # Build season/episode data for cache update
@@ -3430,20 +3444,36 @@ def _print_download_summary(results: list) -> None:
                 title = r['title']
                 ignored = r.get('ignored_subtitles', 0)
                 reason = r.get('ignored_reason', '')
-                if reason:
+                # Detect TV show episodes (they have "S" and "E" in the title)
+                is_tv_episode = 'S' in title and 'E' in title
+                if reason == 'local files exist':
+                    if is_tv_episode:
+                        print(f"    - {title} ✓ (本地已有字幕，已跳过)", file=sys.stderr)
+                    else:
+                        print(f"    - {title} ✓ (本地已有字幕，已跳过)", file=sys.stderr)
+                elif reason:
                     print(f"    - {title} (refer to {reason})", file=sys.stderr)
                 elif ignored > 0:
-                    print(f"    - {title} ✓ (忽略{ignored}个已存在字幕)", file=sys.stderr)
+                    if is_tv_episode:
+                        print(f"    - {title} ✓ (本地已有字幕，已跳过)", file=sys.stderr)
+                    else:
+                        print(f"    - {title} ✓ (忽略{ignored}个已存在字幕)", file=sys.stderr)
                 else:
                     print(f"    - {title} ✓", file=sys.stderr)
     
     if ignored_movies:
-        print(f"\n被忽略的电影:", file=sys.stderr)
+        print(f"\n被忽略的项目:", file=sys.stderr)
         for im in ignored_movies:
-            if im['reason']:
+            is_tv_episode = 'S' in im['title'] and 'E' in im['title']
+            if im['reason'] == 'local files exist':
+                print(f"  - {im['title']} (本地已有字幕，已跳过)", file=sys.stderr)
+            elif im['reason']:
                 print(f"  - {im['title']} (refer to {im['reason']})", file=sys.stderr)
             elif im['ignored'] > 0:
-                print(f"  - {im['title']} (本地已有{im['ignored']}个字幕)", file=sys.stderr)
+                if is_tv_episode:
+                    print(f"  - {im['title']} (本地已有字幕，已跳过)", file=sys.stderr)
+                else:
+                    print(f"  - {im['title']} (本地已有{im['ignored']}个字幕)", file=sys.stderr)
     
     print(f"\n{'='*60}", file=sys.stderr)
 
