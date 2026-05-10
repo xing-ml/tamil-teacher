@@ -2638,6 +2638,7 @@ def main():
                         continue
                     
                     # Store movies in cache and transition to movies state
+                    cache_key = (current_cat_idx, current_sec_idx)
                     cache['movies'][cache_key] = movies
                     state = 'movies'
                 else:
