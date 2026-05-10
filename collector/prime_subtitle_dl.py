@@ -232,6 +232,35 @@ def _merge_prime_resources(existing_data: dict, new_movies: list) -> dict:
     return existing_data
 
 
+def _clean_expired_prime_resources(data: dict, max_entries: int = 15000) -> dict:
+    """Clean up expired/removed entries and limit cache size.
+    
+    - Remove entries with 'removed' flag
+    - If total entries exceed max_entries, keep only the most recent ones
+    
+    Returns the cleaned data dict.
+    """
+    movies = data.get('movies', [])
+    
+    # Remove flagged entries
+    original_count = len(movies)
+    movies = [m for m in movies if not m.get('removed', False)]
+    removed_count = original_count - len(movies)
+    
+    # Limit cache size - keep most recent entries
+    if len(movies) > max_entries:
+        # Keep entries from the end (most recently added)
+        movies = movies[-max_entries:]
+        pruned_count = original_count - len(movies)
+        print(f"INFO 清理缓存: 移除 {removed_count} 个过期条目，修剪 {pruned_count} 个旧条目", file=sys.stderr)
+    else:
+        if removed_count > 0:
+            print(f"INFO 清理缓存: 移除 {removed_count} 个过期条目", file=sys.stderr)
+    
+    data['movies'] = movies
+    return data
+
+
 def _check_local_files_exist(folder_path: str) -> bool:
     """Check if folder has .srt or refer_to_*.txt files."""
     if not os.path.isdir(folder_path):
@@ -2184,6 +2213,7 @@ def main():
                     # Merge with existing
                     if fresh_movies:
                         prime_resources = _merge_prime_resources(prime_resources, fresh_movies)
+                        prime_resources = _clean_expired_prime_resources(prime_resources)
                         _save_prime_resources(prime_resources)
                         print(f"INFO 已更新本地 Prime 资源 ({len(prime_resources['movies'])} 个条目)", file=sys.stderr)
                     break
@@ -2240,6 +2270,7 @@ def main():
                     'last_updated': time.strftime('%Y-%m-%dT%H:%M:%S'),
                     'movies': fresh_movies,
                 }
+                prime_resources = _clean_expired_prime_resources(prime_resources)
                 _save_prime_resources(prime_resources)
                 print(f"INFO 已保存本地 Prime 资源 ({len(fresh_movies)} 个条目)", file=sys.stderr)
         
