@@ -316,8 +316,6 @@ def _build_session_movies(movies: list) -> list:
             'url': m.get('url', ''),
             'category': m.get('_category', m.get('category', '')),
             'section': m.get('_section', m.get('section', '')),
-            'downloaded': False,
-            'downloaded_at': None,
             'is_tv_show': m.get('is_tv_show', False),
             'season': m.get('season', None),
             'episode': m.get('episode', None),
@@ -325,29 +323,6 @@ def _build_session_movies(movies: list) -> list:
         }
         session_movies.append(entry)
     return session_movies
-
-
-def _update_movie_downloaded(session_data: dict, movie_url: str, is_tv_show: bool = False,
-                              season: int = None, episode: int = None, downloaded: bool = True) -> None:
-    """Update downloaded status for a movie or episode in session JSON.
-    
-    Uses URL as the unique key instead of title for reliable matching.
-    """
-    now = time.strftime('%Y-%m-%dT%H:%M:%S')
-    for entry in session_data.get('movies', []):
-        if entry.get('downloaded') == downloaded:
-            continue
-        if is_tv_show and season is not None:
-            if (entry.get('url') == movie_url or entry.get('episode_title') == movie_url) \
-                    and entry.get('season') == season and entry.get('episode') == episode:
-                entry['downloaded'] = downloaded
-                entry['downloaded_at'] = now if downloaded else None
-                return
-        else:
-            if entry.get('url') == movie_url:
-                entry['downloaded'] = downloaded
-                entry['downloaded_at'] = now if downloaded else None
-                return
 
 
 def _expand_tv_show_in_session(session_data: dict, tv_show_title: str, episodes: list) -> bool:
@@ -363,7 +338,6 @@ def _expand_tv_show_in_session(session_data: dict, tv_show_title: str, episodes:
             # This is a TV show at series level - expand it
             all_seasons = sorted(set(ep.get('seasonNumber', 1) for ep in episodes))
             entry['total_seasons'] = len(all_seasons)
-            entry['downloaded'] = False  # Reset - will be tracked per episode
             
             for ep in episodes:
                 ep_season = ep.get('seasonNumber', 1)
@@ -386,8 +360,6 @@ def _expand_tv_show_in_session(session_data: dict, tv_show_title: str, episodes:
                         'url': ep_url,
                         'category': entry.get('category', ''),
                         'section': entry.get('section', ''),
-                        'downloaded': False,
-                        'downloaded_at': None,
                         'is_tv_show': True,
                         'season': ep_season,
                         'episode': ep_number,
@@ -2385,75 +2357,22 @@ def main():
         session_data = _load_session_json()
         if session_data and session_data.get('movies'):
             total = len(session_data['movies'])
-            downloaded_count = sum(1 for m in session_data['movies'] if m.get('downloaded'))
-            remaining_count = total - downloaded_count
-            
-            if downloaded_count == total:
-                # All downloaded - ask to re-download
-                print(f"\n{'='*60}", file=sys.stderr)
-                print(f"INFO 上次已下载 {total} 部电影，是否重新下载？(y/n)", file=sys.stderr)
-                while True:
-                    answer = read_with_esc("\n请选择 (y/n): ")
-                    if answer == 'ESC':
-                        print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
-                        continue
-                    if not answer:
-                        continue
-                    if answer.lower().strip() == 'y':
-                        # Reset all to not downloaded
-                        for m in session_data['movies']:
-                            m['downloaded'] = False
-                            m['downloaded_at'] = None
-                        _save_session_json(session_data)
-                        break
-                    elif answer.lower().strip() == 'n':
-                        break
-                    print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
-            else:
-                # Some remaining - ask to resume
-                print(f"\n{'='*60}", file=sys.stderr)
-                print(f"INFO 上次进度：已下载 {downloaded_count} 部，剩余 {remaining_count} 部", file=sys.stderr)
-                print(f"INFO 是否继续上次进度？(y/n)", file=sys.stderr)
-                while True:
-                    answer = read_with_esc("\n请选择 (y/n): ")
-                    if answer == 'ESC':
-                        print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
-                        continue
-                    if not answer:
-                        continue
-                    if answer.lower().strip() == 'n':
-                        break
-                    elif answer.lower().strip() == 'y':
-                        # Show remaining list
-                        remaining = [m for m in session_data['movies'] if not m.get('downloaded')]
-                        print(f"\n{'='*60}", file=sys.stderr)
-                        print(f"未下载列表 (共 {len(remaining)} 部):", file=sys.stderr)
-                        for i, m in enumerate(remaining):
-                            ep_info = ""
-                            if m.get('is_tv_show') and m.get('season'):
-                                ep_info = f" S{m['season']:02d}E{m.get('episode', 0):02d}"
-                            print(f"  {i+1}. {m['title']}{ep_info}", file=sys.stderr)
-                        print(f"\n{'='*60}", file=sys.stderr)
-                        print("请确认下载:", file=sys.stderr)
-                        print("  - y: 确认开始下载", file=sys.stderr)
-                        print("  - n: 取消，进入正常搜索", file=sys.stderr)
-                        while True:
-                            confirm = read_with_esc("\n请选择 (y/n): ")
-                            if confirm == 'ESC':
-                                print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
-                                continue
-                            if not confirm:
-                                continue
-                            if confirm.lower().strip() == 'y':
-                                resume_mode = True
-                                break
-                            elif confirm.lower().strip() == 'n':
-                                break
-                            print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
-                        if resume_mode:
-                            break
-                        break
-                    print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"发现上次进度：共 {total} 部影片", file=sys.stderr)
+            print(f"是否继续上次进度？(y/n)", file=sys.stderr)
+            while True:
+                answer = read_with_esc("\n请选择 (y/n): ")
+                if answer == 'ESC':
+                    print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
+                    continue
+                if not answer:
+                    continue
+                if answer.lower().strip() == 'y':
+                    resume_mode = True
+                    break
+                elif answer.lower().strip() == 'n':
+                    break
+                print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
         
         # If resume mode was confirmed, download remaining movies
         if resume_mode and session_data and session_data.get('movies'):
@@ -3080,7 +2999,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                         # Mark original as expanded, create episode entries
                         entry['is_tv_show'] = True
                         entry['total_seasons'] = total_seasons
-                        entry['downloaded'] = False  # Reset - episodes will be tracked individually
                         # Create episode entries
                         for ep in episodes:
                             ep_season = ep.get('seasonNumber', 1)
@@ -3092,8 +3010,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                                 'url': ep_url,
                                 'category': entry.get('category', ''),
                                 'section': entry.get('section', ''),
-                                'downloaded': False,
-                                'downloaded_at': None,
                                 'is_tv_show': True,
                                 'season': ep_season,
                                 'episode': ep_number,
@@ -3250,11 +3166,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             if DEBUG_MODE:
                 print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
             results.append(_build_download_result(result, movie_title, movie.get('_category', category), movie_section))
-            
-            # Update session JSON: mark movie as downloaded
-            if session_data:
-                _update_movie_downloaded(session_data, movie_title)
-                _save_session_json(session_data)
             
             # Collect failed movies for retry
             if not result.get('subtitles_saved', 0) > 0:
