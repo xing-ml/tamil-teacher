@@ -261,6 +261,13 @@ def _clean_expired_prime_resources(data: dict, max_entries: int = 15000) -> dict
     return data
 
 
+def _normalize_name(name: str) -> str:
+    """Normalize category/section names for matching."""
+    if not name:
+        return ''
+    return name.strip().lower()
+
+
 def _check_local_files_exist(folder_path: str) -> bool:
     """Check if folder has .srt or refer_to_*.txt files."""
     if not os.path.isdir(folder_path):
@@ -2503,7 +2510,7 @@ def main():
                     print(f"\nINFO 进入类目: {cat_name}", file=sys.stderr)
                     
                     # Extract sections from cache for this category
-                    cat_movies = [m for m in prime_resources.get('movies', []) if m.get('_category') == cat_name]
+                    cat_movies = [m for m in prime_resources.get('movies', []) if _normalize_name(m.get('_category', '')) == _normalize_name(cat_name)]
                     unique_sections = list(dict.fromkeys(m.get('_section', '') for m in cat_movies if m.get('_section')))
                     
                     if not unique_sections:
@@ -2519,7 +2526,7 @@ def main():
                     # Multiple categories → use cached movies
                     print(f"\nINFO 选择 {len(selected_cats)} 个类目: {[c['name'] for c in selected_cats]}", file=sys.stderr)
                     cat_names_set = {c['name'] for c in selected_cats}
-                    all_movies = [m for m in prime_resources.get('movies', []) if m.get('_category') in cat_names_set]
+                    all_movies = [m for m in prime_resources.get('movies', []) if _normalize_name(m.get('_category', '')) in { _normalize_name(n) for n in cat_names_set }]
                     
                     if not all_movies:
                         print("WARNING 缓存中没有找到所选类目的电影", file=sys.stderr)
@@ -2576,7 +2583,7 @@ def main():
                 if sel_lower in ('a', 'all'):
                     # Download all sections in this category - use cache
                     print("\nINFO 从缓存获取此类目下所有电影...", file=sys.stderr)
-                    all_movies = [m for m in prime_resources.get('movies', []) if m.get('_category') == cat_name]
+                    all_movies = [m for m in prime_resources.get('movies', []) if _normalize_name(m.get('_category', '')) == _normalize_name(cat_name)]
                     
                     if not all_movies:
                         print("WARNING 缓存中没有该分类的电影", file=sys.stderr)
@@ -2613,7 +2620,8 @@ def main():
                     
                     # Fetch movies for this section from cache
                     movies = [m for m in prime_resources.get('movies', []) 
-                              if m.get('_category') == cat_name and m.get('_section') == sec_name]
+                              if _normalize_name(m.get('_category', '')) == _normalize_name(cat_name)
+                              and _normalize_name(m.get('_section', '')) == _normalize_name(sec_name)]
                     
                     if not movies:
                         print("WARNING 缓存中没有该分类/分节的电影", file=sys.stderr)
@@ -2626,7 +2634,8 @@ def main():
                     print(f"\nINFO 选择 {len(selected_secs)} 个 section: {[s['title'] for s in selected_secs]}", file=sys.stderr)
                     sec_names_set = {s['title'] for s in selected_secs}
                     all_movies = [m for m in prime_resources.get('movies', []) 
-                                  if m.get('_category') == cat_name and m.get('_section') in sec_names_set]
+                                  if _normalize_name(m.get('_category', '')) == _normalize_name(cat_name)
+                                  and _normalize_name(m.get('_section', '')) in {_normalize_name(n) for n in sec_names_set}]
                     
                     if not all_movies:
                         print("WARNING 缓存中没有找到所选 section 的电影", file=sys.stderr)
