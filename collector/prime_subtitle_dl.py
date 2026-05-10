@@ -2310,6 +2310,10 @@ def main():
                         print(f"INFO 已更新本地 Prime 资源 ({len(prime_resources['movies'])} 个条目)", file=sys.stderr)
                     break
                 elif answer.lower().strip() == 'n':
+                    # Add _category and _section keys for compatibility with rest of code
+                    for movie in prime_resources.get('movies', []):
+                        movie.setdefault('_category', movie.get('category', ''))
+                        movie.setdefault('_section', movie.get('section', ''))
                     print(f"INFO 使用本地 Prime 资源 ({len(prime_resources.get('movies', []))} 个条目)", file=sys.stderr)
                     break
                 print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
@@ -2545,14 +2549,15 @@ def main():
                     break
                 
                 if sel_lower in ('a', 'all'):
-                    # Download ALL categories
-                    print("\nINFO 获取全部电影列表...", file=sys.stderr)
-                    all_movies = collect_movies_from_items(page, categories, "all", cookies)
-                    resolve_duplicate_folders(all_movies)
+                    # Download ALL categories - use cached data
+                    print("\nINFO 从缓存获取全部电影列表...", file=sys.stderr)
+                    all_movies = list(prime_resources.get('movies', []))
                     
                     if not all_movies:
-                        print("WARNING 没有找到电影", file=sys.stderr)
+                        print("WARNING 缓存中没有电影数据", file=sys.stderr)
                         continue
+                    
+                    resolve_duplicate_folders(all_movies)
                     
                     if not _confirm_download(all_movies, "all", "all"):
                         print("INFO 已取消下载", file=sys.stderr)
@@ -2570,36 +2575,38 @@ def main():
                     continue
                 
                 if len(selected_cats) == 1:
-                    # Single category → enter sections state
+                    # Single category → enter sections state (use cache)
                     cat = selected_cats[0]
                     cat_idx = categories.index(cat)
                     current_cat_idx = cat_idx
                     cat_name = cat['name']
-                    cat_href = cat['href']
                     
                     print(f"\nINFO 进入类目: {cat_name}", file=sys.stderr)
                     
-                    # Extract sections for this category
-                    if cat_idx not in cache['sections']:
-                        sections = extract_sections_from_category(page, cat_href, cookies)
-                        cache['sections'][cat_idx] = sections
-                    else:
-                        sections = cache['sections'][cat_idx]
+                    # Extract sections from cache for this category
+                    cat_movies = [m for m in prime_resources.get('movies', []) if m.get('_category') == cat_name]
+                    unique_sections = list(dict.fromkeys(m.get('_section', '') for m in cat_movies if m.get('_section')))
                     
-                    if not sections:
-                        print("WARNING 没有找到 sections", file=sys.stderr)
+                    if not unique_sections:
+                        print("WARNING 缓存中没有该分类的电影", file=sys.stderr)
                         continue
+                    
+                    # Build sections list for UI
+                    sections = [{'title': s, 'href': ''} for s in unique_sections]
+                    cache['sections'][cat_idx] = sections
                     
                     state = 'sections'
                 else:
-                    # Multiple categories → fetch all movies and download
+                    # Multiple categories → use cached movies
                     print(f"\nINFO 选择 {len(selected_cats)} 个类目: {[c['name'] for c in selected_cats]}", file=sys.stderr)
-                    all_movies = collect_movies_from_items(page, selected_cats, "", cookies)
-                    resolve_duplicate_folders(all_movies)
+                    cat_names_set = {c['name'] for c in selected_cats}
+                    all_movies = [m for m in prime_resources.get('movies', []) if m.get('_category') in cat_names_set]
                     
                     if not all_movies:
-                        print("WARNING 没有找到电影", file=sys.stderr)
+                        print("WARNING 缓存中没有找到所选类目的电影", file=sys.stderr)
                         continue
+                    
+                    resolve_duplicate_folders(all_movies)
                     
                     cat_names = ', '.join(c['name'] for c in selected_cats)
                     if not _confirm_download(all_movies, cat_names, "multiple categories"):
@@ -2648,14 +2655,15 @@ def main():
                     continue
                 
                 if sel_lower in ('a', 'all'):
-                    # Download all sections in this category
-                    print("\nINFO 获取此类目下所有电影...", file=sys.stderr)
-                    all_movies = collect_movies_from_items(page, sections, cat_name, cookies)
-                    resolve_duplicate_folders(all_movies)
+                    # Download all sections in this category - use cache
+                    print("\nINFO 从缓存获取此类目下所有电影...", file=sys.stderr)
+                    all_movies = [m for m in prime_resources.get('movies', []) if m.get('_category') == cat_name]
                     
                     if not all_movies:
-                        print("WARNING 没有找到电影", file=sys.stderr)
+                        print("WARNING 缓存中没有该分类的电影", file=sys.stderr)
                         continue
+                    
+                    resolve_duplicate_folders(all_movies)
                     
                     confirmed, local_cache = _confirm_download(all_movies, cat_name, "")
                     if not confirmed:
@@ -2678,44 +2686,34 @@ def main():
                     continue
                 
                 if len(selected_secs) == 1:
-                    # Single section → enter movies state
+                    # Single section → enter movies state (use cache)
                     sec = selected_secs[0]
                     sec_idx = sections.index(sec)
                     current_sec_idx = sec_idx
                     sec_name = sec['title']
-                    sec_href = sec.get('href')
                     
-                    if not sec_href:
-                        print(f"WARNING Section '{sec_name}' 没有 URL，无法进入", file=sys.stderr)
-                        continue
-                    
-                    # Fetch movies for this section (with caching)
-                    cache_key = (current_cat_idx, sec_idx)
-                    if cache_key not in cache['movies']:
-                        print(f"\nINFO 导航到 Section 页面: {sec_href[:80]}...", file=sys.stderr)
-                        movies = fetch_section_movies(page, sec_href, cookies)
-                        for m in movies:
-                            m['_category'] = cat_name
-                            m['_section'] = sec_name
-                        cache['movies'][cache_key] = movies
-                    else:
-                        movies = cache['movies'][cache_key]
+                    # Fetch movies for this section from cache
+                    movies = [m for m in prime_resources.get('movies', []) 
+                              if m.get('_category') == cat_name and m.get('_section') == sec_name]
                     
                     if not movies:
-                        print("WARNING 没有找到电影", file=sys.stderr)
+                        print("WARNING 缓存中没有该分类/分节的电影", file=sys.stderr)
                         continue
                     
                     # Transition to movies state
                     state = 'movies'
                 else:
-                    # Multiple sections → fetch all movies and download
+                    # Multiple sections → use cached movies
                     print(f"\nINFO 选择 {len(selected_secs)} 个 section: {[s['title'] for s in selected_secs]}", file=sys.stderr)
-                    all_movies = collect_movies_from_items(page, selected_secs, cat_name, cookies)
-                    resolve_duplicate_folders(all_movies)
+                    sec_names_set = {s['title'] for s in selected_secs}
+                    all_movies = [m for m in prime_resources.get('movies', []) 
+                                  if m.get('_category') == cat_name and m.get('_section') in sec_names_set]
                     
                     if not all_movies:
-                        print("WARNING 没有找到电影", file=sys.stderr)
+                        print("WARNING 缓存中没有找到所选 section 的电影", file=sys.stderr)
                         continue
+                    
+                    resolve_duplicate_folders(all_movies)
                     
                     sec_names = ', '.join(s['title'] for s in selected_secs)
                     confirmed, local_cache = _confirm_download(all_movies, cat_name, sec_names)
