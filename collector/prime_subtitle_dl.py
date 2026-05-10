@@ -3112,10 +3112,11 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                 ep_dir = os.path.join(output_dir, f'S{ep_season:02d}')
                 os.makedirs(ep_dir, exist_ok=True)
                 
-                # Pre-check local files in S{season}/ directory
+                # Pre-check local files for THIS specific episode
                 import glob
-                srt_files = glob.glob(os.path.join(ep_dir, '*.srt'))
-                refer_files = glob.glob(os.path.join(ep_dir, 'refer_to_*.txt'))
+                ep_filename_base = f"{series_name}.S{ep_season:02d}E{ep_number:02d}"
+                srt_files = glob.glob(os.path.join(ep_dir, f"{ep_filename_base}.*.srt"))
+                refer_files = glob.glob(os.path.join(ep_dir, f"refer_to_{ep_filename_base}.txt"))
                 
                 if srt_files or refer_files:
                     print(f"INFO 本地已有字幕: {series_name} S{ep_season:02d}E{ep_number:02d}: {ep_title} ({len(srt_files)} 个字幕文件)", file=sys.stderr)
