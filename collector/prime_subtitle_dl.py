@@ -260,7 +260,10 @@ def _save_session_json(data: dict) -> None:
 
 
 def _build_session_movies(movies: list) -> list:
-    """Convert movie list to session JSON format."""
+    """Convert movie list to session JSON format.
+    
+    Uses URL as the unique key for reliable matching.
+    """
     session_movies = []
     for m in movies:
         entry = {
@@ -270,33 +273,70 @@ def _build_session_movies(movies: list) -> list:
             'section': m.get('_section', m.get('section', '')),
             'downloaded': False,
             'downloaded_at': None,
-            'is_tv_show': False,
-            'season': None,
-            'episode': None,
-            'episode_title': None,
+            'is_tv_show': m.get('is_tv_show', False),
+            'season': m.get('season', None),
+            'episode': m.get('episode', None),
+            'episode_title': m.get('episode_title', ''),
         }
         session_movies.append(entry)
     return session_movies
 
 
-def _update_movie_downloaded(session_data: dict, movie_title: str, is_tv_show: bool = False,
+def _update_movie_downloaded(session_data: dict, movie_url: str, is_tv_show: bool = False,
                               season: int = None, episode: int = None, downloaded: bool = True) -> None:
-    """Update downloaded status for a movie or episode in session JSON."""
+    """Update downloaded status for a movie or episode in session JSON.
+    
+    Uses URL as the unique key instead of title for reliable matching.
+    """
     now = time.strftime('%Y-%m-%dT%H:%M:%S')
     for entry in session_data.get('movies', []):
-        if entry['downloaded']:
+        if entry.get('downloaded') == downloaded:
             continue
         if is_tv_show and season is not None:
-            if (entry.get('title') == movie_title or entry.get('episode_title') == movie_title) \
+            if (entry.get('url') == movie_url or entry.get('episode_title') == movie_url) \
                     and entry.get('season') == season and entry.get('episode') == episode:
-                entry['downloaded'] = True
-                entry['downloaded_at'] = now
+                entry['downloaded'] = downloaded
+                entry['downloaded_at'] = now if downloaded else None
                 return
         else:
-            if entry.get('title') == movie_title:
-                entry['downloaded'] = True
-                entry['downloaded_at'] = now
+            if entry.get('url') == movie_url:
+                entry['downloaded'] = downloaded
+                entry['downloaded_at'] = now if downloaded else None
                 return
+
+
+def _sync_session_with_local_files(session_data: dict) -> bool:
+    """Sync session JSON with actual local files.
+    
+    Returns True if any changes were made.
+    """
+    import glob
+    changed = False
+    for entry in session_data.get('movies', []):
+        if entry.get('downloaded'):
+            continue
+        
+        title = entry.get('title', '')
+        category = entry.get('category', '')
+        section = entry.get('section', '')
+        
+        # Build folder path
+        safe_title = title.replace('/', '_').replace('\\', '_').replace(':', '.')
+        safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.')
+        safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.')
+        folder = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_title)
+        
+        # Check for local files
+        srt_files = glob.glob(os.path.join(folder, '*.srt'))
+        refer_files = glob.glob(os.path.join(folder, 'refer_to_*.txt'))
+        
+        if srt_files or refer_files:
+            # Local files exist but session says not downloaded - fix it
+            entry['downloaded'] = True
+            entry['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
+            changed = True
+    
+    return changed
 
 
 def _check_login_status(page) -> tuple:
@@ -2274,6 +2314,11 @@ def main():
         
         # If resume mode was confirmed, download remaining movies
         if resume_mode and session_data and session_data.get('movies'):
+            # Sync session JSON with local files first
+            if _sync_session_with_local_files(session_data):
+                _save_session_json(session_data)
+                print("INFO 已同步本地文件状态到 session JSON", file=sys.stderr)
+            
             remaining = [m for m in session_data['movies'] if not m.get('downloaded')]
             
             if remaining:
