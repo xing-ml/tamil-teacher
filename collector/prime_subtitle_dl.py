@@ -21,9 +21,215 @@ DEBUG_MODE = False  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
 # ============================================================
-# Session persistence
+# Prime resource cache
 # ============================================================
-SESSION_JSON = 'data/subtitles/last_movie_list.json'
+PRIME_RESOURCES_JSON = 'data/resources/prime_resources.json'
+
+
+def _resolve_prime_url(url: str) -> str:
+    """Convert relative URL to absolute URL. Absolute URLs are returned as-is."""
+    if not url:
+        return url
+    if url.startswith('http'):
+        return url
+    if not url.startswith('/'):
+        url = '/' + url
+    return 'https://www.primevideo.com' + url
+
+
+def _load_prime_resources() -> dict:
+    """Load Prime resource cache from local file. Returns None if not found."""
+    if not os.path.exists(PRIME_RESOURCES_JSON):
+        return None
+    try:
+        with open(PRIME_RESOURCES_JSON, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if not data or not data.get('movies'):
+            return None
+        return data
+    except (json.JSONDecodeError, IOError):
+        return None
+
+
+def _save_prime_resources(data: dict) -> None:
+    """Save Prime resource cache to local file."""
+    os.makedirs(os.path.dirname(PRIME_RESOURCES_JSON), exist_ok=True)
+    data['last_updated'] = time.strftime('%Y-%m-%dT%H:%M:%S')
+    with open(PRIME_RESOURCES_JSON, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def _merge_movies(existing_movies: list, new_movies: list) -> list:
+    """Merge movies, preserving Prime's order. Only append new entries."""
+    existing_keys = {
+        (m.get('title', ''), m.get('category', ''), m.get('section', ''))
+        for m in existing_movies
+    }
+    for m in new_movies:
+        key = (m.get('title', ''), m.get('category', ''), m.get('section', ''))
+        if key not in existing_keys:
+            existing_keys.add(key)
+            existing_movies.append(m)
+    return existing_movies
+
+
+def _merge_episodes(existing_episodes: list, new_episodes: list) -> list:
+    """Merge episodes, sorted by (season, episode). Only add new episodes."""
+    ep_map = {(ep.get('season', 0), ep.get('episode', 0)): ep for ep in existing_episodes}
+    for ep in new_episodes:
+        key = (ep.get('season', 0), ep.get('episode', 0))
+        if key not in ep_map:
+            ep_map[key] = ep
+    return sorted(ep_map.values(), key=lambda e: (e.get('season', 0), e.get('episode', 0)))
+
+
+def _merge_seasons(existing_seasons: list, new_seasons: list) -> list:
+    """Merge seasons, sorted by season number. Only add new seasons."""
+    season_map = {s.get('season', 0): s for s in existing_seasons}
+    for s in new_seasons:
+        key = s.get('season', 0)
+        if key not in season_map:
+            season_map[key] = s
+    return sorted(season_map.values(), key=lambda s: s.get('season', 0))
+
+
+def _merge_tv_show(existing_show: dict, new_show: dict) -> dict:
+    """Merge a TV show: update basic info, merge seasons/episodes."""
+    if not existing_show:
+        return new_show
+    
+    existing_show['title'] = new_show.get('title', existing_show.get('title', ''))
+    existing_show['url'] = new_show.get('url', existing_show.get('url', ''))
+    
+    existing_seasons = existing_show.get('seasons', [])
+    new_seasons = new_show.get('seasons', [])
+    
+    season_map = {s.get('season', 0): s for s in existing_seasons}
+    
+    for s in new_seasons:
+        season_num = s.get('season', 0)
+        if season_num not in season_map:
+            season_map[season_num] = {
+                'season': season_num,
+                'episodes': _merge_episodes([], s.get('episodes', []))
+            }
+        else:
+            existing_ep_map = {
+                (ep.get('season', 0), ep.get('episode', 0)): ep
+                for ep in season_map[season_num].get('episodes', [])
+            }
+            for ep in s.get('episodes', []):
+                key = (ep.get('season', 0), ep.get('episode', 0))
+                if key not in existing_ep_map:
+                    existing_ep_map[key] = ep
+            season_map[season_num]['episodes'] = sorted(
+                existing_ep_map.values(),
+                key=lambda e: (e.get('season', 0), e.get('episode', 0))
+            )
+    
+    existing_show['seasons'] = sorted(
+        season_map.values(),
+        key=lambda s: s.get('season', 0)
+    )
+    
+    return existing_show
+
+
+def _merge_prime_resources(existing_data: dict, new_movies: list) -> dict:
+    """Merge new movies into existing Prime resource cache."""
+    existing_movies = existing_data.get('movies', [])
+    
+    for new_movie in new_movies:
+        key = (
+            new_movie.get('title', ''),
+            new_movie.get('category', ''),
+            new_movie.get('section', '')
+        )
+        
+        # Find matching existing movie
+        matched_idx = None
+        for i, m in enumerate(existing_movies):
+            if (m.get('title', '') == key[0] and
+                m.get('category', '') == key[1] and
+                m.get('section', '') == key[2]):
+                matched_idx = i
+                break
+        
+        if matched_idx is not None:
+            existing_movie = existing_movies[matched_idx]
+            is_tv_show = new_movie.get('is_tv_show', existing_movie.get('is_tv_show', False))
+            
+            if is_tv_show:
+                # Merge TV show
+                existing_seasons = existing_movie.get('seasons', [])
+                new_seasons = new_movie.get('seasons', [])
+                
+                season_map = {s.get('season', 0): s for s in existing_seasons}
+                
+                for s in new_seasons:
+                    season_num = s.get('season', 0)
+                    if season_num not in season_map:
+                        season_map[season_num] = {
+                            'season': season_num,
+                            'episodes': _merge_episodes([], s.get('episodes', []))
+                        }
+                    else:
+                        existing_ep_map = {
+                            (ep.get('season', 0), ep.get('episode', 0)): ep
+                            for ep in season_map[season_num].get('episodes', [])
+                        }
+                        for ep in s.get('episodes', []):
+                            ep_key = (ep.get('season', 0), ep.get('episode', 0))
+                            if ep_key not in existing_ep_map:
+                                existing_ep_map[ep_key] = ep
+                        season_map[season_num]['episodes'] = sorted(
+                            existing_ep_map.values(),
+                            key=lambda e: (e.get('season', 0), e.get('episode', 0))
+                        )
+                
+                existing_movie['seasons'] = sorted(
+                    season_map.values(),
+                    key=lambda s: s.get('season', 0)
+                )
+                existing_movies[matched_idx] = existing_movie
+            else:
+                # Regular movie - skip (preserve Prime's order)
+                pass
+        else:
+            # New movie - append
+            existing_movies.append(new_movie)
+    
+    existing_data['movies'] = existing_movies
+    return existing_data
+
+
+def _check_local_files_exist(folder_path: str) -> bool:
+    """Check if folder has .srt or refer_to_*.txt files."""
+    if not os.path.isdir(folder_path):
+        return False
+    import glob
+    srt_files = glob.glob(os.path.join(folder_path, '*.srt'))
+    refer_files = glob.glob(os.path.join(folder_path, 'refer_to_*.txt'))
+    return len(srt_files) > 0 or len(refer_files) > 0
+
+
+def _build_folder_path(movie: dict, category: str, section: str) -> str:
+    """Build the local folder path for a movie/episode."""
+    title = movie.get('title', 'unknown')
+    safe_title = title.replace('/', '_').replace('\\', '_').replace(':', '.')
+    safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.')
+    safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.')
+    return os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_title)
+
+
+def _pre_scan_local_files(movies: list, category: str, section: str) -> dict:
+    """Pre-scan all movie folders and return {folder_path: has_files} cache."""
+    import glob
+    cache = {}
+    for movie in movies:
+        folder = _build_folder_path(movie, category, section)
+        cache[folder] = _check_local_files_exist(folder)
+    return cache
 
 
 def _load_session_json():
@@ -1174,13 +1380,7 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
     seen_urls = {}
     
     try:
-        # Handle relative URLs
-        if section_url.startswith('/'):
-            full_url = 'https://www.primevideo.com' + section_url
-        elif section_url.startswith('http'):
-            full_url = section_url
-        else:
-            full_url = 'https://www.primevideo.com' + '/' + section_url
+        full_url = _resolve_prime_url(section_url)
         
         print(f"INFO Navigating to section: {full_url[:100]}...", file=sys.stderr)
         page.goto(full_url, timeout=30000)
@@ -1384,19 +1584,28 @@ CONFIRM_KEYWORDS = {'y', 'yes', '确认', '是', '好', '下载'}
 
 
 
-def _confirm_download(movies: list, category: str, section: str) -> bool:
-    """Show movie list and confirm download.
+def _confirm_download(movies: list, category: str, section: str) -> tuple:
+    """Show movie list, pre-scan local files, and confirm download.
     
-    Returns True if user confirms (y), False if cancels (n).
+    Returns:
+        (bool, dict): (confirmed, local_cache)
+            - confirmed: True if user confirms (y), False if cancels (n)
+            - local_cache: {folder_path: has_files} from pre-scan
     """
+    # Pre-scan local files
+    local_cache = _pre_scan_local_files(movies, category, section)
+    local_count = sum(1 for v in local_cache.values() if v)
+    
     print(f"\n{'='*60}", file=sys.stderr)
-    print(f"完整电影列表 (共 {len(movies)} 部):", file=sys.stderr)
+    print(f"完整电影列表 (共 {len(movies)} 部，本地已有 {local_count} 部):", file=sys.stderr)
     for i, movie in enumerate(movies):
-        print(f"  {i+1}. {movie['title']}", file=sys.stderr)
+        folder = _build_folder_path(movie, category, section)
+        local_marker = " [本地已有]" if local_cache.get(folder, False) else ""
+        print(f"  {i+1}. {movie['title']}{local_marker}", file=sys.stderr)
     
     print(f"\n{'='*60}", file=sys.stderr)
     print("请确认下载:", file=sys.stderr)
-    print("  - y: 确认开始下载", file=sys.stderr)
+    print("  - y: 确认开始下载（本地已有的会跳过）", file=sys.stderr)
     print("  - n: 取消返回上级", file=sys.stderr)
     
     while True:
@@ -1419,9 +1628,9 @@ def _confirm_download(movies: list, category: str, section: str) -> bool:
             }
             _save_session_json(session_data)
             print(f"INFO 已存档电影列表 ({len(movies)} 部) 到 {SESSION_JSON}", file=sys.stderr)
-            return True
+            return (True, local_cache)
         elif answer.lower().strip() == 'n':
-            return False
+            return (False, local_cache)
         
         print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
 
@@ -1852,6 +2061,127 @@ def main():
         # Save storage state for next session
         context.storage_state(path=state_file)
         
+        # ============================================================
+        # Prime resource cache refresh
+        # ============================================================
+        prime_resources = _load_prime_resources()
+        if prime_resources:
+            print(f"\n{'='*60}", file=sys.stderr)
+            print(f"INFO 本地 Prime 资源缓存 (最后更新: {prime_resources.get('last_updated', 'unknown')})", file=sys.stderr)
+            print(f"INFO 共 {len(prime_resources.get('movies', []))} 个条目", file=sys.stderr)
+            print("\n是否重新获取 Prime 资源？(y/n)", file=sys.stderr)
+            while True:
+                answer = read_with_esc("\n请选择 (y/n): ")
+                if answer == 'ESC':
+                    print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
+                    continue
+                if not answer:
+                    continue
+                if answer.lower().strip() == 'y':
+                    print("INFO 正在从 Prime 获取资源...", file=sys.stderr)
+                    # Navigate to homepage to get fresh data
+                    page.goto("https://www.primevideo.com", timeout=30000)
+                    page.wait_for_load_state('domcontentloaded')
+                    time.sleep(3)
+                    
+                    # Extract categories
+                    fresh_categories = extract_categories_only(page, cookies)
+                    fresh_movies = []
+                    
+                    if fresh_categories:
+                        for cat in fresh_categories:
+                            cat_url = _resolve_prime_url(cat.get('url', ''))
+                            cat_name = cat.get('name', '')
+                            
+                            # Extract sections
+                            sections = extract_sections_from_category(page, cat_url, cookies)
+                            
+                            for sec in sections:
+                                sec_url = _resolve_prime_url(sec.get('href', ''))
+                                sec_name = sec.get('title', '')
+                                
+                                if not sec_url:
+                                    continue
+                                
+                                # Fetch movies from section
+                                movies = fetch_section_movies(page, sec_url, cookies)
+                                
+                                for movie in movies:
+                                    movie_entry = {
+                                        'title': movie.get('title', ''),
+                                        'url': movie.get('url', ''),
+                                        'category': cat_name,
+                                        'section': sec_name,
+                                        'is_tv_show': movie.get('is_tv_show', False),
+                                    }
+                                    
+                                    if movie_entry['is_tv_show'] and movie.get('seasons'):
+                                        movie_entry['seasons'] = movie['seasons']
+                                    
+                                    fresh_movies.append(movie_entry)
+                    
+                    # Merge with existing
+                    if fresh_movies:
+                        prime_resources = _merge_prime_resources(prime_resources, fresh_movies)
+                        _save_prime_resources(prime_resources)
+                        print(f"INFO 已更新本地 Prime 资源 ({len(prime_resources['movies'])} 个条目)", file=sys.stderr)
+                    break
+                elif answer.lower().strip() == 'n':
+                    print(f"INFO 使用本地 Prime 资源 ({len(prime_resources.get('movies', []))} 个条目)", file=sys.stderr)
+                    break
+                print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
+        else:
+            print("INFO 无本地 Prime 资源缓存，正在获取...", file=sys.stderr)
+            # Navigate to homepage to get fresh data
+            page.goto("https://www.primevideo.com", timeout=30000)
+            page.wait_for_load_state('domcontentloaded')
+            time.sleep(3)
+            
+            # Extract categories
+            fresh_categories = extract_categories_only(page, cookies)
+            fresh_movies = []
+            
+            if fresh_categories:
+                for cat in fresh_categories:
+                    cat_url = _resolve_prime_url(cat.get('url', ''))
+                    cat_name = cat.get('name', '')
+                    
+                    # Extract sections
+                    sections = extract_sections_from_category(page, cat_url, cookies)
+                    
+                    for sec in sections:
+                        sec_url = _resolve_prime_url(sec.get('href', ''))
+                        sec_name = sec.get('title', '')
+                        
+                        if not sec_url:
+                            continue
+                        
+                        # Fetch movies from section
+                        movies = fetch_section_movies(page, sec_url, cookies)
+                        
+                        for movie in movies:
+                            movie_entry = {
+                                'title': movie.get('title', ''),
+                                'url': movie.get('url', ''),
+                                'category': cat_name,
+                                'section': sec_name,
+                                'is_tv_show': movie.get('is_tv_show', False),
+                            }
+                            
+                            if movie_entry['is_tv_show'] and movie.get('seasons'):
+                                movie_entry['seasons'] = movie['seasons']
+                            
+                            fresh_movies.append(movie_entry)
+            
+            # Save fresh data
+            if fresh_movies:
+                prime_resources = {
+                    'last_updated': time.strftime('%Y-%m-%dT%H:%M:%S'),
+                    'movies': fresh_movies,
+                }
+                _save_prime_resources(prime_resources)
+                print(f"INFO 已保存本地 Prime 资源 ({len(fresh_movies)} 个条目)", file=sys.stderr)
+        
         # Extract categories only (FAST - no navigation to category pages)
         print("\nINFO Extracting categories from homepage...", file=sys.stderr)
         categories = extract_categories_only(page, cookies)
@@ -2100,11 +2430,12 @@ def main():
                         print("WARNING 没有找到电影", file=sys.stderr)
                         continue
                     
-                    if not _confirm_download(all_movies, cat_name, ""):
+                    confirmed, local_cache = _confirm_download(all_movies, cat_name, "")
+                    if not confirmed:
                         print("INFO 已取消下载", file=sys.stderr)
                         continue
                     
-                    download_movies(all_movies, page, "category", category=cat_name, section="")
+                    download_movies(all_movies, page, "category", category=cat_name, section="", local_cache=local_cache)
                     go_to_root()
                     continue
                 
@@ -2160,11 +2491,12 @@ def main():
                         continue
                     
                     sec_names = ', '.join(s['title'] for s in selected_secs)
-                    if not _confirm_download(all_movies, cat_name, sec_names):
+                    confirmed, local_cache = _confirm_download(all_movies, cat_name, sec_names)
+                    if not confirmed:
                         print("INFO 已取消下载", file=sys.stderr)
                         continue
                     
-                    download_movies(all_movies, page, "multi-sec", category=cat_name, section=sec_names)
+                    download_movies(all_movies, page, "multi-sec", category=cat_name, section=sec_names, local_cache=local_cache)
                     go_to_root()
             
             # ============================================================
@@ -2210,11 +2542,12 @@ def main():
                 
                 if sel_lower in ('a', 'all'):
                     # Download all movies in this section
-                    if not _confirm_download(movies, cat_name, sec_name):
+                    confirmed, local_cache = _confirm_download(movies, cat_name, sec_name)
+                    if not confirmed:
                         print("INFO 已取消下载", file=sys.stderr)
                         continue
                     
-                    download_movies(movies, page, "section", category=cat_name, section=sec_name)
+                    download_movies(movies, page, "section", category=cat_name, section=sec_name, local_cache=local_cache)
                     go_to_root()
                     continue
                 
@@ -2239,10 +2572,11 @@ def main():
                             break
                         
                         if ms_lower in ('a', 'all'):
-                            if not _confirm_download(movies, cat_name, sec_name):
+                            confirmed, local_cache = _confirm_download(movies, cat_name, sec_name)
+                            if not confirmed:
                                 print("INFO 已取消下载", file=sys.stderr)
                                 break
-                            download_movies(movies, page, "section", category=cat_name, section=sec_name)
+                            download_movies(movies, page, "section", category=cat_name, section=sec_name, local_cache=local_cache)
                             go_to_root()
                             break
                         
@@ -2250,10 +2584,11 @@ def main():
                         selected_movies = parse_selection_range(movies, movie_selection)
                         
                         if selected_movies:
-                            if not _confirm_download(selected_movies, cat_name, sec_name):
+                            confirmed, local_cache = _confirm_download(selected_movies, cat_name, sec_name)
+                            if not confirmed:
                                 print("INFO 已取消下载", file=sys.stderr)
                                 break
-                            download_movies(selected_movies, page, "movie", category=cat_name, section=sec_name)
+                            download_movies(selected_movies, page, "movie", category=cat_name, section=sec_name, local_cache=local_cache)
                             go_to_root()
                             break
                         else:
@@ -2270,11 +2605,12 @@ def main():
                     print(f"WARNING 未选择任何电影: {selection}", file=sys.stderr)
                     continue
                 
-                if not _confirm_download(selected_movies, cat_name, sec_name):
+                confirmed, local_cache = _confirm_download(selected_movies, cat_name, sec_name)
+                if not confirmed:
                     print("INFO 已取消下载", file=sys.stderr)
                     continue
                 
-                download_movies(selected_movies, page, "movie", category=cat_name, section=sec_name)
+                download_movies(selected_movies, page, "movie", category=cat_name, section=sec_name, local_cache=local_cache)
                 go_to_root()
             
             else:
@@ -2298,14 +2634,15 @@ def main():
         except Exception:
             pass
 
-def download_movies(movies: list, page, context: str = "", category: str = "", section: str = "", failed_movies: list = None) -> list:
+def download_movies(movies: list, page, context: str = "", category: str = "", section: str = "", failed_movies: list = None, local_cache: dict = None) -> list:
     """Download subtitles for a list of movies and TV shows.
     
     Flow per item:
-    1. Navigate to URL
-    2. Detect movie/tv_show
-    3. If movie: download subtitle
-    4. If TV show: expand all episodes, then download subtitles for each episode
+    1. Check local files (skip if exists)
+    2. Navigate to URL
+    3. Detect movie/tv_show
+    4. If movie: download subtitle
+    5. If TV show: expand all episodes, then download subtitles for each episode
     
     Args:
         movies: List of item dicts (each has 'title', 'url', and optionally 'type')
@@ -2314,6 +2651,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         category: Category name for directory structure
         section: Section name for directory structure
         failed_movies: List to collect failed movie entries (for retry)
+        local_cache: Pre-scanned local file cache {folder_path: has_files}
     
     Returns:
         List of download result dicts: [{'title', 'category', 'section', 'success', ...}, ...]
@@ -2335,8 +2673,29 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
     
     for movie in movies:
         movie_title = movie.get('title', '')
-        movie_url = movie.get('url', '')
+        movie_url = _resolve_prime_url(movie.get('url', ''))
         movie_section = movie.get('_section', section)
+        
+        # Check local files (primary skip condition)
+        if local_cache:
+            folder = _build_folder_path(movie, category, section)
+            if local_cache.get(folder, False):
+                print(f"INFO 已下载到本地: {item_index + 1}/{len(movies)}, {movie_title}", file=sys.stderr)
+                results.append({
+                    'title': movie_title,
+                    'category': category,
+                    'section': movie_section,
+                    'success': True,
+                    'subtitles_saved': 0,
+                    'total_subtitle_types': 0,
+                    'filtered_subtitle_types': 0,
+                    'success_langs': [],
+                    'failed_langs': [],
+                    'ignored_subtitles': 0,
+                    'ignored_reason': 'local files exist',
+                })
+                item_index += 1
+                continue
         
         # Skip referenced items (already downloaded in another section)
         if '_refer_to' in movie:
@@ -2406,7 +2765,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         
         # Step 1: Navigate to URL
         try:
-            page.goto(movie_url if movie_url.startswith('http') else 'https://www.primevideo.com' + movie_url, timeout=20000)
+            page.goto(movie_url, timeout=20000)
             page.wait_for_load_state('domcontentloaded')
             time.sleep(5)
         except Exception as e:
