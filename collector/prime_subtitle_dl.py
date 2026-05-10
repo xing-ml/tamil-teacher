@@ -2998,6 +2998,8 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         if is_tv_show:
             # TV show: download subtitles for all episodes
             item_index += 1  # Increment once per TV show for progress counter
+            # Track results start index for accurate per-show summary
+            results_start_index = len(results)
             series_name = movie_title
             safe_series = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
             safe_cat = movie.get('_category', category).replace('/', '_').replace('\\', '_').replace(':', '.') if movie.get('_category', category) else 'unknown'
@@ -3107,10 +3109,11 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                         'error': result.get('error', 'unknown'),
                     })
             
-            # Print TV show download summary
+            # Print TV show download summary (only current show's results)
             total_episodes = len(episodes)
-            downloaded_count = sum(1 for r in results if r.get('subtitles_saved', 0) > 0)
-            ignored_count = sum(1 for r in results if r.get('ignored_reason') == 'local files exist')
+            current_results = results[results_start_index:]
+            downloaded_count = sum(1 for r in current_results if r.get('subtitles_saved', 0) > 0)
+            ignored_count = sum(1 for r in current_results if r.get('ignored_reason') == 'local files exist')
             failed_count = total_episodes - downloaded_count - ignored_count
             
             print(f"\n{'='*60}", file=sys.stderr)
