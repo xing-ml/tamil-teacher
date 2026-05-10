@@ -1258,6 +1258,7 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             parsed = sub_info_result['parsed']
             # Check for timedTextUrls.result (matching userscript's getSubInfo return)
             timed_text_urls = None
+            subtitle_urls = []  # Initialize to avoid UnboundLocalError
             if parsed.get('timedTextUrls') and parsed['timedTextUrls'].get('result'):
                 timed_text_urls = parsed['timedTextUrls']['result']
                 subtitle_urls = timed_text_urls.get('subtitleUrls', [])
