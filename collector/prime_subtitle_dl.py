@@ -409,6 +409,8 @@ def _sync_tv_show_episodes(session_data: dict, tv_show_title: str, episodes: lis
     """
     import glob
     changed = False
+    synced_episodes = []  # Track which episodes were synced
+    
     for entry in session_data.get('movies', []):
         if entry.get('downloaded'):
             continue
@@ -418,6 +420,7 @@ def _sync_tv_show_episodes(session_data: dict, tv_show_title: str, episodes: lis
                 and entry.get('title', '').startswith(tv_show_title)):
             
             ep_season = entry.get('season')
+            ep_number = entry.get('episode')
             safe_title = entry.get('title', '').replace('/', '_').replace('\\', '_').replace(':', '.')
             safe_cat = entry.get('category', '').replace('/', '_').replace('\\', '_').replace(':', '.')
             safe_sec = entry.get('section', '').replace('/', '_').replace('\\', '_').replace(':', '.')
@@ -431,6 +434,10 @@ def _sync_tv_show_episodes(session_data: dict, tv_show_title: str, episodes: lis
                 entry['downloaded'] = True
                 entry['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
                 changed = True
+                synced_episodes.append(f"S{ep_season:02d}E{ep_number:02d}")
+    
+    if synced_episodes:
+        print(f"INFO 本地已有字幕: {tv_show_title} 的 {', '.join(synced_episodes)}", file=sys.stderr)
     
     return changed
 
