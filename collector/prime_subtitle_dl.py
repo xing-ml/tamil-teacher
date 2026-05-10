@@ -20,6 +20,73 @@ except ImportError:
 DEBUG_MODE = False  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
+# ============================================================
+# Session persistence
+# ============================================================
+SESSION_JSON = 'data/subtitles/last_movie_list.json'
+
+
+def _load_session_json():
+    """Load session JSON file. Returns None if not found or empty."""
+    if not os.path.exists(SESSION_JSON):
+        return None
+    try:
+        with open(SESSION_JSON, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if not data or not data.get('movies'):
+            return None
+        return data
+    except (json.JSONDecodeError, IOError):
+        return None
+
+
+def _save_session_json(data: dict) -> None:
+    """Save session JSON file."""
+    os.makedirs(os.path.dirname(SESSION_JSON), exist_ok=True)
+    data['last_updated'] = time.strftime('%Y-%m-%dT%H:%M:%S')
+    with open(SESSION_JSON, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def _build_session_movies(movies: list) -> list:
+    """Convert movie list to session JSON format."""
+    session_movies = []
+    for m in movies:
+        entry = {
+            'title': m.get('title', ''),
+            'url': m.get('url', ''),
+            'category': m.get('_category', m.get('category', '')),
+            'section': m.get('_section', m.get('section', '')),
+            'downloaded': False,
+            'downloaded_at': None,
+            'is_tv_show': False,
+            'season': None,
+            'episode': None,
+            'episode_title': None,
+        }
+        session_movies.append(entry)
+    return session_movies
+
+
+def _update_movie_downloaded(session_data: dict, movie_title: str, is_tv_show: bool = False,
+                              season: int = None, episode: int = None, downloaded: bool = True) -> None:
+    """Update downloaded status for a movie or episode in session JSON."""
+    now = time.strftime('%Y-%m-%dT%H:%M:%S')
+    for entry in session_data.get('movies', []):
+        if entry['downloaded']:
+            continue
+        if is_tv_show and season is not None:
+            if (entry.get('title') == movie_title or entry.get('episode_title') == movie_title) \
+                    and entry.get('season') == season and entry.get('episode') == episode:
+                entry['downloaded'] = True
+                entry['downloaded_at'] = now
+                return
+        else:
+            if entry.get('title') == movie_title:
+                entry['downloaded'] = True
+                entry['downloaded_at'] = now
+                return
+
 
 def _check_login_status(page) -> tuple:
     """检查是否已登录 Prime Video。
@@ -1343,6 +1410,15 @@ def _confirm_download(movies: list, category: str, section: str) -> bool:
             continue
         
         if answer.lower().strip() == 'y':
+            # Save movie list to session JSON
+            session_data = {
+                'created_at': time.strftime('%Y-%m-%dT%H:%M:%S'),
+                'last_updated': time.strftime('%Y-%m-%dT%H:%M:%S'),
+                'context': f"{category}/{section}" if category or section else 'all',
+                'movies': _build_session_movies(movies),
+            }
+            _save_session_json(session_data)
+            print(f"INFO 已存档电影列表 ({len(movies)} 部) 到 {SESSION_JSON}", file=sys.stderr)
             return True
         elif answer.lower().strip() == 'n':
             return False
@@ -1784,6 +1860,83 @@ def main():
             print("ERROR No categories found", file=sys.stderr)
             sys.exit(1)
         
+        # ============================================================
+        # Check for resume session
+        # ============================================================
+        resume_mode = False
+        session_data = _load_session_json()
+        if session_data and session_data.get('movies'):
+            total = len(session_data['movies'])
+            downloaded_count = sum(1 for m in session_data['movies'] if m.get('downloaded'))
+            remaining_count = total - downloaded_count
+            
+            if downloaded_count == total:
+                # All downloaded - ask to re-download
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"INFO 上次已下载 {total} 部电影，是否重新下载？(y/n)", file=sys.stderr)
+                while True:
+                    answer = read_with_esc("\n请选择 (y/n): ")
+                    if answer == 'ESC':
+                        print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
+                        continue
+                    if not answer:
+                        continue
+                    if answer.lower().strip() == 'y':
+                        # Reset all to not downloaded
+                        for m in session_data['movies']:
+                            m['downloaded'] = False
+                            m['downloaded_at'] = None
+                        _save_session_json(session_data)
+                        break
+                    elif answer.lower().strip() == 'n':
+                        break
+                    print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
+            else:
+                # Some remaining - ask to resume
+                print(f"\n{'='*60}", file=sys.stderr)
+                print(f"INFO 上次进度：已下载 {downloaded_count} 部，剩余 {remaining_count} 部", file=sys.stderr)
+                print(f"INFO 是否继续上次进度？(y/n)", file=sys.stderr)
+                while True:
+                    answer = read_with_esc("\n请选择 (y/n): ")
+                    if answer == 'ESC':
+                        print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
+                        continue
+                    if not answer:
+                        continue
+                    if answer.lower().strip() == 'n':
+                        break
+                    elif answer.lower().strip() == 'y':
+                        # Show remaining list
+                        remaining = [m for m in session_data['movies'] if not m.get('downloaded')]
+                        print(f"\n{'='*60}", file=sys.stderr)
+                        print(f"未下载列表 (共 {len(remaining)} 部):", file=sys.stderr)
+                        for i, m in enumerate(remaining):
+                            ep_info = ""
+                            if m.get('is_tv_show') and m.get('season'):
+                                ep_info = f" S{m['season']:02d}E{m.get('episode', 0):02d}"
+                            print(f"  {i+1}. {m['title']}{ep_info}", file=sys.stderr)
+                        print(f"\n{'='*60}", file=sys.stderr)
+                        print("请确认下载:", file=sys.stderr)
+                        print("  - y: 确认开始下载", file=sys.stderr)
+                        print("  - n: 取消，进入正常搜索", file=sys.stderr)
+                        while True:
+                            confirm = read_with_esc("\n请选择 (y/n): ")
+                            if confirm == 'ESC':
+                                print("\nWARNING ESC 检测到 - 请重新输入", file=sys.stderr)
+                                continue
+                            if not confirm:
+                                continue
+                            if confirm.lower().strip() == 'y':
+                                resume_mode = True
+                                break
+                            elif confirm.lower().strip() == 'n':
+                                break
+                            print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
+                        if resume_mode:
+                            break
+                        break
+                    print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
+        
         # State machine variables
         cache = {
             'sections': {},  # key: cat_idx -> [{'name': ..., 'href': ...}, ...]
@@ -2172,6 +2325,9 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
     if failed_movies is None:
         failed_movies = []
     
+    # Load session JSON for resume mode
+    session_data = _load_session_json()
+    
     results = []
     item_index = 0
     tv_show_count = 0
@@ -2181,6 +2337,53 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         movie_title = movie.get('title', '')
         movie_url = movie.get('url', '')
         movie_section = movie.get('_section', section)
+        
+        # Skip referenced items (already downloaded in another section)
+        if '_refer_to' in movie:
+            ref = movie['_refer_to']
+            print(f"INFO 跳过重复: {movie_title} (refer to {ref['category']} -> {ref['section']})", file=sys.stderr)
+            results.append({
+                'title': movie_title,
+                'category': category,
+                'section': movie_section,
+                'success': True,
+                'subtitles_saved': 0,
+                'total_subtitle_types': 0,
+                'filtered_subtitle_types': 0,
+                'success_langs': [],
+                'failed_langs': [],
+                'ignored_subtitles': 0,
+                'ignored_reason': f"referenced to {ref['category']} -> {ref['section']}",
+            })
+            continue
+        
+        # Skip already downloaded (resume mode)
+        if session_data:
+            downloaded_entry = None
+            for entry in session_data['movies']:
+                if entry.get('downloaded') and entry.get('title') == movie_title:
+                    downloaded_entry = entry
+                    break
+            if downloaded_entry:
+                ep_info = ""
+                if downloaded_entry.get('is_tv_show') and downloaded_entry.get('season'):
+                    ep_info = f", Season: {downloaded_entry['season']}/{downloaded_entry.get('total_seasons', '?')}, Episode: {downloaded_entry.get('episode', '?')}/?"
+                print(f"INFO 跳过已下载电影: {item_index + 1}/{len(movies)}{ep_info}, {movie_title}", file=sys.stderr)
+                results.append({
+                    'title': movie_title,
+                    'category': category,
+                    'section': movie_section,
+                    'success': True,
+                    'subtitles_saved': 0,
+                    'total_subtitle_types': 0,
+                    'filtered_subtitle_types': 0,
+                    'success_langs': [],
+                    'failed_langs': [],
+                    'ignored_subtitles': 0,
+                    'ignored_reason': 'already downloaded',
+                })
+                item_index += 1
+                continue
         
         # Skip referenced items (already downloaded in another section)
         if '_refer_to' in movie:
@@ -2313,11 +2516,66 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                 sn = ep.get('seasonNumber', 1)
                 episodes_per_season[sn] = episodes_per_season.get(sn, 0) + 1
             
+            # Expand session entry into episode-level entries
+            if session_data:
+                for entry in session_data['movies']:
+                    if entry.get('title') == movie_title and not entry.get('is_tv_show'):
+                        # Mark original as expanded, create episode entries
+                        entry['is_tv_show'] = True
+                        entry['total_seasons'] = total_seasons
+                        entry['downloaded'] = False  # Reset - episodes will be tracked individually
+                        # Create episode entries
+                        for ep in episodes:
+                            ep_season = ep.get('seasonNumber', 1)
+                            ep_number = ep.get('episodeNumber', 1)
+                            ep_title = ep.get('title', '')
+                            ep_url = ep.get('url', '')
+                            session_data['movies'].append({
+                                'title': f"{series_name} S{ep_season:02d}E{ep_number:02d}",
+                                'url': ep_url,
+                                'category': entry.get('category', ''),
+                                'section': entry.get('section', ''),
+                                'downloaded': False,
+                                'downloaded_at': None,
+                                'is_tv_show': True,
+                                'season': ep_season,
+                                'episode': ep_number,
+                                'episode_title': ep_title,
+                                'total_seasons': total_seasons,
+                            })
+                        break
+            
             for ep in episodes:
                 ep_season = ep.get('seasonNumber', 0)
                 ep_number = ep.get('episodeNumber', 0)
                 ep_title = ep.get('title', '')
                 ep_url = ep.get('url', '')
+                
+                # Check if this episode is already downloaded (resume mode)
+                if session_data:
+                    ep_downloaded = False
+                    for entry in session_data['movies']:
+                        if (entry.get('is_tv_show') and entry.get('season') == ep_season
+                                and entry.get('episode') == ep_number
+                                and entry.get('downloaded')):
+                            ep_downloaded = True
+                            break
+                    if ep_downloaded:
+                        print(f"INFO 跳过已下载电影: {item_index + 1}/{len(movies)}, Season: {ep_season}/{total_seasons}, Episode: {ep_number}/{episodes_per_season.get(ep_season, '?')}, {series_name} S{ep_season:02d}E{ep_number:02d}: {ep_title}", file=sys.stderr)
+                        results.append({
+                            'title': f"{series_name} S{ep_season:02d}E{ep_number:02d}",
+                            'category': category,
+                            'section': movie_section,
+                            'success': True,
+                            'subtitles_saved': 0,
+                            'total_subtitle_types': 0,
+                            'filtered_subtitle_types': 0,
+                            'success_langs': [],
+                            'failed_langs': [],
+                            'ignored_subtitles': 0,
+                            'ignored_reason': 'already downloaded',
+                        })
+                        continue
                 
                 # Build season directory: data/subtitles/{category}/{series}/S{season}/
                 ep_dir = os.path.join(output_dir, f'S{ep_season:02d}')
@@ -2356,6 +2614,15 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                         'section': movie_section,
                         'error': result.get('error', 'unknown'),
                     })
+            
+            # Mark entire season as downloaded in session JSON
+            if session_data:
+                for entry in session_data['movies']:
+                    if (entry.get('is_tv_show') and entry.get('season') == ep_season
+                            and entry.get('episode') == ep_number):
+                        entry['downloaded'] = True
+                        entry['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
+                _save_session_json(session_data)
         else:
             # Movie: download subtitle
             movie_count += 1
@@ -2372,6 +2639,11 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             if DEBUG_MODE:
                 print(f"INFO 电影结果: {json.dumps(result, indent=2, ensure_ascii=False)}", file=sys.stderr)
             results.append(_build_download_result(result, movie_title, movie.get('_category', category), movie_section))
+            
+            # Update session JSON: mark movie as downloaded
+            if session_data:
+                _update_movie_downloaded(session_data, movie_title)
+                _save_session_json(session_data)
             
             # Collect failed movies for retry
             if not result.get('subtitles_saved', 0) > 0:
