@@ -2272,6 +2272,37 @@ def main():
                         break
                     print("WARNING 无效输入，请输入 y 或 n", file=sys.stderr)
         
+        # If resume mode was confirmed, download remaining movies
+        if resume_mode and session_data and session_data.get('movies'):
+            remaining = [m for m in session_data['movies'] if not m.get('downloaded')]
+            
+            if remaining:
+                print(f"\nINFO 开始下载剩余 {len(remaining)} 部影片...", file=sys.stderr)
+                
+                # Build movie list for download
+                download_movies_list = []
+                for m in remaining:
+                    movie_entry = {
+                        'title': m['title'],
+                        'url': m['url'],  # Will be resolved by _resolve_prime_url() in download_movies
+                    }
+                    download_movies_list.append(movie_entry)
+                
+                # Download all remaining movies
+                download_movies(download_movies_list, page, "resume", 
+                               category="", section="", 
+                               local_cache=None)  # No pre-scan for resume mode
+                
+                print("INFO 剩余影片下载完成", file=sys.stderr)
+                
+                # Reset session JSON - mark all as downloaded
+                for m in session_data['movies']:
+                    m['downloaded'] = True
+                    m['downloaded_at'] = time.strftime('%Y-%m-%dT%H:%M:%S')
+                _save_session_json(session_data)
+            else:
+                print("INFO 所有影片已下载完成", file=sys.stderr)
+        
         # State machine variables
         cache = {
             'sections': {},  # key: cat_idx -> [{'name': ..., 'href': ...}, ...]
