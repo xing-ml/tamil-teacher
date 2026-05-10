@@ -311,7 +311,7 @@ def _pre_check_local_files(movie, category, section):
     
     title = movie.get('title', 'unknown')
     safe_title = title.replace('/', '_').replace('\\', '_').replace(':', '.')
-    safe_cat = category.replace('/', '_').replace('\\', '_').replace(':', '.') if category else 'unknown'
+    safe_cat = movie.get('_category', category).replace('/', '_').replace('\\', '_').replace(':', '.') if movie.get('_category', category) else 'unknown'
     safe_sec = section.replace('/', '_').replace('\\', '_').replace(':', '.') if section else 'unknown'
     movie_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_title)
     
@@ -1638,6 +1638,7 @@ def fetch_section_movies(page, section_url: str, cookies: list) -> list:
 def _extract_tv_show_episodes(page, show_url: str) -> list:
     """Extract episode list from a TV show detail page.
     
+    Extracts episodes from ALL seasons by clicking season selector.
     Uses page JSON to get initial episodes, then extracts episode URLs from DOM.
     
     Args:
@@ -1647,7 +1648,7 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
     Returns:
         List of episode dicts: [{'title': '...', 'url': '...', 'season': N, 'episode': N}, ...]
     """
-    episodes = []
+    all_episodes = []
     
     try:
         # Set up console logging for debug output
@@ -1656,94 +1657,155 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                 print(f"DEBUG Console: {msg.text}", file=sys.stderr)
         page.on('console', on_console)
         
-        # Extract initial episodes from page JSON
-        initial_episodes = page.evaluate('''() => {
-            const episodes = [];
-            for(const script of document.querySelectorAll('script[type="application/json"]')) {
-                try {
-                    const data = JSON.parse(script.innerHTML);
-                    const body = data?.init?.preparations?.body;
-                    if(body && body.atf && body.btf) {
-                        const detail = body.btf?.state?.detail?.detail;
-                        if(detail) {
-                            for(const [id, det] of Object.entries(detail)) {
-                                if(det.titleType === 'episode') {
-                                    episodes.push({
-                                        title: det.title,
-                                        seasonNumber: det.seasonNumber,
-                                        episodeNumber: det.episodeNumber,
-                                    });
+        def extract_episodes_from_page():
+            """Extract episodes from current page JSON."""
+            episodes = page.evaluate('''() => {
+                const episodes = [];
+                for(const script of document.querySelectorAll('script[type="application/json"]')) {
+                    try {
+                        const data = JSON.parse(script.innerHTML);
+                        const body = data?.init?.preparations?.body;
+                        if(body && body.atf && body.btf) {
+                            const detail = body.btf?.state?.detail?.detail;
+                            if(detail) {
+                                for(const [id, det] of Object.entries(detail)) {
+                                    if(det.titleType === 'episode') {
+                                        episodes.push({
+                                            title: det.title,
+                                            seasonNumber: det.seasonNumber,
+                                            episodeNumber: det.episodeNumber,
+                                        });
+                                    }
                                 }
                             }
                         }
+                    } catch(e) {}
+                }
+                return episodes;
+            }''')
+            
+            result = []
+            for ep in episodes:
+                season = ep.get('seasonNumber') or 1
+                if ep['title'] and season > 0:
+                    result.append({
+                        'title': ep['title'],
+                        'seasonNumber': season,
+                        'episodeNumber': ep.get('episodeNumber', 0),
+                        'url': '',
+                    })
+            return result
+        
+        def extract_dom_urls():
+            """Extract episode URLs from DOM."""
+            return page.evaluate('''() => {
+                const seen = new Set();
+                const links = [];
+                const allLinks = document.querySelectorAll('a[href*="detail"]');
+                for(const link of allLinks) {
+                    const text = link.textContent?.trim();
+                    if (text && text.includes('Play') && !text.includes('Trailer')) {
+                        const href = link.getAttribute('href');
+                        const match = href.match(/detail[\\\\/]([^\\\\/\\\\?]+)/);
+                        if(match && !seen.has(match[1])) {
+                            seen.add(match[1]);
+                            links.push(match[1]);
+                        }
                     }
-                } catch(e) {}
+                }
+                return links;
+            }''')
+        
+        def match_urls_to_episodes(episodes, dom_urls):
+            """Match DOM URLs to episodes by index."""
+            if dom_urls:
+                for i, ep in enumerate(episodes):
+                    if i < len(dom_urls):
+                        ep_id = dom_urls[i]
+                        ep['url'] = f"https://www.primevideo.com/detail/{ep_id}/"
+        
+        # Step 1: Extract episodes from all seasons
+        # First, get all season selectors
+        season_selectors = page.evaluate('''() => {
+            const selectors = [];
+            const links = document.querySelectorAll('a._1NNx6V');
+            for(const link of links) {
+                const text = link.textContent?.trim();
+                if (text && text.match(/Season\\s*\\d+/i)) {
+                    selectors.push({
+                        text: text,
+                        href: link.getAttribute('href'),
+                    });
+                }
             }
-            return episodes;
+            return selectors;
         }''')
         
-        for ep in initial_episodes:
-            # Handle missing seasonNumber (default to 1)
-            season = ep.get('seasonNumber') or 1
-            if ep['title'] and season > 0:
-                episodes.append({
-                    'title': ep['title'],
-                    'seasonNumber': season,
-                    'episodeNumber': ep.get('episodeNumber', 0),
-                    'url': '',  # Will be filled from DOM below
-                })
+        if season_selectors:
+            # Multiple seasons - iterate through each
+            if DEBUG_MODE:
+                print(f"DEBUG Found {len(season_selectors)} season selectors", file=sys.stderr)
+            
+            for sel_idx, selector in enumerate(season_selectors):
+                if DEBUG_MODE:
+                    print(f"DEBUG Extracting episodes for season selector: {selector['text']}", file=sys.stderr)
+                
+                # Click the season selector
+                try:
+                    page.evaluate('''(href) => {
+                        const links = document.querySelectorAll('a._1NNx6V');
+                        for(const link of links) {
+                            if(link.getAttribute('href') === href) {
+                                link.click();
+                                break;
+                            }
+                        }
+                    ''', selector['href'])
+                    time.sleep(3)  # Wait for content to load
+                except Exception as e:
+                    if DEBUG_MODE:
+                        print(f"DEBUG Failed to click season selector: {e}", file=sys.stderr)
+                    continue
+                
+                # Extract episodes for this season
+                season_episodes = extract_episodes_from_page()
+                if DEBUG_MODE:
+                    print(f"DEBUG Extracted {len(season_episodes)} episodes for season", file=sys.stderr)
+                
+                # Extract DOM URLs and match
+                season_dom_urls = extract_dom_urls()
+                match_urls_to_episodes(season_episodes, season_dom_urls)
+                
+                # Add to all_episodes
+                all_episodes.extend(season_episodes)
+                
+                if INFO_MODE:
+                    print(f"INFO Extracted {len(season_episodes)} episodes from season selector", file=sys.stderr)
+        else:
+            # Single season - extract directly
+            initial_episodes = extract_episodes_from_page()
+            season_dom_urls = extract_dom_urls()
+            match_urls_to_episodes(initial_episodes, season_dom_urls)
+            all_episodes.extend(initial_episodes)
+            
+            if INFO_MODE:
+                print(f"INFO TV show '{page.evaluate('document.title')}' has {len(all_episodes)} episodes", file=sys.stderr)
         
-        # Extract episode URLs from DOM
-        # Use "Play" text filter to get only episode links (excludes Trailer and recommendations)
-        episode_dom_urls = page.evaluate('''(debugParam) => {
-            const seen = new Set();
-            const links = [];
-            const allLinks = document.querySelectorAll('a[href*="detail"]');
-            // Debug: log all matching links
-            if (debugParam) {
-                console.log('DEBUG_EPISODE: Found ' + allLinks.length + ' links with href containing "detail"');
-                for(const link of allLinks) {
-                    console.log('DEBUG_EPISODE: link href=' + link.getAttribute('href') + ', text=' + link.textContent?.trim());
-                }
-            }
-            for(const link of allLinks) {
-                const text = link.textContent?.trim();
-                // Only extract links with "Play" text (excludes Trailer and recommendations)
-                if (text && text.includes('Play') && !text.includes('Trailer')) {
-                    const href = link.getAttribute('href');
-                    const match = href.match(/detail[\\\\/]([^\\\\/\\\\?]+)/);
-                    if(match && !seen.has(match[1])) {
-                        seen.add(match[1]);
-                        links.push(match[1]);
-                    }
-                }
-            }
-            return links;
-        }''', DEBUG_MODE)
+        # Sort episodes by seasonNumber, then episodeNumber
+        all_episodes.sort(key=lambda ep: (ep.get('seasonNumber', 1), ep.get('episodeNumber', 0)))
         
-        # Match DOM URLs to episodes by index (sorted by episodeNumber)
         if DEBUG_MODE:
-            print(f"DEBUG _extract_tv_show_episodes: episodes count={len(episodes)}, episode_dom_urls count={len(episode_dom_urls)}", file=sys.stderr)
-            for i, ep in enumerate(episodes):
-                print(f"DEBUG _extract_tv_show_episodes: episode {i}: title={ep.get('title', '')}, url='{ep.get('url', '')}'", file=sys.stderr)
-        
-        if episode_dom_urls:
-            for i, ep in enumerate(episodes):
-                if i < len(episode_dom_urls):
-                    ep_id = episode_dom_urls[i]
-                    ep['url'] = f"https://www.primevideo.com/detail/{ep_id}/"
-        
-        if DEBUG_MODE:
-            for i, ep in enumerate(episodes):
-                print(f"DEBUG _extract_tv_show_episodes after match: episode {i}: title={ep.get('title', '')}, url='{ep.get('url', '')}'", file=sys.stderr)
-        
-        if INFO_MODE:
-            print(f"INFO TV show '{page.evaluate('document.title')}' has {len(episodes)} episodes", file=sys.stderr)
+            print(f"DEBUG Total episodes extracted: {len(all_episodes)}", file=sys.stderr)
+            for i, ep in enumerate(all_episodes):
+                print(f"DEBUG Episode {i}: season={ep.get('seasonNumber')}, episode={ep.get('episodeNumber')}, title={ep.get('title', '')}", file=sys.stderr)
     
     except Exception as e:
         print(f"WARNING _extract_tv_show_episodes failed: {e}", file=sys.stderr)
+        if DEBUG_MODE:
+            import traceback
+            print(f"DEBUG Traceback: {traceback.format_exc()}", file=sys.stderr)
     
-    return episodes
+    return all_episodes
 
 
 # ============================================================
@@ -2926,25 +2988,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
             })
             continue
         
-        # Skip referenced items (already downloaded in another section)
-        if '_refer_to' in movie:
-            ref = movie['_refer_to']
-            print(f"INFO 跳过重复: {movie_title} (refer to {ref['category']} -> {ref['section']})", file=sys.stderr)
-            results.append({
-                'title': movie_title,
-                'category': category,
-                'section': movie_section,
-                'success': True,
-                'subtitles_saved': 0,
-                'total_subtitle_types': 0,
-                'filtered_subtitle_types': 0,
-                'success_langs': [],
-                'failed_langs': [],
-                'ignored_subtitles': 0,
-                'ignored_reason': f"referenced to {ref['category']} -> {ref['section']}",
-            })
-            continue
-        
         # Pre-check local files before navigation
         pre_check_action, pre_check_info = _pre_check_local_files(movie, category, movie_section)
         
@@ -3069,6 +3112,38 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
         
         if is_tv_show:
             # TV show: download subtitles for all episodes
+            # Track results start index for accurate per-show summary
+            results_start_index = len(results)
+            series_name = movie_title
+            safe_series = series_name.replace('/', '_').replace('\\', '_').replace(':', '.')
+            safe_cat = movie.get('_category', category).replace('/', '_').replace('\\', '_').replace(':', '.') if movie.get('_category', category) else 'unknown'
+            safe_sec = movie_section.replace('/', '_').replace('\\', '_').replace(':', '.') if movie_section else 'unknown'
+            output_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_series)
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Series-level refer check (skip entire series if refer file exists)
+            import glob
+            series_dir = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_series)
+            series_refer_files = glob.glob(os.path.join(series_dir, 'refer_to_*.txt'))
+            if series_refer_files:
+                refer_info = series_refer_files[0].replace('refer_to_', '').replace('.txt', '')
+                print(f"INFO 跳过重复剧集: {movie_title} (refer to {refer_info})", file=sys.stderr)
+                results.append({
+                    'title': movie_title,
+                    'category': category,
+                    'section': movie_section,
+                    'success': True,
+                    'subtitles_saved': 0,
+                    'total_subtitle_types': 0,
+                    'filtered_subtitle_types': 0,
+                    'success_langs': [],
+                    'failed_langs': [],
+                    'ignored_subtitles': 0,
+                    'ignored_reason': f"referenced to {refer_info}",
+                })
+                item_index += 1
+                continue
+            
             item_index += 1  # Increment once per TV show for progress counter
             # Track results start index for accurate per-show summary
             results_start_index = len(results)
@@ -3144,7 +3219,6 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                         'ignored_subtitles': 0,
                         'ignored_reason': 'local files exist',
                     })
-                    item_index += 1
                     continue
                 
                 print(f"\n{'='*60}", file=sys.stderr)
@@ -3246,6 +3320,9 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                         _save_prime_resources(prime_resources)
                         print(f"INFO 已更新 Prime 资源缓存: {series_name}", file=sys.stderr)
                         break
+            
+            # Increment item_index once per TV show (after all episodes processed)
+            item_index += 1
         else:
             # Movie: download subtitle
             movie_count += 1
