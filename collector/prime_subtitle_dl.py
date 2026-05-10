@@ -859,27 +859,42 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         return captions
     
     def ttml2_to_srt(ttml_content):
-        """Parse TTML2 XML content and convert to SRT format."""
+        """Parse TTML2 XML content and convert to SRT format.
+        
+        Supports multiple namespace patterns.
+        """
         import xml.etree.ElementTree as ET
         
-        # Define TTML namespaces
-        namespaces = {
-            'tts': 'http://www.w3.org/ns/ttml#styling',
-            'tt': 'http://www.w3.org/ns/ttml',
-            'ttm': 'http://www.w3.org/ns/ttml#metadata',
-            'ttp': 'http://www.w3.org/ns/ttml#parameter'
-        }
+        if not ttml_content or not ttml_content.strip():
+            return None
         
         try:
             root = ET.fromstring(ttml_content)
-        except ET.ParseError:
+        except ET.ParseError as e:
+            if DEBUG_MODE:
+                print(f"DEBUG TTML2 parse error: {e}, content preview: {ttml_content[:200]}", file=sys.stderr)
             return None
         
-        # Find all p (paragraph) elements
-        paragraphs = root.findall('.//tt:p', namespaces)
+        # Try multiple namespace patterns
+        namespace_patterns = [
+            '{http://www.w3.org/ns/ttml}',
+            '{http://www.w3.org/ns/ttml#}',
+            '',  # No namespace
+        ]
+        
+        paragraphs = []
+        for ns in namespace_patterns:
+            found = root.findall(f'.//{ns}p')
+            if found:
+                paragraphs = found
+                break
+        
         if not paragraphs:
-            # Try without namespace
-            paragraphs = root.findall('.//p')
+            # Try to find any element with 'p' tag
+            for elem in root.iter():
+                if elem.tag.endswith('}p') or elem.tag == 'p':
+                    paragraphs = [elem]
+                    break
         
         if not paragraphs:
             return None
@@ -892,14 +907,12 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             begin = p_elem.get('begin', '')
             end = p_elem.get('end', '')
             
-            # Get text content
-            text_parts = []
-            for child in p_elem:
-                if child.text:
-                    text_parts.append(child.text)
-                if child.tail:
-                    text_parts.append(child.tail)
-            text = ' '.join(text_parts).strip()
+            # Get text content recursively (handle nested elements)
+            text = ''
+            for text_elem in p_elem.itertext():
+                if text_elem.strip():
+                    text += text_elem.strip() + ' '
+            text = text.strip()
             
             if not text or not begin or not end:
                 continue
@@ -928,7 +941,7 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
         return '\n'.join(srt_lines) if srt_lines else None
     
     def fetch_subtitle(url):
-        """Fetch subtitle file and parse TTML2 to SRT. Returns SRT string or None."""
+        """Fetch subtitle file and parse to SRT. Supports TTML2 and VTT formats."""
         try:
             content = page.evaluate('''
                 async (url) => {
@@ -943,19 +956,39 @@ def extract_movie_subtitles(page, movie_url: str, movie_title: str = '', categor
             if not content:
                 return None
             
-            # Prime Video subtitles are always TTML2
-            srt = ttml2_to_srt(content)
-            if srt:
-                caption_count = srt.count('\n\n')
-                if DEBUG_MODE:
-                    print(f"INFO Fetched subtitle (TTML2): {caption_count} captions from {url[:100]}", file=sys.stderr)
-                return srt
+            # Detect format and parse accordingly
+            content_stripped = content.strip()
+            if content_stripped.startswith('WEBVTT'):
+                # VTT format - use parse_vtt
+                captions = parse_vtt(content)
+                if captions:
+                    # Convert VTT to SRT
+                    srt_lines = []
+                    for i, cap in enumerate(captions, 1):
+                        srt_lines.append(f"{i}")
+                        srt_lines.append(f"{cap['start']} --> {cap['end']}")
+                        srt_lines.append(cap['text'])
+                        srt_lines.append("")
+                    result_srt = '\n'.join(srt_lines)
+                    if result_srt:
+                        caption_count = result_srt.count('\n\n')
+                        if DEBUG_MODE:
+                            print(f"INFO Fetched subtitle (VTT): {caption_count} captions from {url[:100]}", file=sys.stderr)
+                        return result_srt
             else:
-                print(f"WARNING Failed to parse TTML2 content", file=sys.stderr)
-                return None
+                # TTML2 format
+                srt = ttml2_to_srt(content)
+                if srt:
+                    caption_count = srt.count('\n\n')
+                    if DEBUG_MODE:
+                        print(f"INFO Fetched subtitle (TTML2): {caption_count} captions from {url[:100]}", file=sys.stderr)
+                    return srt
+            
+            return None
         except Exception as e:
-            print(f"WARNING Error fetching subtitle: {e}", file=sys.stderr)
-        return None
+            if DEBUG_MODE:
+                print(f"DEBUG fetch_subtitle error: {e}", file=sys.stderr)
+            return None
     
     try:
         # Set up console logging AND response interception
