@@ -21,6 +21,11 @@ DEBUG_MODE = False  # Set to True to see detailed debug output
 INFO_MODE = True    # Set to False to suppress INFO messages
 
 # ============================================================
+# Session persistence
+# ============================================================
+SESSION_JSON = 'data/subtitles/last_movie_list.json'
+
+# ============================================================
 # Prime resource cache
 # ============================================================
 PRIME_RESOURCES_JSON = 'data/resources/prime_resources.json'
