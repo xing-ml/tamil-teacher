@@ -57,11 +57,13 @@ def _load_prime_resources() -> dict:
 
 
 def _save_prime_resources(data: dict) -> None:
-    """Save Prime resource cache to local file."""
+    """Save Prime resource cache to local file (atomic write)."""
     os.makedirs(os.path.dirname(PRIME_RESOURCES_JSON), exist_ok=True)
     data['last_updated'] = time.strftime('%Y-%m-%dT%H:%M:%S')
-    with open(PRIME_RESOURCES_JSON, 'w', encoding='utf-8') as f:
+    temp_path = PRIME_RESOURCES_JSON + '.tmp'
+    with open(temp_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+    os.replace(temp_path, PRIME_RESOURCES_JSON)  # Atomic replace
 
 
 def _merge_movies(existing_movies: list, new_movies: list) -> list:
@@ -141,31 +143,27 @@ def _merge_tv_show(existing_show: dict, new_show: dict) -> dict:
 
 
 def _merge_prime_resources(existing_data: dict, new_movies: list) -> dict:
-    """Merge new movies into existing Prime resource cache."""
+    """Merge new movies into existing Prime resource cache.
+    
+    Uses URL as the unique key to avoid duplicates.
+    Title/category/section are only for display/grouping.
+    """
     existing_movies = existing_data.get('movies', [])
     
+    # Build URL index for O(1) lookup
+    existing_urls = {m.get('url', ''): i for i, m in enumerate(existing_movies)}
+    
     for new_movie in new_movies:
-        key = (
-            new_movie.get('title', ''),
-            new_movie.get('category', ''),
-            new_movie.get('section', '')
-        )
+        new_url = new_movie.get('url', '')
         
-        # Find matching existing movie
-        matched_idx = None
-        for i, m in enumerate(existing_movies):
-            if (m.get('title', '') == key[0] and
-                m.get('category', '') == key[1] and
-                m.get('section', '') == key[2]):
-                matched_idx = i
-                break
-        
-        if matched_idx is not None:
-            existing_movie = existing_movies[matched_idx]
+        if new_url in existing_urls:
+            # Update existing entry (preserve Prime's order)
+            idx = existing_urls[new_url]
+            existing_movie = existing_movies[idx]
             is_tv_show = new_movie.get('is_tv_show', existing_movie.get('is_tv_show', False))
             
             if is_tv_show:
-                # Merge TV show
+                # Merge TV show seasons/episodes
                 existing_seasons = existing_movie.get('seasons', [])
                 new_seasons = new_movie.get('seasons', [])
                 
@@ -196,7 +194,7 @@ def _merge_prime_resources(existing_data: dict, new_movies: list) -> dict:
                     season_map.values(),
                     key=lambda s: s.get('season', 0)
                 )
-                existing_movies[matched_idx] = existing_movie
+                existing_movies[idx] = existing_movie
             else:
                 # Regular movie - skip (preserve Prime's order)
                 pass
@@ -252,11 +250,13 @@ def _load_session_json():
 
 
 def _save_session_json(data: dict) -> None:
-    """Save session JSON file."""
+    """Save session JSON file (atomic write)."""
     os.makedirs(os.path.dirname(SESSION_JSON), exist_ok=True)
     data['last_updated'] = time.strftime('%Y-%m-%dT%H:%M:%S')
-    with open(SESSION_JSON, 'w', encoding='utf-8') as f:
+    temp_path = SESSION_JSON + '.tmp'
+    with open(temp_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+    os.replace(temp_path, SESSION_JSON)  # Atomic replace
 
 
 def _build_session_movies(movies: list) -> list:
