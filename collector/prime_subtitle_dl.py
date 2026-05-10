@@ -353,6 +353,9 @@ def _update_movie_downloaded(session_data: dict, movie_url: str, is_tv_show: boo
 def _sync_session_with_local_files(session_data: dict) -> bool:
     """Sync session JSON with actual local files.
     
+    For TV shows, recursively searches the series folder for subtitle files.
+    For regular movies, checks the series folder directly.
+    
     Returns True if any changes were made.
     """
     import glob
@@ -372,8 +375,14 @@ def _sync_session_with_local_files(session_data: dict) -> bool:
         folder = os.path.join('data', 'subtitles', safe_cat, safe_sec, safe_title)
         
         # Check for local files
-        srt_files = glob.glob(os.path.join(folder, '*.srt'))
-        refer_files = glob.glob(os.path.join(folder, 'refer_to_*.txt'))
+        if entry.get('is_tv_show', False):
+            # TV show: recursively search for .srt and refer_to_*.txt in series folder
+            srt_files = glob.glob(os.path.join(folder, '**/*.srt'), recursive=True)
+            refer_files = glob.glob(os.path.join(folder, '**/refer_to_*.txt'), recursive=True)
+        else:
+            # Regular movie: check directly in the series folder
+            srt_files = glob.glob(os.path.join(folder, '*.srt'))
+            refer_files = glob.glob(os.path.join(folder, 'refer_to_*.txt'))
         
         if srt_files or refer_files:
             # Local files exist but session says not downloaded - fix it
