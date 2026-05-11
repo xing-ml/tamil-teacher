@@ -1712,10 +1712,10 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                         ep_id = dom_urls[i]
                         ep['url'] = f"https://www.primevideo.com/detail/{ep_id}/"
         
-        def extract_season_from_url(url):
-            """Extract season number from URL (e.g., 's20' -> 20)."""
+        def extract_season_from_selector(selector_text):
+            """Extract season number from selector text (e.g., 'Season 20' -> 20)."""
             import re
-            match = re.search(r's(\d+)', url)
+            match = re.search(r'Season\s*(\d+)', selector_text, re.IGNORECASE)
             if match:
                 return int(match.group(1))
             return None
@@ -1745,32 +1745,40 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                 if DEBUG_MODE:
                     print(f"DEBUG Extracting episodes for season selector: {selector['text']}", file=sys.stderr)
                 
-                # Click the season selector
+                # Click the season selector using index
                 try:
-                    page.evaluate('''(href) => {
+                    # Click by index to avoid href escaping issues
+                    page.evaluate('''
                         const links = document.querySelectorAll('a._1NNx6V');
+                        let count = 0;
                         for(const link of links) {
-                            if(link.getAttribute('href') === href) {
-                                link.click();
-                                break;
+                            const text = link.textContent?.trim();
+                            if (text && text.match(/Season\s*\d+/i)) {
+                                if (count === ''' + str(sel_idx) + ''') {
+                                    link.click();
+                                    break;
+                                }
+                                count++;
                             }
                         }
-                    ''', selector['href'])
+                    ''')
                     time.sleep(3)  # Wait for content to load
                 except Exception as e:
                     if DEBUG_MODE:
                         print(f"DEBUG Failed to click season selector: {e}", file=sys.stderr)
                     continue
                 
-                # Extract season number from URL (more reliable than JSON)
-                current_season = extract_season_from_url(page.url)
-                if current_season is None:
+                # Extract season number from selector text (e.g., 'Season 20' -> 20)
+                try:
+                    current_season = extract_season_from_selector(selector['text'])
+                    if current_season is None:
+                        if DEBUG_MODE:
+                            print(f"DEBUG Could not extract season number from selector: {selector['text']}", file=sys.stderr)
+                        continue
+                except Exception as e:
                     if DEBUG_MODE:
-                        print(f"DEBUG Could not extract season number from URL: {page.url}", file=sys.stderr)
+                        print(f"DEBUG Exception extracting season: {e}", file=sys.stderr)
                     continue
-                
-                if DEBUG_MODE:
-                    print(f"DEBUG Current season from URL: {current_season}", file=sys.stderr)
                 
                 # Extract episodes for this season
                 raw_episodes = extract_episodes_from_page()
@@ -1779,7 +1787,7 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                     if ep.get('title') and ep.get('episodeNumber', 0) > 0:
                         season_episodes.append({
                             'title': ep['title'],
-                            'seasonNumber': current_season,  # Use URL-derived season number
+                            'seasonNumber': current_season,  # Use selector-derived season number
                             'episodeNumber': ep.get('episodeNumber', 0),
                             'url': '',
                         })
@@ -1798,7 +1806,9 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                     print(f"INFO Extracted {len(season_episodes)} episodes from Season {current_season}", file=sys.stderr)
         else:
             # Single season - extract directly
-            current_season = extract_season_from_url(page.url)
+            # Try to extract season from page title (e.g., 'Show Name - Season 1')
+            page_title = page.evaluate('() => document.title')
+            current_season = extract_season_from_selector(page_title)
             if current_season is None:
                 current_season = 1  # Fallback to season 1
             
@@ -1817,7 +1827,7 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                     all_episodes.append(season_ep)
             
             if INFO_MODE:
-                print(f"INFO TV show '{page.evaluate('document.title')}' has {len(all_episodes)} episodes", file=sys.stderr)
+                print(f"INFO TV show '{page_title}' has {len(all_episodes)} episodes", file=sys.stderr)
         
         # Sort episodes by seasonNumber, then episodeNumber
         all_episodes.sort(key=lambda ep: (ep.get('seasonNumber', 1), ep.get('episodeNumber', 0)))
