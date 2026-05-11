@@ -1639,7 +1639,7 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
     """Extract episode list from a TV show detail page.
     
     Extracts episodes from ALL seasons by clicking season selector.
-    Uses page JSON to get initial episodes, then extracts episode URLs from DOM.
+    Uses URL to extract season number (not JSON, which may have null seasonNumber).
     
     Args:
         page: Playwright page object
@@ -1659,7 +1659,7 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
         
         def extract_episodes_from_page():
             """Extract episodes from current page JSON."""
-            episodes = page.evaluate('''() => {
+            return page.evaluate('''() => {
                 const episodes = [];
                 for(const script of document.querySelectorAll('script[type="application/json"]')) {
                     try {
@@ -1683,18 +1683,6 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                 }
                 return episodes;
             }''')
-            
-            result = []
-            for ep in episodes:
-                season = ep.get('seasonNumber') or 1
-                if ep['title'] and season > 0:
-                    result.append({
-                        'title': ep['title'],
-                        'seasonNumber': season,
-                        'episodeNumber': ep.get('episodeNumber', 0),
-                        'url': '',
-                    })
-            return result
         
         def extract_dom_urls():
             """Extract episode URLs from DOM."""
@@ -1724,8 +1712,15 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                         ep_id = dom_urls[i]
                         ep['url'] = f"https://www.primevideo.com/detail/{ep_id}/"
         
-        # Step 1: Extract episodes from all seasons
-        # First, get all season selectors
+        def extract_season_from_url(url):
+            """Extract season number from URL (e.g., 's20' -> 20)."""
+            import re
+            match = re.search(r's(\d+)', url)
+            if match:
+                return int(match.group(1))
+            return None
+        
+        # Step 1: Get all season selectors
         season_selectors = page.evaluate('''() => {
             const selectors = [];
             const links = document.querySelectorAll('a._1NNx6V');
@@ -1767,26 +1762,59 @@ def _extract_tv_show_episodes(page, show_url: str) -> list:
                         print(f"DEBUG Failed to click season selector: {e}", file=sys.stderr)
                     continue
                 
-                # Extract episodes for this season
-                season_episodes = extract_episodes_from_page()
+                # Extract season number from URL (more reliable than JSON)
+                current_season = extract_season_from_url(page.url)
+                if current_season is None:
+                    if DEBUG_MODE:
+                        print(f"DEBUG Could not extract season number from URL: {page.url}", file=sys.stderr)
+                    continue
+                
                 if DEBUG_MODE:
-                    print(f"DEBUG Extracted {len(season_episodes)} episodes for season", file=sys.stderr)
+                    print(f"DEBUG Current season from URL: {current_season}", file=sys.stderr)
+                
+                # Extract episodes for this season
+                raw_episodes = extract_episodes_from_page()
+                season_episodes = []
+                for ep in raw_episodes:
+                    if ep.get('title') and ep.get('episodeNumber', 0) > 0:
+                        season_episodes.append({
+                            'title': ep['title'],
+                            'seasonNumber': current_season,  # Use URL-derived season number
+                            'episodeNumber': ep.get('episodeNumber', 0),
+                            'url': '',
+                        })
                 
                 # Extract DOM URLs and match
                 season_dom_urls = extract_dom_urls()
                 match_urls_to_episodes(season_episodes, season_dom_urls)
                 
+                if DEBUG_MODE:
+                    print(f"DEBUG Extracted {len(season_episodes)} episodes for season {current_season}", file=sys.stderr)
+                
                 # Add to all_episodes
                 all_episodes.extend(season_episodes)
                 
                 if INFO_MODE:
-                    print(f"INFO Extracted {len(season_episodes)} episodes from season selector", file=sys.stderr)
+                    print(f"INFO Extracted {len(season_episodes)} episodes from Season {current_season}", file=sys.stderr)
         else:
             # Single season - extract directly
+            current_season = extract_season_from_url(page.url)
+            if current_season is None:
+                current_season = 1  # Fallback to season 1
+            
             initial_episodes = extract_episodes_from_page()
             season_dom_urls = extract_dom_urls()
-            match_urls_to_episodes(initial_episodes, season_dom_urls)
-            all_episodes.extend(initial_episodes)
+            
+            for ep in initial_episodes:
+                if ep.get('title') and ep.get('episodeNumber', 0) > 0:
+                    season_ep = {
+                        'title': ep['title'],
+                        'seasonNumber': current_season,
+                        'episodeNumber': ep.get('episodeNumber', 0),
+                        'url': '',
+                    }
+                    season_dom_urls and match_urls_to_episodes([season_ep], season_dom_urls)
+                    all_episodes.append(season_ep)
             
             if INFO_MODE:
                 print(f"INFO TV show '{page.evaluate('document.title')}' has {len(all_episodes)} episodes", file=sys.stderr)
