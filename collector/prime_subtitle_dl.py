@@ -3023,6 +3023,7 @@ def download_movies(movies: list, page, context: str = "", category: str = "", s
                 'ignored_subtitles': 0,
                 'ignored_reason': pre_check_info,
             })
+            item_index += 1
             continue
         
         # Step 1: Navigate to URL (with retry)
